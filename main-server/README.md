@@ -1,4 +1,6 @@
 
+# Api documentation: http://localhost:3000/api/ 
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
