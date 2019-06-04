@@ -9,6 +9,7 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .setTitle('My pi home ')
     .setDescription('The piHome API description')
+    .setBasePath('api')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
