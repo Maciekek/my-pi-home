@@ -1,0 +1,7 @@
+{
+  "dbConfig": {
+    "host": "mongodb://localhost/nest",
+    "port": 5984,
+    "dbName": "customers"
+  }
+}
