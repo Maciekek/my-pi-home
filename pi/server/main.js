@@ -10,7 +10,7 @@ class Main {
        setTimeout(this.readAndSendData, 360000)
     }
 
-    readAndSendData = () => {
+    readAndSendData() {
         const data = piReader.getValues().map(temp => {
             return {
                 value: temp.value,
