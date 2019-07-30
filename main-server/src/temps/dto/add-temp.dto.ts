@@ -1,4 +1,4 @@
-import {IsDate, IsNotEmpty, IsNumber} from 'class-validator';
+import {IsNotEmpty, IsNumber} from 'class-validator';
 import {Temp} from "../interfaces/temp.interface";
 
 export class AddTempDto implements Temp {
@@ -12,4 +12,7 @@ export class AddTempDto implements Temp {
 
     @IsNotEmpty()
     readonly locationId: string;
+
+    @IsNotEmpty()
+    readonly sensorId: string;
 }

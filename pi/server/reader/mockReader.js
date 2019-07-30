@@ -1,11 +1,21 @@
-const temps = [22.0,22.1, 22.3,22.4,25,26,27,28.1,29,30,31.3,32.3,34.5,34.6,35.1,35.2,35.3,35.4,35.6,35.7,35.8,35.9,35.9];
-let counter = 0;
-const Reader = {
+const ds18b20 = require('ds18b20');
 
-    getValue: () => {
-        counter++;
-        return temps[counter];
-    }
+const Reader = {
+    sensorNames: [],
+    getValues: () => {
+        return Reader.sensorNames.map((sensorName) => {
+            return {id: sensorName, value: Math.random()*100};
+        })
+    },
+    getSensorNames: () => {
+        ds18b20.sensors((err, ids) => {
+            Reader.sensorNames = ['28-0000061ba8e4', '28-0000061ba8e5'];
+            console.log(Reader.getValues());
+        })
+    },
+
 };
+
+Reader.getSensorNames();
 
 module.exports = Reader;

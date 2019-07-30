@@ -9,8 +9,9 @@ export class TempsService {
     constructor(@InjectModel('Temp') private readonly tempModel: Model<Temp>) {}
 
     async addTemp(addTempDto: AddTempDto): Promise<Temp> {
-        const createdCat = new this.tempModel(addTempDto);
-        return await createdCat.save();
+        console.log(addTempDto)
+        const addedTemp = new this.tempModel(addTempDto);
+        return await addedTemp.save();
     }
 
     async findAll(): Promise<Temp[]> {
