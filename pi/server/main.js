@@ -1,13 +1,14 @@
 const piReader = require('./reader/reader');
 const tempsService = require('./services/tempServices');
 
+
 const LOCATION_ID = 1;
 
 class Main {
     constructor() {
        this.readAndSendData();
 
-       setTimeout(this.readAndSendData, 360000)
+       setInterval(this.readAndSendData, 360000)
     }
 
     readAndSendData() {

@@ -1,12 +1,16 @@
 const axios = require('axios');
-const debug = require('debug')('temps-service');
+
+const config = require('config');
+const apiUrl = config.get('api.url');
+console.log(apiUrl);
 
 const tempServices = {
 
     addNewTemps: (body) => {
-        debug('addNewTemps - start');
-        axios.post('http://77.55.217.143:8888/api/temps', body)
-            .then(function (response) {
+        console.log('addNewTemps - start');
+        axios.post(`${apiUrl}/temps`, body)
+            .then(function (response)
+            {
                 console.log('addNewTemps success saved new temps values', body)
             })
             .catch(function (error) {
