@@ -5,15 +5,18 @@ import { MongooseModule } from '@nestjs/mongoose';
 import {CatsModule} from './cats/cats.module';
 import { TempsModule } from './temps/temps.module';
 import {config} from 'node-config-ts';
+import {UsersModule} from "./users/users.module";
+import {LocationsModule} from "./locations/locations.module";
 
 console.log(config.dbConfig);
-
 
 @Module({
   imports:
       [MongooseModule.forRoot(config.dbConfig.url),
         CatsModule,
         TempsModule,
+        UsersModule,
+        LocationsModule,
       ],
   controllers: [AppController],
   providers: [AppService],
