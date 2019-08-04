@@ -10,7 +10,7 @@ const Location = (location) => {
 
 const Temp = (temp) => {
     return (
-        <div key={temp.id}>Nazwa: {temp.name} |  Wartość: {temp.value} |  Id: {temp._id}</div>
+        <div key={temp.id}>Nazwa: {temp.name} |  Wartość: {temp.value} |  Id: {temp._id}  | Id Lokacji: {temp.locationId}</div>
 
     )
 };
