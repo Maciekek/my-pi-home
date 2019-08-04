@@ -13,6 +13,8 @@ const mongoose_1 = require("@nestjs/mongoose");
 const cats_module_1 = require("./cats/cats.module");
 const temps_module_1 = require("./temps/temps.module");
 const node_config_ts_1 = require("node-config-ts");
+const users_module_1 = require("./users/users.module");
+const locations_module_1 = require("./locations/locations.module");
 console.log(node_config_ts_1.config.dbConfig);
 let AppModule = class AppModule {
 };
@@ -21,6 +23,8 @@ AppModule = __decorate([
         imports: [mongoose_1.MongooseModule.forRoot(node_config_ts_1.config.dbConfig.url),
             cats_module_1.CatsModule,
             temps_module_1.TempsModule,
+            users_module_1.UsersModule,
+            locations_module_1.LocationsModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

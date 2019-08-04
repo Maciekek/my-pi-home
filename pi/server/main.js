@@ -1,13 +1,12 @@
-const piReader = require('./reader/reader');
-const tempsService = require('./services/tempServices');
+const config = require("./src/readConfig");
 
-
-const LOCATION_ID = 1;
+const piReader = require('./src/reader/reader');
+const tempsService = require('./src/services/tempServices');
 
 class Main {
     constructor() {
        this.readAndSendData();
-
+       console.log(config.locationId)
        setInterval(this.readAndSendData, 360000)
     }
 
@@ -16,7 +15,7 @@ class Main {
             return {
                 value: temp.value,
                 date: new Date(),
-                locationId: LOCATION_ID,
+                locationId: config.locationId || undefined,
                 sensorId: temp.id,
             }
         });
