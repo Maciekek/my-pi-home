@@ -24,6 +24,7 @@ function App() {
         </Navbar>
 
         <Route path="/" exact={true} component={LocationsPage}/>
+        <Route path="/locations" exact={true} component={LocationsPage}/>
         <Route path="/locations/:id" exact={true} component={LocationPage}/>
 
       </Router>
