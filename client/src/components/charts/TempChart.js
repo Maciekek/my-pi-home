@@ -24,8 +24,6 @@ const options = {
       month: "%b-%y"
     }
   }
-
-
 }
 
 class TempChart extends React.Component {
