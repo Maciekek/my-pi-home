@@ -17,4 +17,9 @@ export class TempsService {
     async findAll(): Promise<Temp[]> {
         return await this.tempModel.find().exec();
     }
+
+    async findLastN(n): Promise<Temp[]> {
+        console.log(n)
+        return await this.tempModel.find().sort({_id: -1}).limit(Number(n)).exec();
+    }
 }

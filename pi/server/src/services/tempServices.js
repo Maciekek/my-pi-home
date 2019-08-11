@@ -17,6 +17,10 @@ const tempServices = {
                 console.log('addNewTemps error', error.errno || error.response.data)
                 // console.log(error);
             });
+    },
+
+    getLocationSettings: (locationId) => {
+        return axios.get(`${apiUrl}/locations/${locationId}`);
     }
 
 };

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post} from '@nestjs/common';
 import {Temp} from "./interfaces/temp.interface";
 import {TempsService} from "./temps.service";
 import {AddTempDto} from "./dto/add-temp.dto";
@@ -12,10 +12,14 @@ export class TempsController {
         return this.tempsService.addTemp(addTempDto);
     }
 
-
     @Get()
     async findAll(): Promise<Temp[]> {
         return this.tempsService.findAll();
+    }
+
+    @Get(':n')
+    async findLastN(@Param('n') n: string): Promise<Temp[]> {
+        return this.tempsService.findLastN(n);
     }
 
 }
