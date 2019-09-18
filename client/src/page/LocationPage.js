@@ -4,6 +4,7 @@ import {LocationsService} from "../services/locations.services";
 
 import {TempChart} from "../components/charts/TempChart";
 import {TempsService} from "../services/temps.services";
+import {Link} from "react-router-dom";
 
 class LocationPage extends React.Component {
   state = {
@@ -23,12 +24,12 @@ class LocationPage extends React.Component {
   }
 
   getTemps = () => {
-    TempsService.getNLastTemps(100).then((temps) => {
+    TempsService.getNLastTemps(this.props.match.params.id, 100).then((temps) => {
       this.setState({
         temps: temps.data
       });
     })
-  }
+  };
 
   render() {
     return (
@@ -38,9 +39,11 @@ class LocationPage extends React.Component {
           :(
             <div>
               <div>Nazwa lokacji: {this.state.location.name}</div>
+              <Link to={`/locations/${this.props.match.params.id}/settings`}>Ustawienia</Link>
+
 
               {this.state.temps
-              ? <TempChart temps={this.state.temps}/>
+              ? <TempChart temps={this.state.temps} location={this.state.location}/>
               : null}
 
 

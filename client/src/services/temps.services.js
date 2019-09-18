@@ -5,8 +5,8 @@ const TempsService = {
             return axios.get('/api/temps')
     },
 
-    getNLastTemps: (n) => {
-        return axios.get(`/api/temps/${n}`)
+    getNLastTemps: (locationId, n) => {
+        return axios.get(`/api/temps/${n}/${locationId}`)
     }
 };
 

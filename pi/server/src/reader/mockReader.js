@@ -9,7 +9,7 @@ const Reader = {
     },
     getSensorNames: () => {
         ds18b20.sensors((err, ids) => {
-            Reader.sensorNames = ['28-0000061ba8e4', '28-0000061ba8e5'];
+            Reader.sensorNames = ['28-0000061ba8e4', '28-0000061ba8e5', '28-0000061ba8e6'];
             console.log(Reader.getValues());
         })
     },

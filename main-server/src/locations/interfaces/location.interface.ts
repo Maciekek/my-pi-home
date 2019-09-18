@@ -1,10 +1,18 @@
 import { Document } from 'mongoose';
 
+export interface SensorData   {
+    sensorId: string;
+    locationId: string;
+    name: string;
+}
+
+export interface TempSettings {
+    sensors: SensorData[];
+    readIntervalTime: string;
+}
+
 export interface Location extends Document {
     readonly name: string;
     readonly description: string;
-}
-
-export interface TempSettings extends Document {
-    readonly tempSettings: string;
+    readonly tempSettings: TempSettings;
 }

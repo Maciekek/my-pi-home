@@ -5,7 +5,6 @@ const apiUrl = config.get('api.url');
 console.log(apiUrl);
 
 const tempServices = {
-
     addNewTemps: (body) => {
         console.log('addNewTemps - start');
         axios.post(`${apiUrl}/temps`, body)
@@ -22,7 +21,6 @@ const tempServices = {
     getLocationSettings: (locationId) => {
         return axios.get(`${apiUrl}/locations/${locationId}`);
     }
-
 };
 
 module.exports = tempServices

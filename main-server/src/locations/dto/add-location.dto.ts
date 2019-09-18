@@ -1,5 +1,5 @@
 import {IsNotEmpty} from 'class-validator';
-import {Location} from "../interfaces/location.interface";
+import {Location, TempSettings} from "../interfaces/location.interface";
 
 export class AddLocationDto implements Location {
 
@@ -8,4 +8,6 @@ export class AddLocationDto implements Location {
 
     @IsNotEmpty()
     readonly description: string;
+
+    tempSettings: TempSettings;
 }

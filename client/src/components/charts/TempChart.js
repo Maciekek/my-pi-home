@@ -9,13 +9,6 @@ const options = {
   title: {
     text: ''
   },
-  // series: [{
-  //   name: "test",
-  //   data: [[new Date(),1], [new Date(),2], [new Date(),3]]
-  // }, {
-  //   name: "test2",
-  //   data: [[new Date(),2], [new Date(),2], [new Date(),3]]
-  // }],
 
   xAxis: {
     type: 'datetime',
@@ -24,23 +17,38 @@ const options = {
       month: "%b-%y"
     }
   }
-}
+};
 
 class TempChart extends React.Component {
   constructor(props) {
     super(props);
-
-
   }
 
+  getNameOfSensorById = (id) => {
+
+    if ( !(this.props.location.tempSettings && this.props.location.tempSettings.sensors)) {
+      return id;
+    }
+
+    const matchedSensors = this.props.location.tempSettings.sensors.filter(sensor => {
+      return sensor.sensorId === id;
+    });
+
+    console.log(matchedSensors);
+    if(matchedSensors.length > 0) {
+      return matchedSensors[0].name
+    }
+
+    return id
+  };
+
   render() {
-    console.log(this.props.temps)
     const partitionedById = _.groupBy(this.props.temps, "sensorId")
     const sensorIds = Object.keys(partitionedById);
 
     const groupedTemps = sensorIds.map((sensorId) => {
       return {
-        name: sensorId,
+        name: this.getNameOfSensorById(sensorId),
         data: partitionedById[sensorId].map(data => {
           return [new Date(data.date).valueOf(), data.value]
         })

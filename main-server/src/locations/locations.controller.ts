@@ -2,16 +2,19 @@ import {Body, Controller, Get, Param, Post, Put} from '@nestjs/common';
 import {Location} from "./interfaces/location.interface";
 import {LocationsService} from "./locations.service";
 import {AddLocationDto} from "./dto/add-location.dto";
-import {SetTempSettingsDto} from "./dto/set-temp-settings.dto";
-import set = Reflect.set;
 
 @Controller('/locations')
 export class LocationsController {
     constructor(private readonly locationsService: LocationsService) {}
 
     @Post()
-    async addTemp(@Body() addLocationDto: AddLocationDto): Promise<Location> {
-        return this.locationsService.addTemp(addLocationDto);
+    async addLocation(@Body() addLocationDto: AddLocationDto): Promise<Location> {
+        return this.locationsService.addLocation(addLocationDto);
+    }
+
+    @Put(':id')
+    async updateLocation(@Param('id') id: string, @Body() addLocationDto: AddLocationDto): Promise<Location> {
+        return this.locationsService.updateLocation(id, addLocationDto);
     }
 
     @Get()
@@ -24,9 +27,16 @@ export class LocationsController {
         return this.locationsService.findById(id);
     }
 
-    @Put(':id/tempSettings')
-    async setTempSettings(@Param('id') id: string, @Body() setTempSettings: SetTempSettingsDto): Promise<any> {
-        return this.locationsService.setTempSettings(id, setTempSettings);
-    }
+    // @Put(':id/tempSettings')
+    // async setTempSettings(@Param('id') id: string, @Body() setTempSettings: SetTempSettingsDto): Promise<any> {
+    //     return this.locationsService.setTempSettings(id, setTempSettings);
+    // }
+
+    // @Put(':id/sensorsSettings')
+    // async setSensorsSettings(@Param('id') id: string, @Body() setSensorSettings: SetSensorSettingsDto): Promise<any> {
+    //     console.log(setSensorSettings)
+    //     return this.locationsService.setSensorSettings(id, setSensorSettings);
+    // }
+
 
 }

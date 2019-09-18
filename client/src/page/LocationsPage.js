@@ -48,12 +48,13 @@ class LocationsPage extends React.Component {
                     </ListGroup.Item>
                   </OverlayTrigger>
                 </Link>
+
               )
             })}
-
           </ListGroup>
         }
 
+        <Link to={`/location/new`}>Dodaj nową lokalizację</Link>
 
       </Page>
     )

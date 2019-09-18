@@ -17,9 +17,9 @@ export class TempsController {
         return this.tempsService.findAll();
     }
 
-    @Get(':n')
-    async findLastN(@Param('n') n: string): Promise<Temp[]> {
-        return this.tempsService.findLastN(n);
+    @Get(':n/:locationId')
+    async findLastN(@Param('locationId') locationId: string, @Param('n') n: string): Promise<Temp[]> {
+        return this.tempsService.findLastN(locationId, n);
     }
 
 }

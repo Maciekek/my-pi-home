@@ -7,6 +7,18 @@ const LocationsService = {
 
     getLocation: (locationId) => {
       return axios.get(`/api/locations/${locationId}`)
+    },
+
+    getLocationSettings: (locationId) => {
+        return axios.get(`/api/locations/${locationId}`);
+    },
+
+    updateLocation: (locationId, data) => {
+        return axios.put(`/api/locations/${locationId}`, data);
+    },
+
+    createNewLocation: (form) => {
+        return axios.post(`/api/locations`, form);
     }
 };
 
