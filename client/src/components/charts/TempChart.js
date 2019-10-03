@@ -64,10 +64,24 @@ class TempChart extends React.Component {
     console.log(groupedTemps);
     options.series = groupedTemps;
     return (
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={options}
-      />
+
+      <div>
+        <div>
+          Aktualna temperatura:
+          <br/>
+          <br/>
+          {groupedTemps.map(groupedTemp => {
+
+           return <div>{this.getNameOfSensorById(groupedTemp.name)}: {groupedTemp.data[0][1]}</div>
+          })}
+        </div>
+
+        <br/><br/>
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={options}
+        />
+      </div>
     )
   }
 

@@ -44,15 +44,18 @@ class LocationPage extends React.Component {
     return (
       <Page>
           <div className={'location'}>
+            <Link to={`/locations/${this.props.match.params.id}/settings`}> <FontAwesomeIcon icon={faCog} />
+              Ustawienia
+            </Link>
+
+            <br/>
+            <br/>
 
             <div className={'location__name'}>
             Nazwa lokalizacji:
             <span> {this.state.location.name}</span>
             </div>
-          <Link to={`/locations/${this.props.match.params.id}/settings`}>
-            <FontAwesomeIcon icon={faCog} />
-            Ustawienia</Link>
-
+            <br/>
           {this.state.temps
           ? <TempChart temps={this.state.temps} location={this.state.location}/>
           : null}
