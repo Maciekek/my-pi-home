@@ -1,10 +1,14 @@
 import React from 'react';
 import {Page} from '../components/page';
 import {LocationsService} from "../services/locations.services";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {TempChart} from "../components/charts/TempChart";
 import {TempsService} from "../services/temps.services";
+import { faCog } from '@fortawesome/free-solid-svg-icons'
+
 import {Link} from "react-router-dom";
+import {LoadingIndicator} from "../components/loadingIndicator";
 
 class LocationPage extends React.Component {
   state = {
@@ -32,26 +36,27 @@ class LocationPage extends React.Component {
   };
 
   render() {
+
+    if (!this.state.location) {
+      return <LoadingIndicator/>;
+    }
+
     return (
       <Page>
-        {!this.state.location
-          ? "loading"
-          :(
-            <div>
-              <div>Nazwa lokacji: {this.state.location.name}</div>
-              <Link to={`/locations/${this.props.match.params.id}/settings`}>Ustawienia</Link>
+          <div className={'location'}>
 
-
-              {this.state.temps
-              ? <TempChart temps={this.state.temps} location={this.state.location}/>
-              : null}
-
-
+            <div className={'location__name'}>
+            Nazwa lokalizacji:
+            <span> {this.state.location.name}</span>
             </div>
+          <Link to={`/locations/${this.props.match.params.id}/settings`}>
+            <FontAwesomeIcon icon={faCog} />
+            Ustawienia</Link>
 
-
-          )}
-
+          {this.state.temps
+          ? <TempChart temps={this.state.temps} location={this.state.location}/>
+          : null}
+        </div>
       </Page>
     )
   }

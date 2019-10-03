@@ -1,10 +1,6 @@
 import React from 'react';
 import {Page} from '../components/page';
 import {LocationsService} from "../services/locations.services";
-import ListGroup from "react-bootstrap/ListGroup";
-import Tooltip from "react-bootstrap/Tooltip";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import {Link} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import {uuidv4} from "../utils/Utils";
 import Button from "react-bootstrap/Button";
@@ -17,13 +13,6 @@ class LocationsNewPage extends React.Component {
       locationId: uuidv4()
     },
   };
-
-  constructor(props) {
-    super(props);
-
-  }
-
-
 
   changeValue = (event) => {
     const target = event.target;

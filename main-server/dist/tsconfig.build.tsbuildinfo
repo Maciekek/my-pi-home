@@ -1214,12 +1214,12 @@
         "signature": "03e61afcea19f9be621eb0c1de54da7fdc4a1103766aa29d088eaf0597f45efe"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts": {
-        "version": "bc6b75b3c644aee6a796001eb18eb0ec7bf90d1a3fb06bfc641efc4503e5e0cb",
-        "signature": "6dd9d2fb13eaa1555dcf66394d56fb0c510943686bea817df5a60ca1aff77145"
+        "version": "9229ff127c21c51e41a420a693da666c0b898a3e52fd2e40d0b4c64e4a3583e8",
+        "signature": "4f5d8409c6258266e8cc1efefc8820aa20c929b7fde8e38c8a0bd345b83cf67c"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.controller.ts": {
-        "version": "38e6aaf65bfa9fa790685db4d52ef36c0dc8495cae1ce9b6f5834e6765111c1d",
-        "signature": "701f10515d5549f2b4f99c88be0fd886739cba9e5b2ca746ffa49e0aede55ec8"
+        "version": "f1ca75e27a41f0487db7099165dbefd1de7dde4bd63f96dd3a0895580badc51a",
+        "signature": "6b946a74254ab4ee41ab8e35251fe3d9940564f615c5189baf74f5207fb37bae"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.module.ts": {
         "version": "e4c0b826cac785a6d8a8c1b79c43a1bc15c11c32489047c4e7951894670f68f3",
@@ -1254,28 +1254,24 @@
         "signature": "12dec6c99bd8d11167fa91a31e737abbbf8c9cc789c151a25a9a1d13f328175c"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/location.schema.ts": {
-        "version": "44cb02e750b6066559df6dffecc9c1c085e5b5cb4b05cb5ec89881f68c87cb9e",
-        "signature": "ddb97b6575c80900e6ee89ed72a4f16e8438a3089cc3ece21cb9acda80fba14b"
+        "version": "3da30c047d8e07a0ffaa735a8dc54402bde79558983fa80b115dd85e81a64a27",
+        "signature": "a9a8ca9170ef158e86b782e5eef20e787584403e7baeb45a7d716066369e51e0"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts": {
-        "version": "50b365e2d32032301a97e3741c20a5edb0bd680b31e39a2b771d3c0c0075c34f",
-        "signature": "77aa4e0ddf496acfc42e43e0b2568b183301d7099a5858fb74f10978b21c96cc"
+        "version": "7f1cdaf72f7df3cdf68d50bdc1d0c437b0bddb8859aeebc9ce552fb8cb60bba1",
+        "signature": "c8eacf8677d894a939a623f19d3b566ef7f6aa67dc70596549f2eedac9cbabde"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts": {
-        "version": "599caab98efed4513e9673e923cf7b17e890eb0330c7c286f59c5d71d316ed46",
-        "signature": "c1d137395745ad9b0c26caa396c4c690e27a4a359c395bbfc2e079a0ef936cda"
-      },
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/set-temp-settings.dto.ts": {
-        "version": "d277e1a21857d7600474065bd6f7cfd2e5a495d1cabe6b4851852a15e3f96b48",
-        "signature": "064f458167d00631e3d2843ab946f4e5e7804d64d547676153701d5c781ea855"
+        "version": "9bd6d6aa26161141580bc35d84892afcdbbbd5f7e928fe5a1d26b0d986177bef",
+        "signature": "f209037bec4c330142275f433d0b84fda0d6b636b896544269ac700afda1ba5e"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts": {
-        "version": "255bcb46c2866dab436b557d951151909b02146261e4285c03f3d8a7ad1e1922",
-        "signature": "308aa30d5a21ff5532e0494c4fe5f80a2d51bcc21e9ab4e7d4d054057855d6b9"
+        "version": "aee5ababc1b369462b384fce6b6a19a072b1b31e838cb813fe1dee34ff18284e",
+        "signature": "7edb4698c0bc99fe6724124f52a6ecdf76b7254b59fcf910b8586f22bbb18113"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.controller.ts": {
-        "version": "f44eb391079870600331400b4f008a7a5d18ff85b80496ebfab1502c5676fadd",
-        "signature": "80c3c0df97c235f7fcbfca8a481475de3176754b46f224e4952edddad0af9ed6"
+        "version": "8896b8c9d185cb650382ac43c96fdadbeb0636139e7759eeaee7c6e13203b5e6",
+        "signature": "c7f2c6dac6b08cfd6a48a96e3d8824d307dfa5079138a42b992ad0f1f70391a5"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.module.ts": {
         "version": "014fdae118cfa4b53a17bf763f3a0b29f0b7f369502af73b6eaa9fb25fdbfba8",
@@ -3472,18 +3468,11 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/set-temp-settings.dto.ts": [
-        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/class-validator/index.d.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/mongoose/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/set-temp-settings.dto.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -3492,7 +3481,6 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/set-temp-settings.dto.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -5723,19 +5711,14 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts"
       ],
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/set-temp-settings.dto.ts": [
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts"
-      ],
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/set-temp-settings.dto.ts"
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts"
       ],
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.controller.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts",
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/set-temp-settings.dto.ts"
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts"
       ],
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/adapters/http-adapter.d.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
@@ -6480,7 +6463,6 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/location.schema.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts",
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/set-temp-settings.dto.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.controller.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.module.ts",
