@@ -12,6 +12,7 @@ import {LocationSettingsPage} from "./page/LocationSettingsPage";
 import {LocationsNewPage} from "./page/LocationsNewPage";
 
 function App() {
+  console.log('APP started');
   return (
     <div className={'app'}>
       <Router>
