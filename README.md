@@ -20,13 +20,14 @@ node main.js
 
 ### how to run prod app
 ####client
-npm run start 
+npm run build && 
+./start.sh
 
 #### backend
-npm run start:dev 
+./start.sh
 
-#### mock pi server
-node main.js
+#### pi server
+pm2 start pm2.config.js
 
 
 

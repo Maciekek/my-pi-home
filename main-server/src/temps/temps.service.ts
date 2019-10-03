@@ -19,8 +19,8 @@ export class TempsService {
     }
 
     async findLastN(locationId, n): Promise<Temp[]> {
-        console.log(n)
-        console.log(locationId)
-        return await this.tempModel.find({locationId}).sort({_id: -1}).limit(Number(n)).exec();
+        console.log(n);
+        console.log(locationId);
+        return await this.tempModel.find({locationId, date: {$gte : '2019-09-29 15:38'}}).sort({_id: -1}).limit(Number(n)).exec();
     }
 }

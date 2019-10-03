@@ -3,7 +3,11 @@ import _ from 'lodash';
 
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-
+Highcharts.setOptions({
+  time: {
+    timezoneOffset: -2 * 60
+  }
+});
 
 const options = {
   title: {
@@ -15,7 +19,8 @@ const options = {
     dateTimeLabelFormats: {
       day: "%e-%b-%y" ,
       month: "%b-%y"
-    }
+    },
+
   }
 };
 
@@ -57,7 +62,7 @@ class TempChart extends React.Component {
 
 
     console.log(groupedTemps);
-    options.series = groupedTemps
+    options.series = groupedTemps;
     return (
       <HighchartsReact
         highcharts={Highcharts}
