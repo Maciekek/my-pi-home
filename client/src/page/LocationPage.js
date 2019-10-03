@@ -28,7 +28,7 @@ class LocationPage extends React.Component {
   }
 
   getTemps = () => {
-    TempsService.getNLastTemps(this.props.match.params.id, 100).then((temps) => {
+    TempsService.getNLastTemps(this.props.match.params.id, 300).then((temps) => {
       this.setState({
         temps: temps.data
       });
