@@ -10,6 +10,7 @@ class Main {
     constructor() {
         this.readAndSendData();
         console.log(config.locationId);
+        this.readAndSendData = this.readAndSendData.bind(this);
 
         setInterval(this.readAndSendData, 360000)
     }
