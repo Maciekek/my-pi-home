@@ -24,6 +24,7 @@ class Main {
             }
         });
 
+        console.log(data);
         data.map(singledata => {
             tempsService.addNewTemps(singledata);
         })
@@ -38,7 +39,7 @@ class Main {
             return MIN_TEMP;
         }
 
-        return value.toFixed(2);
+        return value;
     }
 }
 
