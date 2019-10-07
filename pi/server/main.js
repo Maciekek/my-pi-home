@@ -3,17 +3,13 @@ const config = require("./src/readConfig");
 const piReader = require('./src/reader/reader');
 const tempsService = require('./src/services/tempServices');
 
+const MAX_TEMP = 60;
+const MIN_TEMP = -30;
+
 class Main {
     constructor() {
-       this.readAndSendData();
-       console.log(config.locationId);
-       //
-       // tempsService.getLocationSettings(config.locationId).then((locationsResponse) => {
-       //     console.log("asd", locationsResponse.data[0].tempSettings);
-       //     const tempSettings = JSON.parse(locationsResponse.data[0].tempSettings.replace(new RegExp('\'', 'g'), '"'));
-       //     console.log( tempSettings.interval)
-       //
-       // })
+        this.readAndSendData();
+        console.log(config.locationId);
 
         setInterval(this.readAndSendData, 360000)
     }
@@ -21,7 +17,7 @@ class Main {
     readAndSendData() {
         const data = piReader.getValues().map(temp => {
             return {
-                value: temp.value,
+                value: this.prepareTemps(temp.value),
                 date: new Date(),
                 locationId: config.locationId || undefined,
                 sensorId: temp.id,
@@ -32,7 +28,20 @@ class Main {
             tempsService.addNewTemps(singledata);
         })
     }
+
+    prepareTemps(value) {
+        if (value > MAX_TEMP) {
+            return MAX_TEMP;
+        }
+
+        if (value < MIN_TEMP) {
+            return MIN_TEMP;
+        }
+
+        return value.toFixed(2);
+    }
 }
+
 setTimeout(() => {
     const main = new Main();
 }, 1000);

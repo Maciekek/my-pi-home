@@ -1,5 +1,3 @@
-const ds18b20 = require('ds18b20');
-
 const Reader = {
     sensorNames: [],
     getValues: () => {
@@ -8,10 +6,7 @@ const Reader = {
         })
     },
     getSensorNames: () => {
-        ds18b20.sensors((err, ids) => {
-            Reader.sensorNames = ['28-0000061ba8e4', '28-0000061ba8e5', '28-0000061ba8e6'];
-            console.log(Reader.getValues());
-        })
+        Reader.sensorNames = ['28-0000061ba8e4', '28-0000061ba8e5', '28-0000061ba8e6'];
     },
 
 };
