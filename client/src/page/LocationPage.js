@@ -51,7 +51,7 @@ class LocationPageBase extends React.Component {
     console.log(sensorsCount);
     this.setState({
       temps: null,
-      n: (parseInt(document.querySelector('#nCount').value)) * sensorsCount
+      n: (parseInt(document.querySelector('#nCount').value) || DEFAULT_N) * sensorsCount
     }, () => this.getTemps(this.state.n))
   };
 
