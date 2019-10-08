@@ -11,6 +11,7 @@
     "config": "^3.2.2",
     "debug": "^4.1.1",
     "ds18b20": "^0.1.0"
+
   },
   "author": "",
   "license": "ISC"
