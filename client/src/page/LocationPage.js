@@ -13,11 +13,13 @@ import {connect} from "react-redux";
 import {rootActions} from "./../store/root-actions";
 import {getAllLocations} from "./../store/actions/LocationsActions";
 
+const DEFAULT_N = 100;
+
 class LocationPageBase extends React.Component {
   state = {
     location: null,
     temps: null,
-    n: 300,
+    n: DEFAULT_N,
   };
 
   constructor(props) {
@@ -28,12 +30,15 @@ class LocationPageBase extends React.Component {
 
       this.setState({
         location: location.data
-      }, this.getTemps)
+      }, () => {
+        const sensorsCount = this.state.location.tempSettings.sensors.length;
+        this.getTemps(DEFAULT_N * sensorsCount)
+      })
     })
   }
 
-  getTemps = () => {
-    TempsService.getNLastTemps(this.props.match.params.id, this.state.n).then((temps) => {
+  getTemps = (n) => {
+    TempsService.getNLastTemps(this.props.match.params.id, n).then((temps) => {
       this.setState({
         temps: temps.data
       });
@@ -41,11 +46,14 @@ class LocationPageBase extends React.Component {
   };
 
   onInputChange = () => {
+    const sensorsCount = this.state.location.tempSettings.sensors.length;
+    console.log(parseInt(document.querySelector('#nCount').value));
+    console.log(sensorsCount);
     this.setState({
       temps: null,
-      n: document.querySelector('#nCount').value
-    }, this.getTemps)
-  }
+      n: (parseInt(document.querySelector('#nCount').value)) * sensorsCount
+    }, () => this.getTemps(this.state.n))
+  };
 
 
   render() {
@@ -75,8 +83,8 @@ class LocationPageBase extends React.Component {
             <br/>
             <br/>
 
-            <strong>Domyślnie pobieranych jest 300 ostatnich pomiarów. Jeżeli chcesz zwiększyć/zmiejszyć ten zakres wystarczy, że podasz niżej ile chcesz pobrać pomiarów.<br/></strong>
-            <input type="text" id='nCount' placeholder={'300'}/>
+            <strong>Domyślnie pobieranych jest 100 ostatnich pomiarów. Jeżeli chcesz zwiększyć/zmiejszyć ten zakres wystarczy, że podasz niżej ile chcesz pobrać pomiarów.<br/></strong>
+            <input type="text" id='nCount' placeholder={'100'}/>
             <button onClick={this.onInputChange}>zapisz</button>
 
             <br/>
