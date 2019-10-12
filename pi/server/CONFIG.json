@@ -1,3 +1,6 @@
 {
-  "locationId": "5d825b6c1d15b82553f890f2"
+  "locationId": "5da1dc0fec784c565c2865af",
+  "wifiTemps": {
+    "ip": "192.168.8.100"
+  }
 }

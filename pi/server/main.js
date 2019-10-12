@@ -2,6 +2,7 @@ const config = require("./src/readConfig");
 
 const piReader = require('./src/reader/reader');
 const tempsService = require('./src/services/tempServices');
+const wifiTempsService = require('./src/services/wifiTempService');
 
 const MAX_TEMP = 60;
 const MIN_TEMP = -30;
@@ -12,23 +13,35 @@ class Main {
         console.log(config.locationId);
         this.readAndSendData = this.readAndSendData.bind(this);
 
-        setInterval(this.readAndSendData, 360000)
+       setInterval(this.readAndSendData, 360000);
     }
 
     readAndSendData() {
-        const data = piReader.getValues().map(temp => {
-            return {
+        piReader.getValues().map(temp => {
+            const tempObject = {
                 value: this.prepareTemps(temp.value),
                 date: new Date(),
                 locationId: config.locationId || undefined,
                 sensorId: temp.id,
-            }
+            };
+
+            tempsService.addNewTemps(tempObject);
         });
 
-        console.log(data);
-        data.map(singledata => {
-            tempsService.addNewTemps(singledata);
-        })
+        if(config.wifiTemps.ip) {
+            wifiTempsService.getTempsByIp(config.wifiTemps.ip).then((temps) => {
+                temps.map(temp => {
+                    const tempObject = {
+                        value: this.prepareTemps(temp.value),
+                        date: new Date(),
+                        locationId: config.locationId || undefined,
+                        sensorId: temp.id,
+                    };
+                    tempsService.addNewTemps(tempObject);
+                    console.log(tempObject);
+                });
+            })
+        }
     }
 
     prepareTemps(value) {
@@ -43,6 +56,8 @@ class Main {
         return value;
     }
 }
+
+
 
 setTimeout(() => {
     const main = new Main();

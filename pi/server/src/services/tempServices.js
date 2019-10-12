@@ -20,7 +20,9 @@ const tempServices = {
 
     getLocationSettings: (locationId) => {
         return axios.get(`${apiUrl}/locations/${locationId}`);
-    }
+    },
+
+
 };
 
 module.exports = tempServices
