@@ -1,17 +1,18 @@
 import React from 'react';
 import {Page} from '../components/page';
 import {LocationsService} from "../services/locations.services";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 import {TempChart} from "../components/charts/TempChart";
 import {TempsService} from "../services/temps.services";
-import { faCog } from '@fortawesome/free-solid-svg-icons'
+import {faCog} from '@fortawesome/free-solid-svg-icons'
 
 import {Link} from "react-router-dom";
 import {LoadingIndicator} from "../components/loadingIndicator";
 import {connect} from "react-redux";
 import {rootActions} from "./../store/root-actions";
 import {getAllLocations} from "./../store/actions/LocationsActions";
+import {ActualTemps} from "../components/ActualTemps";
 
 const DEFAULT_N = 100;
 
@@ -31,8 +32,12 @@ class LocationPageBase extends React.Component {
       this.setState({
         location: location.data
       }, () => {
-        const sensorsCount = this.state.location.tempSettings.sensors.length;
-        this.getTemps(DEFAULT_N * sensorsCount)
+        if (!this.state.location.tempSettings) {
+          this.getTemps(DEFAULT_N * 2)
+        } else {
+          const sensorsCount = this.state.location.tempSettings.sensors.length;
+          this.getTemps(DEFAULT_N * sensorsCount);
+        }
       })
     })
   }
@@ -66,33 +71,44 @@ class LocationPageBase extends React.Component {
       <Page>
 
 
-          <div className={'location'}>
-            <Link to={`/locations/${this.props.match.params.id}/settings`}> <FontAwesomeIcon icon={faCog} />
-              Ustawienia
-            </Link>
+        <div className={'location'}>
+          <Link to={`/locations/${this.props.match.params.id}/settings`}> <FontAwesomeIcon icon={faCog}/>
+            Ustawienia
+          </Link>
 
-            <br/>
-            <br/>
+          <br/>
+          <br/>
 
 
-            <div className={'location__name'}>
+          <div className={'location__name'}>
             Nazwa lokalizacji:
             <span> {this.state.location.name}</span>
-            </div>
+          </div>
 
-            <br/>
-            <br/>
+          <br/>
+          <br/>
 
-            <strong>Domyślnie pobieranych jest 100 ostatnich pomiarów. Jeżeli chcesz zwiększyć/zmiejszyć ten zakres wystarczy, że podasz niżej ile chcesz pobrać pomiarów.<br/></strong>
-            <input type="text" id='nCount' placeholder={'100'}/>
-            <button onClick={this.onInputChange}>zapisz</button>
+          <strong>Domyślnie pobieranych jest 100 ostatnich pomiarów. Jeżeli chcesz zwiększyć/zmiejszyć ten zakres
+            wystarczy, że podasz niżej ile chcesz pobrać pomiarów.<br/></strong>
+          <input type="text" id='nCount' placeholder={'100'}/>
+          <button onClick={this.onInputChange}>zapisz</button>
 
-            <br/>
-            <br/>
-            <br/>
+          <br/>
+          <br/>
+          <br/>
+
+
+          <br/>
           {this.state.temps
-          ? <TempChart temps={this.state.temps} location={this.state.location}/>
-          : null}
+            ? <ActualTemps temps={this.state.temps} location={this.state.location}/>
+            : null}
+
+          <br/>
+          <br/>
+
+          {this.state.temps
+            ? <TempChart temps={this.state.temps} location={this.state.location}/>
+            : null}
         </div>
       </Page>
     )
@@ -101,7 +117,7 @@ class LocationPageBase extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('state', state) ;
+  console.log('state', state);
   return {
     counter: state.counter
   }
