@@ -16,12 +16,23 @@ const options = {
 
   xAxis: {
     type: 'datetime',
-    dateTimeLabelFormats: {
-      day: "%e-%b-%y" ,
-      month: "%b-%y"
+    //	tickInterval: 60 * 1000, // for thin step
+    dateTimeLabelFormats: { // don't display the dummy year\
+      year:  '%I:%M:%S %p',
+      month:  '%I:%M:%S %p',
+      day: '%I:%M:%S %p'
     },
+    title: {
+      text: 'Time'
+    }
 
-  }
+  },
+  tooltip: {
+    formatter: function() {
+      return Highcharts.dateFormat('%I:%M:%S %p', this.x);
+    }
+  },
+
 };
 
 class TempChart extends React.Component {
