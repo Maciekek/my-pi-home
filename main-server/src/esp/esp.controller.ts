@@ -14,6 +14,7 @@ export class EspController {
         test.locationId = params.locationId;
         test.sensorId = params.valuename;
         test.value = params.value;
+        test.date = new Date().toISOString();
 
         this.tempsService.addTemp(test);
         return new Promise<string>((suc) => {
