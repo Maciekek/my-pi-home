@@ -9,7 +9,7 @@ export class TempsService {
     constructor(@InjectModel('Temp') private readonly tempModel: Model<Temp>) {}
 
     async addTemp(addTempDto: AddTempDto): Promise<Temp> {
-        console.log(addTempDto)
+        console.log(addTempDto);
         const addedTemp = new this.tempModel(addTempDto);
         return await addedTemp.save();
     }

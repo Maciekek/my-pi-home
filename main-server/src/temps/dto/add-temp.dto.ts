@@ -5,14 +5,14 @@ export class AddTempDto implements Temp {
 
     @IsNotEmpty()
     @IsNumber()
-    readonly value: number;
+    value: number;
 
     @IsNotEmpty()
-    readonly date: string;
+    date: string;
 
     @IsNotEmpty()
-    readonly locationId: string;
+    locationId: string;
 
     @IsNotEmpty()
-    readonly sensorId: string;
+    sensorId: string;
 }

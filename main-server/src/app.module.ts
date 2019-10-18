@@ -7,6 +7,7 @@ import { TempsModule } from './temps/temps.module';
 import {config} from 'node-config-ts';
 import {UsersModule} from "./users/users.module";
 import {LocationsModule} from "./locations/locations.module";
+import {EspModule} from "./esp/esp.module";
 
 console.log(config.dbConfig);
 
@@ -17,6 +18,7 @@ console.log(config.dbConfig);
         TempsModule,
         UsersModule,
         LocationsModule,
+          EspModule,
       ],
   controllers: [AppController],
   providers: [AppService],
