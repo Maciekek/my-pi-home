@@ -28,10 +28,13 @@ const options = {
 
   },
   tooltip: {
-    formatter: function() {
-      return Highcharts.dateFormat('%I:%M:%S %p', this.x);
-    }
+    headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">Godzina: {point.key}<br>',
+    footerFormat: '</div>',
+    xDateFormat: '%H:%M',
+    shared: false
+
   },
+
 
 };
 
