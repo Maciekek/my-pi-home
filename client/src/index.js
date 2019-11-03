@@ -8,10 +8,12 @@ import {combineReducers, createStore, compose, applyMiddleware} from "redux";
 import thunk from 'redux-thunk';
 
 import {locationReducer} from "./store/reducers/Locations";
+import {dashboardsReducer} from "./store/reducers/Dashboards";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(combineReducers({
   locationStore: locationReducer,
+  dashboardsStore: dashboardsReducer,
 }) , composeEnhancers(applyMiddleware(thunk)));
 
 //

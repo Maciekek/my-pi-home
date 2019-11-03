@@ -28,4 +28,16 @@ export class DashboardsService {
         return await this.dashboardModel.findOne({locationId: id});
     }
 
+    async removeWidgetByIndex(locationId: string, widgetIndex: number): Promise<Dashboard> {
+        const dashboad = await this.dashboardModel.findOne({locationId});
+        const parsedConfig = JSON.parse(dashboad.config);
+
+        parsedConfig.splice(widgetIndex, 1);
+
+        await this.dashboardModel.findOneAndUpdate({locationId},
+            {$set: {locationId, config: JSON.stringify(parsedConfig)}});
+
+        return await this.dashboardModel.findOne({locationId});
+    }
+
 }

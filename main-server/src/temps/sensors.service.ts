@@ -9,8 +9,6 @@ export class SensorsService {
     constructor(@InjectModel('Temp') private readonly tempModel: Model<Temp>) {}
 
     async findSensors(locationId, body: any): Promise<Temp[]> {
-        console.log(`SensorsService:[findSensors]`);
-        console.log(body);
         return await this.tempModel
             .find({locationId, sensorId: { $in: body.sensorIds }})
             .sort({_id: -1})

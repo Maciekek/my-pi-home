@@ -1,11 +1,12 @@
 import React from 'react';
 import _ from 'lodash';
+import {connect} from "react-redux";
 
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 Highcharts.setOptions({
   time: {
-    timezoneOffset: -1 * 60
+    timezoneOffset: -2 * 60
   }
 });
 
@@ -28,31 +29,32 @@ const options = {
 
   },
   tooltip: {
-    headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">Godzina: {point.key}<br>',
-    footerFormat: '</div>',
-    xDateFormat: '%H:%M',
-    shared: false
-
+    formatter: function() {
+      return Highcharts.dateFormat('%I:%M:%S %p', this.x);
+    }
   },
 
 };
 
-class TempChart extends React.Component {
+class TempChartWidgetBase extends React.Component {
+  static WidgetConfig = {
+    limit: 100
+  };
+
   constructor(props) {
     super(props);
   }
 
-  getNameOfSensorById = (id) => {
 
-    if ( !(this.props.location.tempSettings && this.props.location.tempSettings.sensors)) {
+  getNameOfSensorById = (id) => {
+    if ( !(this.props.locationConfig.tempSettings && this.props.locationConfig.tempSettings.sensors)) {
       return id;
     }
 
-    const matchedSensors = this.props.location.tempSettings.sensors.filter(sensor => {
+    const matchedSensors = this.props.locationConfig.tempSettings.sensors.filter(sensor => {
       return sensor.sensorId === id;
     });
 
-    console.log(matchedSensors);
     if(matchedSensors.length > 0) {
       return matchedSensors[0].name
     }
@@ -61,7 +63,7 @@ class TempChart extends React.Component {
   };
 
   render() {
-    const partitionedById = _.groupBy(this.props.temps, "sensorId");
+    const partitionedById = _.groupBy(this.props.data, "sensorId");
     const sensorIds = Object.keys(partitionedById);
 
     const groupedTemps = sensorIds.map((sensorId) => {
@@ -73,12 +75,10 @@ class TempChart extends React.Component {
         }
     });
 
-
-    console.log(groupedTemps);
     options.series = groupedTemps;
-    return (
 
-      <div>
+    return (
+      <div className={'line-chart'}>
         <HighchartsReact
           highcharts={Highcharts}
           options={options}
@@ -89,4 +89,16 @@ class TempChart extends React.Component {
 
 }
 
-export {TempChart}
+const getLocationConfig = (state, locationId) => {
+  return state.locationStore.locations[locationId];
+};
+
+const mapStateToProps = (state, props) => {
+  return {
+    locationConfig: getLocationConfig(state, props.locationId)
+  }
+};
+
+export const TempChartWidget = connect(mapStateToProps)(TempChartWidgetBase);
+
+

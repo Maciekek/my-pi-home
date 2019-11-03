@@ -1,4 +1,4 @@
-import {Body, Controller, Get, HttpException, HttpStatus, Param, Post, Put} from '@nestjs/common';
+import {Body, Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put} from '@nestjs/common';
 
 import {DashboardsService} from "./dashboards.service";
 import {Dashboard} from "./interfaces/dashboard.interface";
@@ -10,7 +10,6 @@ export class DashboardController {
 
     @Post(':id')
     async addLocation(@Param('id') locationId: string, @Body() dashboardConfig: AddDashboardDto): Promise<Dashboard> {
-        console.log(locationId)
         // if (this.dashboardsService.getDashboard(locationId)) {
         //     throw new HttpException(`DASHBOARD WITH ID ${locationId} already exist!`, HttpStatus.FORBIDDEN);
         // }
@@ -29,5 +28,12 @@ export class DashboardController {
     async getDashboardByLocationId(@Param('id') id: string): Promise<Dashboard> {
         console.log(`[getDashboardByLocationId]:getDashboardByLocationId ${id}`);
         return this.dashboardsService.getDashboard(id);
+    }
+
+    @Delete(':locationId/:widgetIndex')
+    async deleteWidgetByIndex(@Param('locationId') locationId: string, @Param('widgetIndex') widgetIndex: number): Promise<Dashboard> {
+        console.log(`[getDashboardByLocationId]:deleteWidgetByIndex ${locationId} ${widgetIndex}`);
+        return this.dashboardsService.removeWidgetByIndex(locationId, widgetIndex);
+        // return this.dashboardsService.getDashboard(locationId);
     }
 }

@@ -1,9 +1,11 @@
 import axios from "axios";
+import {LocationsService} from "../../services/locations.services";
 
 const locationActions = {
   GET_ALL_LOCATIONS: "GET_ALL_LOCATIONS",
   LOADING_LOCATIONS_START: "LOADING_LOCATIONS_START",
-  LOADING_LOCATIONS_END: "LOADING_LOCATIONS_END"
+  LOADING_LOCATIONS_END: "LOADING_LOCATIONS_END",
+  LOADED_LOCATION_SETTINGS: "LOADED_LOCATION_SETTINGS"
 };
 
 const loadingLocationsStart = () => {
@@ -21,13 +23,32 @@ const loadingLocationsEnd = (payload) => {
   }
 };
 
+const loadedLocationSettings = (locationId, payload) => {
+
+
+  return {
+    type: locationActions.LOADED_LOCATION_SETTINGS,
+    payload: {
+      locationId: locationId,
+      ...payload
+    }
+  }
+};
+
+
+const getLocationSettings = (locationId) => {
+  return dispatch => {
+    LocationsService.getLocation(locationId).then(response => {
+      dispatch(loadedLocationSettings(locationId, response.data))
+    });
+  }
+};
+
 
 const getAllLocations = () => {
   return dispatch => {
-  console.log("getAllLocations 2", dispatch)
     dispatch(loadingLocationsStart());
     return axios.get('/api/locations').then((response) => {
-      console.log("END END END ", response);
       dispatch(loadingLocationsEnd(response.data));
 
     })
@@ -36,5 +57,6 @@ const getAllLocations = () => {
 
 export {
   locationActions,
-  getAllLocations
+  getAllLocations,
+  getLocationSettings
 }

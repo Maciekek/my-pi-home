@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import Card from "react-bootstrap/Card";
 
 
 class ActualTemps extends React.Component {
@@ -8,7 +9,7 @@ class ActualTemps extends React.Component {
   }
 
   getNameOfSensorById = (id) => {
-    if ( !(this.props.location.tempSettings && this.props.location.tempSettings.sensors)) {
+    if (!(this.props.location.tempSettings && this.props.location.tempSettings.sensors)) {
       return id;
     }
 
@@ -17,7 +18,7 @@ class ActualTemps extends React.Component {
     });
 
     console.log(matchedSensors);
-    if(matchedSensors.length > 0) {
+    if (matchedSensors.length > 0) {
       return matchedSensors[0].name
     }
 
@@ -30,6 +31,7 @@ class ActualTemps extends React.Component {
 
     const groupedTemps = sensorIds.map((sensorId) => {
       return {
+        id: sensorId,
         name: this.getNameOfSensorById(sensorId),
         data: partitionedById[sensorId].map(data => {
           return [new Date(data.date).valueOf(), data.value]
@@ -39,15 +41,27 @@ class ActualTemps extends React.Component {
 
     return (
 
-      <div>
-        <div>
-          Aktualna temperatura:
+      <div className={'actual-temps'}>
 
+        <span className={'actual-temps__title'}>Aktualne temperatury:</span>
+
+        <div>
           {groupedTemps.map(groupedTemp => {
-            return <div>{this.getNameOfSensorById(groupedTemp.name)}: {groupedTemp.data[0][1]}</div>
+            return (<Card className={'actual-temps__row'}>
+              <Card.Body>
+                <div>
+                  <div>{this.getNameOfSensorById(groupedTemp.name)}:</div>
+                  <div className={'actual-temps__row--secondary'}>id czujki: {groupedTemp.id}</div>
+                </div>
+
+                <span className={'actual-temps__row-value'}>
+                  {groupedTemp.data[0][1]}
+                </span>
+              </Card.Body>
+            </Card>)
+
           })}
         </div>
-
       </div>
     )
   }

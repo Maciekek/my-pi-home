@@ -1,0 +1,21 @@
+@import "../variables";
+
+.widget {
+  border: 1px solid $bermudaGray;
+  border-radius: 4px;
+  margin: 20px 0;
+  &__menu {
+    border-bottom: 1px solid transparentize($Zorba, 0.5);
+    display: flex;
+    justify-content: flex-end;
+
+    &--action {
+      .fa-trash-alt {
+        color: red;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

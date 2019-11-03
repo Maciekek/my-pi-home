@@ -88,7 +88,7 @@ class LocationSettingsPage extends React.Component {
               <Form.Label>Opis Lokalizacji</Form.Label>
               <Form.Control name={"description"} type="description" onChange={this.changeValue} placeholder="opis lokalizacji" value={this.state.location.description} />
             </Form.Group>
-            {console.log(this.state.location)}
+
             {this.state.location.tempSettings &&
               this.state.location.tempSettings.sensors.map((sensor, index) => {
                   return (
