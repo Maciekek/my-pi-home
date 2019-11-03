@@ -1210,19 +1210,27 @@
         "signature": "2cb0bbc638d0e4767e2dc757ce37af0412674e27272bcc5184f31be17b331abf"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/dto/add-temp.dto.ts": {
-        "version": "6d84e0f7809e453594568a89f20f3cbf438e1830580880210d17622c4dee2440",
-        "signature": "03e61afcea19f9be621eb0c1de54da7fdc4a1103766aa29d088eaf0597f45efe"
+        "version": "ec7e1ea8fce7366476f27f66184b6052d02e7f9d35eba18298a75028370376d9",
+        "signature": "9421bfe31884cbe25cf0714469da11f5a18ffb96053f4647987a3e828eed91b3"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts": {
-        "version": "9229ff127c21c51e41a420a693da666c0b898a3e52fd2e40d0b4c64e4a3583e8",
+        "version": "b59c36d91690ad876fb5f3b85795167be02fa9ca43a03d30cd6d099b72e965c3",
         "signature": "4f5d8409c6258266e8cc1efefc8820aa20c929b7fde8e38c8a0bd345b83cf67c"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.controller.ts": {
         "version": "f1ca75e27a41f0487db7099165dbefd1de7dde4bd63f96dd3a0895580badc51a",
         "signature": "6b946a74254ab4ee41ab8e35251fe3d9940564f615c5189baf74f5207fb37bae"
       },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts": {
+        "version": "2bb471349a11fdc04a70baaeddb2b8498a8837e57f0a4d6977224108eda4b4f8",
+        "signature": "077b3859a191b5f1849c160562831b5509213462e6e10a2a17b2ffd70bb4b323"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.controller.ts": {
+        "version": "9e9298ff7e8d1ebdaa45b91c71941d17d9127631f5db7892094bcff43617de08",
+        "signature": "39920e3d58620ea9da887c89446458663fc0b5ddfb01cd505c9bbae0cdaf1450"
+      },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.module.ts": {
-        "version": "e4c0b826cac785a6d8a8c1b79c43a1bc15c11c32489047c4e7951894670f68f3",
+        "version": "247113bb944963153418e2a7017849c0f00949ba3d2f5e692e0225c2cb68428b",
         "signature": "e4f53ce38272829e2750e218aacd0fc2c0f7a0acf17205f4dbc4b4cb413b55c3"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/node-config-ts/index.d.ts": {
@@ -1277,8 +1285,44 @@
         "version": "014fdae118cfa4b53a17bf763f3a0b29f0b7f369502af73b6eaa9fb25fdbfba8",
         "signature": "8baea0811bb98ebc95ab78a11a9d62d8f7a883775582651b05eb65d064353e15"
       },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts": {
+        "version": "115ecd9a069dd444dc2e1bede57d9916da88a3182d581371023b1b34f7c5f10f",
+        "signature": "8c4e7dfc8953d2b53abc79cc9b9fb6759055e8611e24b1fddf46452c882c6ba6"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.service.ts": {
+        "version": "7eb3399f853ad5b0c3ec553d2265a4c8747645b87a0ac26aca0e28b78b61743c",
+        "signature": "c05155fe1fdbc3408f910b9938e3706cdc9f8681394caed5b68ac2acc3a10efa"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.module.ts": {
+        "version": "205fd094d1b9dac24f199ef36a55492c70bb2db5da21077fceaa14271bdf582c",
+        "signature": "dbc412dcf7b079bf207f6065a0755e50071c9bf155b9e02fc98290e2125cb4b6"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts": {
+        "version": "c6fa5d764f91b017552f5c5ae900675f9b1c0e031fa880df2e0efaf338495a0a",
+        "signature": "19b713bb4fc06e2f678d9c8b1b07630cc9ed1581b26b98dee632237dd85aa684"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts": {
+        "version": "4c12d7f7cdeb5cc662a09e1a8499bb42c550596193bb8b7e59c6024ec3879d39",
+        "signature": "765cc194817731d20ad3e9f52c36633283afb6f8a32427e691c38c96a787a328"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboards.service.ts": {
+        "version": "45c0e3b0ceeedab3ae452be9bcc005715a7001746b3f512b4d2b378af4ed4950",
+        "signature": "05b01837609b55b169601eef27683b800f4b3f6e914a7ebd880df802bc3fa65c"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.controller.ts": {
+        "version": "22cc6cbe234f6fba0928eebe64e493f2a58682caf738fe46591295e5ccac246a",
+        "signature": "d222e71a23d0efe446bd9412672641bbfa960b2bf08e64ed6daa8de91efdb056"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.schema.ts": {
+        "version": "d3be2819e949a4c6ef86ef15b5dd48640af24d3da79ecab4d0f4b316ad707538",
+        "signature": "b367044f8625912fd2c0153e17df83ef3b9df88ef793d9e6bcf1da3789e1cf11"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.module.ts": {
+        "version": "0e186780bdb7e4ab497b879c576a4f5c1231dfabbc0d1a4eae48b02e2084bf93",
+        "signature": "7dfc0dea2801af122d19df735dd15d7bb9f5b594eda3e867cb357dd6d786c30a"
+      },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts": {
-        "version": "a1555fc984ee3547a2c715299edfffb2b5843ebc454be6eafd2df54618e13648",
+        "version": "13cd14d2035625186fbe74b785b1e74f92ef37dcb423928833dfccf8fc7cdcae",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.service.ts": {
@@ -1288,6 +1332,10 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.module.ts": {
         "version": "fcec13f567f61af9e0394a4ab142eafe3bb90ada1658d3219185c597490d0eaa",
         "signature": "ffade0409a282999ad0e1c1fecd4c0010a2aff097bdcc44ec192014ba167e447"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/logger.middleware.ts": {
+        "version": "772cfb61662e5b5b06c6041b4cf3cea8f9883843d32c25ed0426e6ed0cf294b6",
+        "signature": "dfa13388e104ab8e3f9756a8de5ea4c40b3f44600f0b2f6127fe9fcd1ef6ad60"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
         "version": "285fd4018f9de87c5972beb9133971c99212458bcfc317f1b3851adcc86d84b7",
@@ -1506,7 +1554,7 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/main.ts": {
-        "version": "66f822ee04c523f12d2826055f146470b7fff64535598ef6c5c95cb29b67ac1b",
+        "version": "8a34c0763fc33b5dadf829b707dc0565c397af528c1154d63fe58b5c7303c18e",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/anymatch/index.d.ts": {
@@ -3402,12 +3450,31 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/mongoose/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/interfaces/temp.interface.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/dto/add-temp.dto.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.controller.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/interfaces/temp.interface.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/dto/add-temp.dto.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.module.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/mongoose/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temp.schema.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.controller.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.controller.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -3493,6 +3560,68 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/dto/add-temp.dto.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.service.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/mongoose/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.module.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/mongoose/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temp.schema.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/class-validator/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboards.service.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/mongoose/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.controller.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboards.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.schema.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.module.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/mongoose/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.controller.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.schema.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboards.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/app.controller.ts",
@@ -3503,6 +3632,8 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/node-config-ts/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/users/users.module.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.module.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.module.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.module.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -3514,6 +3645,10 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.module.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/config.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/logger.middleware.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -3845,6 +3980,7 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/swagger/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/logger.middleware.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -5692,6 +5828,12 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/dto/add-temp.dto.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/interfaces/temp.interface.ts"
       ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/interfaces/temp.interface.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.controller.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts"
+      ],
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/node-config-ts/index.d.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
@@ -5719,6 +5861,21 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/dto/add-location.dto.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/interfaces/location.interface.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboards.service.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.controller.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboards.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts"
       ],
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/adapters/http-adapter.d.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
@@ -6451,7 +6608,9 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temp.schema.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/interfaces/temp.interface.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/dto/add-temp.dto.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.controller.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.controller.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/node-config-ts/index.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/users/user.schema.ts",
@@ -6466,9 +6625,19 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.controller.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.module.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.service.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.module.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboards.service.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.controller.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.schema.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.module.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/logger.middleware.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/adapters/index.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/constants.d.ts",
@@ -6543,7 +6712,7 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/uglify-js/index.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/index.d.ts",
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts"
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts"
     ]
   },
   "version": "3.4.3"
