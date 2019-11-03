@@ -10,7 +10,7 @@ export class SensorsService {
 
     async findSensors(locationId, body: any): Promise<Temp[]> {
         return await this.tempModel
-            .find({locationId, sensorId: { $in: body.sensorIds }, date: {$gte : body.from}})
+            .find({locationId, sensorId: { $in: body.sensorIds }})
             .sort({_id: -1})
             .limit(Number(body.limit))
             .exec();
