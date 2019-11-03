@@ -12,7 +12,7 @@ export class SensorsService {
         return await this.tempModel
             .find({locationId, sensorId: { $in: body.sensorIds }})
             .sort({_id: -1})
-            .limit(Number(1))
+            .limit(Number(body.limit))
             .exec();
     }
 }
