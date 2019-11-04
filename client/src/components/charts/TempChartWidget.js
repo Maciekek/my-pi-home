@@ -6,7 +6,7 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 Highcharts.setOptions({
   time: {
-    timezoneOffset: -2 * 60
+    timezoneOffset: -1 * 60
   }
 });
 
