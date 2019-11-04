@@ -55,6 +55,7 @@ class WidgetBase extends React.Component {
             {widgetWithAvailableTimeRangePicker.has(this.props.widgetType)
                 ? <WidgetDateRangePicker
                   index={this.props.index}
+                  active={this.state.customDateRanges}
                   onSetRange={(index, range) => {
                     this.setDateRange(index, range)
                   }}
@@ -75,15 +76,16 @@ class WidgetBase extends React.Component {
   }
 }
 
-const WidgetDateRangePicker = ({index, onSetRange}) => {
+const WidgetDateRangePicker = ({index, onSetRange, active}) => {
+  console.log(active[index])
   return (
     <div className={'widget-date-range-picker'}>
       <span className={'widget-date-range-picker__title'}>Ostatnie:
-      <span className={'widget-date-range-picker__range'}
+      <span className={'widget-date-range-picker__range' + (active[index] === 'last.1.hour' ? ' active' : '')}
             onClick={() => onSetRange(index, 'last.1.hour')}> 1h</span>
-      <span className={'widget-date-range-picker__range'}
+      <span className={'widget-date-range-picker__range' + (active[index] === 'last.2.hour' ? ' active' : '')}
             onClick={() => onSetRange(index, 'last.2.hour')}> 2h</span>
-      <span className={'widget-date-range-picker__range'}
+      <span className={'widget-date-range-picker__range' + (active[index] === 'last.24.hour' ? ' active' : '')}
             onClick={() => onSetRange(index, 'last.24.hour')}> 24h</span>
       </span>
 

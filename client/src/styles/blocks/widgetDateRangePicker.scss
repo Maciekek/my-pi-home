@@ -10,6 +10,11 @@
     &:hover {
       color: $sanJuan;
     }
+
+    &.active {
+      font-weight: 800;
+      color: crimson;
+    }
   }
 
 }
