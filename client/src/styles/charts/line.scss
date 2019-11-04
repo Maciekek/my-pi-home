@@ -11,7 +11,13 @@
 
   & > div {
     width: calc(100vw - 50px);
-    padding: 30px;
+    padding: 30px 0;
+  }
+
+  @media (max-width: 600px) {
+    & > div {
+      width: calc(100vw - 5px);
+    }
   }
 }
 
