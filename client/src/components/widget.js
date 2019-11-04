@@ -47,7 +47,6 @@ class WidgetBase extends React.Component {
   };
 
   render() {
-    console.log(this.props)
     return (
       <div className={'widget'} key={this.props.key}>
         <div className={'widget__menu'}>
@@ -89,8 +88,7 @@ const WidgetDateRangePicker = ({index, onSetRange}) => {
       </span>
 
     </div>
-
-)
-}
+  )
+};
 
 export const Widget = connect()(WidgetBase);

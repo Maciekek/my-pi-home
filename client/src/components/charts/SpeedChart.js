@@ -13,9 +13,9 @@ solidGauge(Highcharts);
 
 class SpeedChartBase extends React.Component {
   static propTypes = {
-    value: PropTypes.number.isRequired,
+    value: PropTypes.number,
     unit: PropTypes.string,
-    data: PropTypes.object
+    data: PropTypes.array
   };
 
   static WidgetConfig = {

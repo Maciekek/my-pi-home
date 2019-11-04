@@ -37,7 +37,7 @@ const parseDateRangeToDate = (dateRange) => {
 
 class WidgetDataLoader extends React.Component {
   static propTypes = {
-    component: PropTypes.func,
+    component: PropTypes.object,
     dataLoader: PropTypes.object,
     options: PropTypes.object,
     locationId: PropTypes.string,

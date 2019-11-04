@@ -8,7 +8,6 @@ import {
 } from "../../store/actions/DashboardActions";
 import {connect} from "react-redux";
 import {LineChartForm} from "./lineChartForm";
-import Form from "react-bootstrap/Form";
 
 const options = [
   {value: 'speedChart', label: 'Predkościomierz'},

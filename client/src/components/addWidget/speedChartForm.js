@@ -1,7 +1,4 @@
 import React from 'react';
-import Modal from 'react-bootstrap/Modal';
-import PropTypes from 'prop-types';
-import Select from 'react-select';
 import Form from 'react-bootstrap/Form';
 
 class SpeedChartForm extends React.PureComponent {
@@ -13,9 +10,6 @@ class SpeedChartForm extends React.PureComponent {
   };
 
   onChange = (e) => {
-    // const formValue = {};
-    // formValue[e.target.name] = e.target.value;
-
     const sensors = this.state.sensors;
     sensors[0][e.target.name] = e.target.value;
 

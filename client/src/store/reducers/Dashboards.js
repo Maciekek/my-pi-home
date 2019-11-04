@@ -1,8 +1,5 @@
 import {createReducer} from "./../helpers/reduxHelper";
-import {locationActions} from "./../actions/LocationsActions";
 import {DashboardActions} from "../actions/DashboardActions";
-
-
 
 const DashboardDefaultState = {
   dashboards: {}

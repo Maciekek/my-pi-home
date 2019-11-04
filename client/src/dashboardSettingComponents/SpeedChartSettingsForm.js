@@ -1,9 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
 import PropTypes from 'prop-types';
-
-import Highcharts from 'highcharts'
-import HighchartsReact from 'highcharts-react-official'
 
 class SpeedChartSettings extends React.Component {
   static propTypes = {

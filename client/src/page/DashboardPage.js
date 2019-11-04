@@ -13,8 +13,6 @@ import {getLocationSettings} from "../store/actions/LocationsActions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons'
 import {Widget} from "../components/widget";
-import DateRangePicker from 'react-bootstrap-daterangepicker';
-import moment from "moment";
 
 export const widgetType = {
   'speedChart': 'SpeedChart',
@@ -27,38 +25,7 @@ export const widgetDataLoaders = {
 
 class DashboardPageBase extends React.Component {
   state = {
-    // dashboardConfig: [
-    //   {
-    //     widgetType: widgetType.speedChart,
-    //     dataLoader: widgetDataLoaders.speedChart,
-    //     options: {
-    //       sensorIds: ['room1']
-    //     }
-    //   },
-    //   {
-    //     widgetType: widgetType.speedChart,
-    //     dataLoader: widgetDataLoaders.speedChart,
-    //     options: {
-    //       sensorIds: ['room2']
-    //     }
-    //   },
-    //   {
-    //     widgetType: widgetType.speedChart,
-    //     dataLoader: widgetDataLoaders.speedChart,
-    //     options: {
-    //       sensorIds: ['room2']
-    //     }
-    //   },
-    //   {
-    //     widgetType: widgetType.speedChart,
-    //     dataLoader: widgetDataLoaders.speedChart,
-    //     options: {
-    //       sensorIds: ['room2']
-    //     }
-    //   }
-    // ],
     isModalOpen: false,
-    customDateRanges: {}
   };
 
   constructor(props) {
@@ -99,10 +66,6 @@ class DashboardPageBase extends React.Component {
 
     return JSON.parse(this.props.dashboardConfig.config);
   };
-
-
-
-
 
   render() {
     return (

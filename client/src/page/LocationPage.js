@@ -7,13 +7,11 @@ import {TempChart} from "../components/charts/TempChart";
 import {TempsService} from "../services/temps.services";
 import {faCog} from '@fortawesome/free-solid-svg-icons'
 import {faTachometerAlt} from '@fortawesome/free-solid-svg-icons'
-import {faStreetView} from '@fortawesome/free-solid-svg-icons'
 
 import {Link} from "react-router-dom";
 import {LoadingIndicator} from "../components/loadingIndicator";
 import {connect} from "react-redux";
 import {rootActions} from "./../store/root-actions";
-import {getLocationSettings} from "./../store/actions/LocationsActions";
 import {ActualTemps} from "../components/ActualTemps";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";

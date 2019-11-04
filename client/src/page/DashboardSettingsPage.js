@@ -2,9 +2,7 @@ import React from 'react';
 import {Page} from '../components/page';
 
 import {connect} from "react-redux";
-import {speedChartDataLoader} from "../dataLoaders/speedChartDataLoader";
-import {SpeedChart} from "../components/charts/SpeedChart";
-import {WidgetDataLoader} from "../components/widgetDataLoader";
+
 import {widgetDataLoaders, widgetType} from "./DashboardPage";
 import {SpeedChartSettings} from "../dashboardSettingComponents/SpeedChartSettingsForm";
 

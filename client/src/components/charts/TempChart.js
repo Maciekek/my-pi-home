@@ -38,12 +38,7 @@ const options = {
 };
 
 class TempChart extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   getNameOfSensorById = (id) => {
-
     if ( !(this.props.location.tempSettings && this.props.location.tempSettings.sensors)) {
       return id;
     }

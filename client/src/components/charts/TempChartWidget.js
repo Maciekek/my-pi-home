@@ -86,20 +86,6 @@ class TempChartWidgetBase extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if(prevState.series[0].data.length !== this.props.data.length) {
-      const partitionedById = _.groupBy(this.props.data, "sensorId");
-      const sensorIds = Object.keys(partitionedById);
-
-      // const groupedTemps = sensorIds.map((sensorId) => {
-      //   return {
-      //     name: this.getNameOfSensorById(sensorId),
-      //     data: partitionedById[sensorId].map(data => {
-      //       return [new Date(data.date).valueOf(), data.value]
-      //     })
-      //   }
-      // });
-      //
-      // options.series = groupedTemps;
-
       this.setState (
         this.parseData
       )

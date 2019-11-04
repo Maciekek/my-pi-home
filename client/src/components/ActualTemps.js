@@ -46,8 +46,8 @@ class ActualTemps extends React.Component {
         <span className={'actual-temps__title'}>Aktualne temperatury:</span>
 
         <div>
-          {groupedTemps.map(groupedTemp => {
-            return (<Card className={'actual-temps__row'}>
+          {groupedTemps.map((groupedTemp, index)=> {
+            return (<Card className={'actual-temps__row'} key={index}>
               <Card.Body>
                 <div>
                   <div>{this.getNameOfSensorById(groupedTemp.name)}:</div>
