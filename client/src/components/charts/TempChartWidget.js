@@ -29,11 +29,11 @@ const options = {
 
   },
   tooltip: {
-    formatter: function() {
-      return Highcharts.dateFormat('%I:%M:%S %p', this.x);
-    }
+    headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">Godzina: {point.key}<br>',
+    footerFormat: '</div>',
+    xDateFormat: '%H:%M',
+    shared: false
   },
-
 };
 
 class TempChartWidgetBase extends React.Component {
@@ -43,7 +43,29 @@ class TempChartWidgetBase extends React.Component {
 
   constructor(props) {
     super(props);
+
+   this.state = {
+     ...this.parseData()
+   };
   }
+
+  parseData = () => {
+    const partitionedById = _.groupBy(this.props.data, "sensorId");
+    const sensorIds = Object.keys(partitionedById);
+
+    options.series = sensorIds.map((sensorId) => {
+      return {
+        name: this.getNameOfSensorById(sensorId),
+        data: partitionedById[sensorId].map(data => {
+          return [new Date(data.date).valueOf(), data.value]
+        })
+      }
+    });
+
+    return {
+      ...options
+    }
+  };
 
 
   getNameOfSensorById = (id) => {
@@ -62,27 +84,39 @@ class TempChartWidgetBase extends React.Component {
     return id
   };
 
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(prevState.series[0].data.length !== this.props.data.length) {
+      const partitionedById = _.groupBy(this.props.data, "sensorId");
+      const sensorIds = Object.keys(partitionedById);
+
+      // const groupedTemps = sensorIds.map((sensorId) => {
+      //   return {
+      //     name: this.getNameOfSensorById(sensorId),
+      //     data: partitionedById[sensorId].map(data => {
+      //       return [new Date(data.date).valueOf(), data.value]
+      //     })
+      //   }
+      // });
+      //
+      // options.series = groupedTemps;
+
+      this.setState (
+        this.parseData
+      )
+    }
+  }
+
   render() {
-    const partitionedById = _.groupBy(this.props.data, "sensorId");
-    const sensorIds = Object.keys(partitionedById);
 
-    const groupedTemps = sensorIds.map((sensorId) => {
-      return {
-        name: this.getNameOfSensorById(sensorId),
-        data: partitionedById[sensorId].map(data => {
-          return [new Date(data.date).valueOf(), data.value]
-        })
-        }
-    });
-
-    options.series = groupedTemps;
 
     return (
       <div className={'line-chart'}>
-        <HighchartsReact
+        {this.state ? <HighchartsReact
           highcharts={Highcharts}
-          options={options}
-        />
+          options={this.state}
+          ref={"chartComponent"}
+          allowChartUpdate={true}
+        /> : null}
       </div>
     )
   }

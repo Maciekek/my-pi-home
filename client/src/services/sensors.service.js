@@ -8,8 +8,8 @@ const SensorsService = {
 
         const body = {
             sensorIds: sensors,
-            from: 'from',
-            to: 'to',
+            from: params.from,
+            to: params.to,
             limit: params.limit || 1
         };
 

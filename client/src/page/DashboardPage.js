@@ -13,6 +13,8 @@ import {getLocationSettings} from "../store/actions/LocationsActions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons'
 import {Widget} from "../components/widget";
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+import moment from "moment";
 
 export const widgetType = {
   'speedChart': 'SpeedChart',
@@ -55,7 +57,8 @@ class DashboardPageBase extends React.Component {
     //     }
     //   }
     // ],
-    isModalOpen: false
+    isModalOpen: false,
+    customDateRanges: {}
   };
 
   constructor(props) {
@@ -97,6 +100,10 @@ class DashboardPageBase extends React.Component {
     return JSON.parse(this.props.dashboardConfig.config);
   };
 
+
+
+
+
   render() {
     return (
       <Page>
@@ -106,11 +113,15 @@ class DashboardPageBase extends React.Component {
             <div className={'dashboard__settings--action'} onClick={this.addNewWidget}>
               <FontAwesomeIcon icon={faPlusCircle}/>Dodaj nowy widget</div>
           </div>
-          <div className={'dashboard__widgets'}>
 
+          <div className={'dashboard__widgets'}>
             {this.getDashboardConfig().map((widget, index) => {
               return (
-                <Widget index={index} locationId={this.props.match.params.id}>
+                <Widget
+                  key={index}
+                  index={index}
+                  widgetType={widget.widgetType}
+                  locationId={this.props.match.params.id}>
                   <WidgetDataLoader
                     locationId={this.props.match.params.id}
                     component={this.getComponentToRender(widget.widgetType)}

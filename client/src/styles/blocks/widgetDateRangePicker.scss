@@ -1,0 +1,15 @@
+@import "../variables";
+
+.widget-date-range-picker {
+  padding: 0 10px;
+  color: transparentize($deepCove, 0.4);
+  font-size: 18px;
+  &__range {
+    cursor: pointer;
+    font-weight: 600;
+    &:hover {
+      color: $sanJuan;
+    }
+  }
+
+}

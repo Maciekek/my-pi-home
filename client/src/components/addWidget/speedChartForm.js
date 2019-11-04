@@ -27,8 +27,7 @@ class SpeedChartForm extends React.PureComponent {
   render() {
     return (
      <div>
-       <Form.Group>
-       </Form.Group>
+
        <Form.Group controlId="sensorId">
          <Form.Label >Id czujnika</Form.Label>
          <Form.Control name={'sensorId'} value={this.state.sensorId} onChange={this.onChange} type="text" placeholder="room1, room2, room3" />
