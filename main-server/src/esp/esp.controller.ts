@@ -12,7 +12,7 @@ export class EspController {
         console.log(params);
         const test = new AddTempDto();
         test.locationId = params.locationId;
-        test.sensorId = params.task;
+        test.sensorId = params.valuename;
         test.value = params.value;
         test.date = new Date().toISOString();
 
