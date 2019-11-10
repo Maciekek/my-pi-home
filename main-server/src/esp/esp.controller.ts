@@ -8,8 +8,6 @@ export class EspController {
 
     @Get('/ds18b20')
     async findAll(@Query() params): Promise<string> {
-        console.log('qwe');
-        console.log(params);
         const test = new AddTempDto();
         test.locationId = params.locationId;
         test.sensorId = params.valuename;

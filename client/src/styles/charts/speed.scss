@@ -1,0 +1,37 @@
+@import "../variables";
+
+.speed-chart {
+  max-width: 305px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  position: relative;
+
+  &__title {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    text-align: center;
+
+    &--id {
+      color: transparentize($sanJuan, 0.5)
+    }
+  }
+  &__widget-wrapper {
+    box-sizing: content-box;
+
+    & > div {
+      width: 300px;
+      height: 200px;
+      box-sizing: content-box;
+      border-radius: 4px;
+    }
+  }
+
+}
+
+

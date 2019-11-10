@@ -6,13 +6,17 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {TempChart} from "../components/charts/TempChart";
 import {TempsService} from "../services/temps.services";
 import {faCog} from '@fortawesome/free-solid-svg-icons'
+import {faTachometerAlt} from '@fortawesome/free-solid-svg-icons'
 
 import {Link} from "react-router-dom";
 import {LoadingIndicator} from "../components/loadingIndicator";
 import {connect} from "react-redux";
 import {rootActions} from "./../store/root-actions";
-import {getAllLocations} from "./../store/actions/LocationsActions";
 import {ActualTemps} from "../components/ActualTemps";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 
 const DEFAULT_N = 100;
 
@@ -26,7 +30,7 @@ class LocationPageBase extends React.Component {
   constructor(props) {
     super(props);
 
-    props.dispatch(getAllLocations());
+
     LocationsService.getLocation(props.match.params.id).then((location) => {
 
       this.setState({
@@ -71,44 +75,48 @@ class LocationPageBase extends React.Component {
       <Page>
 
 
-        <div className={'location'}>
+        <div className={'location__panel'}>
+          <Link to={`/dashboard/${this.props.match.params.id}`}> <FontAwesomeIcon icon={faTachometerAlt}/>
+            Dashboard (beta!)
+          </Link>
           <Link to={`/locations/${this.props.match.params.id}/settings`}> <FontAwesomeIcon icon={faCog}/>
             Ustawienia
           </Link>
-
-          <br/>
-          <br/>
-
-
+        </div>
+        <div className={'location'}>
           <div className={'location__name'}>
             Nazwa lokalizacji:
             <span> {this.state.location.name}</span>
           </div>
 
-          <br/>
-          <br/>
-
           <strong>Domyślnie pobieranych jest 100 ostatnich pomiarów. Jeżeli chcesz zwiększyć/zmiejszyć ten zakres
-            wystarczy, że podasz niżej ile chcesz pobrać pomiarów.<br/></strong>
-          <input type="text" id='nCount' placeholder={'100'}/>
-          <button onClick={this.onInputChange}>zapisz</button>
-
-          <br/>
-          <br/>
-          <br/>
+            wystarczy, że podasz niżej ile chcesz pobrać pomiarów.</strong>
 
 
-          <br/>
+          {/*<Form type="text" id='nCount' placeholder={'100'}/>*/}
+          {/*<button onClick={this.onInputChange}>zapisz</button>*/}
+
+          <div className={'load-n'}>
+            <Row>
+              <Col sm="6">
+                <Form.Group controlId="sensorId">
+                  <Form.Label >Ile odczytów załadować?</Form.Label>
+                  <Form.Control id='nCount' type="number" placeholder="100" />
+                  <Button  onClick={this.onInputChange} variant="success" >Załaduj</Button>
+                </Form.Group>
+              </Col>
+            </Row>
+          </div>
+
+
           {this.state.temps
             ? <ActualTemps temps={this.state.temps} location={this.state.location}/>
             : null}
 
-          <br/>
-          <br/>
-
           {this.state.temps
             ? <TempChart temps={this.state.temps} location={this.state.location}/>
             : null}
+
         </div>
       </Page>
     )

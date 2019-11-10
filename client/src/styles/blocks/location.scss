@@ -1,8 +1,23 @@
-.location {
-  &__name {
+@import "../variables";
 
+.location {
+
+  &__panel {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name {
+    padding: 20px 0;
     span {
 
+    }
+  }
+
+  .load-n {
+    padding: 20px 0;
+    .btn {
+      margin: 5px 0;
     }
   }
 }

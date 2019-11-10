@@ -28,10 +28,9 @@ class LocationsPage extends React.Component {
           ? "loading"
           :
           <ListGroup as="ul">
-            {this.state.locations.map(location => {
+            {this.state.locations.map((location, index) => {
               return (
-
-                <Link to={`/locations/${location._id}`}>
+                <Link key={index} to={`/locations/${location._id}`}>
                   <OverlayTrigger
                     key={location._id}
                     overlay={

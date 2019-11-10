@@ -22,6 +22,17 @@ const actionHandlers = {
     isLoading: false,
     locations: payload
   }),
+  [locationActions.LOADED_LOCATION_SETTINGS]: (state, {payload}) => {
+    console.log('payload!!', payload);
+
+    const locations = {...state.locations};
+    locations[payload.locationId] = payload;
+    return {
+      ...state,
+      isLoading: false,
+      locations
+    }
+  },
 
 };
 

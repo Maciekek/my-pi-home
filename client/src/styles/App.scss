@@ -1,7 +1,15 @@
 @import "common";
 @import "locationsPage";
-@import "blocks/location";
 
+@import "blocks/location";
+@import "blocks/dashboard";
+@import "blocks/actualTemps";
+@import "blocks/errorWidget";
+@import "blocks/widget";
+
+@import "charts/line";
+@import "charts/speed";
+@import "blocks/widgetDateRangePicker";
 .App {
   text-align: center;
 }
@@ -34,4 +42,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+svg[role='img'] {
+  margin-right: 5px;
 }

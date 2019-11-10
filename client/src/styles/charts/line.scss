@@ -1,0 +1,24 @@
+@import "../variables";
+
+.line-chart {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  position: relative;
+
+  & > div {
+    width: calc(100vw - 50px);
+    padding: 30px 0;
+  }
+
+  @media (max-width: 600px) {
+    & > div {
+      width: calc(100vw - 5px);
+    }
+  }
+}
+
+
