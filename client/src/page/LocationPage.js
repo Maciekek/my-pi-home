@@ -55,7 +55,7 @@ class LocationPageBase extends React.Component {
   };
 
   onInputChange = () => {
-    const sensorsCount = this.state.location.tempSettings.sensors.length;
+    const sensorsCount = this.state.location.tempSettings ?  this.state.location.tempSettings.sensors.length : 1;
     console.log(parseInt(document.querySelector('#nCount').value));
     console.log(sensorsCount);
     this.setState({
