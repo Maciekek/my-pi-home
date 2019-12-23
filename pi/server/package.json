@@ -9,9 +9,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "config": "^3.2.2",
-    "debug": "^4.1.1",
-    "ds18b20": "^0.1.0"
-
+    "debug": "^4.1.1"
   },
   "author": "",
   "license": "ISC"
