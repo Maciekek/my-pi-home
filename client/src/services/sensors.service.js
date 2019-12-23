@@ -2,6 +2,10 @@ import axios from "axios";
 
 const SensorsService = {
     getSensorValues: (locationId, params) => {
+        if(!params.sensors) {
+            return;
+        }
+
         const sensors = params.sensors.map(sensor => {
             return sensor.sensorId;
         });
