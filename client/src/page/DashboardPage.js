@@ -84,6 +84,7 @@ class DashboardPageBase extends React.Component {
                   key={index}
                   index={index}
                   widgetType={widget.widgetType}
+                  chartName={widget.chartName || ""}
                   locationId={this.props.match.params.id}>
                   <WidgetDataLoader
                     locationId={this.props.match.params.id}

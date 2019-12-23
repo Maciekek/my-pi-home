@@ -85,9 +85,10 @@ class TempChartWidgetBase extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if(prevState.series[0].data.length !== this.props.data.length) {
+    const data = this.parseData();
+    if(!_.isEqual(this.state,  data)) {
       this.setState (
-        this.parseData
+        data
       )
     }
   }

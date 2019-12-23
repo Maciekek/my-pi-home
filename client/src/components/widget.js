@@ -12,6 +12,7 @@ const widgetWithAvailableTimeRangePicker = new Set(['lineChart']);
 class WidgetBase extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    chartName: PropTypes.string,
     index: PropTypes.number.isRequired,
     locationId: PropTypes.string.isRequired,
     widgetType: PropTypes.string.isRequired,
@@ -27,7 +28,6 @@ class WidgetBase extends React.Component {
 
   setDateRange = (index, range) => {
     const dateRanges = this.state.customDateRanges;
-
     dateRanges[index] = range;
 
     this.setState({
@@ -42,7 +42,7 @@ class WidgetBase extends React.Component {
     if (!dateRanges[index]){
       return 'last.1.hour';
     }
-    console.log(dateRanges[index]);
+
     return dateRanges[index]
   };
 
@@ -62,7 +62,7 @@ class WidgetBase extends React.Component {
                 />
                 : <div/>}
 
-
+            {this.props.chartName}
             <FontAwesomeIcon icon={faTrashAlt} onClick={this.removeWidget}/>
           </div>
         </div>
@@ -77,11 +77,18 @@ class WidgetBase extends React.Component {
 }
 
 const WidgetDateRangePicker = ({index, onSetRange, active}) => {
-  console.log(active[index])
+  const isActive = () => {
+     if(!active[index]) {
+       return true;
+     }
+
+     return active[index] === 'last.1.hour'
+  };
+
   return (
     <div className={'widget-date-range-picker'}>
       <span className={'widget-date-range-picker__title'}>Ostatnie:
-      <span className={'widget-date-range-picker__range' + (active[index] === 'last.1.hour' ? ' active' : '')}
+      <span className={'widget-date-range-picker__range' + (isActive() ? ' active' : '')}
             onClick={() => onSetRange(index, 'last.1.hour')}> 1h</span>
       <span className={'widget-date-range-picker__range' + (active[index] === 'last.2.hour' ? ' active' : '')}
             onClick={() => onSetRange(index, 'last.2.hour')}> 2h</span>

@@ -10,6 +10,7 @@ class LineChartForm extends React.Component {
 
   state = {
       widgetType: 'lineChart',
+      chartName: '',
       sensors: [{'sensorId': '', 'sensorUnit': ''}]
 
   };
@@ -23,6 +24,12 @@ class LineChartForm extends React.Component {
     }, () => this.props.onChange(this.state));
   };
 
+  onChangeName = (e) => {
+    this.setState({
+      chartName: e.target.value
+    }, () => this.props.onChange(this.state));
+  };
+
   addNewSensor = () => {
     const config = this.state;
     const sensors = [...config.sensors, {'sensorId': '', 'sensorUnit': ''}];
@@ -30,7 +37,7 @@ class LineChartForm extends React.Component {
     this.setState({
       sensors: sensors
     });
-  }
+  };
 
   render() {
     return (
@@ -38,13 +45,16 @@ class LineChartForm extends React.Component {
        <Form.Group>
          <Form.Label>Na wykresie liniowym możesz umieścic kilka czujników.</Form.Label>
        </Form.Group>
-
+       <Form.Group controlId="chartName">
+         <Form.Label>Nazwa wykresu</Form.Label>
+         <Form.Control name={'chartName'} value={this.state.chartName} onChange={this.onChangeName} type="text" placeholder="Pokoj, salon, kuchnia" />
+       </Form.Group>
        {this.state.sensors.map((sensor, index)=> {
           return (<Row>
             <Col sm="6">
               <Form.Group controlId="sensorId">
                 <Form.Label >Id czujnika</Form.Label>
-                <Form.Control name={'sensorId'} value={sensor.sensorId} onChange={(e) => this.onChange(e, index)} type="text" placeholder="room1, room2, room3" />
+                <Form.Control name={'sensorId'} value={sensor.sensorId} onChange={(e) => this.onChange(e, index)} type="text" placeholder="room1" />
 
               </Form.Group>
             </Col>

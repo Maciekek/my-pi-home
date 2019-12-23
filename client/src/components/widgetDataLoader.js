@@ -46,7 +46,6 @@ class WidgetDataLoader extends React.Component {
 
   constructor(props) {
     super(props);
-
     const config = {
       ...props.component.WidgetConfig,
       ...props.options,
@@ -54,11 +53,13 @@ class WidgetDataLoader extends React.Component {
       ...parseDateRangeToDate(this.props.dateRange)
     };
 
-    props.dataLoader.get(config).then(data => {
-      this.setState({
-        data: data,
-      })
-    });
+    if(config.sensors) {
+      props.dataLoader.get(config).then(data => {
+        this.setState({
+          data: data,
+        })
+      });
+    }
 
     this.state = {
       data: null
