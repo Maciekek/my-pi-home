@@ -62,7 +62,7 @@ class WidgetBase extends React.Component {
                 />
                 : <div/>}
 
-            {this.props.chartName}
+            <div className={'widget__menu-title'} >{this.props.chartName}</div>
             <FontAwesomeIcon icon={faTrashAlt} onClick={this.removeWidget}/>
           </div>
         </div>

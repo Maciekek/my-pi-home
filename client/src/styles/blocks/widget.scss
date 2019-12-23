@@ -7,7 +7,7 @@
   position: relative;
   &__menu {
     border-bottom: 1px solid transparentize($Zorba, 0.5);
-    height: 40px;
+    min-height: 40px;
     margin-bottom: 20px;
     &--action {
       display: flex;
@@ -21,6 +21,10 @@
         }
       }
     }
+  }
+
+  &__menu-title {
+    margin: 0 10px;
   }
 
   .loading-overlay {
