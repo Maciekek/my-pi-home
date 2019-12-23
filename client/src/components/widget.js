@@ -92,6 +92,12 @@ const WidgetDateRangePicker = ({index, onSetRange, active}) => {
             onClick={() => onSetRange(index, 'last.1.hour')}> 1h</span>
       <span className={'widget-date-range-picker__range' + (active[index] === 'last.2.hour' ? ' active' : '')}
             onClick={() => onSetRange(index, 'last.2.hour')}> 2h</span>
+      <span className={'widget-date-range-picker__range' + (active[index] === 'last.3.hour' ? ' active' : '')}
+            onClick={() => onSetRange(index, 'last.3.hour')}> 3h</span>
+      <span className={'widget-date-range-picker__range' + (active[index] === 'last.6.hour' ? ' active' : '')}
+            onClick={() => onSetRange(index, 'last.6.hour')}> 6h</span>
+      <span className={'widget-date-range-picker__range' + (active[index] === 'last.12.hour' ? ' active' : '')}
+            onClick={() => onSetRange(index, 'last.12.hour')}> 12h</span>
       <span className={'widget-date-range-picker__range' + (active[index] === 'last.24.hour' ? ' active' : '')}
             onClick={() => onSetRange(index, 'last.24.hour')}> 24h</span>
       </span>

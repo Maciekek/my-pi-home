@@ -20,6 +20,16 @@ const parseDateRangeToDate = (dateRange) => {
         from: moment().subtract('3', 'hour'),
         to: moment().format('YYYY-MM-DD HH:mm')
       };
+    case 'last.6.hour':
+      return {
+        from: moment().subtract('6', 'hour'),
+        to: moment().format('YYYY-MM-DD HH:mm')
+      };
+    case 'last.12.hour':
+      return {
+        from: moment().subtract('12', 'hour'),
+        to: moment().format('YYYY-MM-DD HH:mm')
+      };
     case 'last.24.hour':
       return {
         from: moment().subtract('24', 'hour'),
