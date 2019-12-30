@@ -12,10 +12,11 @@ import {LocationSettingsPage} from "./page/LocationSettingsPage";
 import {LocationsNewPage} from "./page/LocationsNewPage";
 import {DashboardPage} from "./page/DashboardPage";
 import {DashboardSettingsPage} from "./page/DashboardSettingsPage";
+import {WebsocketIndicator} from "./components/uiComponents/websocketIndicator";
+
 
 function App() {
   console.log('APP started');
-
 
   return (
     <div className={'app'}>
@@ -28,6 +29,8 @@ function App() {
               <Link to="/locations">Dostępne lokacje</Link>
             </Nav>
           </Navbar.Collapse>
+
+          <WebsocketIndicator/>
         </Navbar>
 
         <Route path="/" exact={true} component={LocationsPage}/>

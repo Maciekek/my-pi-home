@@ -5,19 +5,13 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import {Link} from "react-router-dom";
+
 class LocationsPage extends React.Component {
   state = {
     locations: null,
   };
 
-  componentDidMount() {
-    console.log('connect?');
-
-    // this.socket = window.io('http://localhost:8888')
-
-  }
-
-  constructor(props) {
+   constructor(props) {
     super(props);
     LocationsService.getAllLocations().then((locations) => {
       console.log(locations.data);

@@ -10,11 +10,19 @@ import thunk from 'redux-thunk';
 
 import {locationReducer} from "./store/reducers/Locations";
 import {dashboardsReducer} from "./store/reducers/Dashboards";
+import {settingsReducer} from "./store/reducers/Settings";
+import {websocket} from "./utils/Websocket";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+// const socket = window.io('http://localhost:8888');
+// console.log(socket);
+
+websocket.connect();
 
 const store = createStore(combineReducers({
   locationStore: locationReducer,
   dashboardsStore: dashboardsReducer,
+  settingsReducer: settingsReducer,
 }) , composeEnhancers(applyMiddleware(thunk)));
 
 //
@@ -28,3 +36,5 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+export {store};

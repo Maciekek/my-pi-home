@@ -10,6 +10,8 @@
 @import "charts/line";
 @import "charts/speed";
 @import "blocks/widgetDateRangePicker";
+@import "blocks/websocketIndicator";
+
 .App {
   text-align: center;
 }
@@ -33,6 +35,10 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.navbar {
+  position: relative;
 }
 
 @keyframes App-logo-spin {
