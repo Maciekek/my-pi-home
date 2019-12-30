@@ -7,7 +7,7 @@ class Websocket {
   constructor() {}
 
   connect() {
-    this.socket = io('http://77.55.217.143');
+    this.socket = io('http://77.55.217.143/api');
 
     this.attachListeners()
   }
