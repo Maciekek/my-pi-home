@@ -1222,7 +1222,7 @@
         "signature": "6b946a74254ab4ee41ab8e35251fe3d9940564f615c5189baf74f5207fb37bae"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts": {
-        "version": "2bb471349a11fdc04a70baaeddb2b8498a8837e57f0a4d6977224108eda4b4f8",
+        "version": "e8de68c31752d9a12bda16f319026152eac0ed2814c742f88fb6d8a61f60eccc",
         "signature": "077b3859a191b5f1849c160562831b5509213462e6e10a2a17b2ffd70bb4b323"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.controller.ts": {
@@ -1286,7 +1286,7 @@
         "signature": "8baea0811bb98ebc95ab78a11a9d62d8f7a883775582651b05eb65d064353e15"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts": {
-        "version": "115ecd9a069dd444dc2e1bede57d9916da88a3182d581371023b1b34f7c5f10f",
+        "version": "4485e51d1331ea34a5969b6d9e8821c3440579c602e0e0929371e3eb236957a9",
         "signature": "8c4e7dfc8953d2b53abc79cc9b9fb6759055e8611e24b1fddf46452c882c6ba6"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.service.ts": {
@@ -1321,8 +1321,120 @@
         "version": "0e186780bdb7e4ab497b879c576a4f5c1231dfabbc0d1a4eae48b02e2084bf93",
         "signature": "7dfc0dea2801af122d19df735dd15d7bb9f5b594eda3e867cb357dd6d786c30a"
       },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts": {
+        "version": "7d2eed7cce648593302069d3fabed797a0a83c05f696e9ba92b1a8df2a0cbcf9",
+        "signature": "7d2eed7cce648593302069d3fabed797a0a83c05f696e9ba92b1a8df2a0cbcf9"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/index.d.ts": {
+        "version": "6aac2c5ca00378e4d1421a03f614643dc1e9fd02279257cbf2e8e2a713b00907",
+        "signature": "6aac2c5ca00378e4d1421a03f614643dc1e9fd02279257cbf2e8e2a713b00907"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/connected-socket.decorator.d.ts": {
+        "version": "33dd63d5dbfd02cdfc4fc6d47750e619de2da36fe98176731ea2a291287ff4c4",
+        "signature": "33dd63d5dbfd02cdfc4fc6d47750e619de2da36fe98176731ea2a291287ff4c4"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/gateway-server.decorator.d.ts": {
+        "version": "6ad4a01c7e7ebf90072bd6f3087abcf6a443fe41ebcb13b5a0bcfd742dd8ebd5",
+        "signature": "6ad4a01c7e7ebf90072bd6f3087abcf6a443fe41ebcb13b5a0bcfd742dd8ebd5"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/message-body.decorator.d.ts": {
+        "version": "8a4de75e44a9943c4678d37601bc09517180ad3b9245e5f4b8531b33233f2281",
+        "signature": "8a4de75e44a9943c4678d37601bc09517180ad3b9245e5f4b8531b33233f2281"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/gateway-metadata.interface.d.ts": {
+        "version": "b9d3364d62ed6cc142d5803c05adc9c7dbe41aa27c7e56075ee61b3954862b3d",
+        "signature": "b9d3364d62ed6cc142d5803c05adc9c7dbe41aa27c7e56075ee61b3954862b3d"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-connection.interface.d.ts": {
+        "version": "93850d9e8a0e018eca4809c67df09547c4b6d482c55fd6eae3030847f1c4b9ee",
+        "signature": "93850d9e8a0e018eca4809c67df09547c4b6d482c55fd6eae3030847f1c4b9ee"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-disconnect.interface.d.ts": {
+        "version": "9a8e992b0199d6b032b6223a87050e3738671f2742794233649706438fe16724",
+        "signature": "9a8e992b0199d6b032b6223a87050e3738671f2742794233649706438fe16724"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-init.interface.d.ts": {
+        "version": "f60ccdb5672ab91d03afc4f24f402e5164a6c818bf15185f5361802523f86df7",
+        "signature": "f60ccdb5672ab91d03afc4f24f402e5164a6c818bf15185f5361802523f86df7"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/index.d.ts": {
+        "version": "931574e125523649902eee2db57c221a1b36417db4f2c4665bf38ce2170ea06e",
+        "signature": "931574e125523649902eee2db57c221a1b36417db4f2c4665bf38ce2170ea06e"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/socket-events-host.interface.d.ts": {
+        "version": "8507490941583b43ffa5f8becc19d90530e0619b08f0c2e8bc6e71ce75ef1c14",
+        "signature": "8507490941583b43ffa5f8becc19d90530e0619b08f0c2e8bc6e71ce75ef1c14"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/web-socket-server.interface.d.ts": {
+        "version": "438b57c680914f2dd27b29789a5d8c169d3abcfb584b68a520e0df5c3ca3cef5",
+        "signature": "438b57c680914f2dd27b29789a5d8c169d3abcfb584b68a520e0df5c3ca3cef5"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/ws-response.interface.d.ts": {
+        "version": "510292e419065814acdc81c37a2d801efea1715951600cfbdc1b712f9da10451",
+        "signature": "510292e419065814acdc81c37a2d801efea1715951600cfbdc1b712f9da10451"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/index.d.ts": {
+        "version": "552c721b49a127b5ccaa59ee7793c43deb530ef4434b59b801ada4368e6b1395",
+        "signature": "552c721b49a127b5ccaa59ee7793c43deb530ef4434b59b801ada4368e6b1395"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/socket-gateway.decorator.d.ts": {
+        "version": "af3919f1e15caad054071c209341804d85ab679b78979fdf1b1aac4a73dd634a",
+        "signature": "af3919f1e15caad054071c209341804d85ab679b78979fdf1b1aac4a73dd634a"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/subscribe-message.decorator.d.ts": {
+        "version": "6aa893aa7bbf9ce05b51e9af8a72816fcb5d54ce0959998640da8d0fcfd8b529",
+        "signature": "6aa893aa7bbf9ce05b51e9af8a72816fcb5d54ce0959998640da8d0fcfd8b529"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/index.d.ts": {
+        "version": "877388f59a044fc4c4689637425d4f8762662b4c6dc86d55864ca8816382b69e",
+        "signature": "877388f59a044fc4c4689637425d4f8762662b4c6dc86d55864ca8816382b69e"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/ws-exception.d.ts": {
+        "version": "c2575845c6608e5db1e43ba88ea65d967c1999c09e40e61de92dab2032823e5a",
+        "signature": "c2575845c6608e5db1e43ba88ea65d967c1999c09e40e61de92dab2032823e5a"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/index.d.ts": {
+        "version": "a85d6e7924c263fdb7a9e28a578401f2f96950ff9fd0e250c76f25de5ce3b9f2",
+        "signature": "a85d6e7924c263fdb7a9e28a578401f2f96950ff9fd0e250c76f25de5ce3b9f2"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/base-ws-exception-filter.d.ts": {
+        "version": "d7ea3fb5318d0149a8510037016a98dd7d1ebb5fd360e6ab34866e02521e7b57",
+        "signature": "d7ea3fb5318d0149a8510037016a98dd7d1ebb5fd360e6ab34866e02521e7b57"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/index.d.ts": {
+        "version": "57947d16b34a3811f854965fe668e81ccea9dd6321e412ea1a2c75d4fd2619c1",
+        "signature": "57947d16b34a3811f854965fe668e81ccea9dd6321e412ea1a2c75d4fd2619c1"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/metadata-scanner.d.ts": {
+        "version": "18241cf5b30bbc192d8caad9432f9d70fef222bbe5082fb4a46f58aeb7fc4abb",
+        "signature": "18241cf5b30bbc192d8caad9432f9d70fef222bbe5082fb4a46f58aeb7fc4abb"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/nest-gateway.interface.d.ts": {
+        "version": "e52c9bb4a4e20ed2ed5cd0aa01d15261949691bffd4d7f5011e79bced9d14e5c",
+        "signature": "e52c9bb4a4e20ed2ed5cd0aa01d15261949691bffd4d7f5011e79bced9d14e5c"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/gateway-metadata-explorer.d.ts": {
+        "version": "9458c833bb1a862ac70069a0faa9aff8cbf1b528eea24efef93f6e273dfa5fdf",
+        "signature": "9458c833bb1a862ac70069a0faa9aff8cbf1b528eea24efef93f6e273dfa5fdf"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/index.d.ts": {
+        "version": "4bc4c7612f5cc6298b01f76f7a21674181ae6e199a0b07c518107c15bde32344",
+        "signature": "4bc4c7612f5cc6298b01f76f7a21674181ae6e199a0b07c518107c15bde32344"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/socket.io/index.d.ts": {
+        "version": "17868dee2559ec6f6b6f5c996cdf22e9b17da693d8c88ee4635a3a28d8264c61",
+        "signature": "17868dee2559ec6f6b6f5c996cdf22e9b17da693d8c88ee4635a3a28d8264c61"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts": {
+        "version": "bb5cb001a39b0c54b26870ca6c3a9d6d22ca99daf71805c4db065a96866fc5d2",
+        "signature": "79869d1c9233801b87fe80da54eb8e3283439c4ee5c04d474b9c3e273695e5ce"
+      },
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.module.ts": {
+        "version": "1921ba1fc09a0dd213692b5ed707154fcd8a1a4663bed1c9312d6b87de2d6837",
+        "signature": "c62359a1382a7da70c8e0153ce3c44c0157d2dea671125d1cba9fc7184dec308"
+      },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts": {
-        "version": "13cd14d2035625186fbe74b785b1e74f92ef37dcb423928833dfccf8fc7cdcae",
+        "version": "5903f95e64fdedd8e9fedaba72ce61b33eb7a3bddb4f5989e088798245ad4c9f",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.service.ts": {
@@ -3622,6 +3734,158 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/interfaces/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/rxjs/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/connected-socket.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/gateway-server.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/message-body.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/gateway-metadata.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-connection.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-disconnect.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-init.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-connection.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-disconnect.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-init.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/socket-events-host.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/rxjs/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/web-socket-server.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/ws-response.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/gateway-metadata.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/socket-events-host.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/web-socket-server.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/ws-response.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/socket-gateway.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/subscribe-message.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/connected-socket.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/gateway-server.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/message-body.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/socket-gateway.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/subscribe-message.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/ws-exception.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/ws-exception.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/base-ws-exception-filter.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/base-ws-exception-filter.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/metadata-scanner.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/interfaces/injectable.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/nest-gateway.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/gateway-metadata-explorer.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/metadata-scanner.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/rxjs/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/nest-gateway.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/reflect-metadata/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/gateway-metadata-explorer.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/socket.io/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/socket.io/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.module.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/app.controller.ts",
@@ -3634,6 +3898,7 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.module.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.module.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.module.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.module.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -5877,6 +6142,149 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dto/add-dashboard.dto.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts"
       ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/interfaces/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/rxjs/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/connected-socket.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/gateway-server.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/message-body.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/gateway-metadata.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-connection.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-disconnect.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-init.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-connection.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-disconnect.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-init.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/socket-events-host.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/rxjs/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/web-socket-server.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/ws-response.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/gateway-metadata.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/socket-events-host.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/web-socket-server.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/ws-response.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/socket-gateway.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/subscribe-message.decorator.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/connected-socket.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/gateway-server.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/message-body.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/socket-gateway.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/subscribe-message.decorator.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/ws-exception.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/ws-exception.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/base-ws-exception-filter.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/base-ws-exception-filter.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/metadata-scanner.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/interfaces/injectable.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/nest-gateway.interface.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/gateway-metadata-explorer.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/metadata-scanner.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/rxjs/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/nest-gateway.interface.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/reflect-metadata/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/gateway-metadata-explorer.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/socket.io/index.d.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/socket.io/index.d.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/index.d.ts"
+      ],
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/adapters/http-adapter.d.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/index.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/common/interfaces/index.d.ts",
@@ -6610,6 +7018,7 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/dto/add-temp.dto.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.controller.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.controller.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/temps.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/node-config-ts/index.d.ts",
@@ -6634,6 +7043,33 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.controller.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.schema.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/dashboard.module.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/adapters/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/connected-socket.decorator.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/gateway-server.decorator.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/message-body.decorator.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/gateway-metadata.interface.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-connection.interface.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-disconnect.interface.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/on-gateway-init.interface.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/hooks/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/socket-events-host.interface.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/web-socket-server.interface.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/ws-response.interface.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/socket-gateway.decorator.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/subscribe-message.decorator.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/decorators/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/ws-exception.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/errors/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/base-ws-exception-filter.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/exceptions/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/core/metadata-scanner.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/interfaces/nest-gateway.interface.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/gateway-metadata-explorer.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/socket.io/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.module.ts",
@@ -6712,7 +7148,7 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/uglify-js/index.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/index.d.ts",
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts"
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts"
     ]
   },
   "version": "3.4.3"

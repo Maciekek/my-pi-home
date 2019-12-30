@@ -17,7 +17,6 @@ class ActualTemps extends React.Component {
       return sensor.sensorId === id;
     });
 
-    console.log(matchedSensors);
     if (matchedSensors.length > 0) {
       return matchedSensors[0].name
     }

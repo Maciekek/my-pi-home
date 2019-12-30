@@ -1,0 +1,50 @@
+@import "../variables";
+
+.websocket-indicator-wrapper {
+  display: flex;
+  align-items: center;
+
+  .websocket-indicator {
+    height: 14px;
+    width: 14px;
+    background-color: red;
+    border-radius: 50%;
+    margin-left: 10px;
+
+    &--active {
+      background-color: green;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1000px) {
+  .websocket-indicator-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    
+    
+    .websocket-indicator {
+      background-color: red;
+      border-radius: 0;
+      margin-left: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 4px;
+      bottom: -5px;
+      width: 100%;
+
+      &--active {
+        background-color: green;
+      }
+      
+      &__description {
+        display: none;
+      }
+    }
+  }
+}

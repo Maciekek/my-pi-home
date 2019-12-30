@@ -11,7 +11,7 @@ class LocationsPage extends React.Component {
     locations: null,
   };
 
-  constructor(props) {
+   constructor(props) {
     super(props);
     LocationsService.getAllLocations().then((locations) => {
       console.log(locations.data);

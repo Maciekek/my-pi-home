@@ -9,6 +9,7 @@ import {UsersModule} from "./users/users.module";
 import {LocationsModule} from "./locations/locations.module";
 import {EspModule} from "./esp/esp.module";
 import {DashboardModule} from "./dashboard/dashboard.module";
+import {EventsModule} from './events/events.module';
 
 console.log(config.dbConfig);
 
@@ -21,6 +22,7 @@ console.log(config.dbConfig);
         LocationsModule,
           EspModule,
           DashboardModule,
+        EventsModule,
       ],
   controllers: [AppController],
   providers: [AppService],
