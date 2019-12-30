@@ -15,8 +15,11 @@ export class EventsGateway implements  OnGatewayConnection, OnGatewayDisconnect 
 
   handleConnection(client): void {
     this.logger.log(`have new connection from: ${client.id}`);
-  }
 
+    setTimeout(() => {
+        this.server.emit('hejo');
+    }, 1000);
+  }
 
   handleDisconnect(client): any {
     this.logger.log(`Disconnected some user: ${client.id}`);

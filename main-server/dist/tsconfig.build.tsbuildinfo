@@ -1426,7 +1426,7 @@
         "signature": "17868dee2559ec6f6b6f5c996cdf22e9b17da693d8c88ee4635a3a28d8264c61"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts": {
-        "version": "2e5608e611a3f8e22f1330bcd49bb4092454c0e9857f78b9b566319e28214d05",
+        "version": "3e836c80d097b110dbf181950e5c92640f1ef20326516397ba13b9a6cf95bc22",
         "signature": "79869d1c9233801b87fe80da54eb8e3283439c4ee5c04d474b9c3e273695e5ce"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.module.ts": {
@@ -7069,7 +7069,6 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/gateway-metadata-explorer.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/index.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/socket.io/index.d.ts",
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.service.ts",
@@ -7148,7 +7147,8 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/uglify-js/node_modules/source-map/source-map.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/uglify-js/index.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
-      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/index.d.ts"
+      "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts"
     ]
   },
   "version": "3.4.3"
