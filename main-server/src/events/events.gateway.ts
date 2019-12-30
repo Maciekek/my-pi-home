@@ -13,12 +13,16 @@ export class EventsGateway implements  OnGatewayConnection, OnGatewayDisconnect 
 
   private readonly logger = new Logger(EventsGateway.name);
 
+  constructor() {
+    setInterval(() => {
+      if (this.server && this.server.emit) {
+        this.server.emit('ping');
+      }
+    }, 1000);
+  }
+
   handleConnection(client): void {
     this.logger.log(`have new connection from: ${client.id}`);
-
-    setInterval(() => {
-        this.server.emit('hejo');
-    }, 1000);
   }
 
   handleDisconnect(client): any {
