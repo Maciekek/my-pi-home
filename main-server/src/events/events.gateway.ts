@@ -26,17 +26,24 @@ export class EventsGateway implements  OnGatewayConnection, OnGatewayDisconnect 
   handleConnection(client): void {
     if (client.handshake.query && client.handshake.query.device === 'rpi') {
       this.logger.log(`new RPI connected, websocketID: ${client.id}`);
-      websocketRPIConnections[client.id] = client.id;
-      this.server.emit('message', {event_type: 'new_rpi_connection', name: client.handshake.query.name});
+      websocketRPIConnections[client.id] = client.handshake.query.locationId;
+      this.server.emit('message', {event_type: 'new_rpi_connection',
+        name: client.handshake.query.name, locationId: client.handshake.query.locationId});
+      this.server.emit('message', {event_type: 'active_rpi_connection', websocketRPIConnections});
     }
+    setTimeout(() => {
+      this.server.emit('message', {event_type: 'active_rpi_connection', websocketRPIConnections});
+    }, 3000);
 
     this.logger.log(`have new connection from: ${client.id}`);
   }
 
   handleDisconnect(client): any {
-    console.log(client);
     if (websocketRPIConnections[client.id]) {
       this.server.emit('message', {event_type: 'some_rpi_disconnected'});
+      delete websocketRPIConnections[client.id];
+      this.server.emit('message', {event_type: 'active_rpi_connection', websocketRPIConnections});
+
     }
 
     this.logger.log(`Disconnected some user: ${client.id}`);

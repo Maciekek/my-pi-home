@@ -41,6 +41,12 @@
   position: relative;
 }
 
+.websocket {
+  &--active {
+    background-color: transparentize(blue, 0.9) !important;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

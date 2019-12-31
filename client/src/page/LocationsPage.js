@@ -5,6 +5,8 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import classNames from 'classnames'
 
 class LocationsPage extends React.Component {
   state = {
@@ -21,7 +23,15 @@ class LocationsPage extends React.Component {
     })
   }
 
+  isWSActive = (locationId) => {
+    console.log(this.props.activeWebsocketConnections);
+    const locations = Object.values(this.props.activeWebsocketConnections)
+    console.log(locations);
+    return locations.indexOf(locationId) > -1;
+  };
+
   render() {
+    console.log(this.props);
     return (
       <Page>Dostępne lokacje:
         {!this.state.locations
@@ -39,7 +49,7 @@ class LocationsPage extends React.Component {
                       </Tooltip>
                     }
                   >
-                    <ListGroup.Item as="li" action>
+                    <ListGroup.Item as="li" action className={classNames({'websocket--active':this.isWSActive(location._id)})}>
                       <span className={'location-title'}>{location.name}</span>
                       <span className={'location-id'}> {location._id}</span>
 
@@ -58,7 +68,15 @@ class LocationsPage extends React.Component {
       </Page>
     )
   }
-
 }
 
-export {LocationsPage}
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  const { activeWebsocketConnections } = state.settingsReducer;
+  return {activeWebsocketConnections};
+};
+
+
+export default connect(mapStateToProps)(LocationsPage)
+

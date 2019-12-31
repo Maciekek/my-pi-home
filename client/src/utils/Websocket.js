@@ -1,11 +1,11 @@
 import io from 'socket.io-client';
 import {store} from '../index';
-import {websocketConnected, websocketDisconnected} from "../store/actions/SettingsActions";
+import {updateActiveConections, websocketConnected, websocketDisconnected} from "../store/actions/SettingsActions";
 import { toast } from 'react-toastify';
-
 const WEBSOCKET_MESSAGE_TYPES = {
   NEW_RPI_CONNECTION: 'new_rpi_connection',
-  SOME_RPI_DISCONNECTED: 'some_rpi_disconnected'
+  SOME_RPI_DISCONNECTED: 'some_rpi_disconnected',
+  ACTIVE_RPI_CONNECTION: 'active_rpi_connection',
 };
 
 class Websocket {
@@ -14,7 +14,7 @@ class Websocket {
   constructor() {}
 
   connect() {
-    this.socket = io('77.55.217.143:8888');
+    this.socket = io('localhost:8888');
 
     this.attachListeners()
   }
@@ -41,6 +41,8 @@ class Websocket {
         case WEBSOCKET_MESSAGE_TYPES.SOME_RPI_DISCONNECTED:
           toast.info('Utracono połączenie z rpi.');
           break;
+        case WEBSOCKET_MESSAGE_TYPES.ACTIVE_RPI_CONNECTION:
+          store.dispatch(updateActiveConections(message.websocketRPIConnections));
         default:
           console.log("Received new websocket message: ", message)
       }

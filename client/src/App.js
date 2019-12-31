@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import {LocationsPage} from "./page/LocationsPage";
+import LocationsPage from "./page/LocationsPage";
 import {LocationPage} from "./page/LocationPage";
 import {LocationSettingsPage} from "./page/LocationSettingsPage";
 import {LocationsNewPage} from "./page/LocationsNewPage";
