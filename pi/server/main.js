@@ -1,8 +1,9 @@
+
 const config = require("./src/readConfig");
 
 const piReader = require('./src/reader/reader');
 const tempsService = require('./src/services/tempServices');
-const wifiTempsService = require('./src/services/wifiTempService');
+const websocketManager = require('./websocketManager');
 
 const MAX_TEMP = 60;
 const MIN_TEMP = -30;
@@ -13,7 +14,8 @@ class Main {
         console.log(config.locationId);
         this.readAndSendData = this.readAndSendData.bind(this);
 
-       setInterval(this.readAndSendData, 360000);
+        setInterval(this.readAndSendData, 360000);
+        websocketManager.connect()
     }
 
     readAndSendData() {
@@ -28,20 +30,6 @@ class Main {
             tempsService.addNewTemps(tempObject);
         });
 
-        if(config.wifiTemps.ip) {
-            wifiTempsService.getTempsByIp(config.wifiTemps.ip).then((temps) => {
-                temps.map(temp => {
-                    const tempObject = {
-                        value: this.prepareTemps(temp.value),
-                        date: new Date(),
-                        locationId: config.locationId || undefined,
-                        sensorId: temp.id,
-                    };
-                    tempsService.addNewTemps(tempObject);
-                    console.log(tempObject);
-                });
-            })
-        }
     }
 
     prepareTemps(value) {

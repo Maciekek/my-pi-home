@@ -1426,8 +1426,8 @@
         "signature": "17868dee2559ec6f6b6f5c996cdf22e9b17da693d8c88ee4635a3a28d8264c61"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts": {
-        "version": "bb5cb001a39b0c54b26870ca6c3a9d6d22ca99daf71805c4db065a96866fc5d2",
-        "signature": "79869d1c9233801b87fe80da54eb8e3283439c4ee5c04d474b9c3e273695e5ce"
+        "version": "13663f3ca134c4fb3b0240b9b114a6ac9c57dee66bc1ad8bf4afeecedff2d4f0",
+        "signature": "800482ca43bf1309fedf444c90dcc86cf72721995d10f044191816f6de486da6"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.module.ts": {
         "version": "1921ba1fc09a0dd213692b5ed707154fcd8a1a4663bed1c9312d6b87de2d6837",
@@ -6078,8 +6078,14 @@
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/util.d.ts",
         "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/cats/cats.service.ts": [
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/cats/interfaces/cat.interface.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/cats/dto/create-cat.dto.ts"
+      ],
       "c:/users/maciek/desktop/my-pi-home/main-server/src/cats/cats.controller.ts": [
-        "c:/users/maciek/desktop/my-pi-home/main-server/src/cats/cats.service.ts"
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/cats/cats.service.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/cats/dto/create-cat.dto.ts",
+        "c:/users/maciek/desktop/my-pi-home/main-server/src/cats/interfaces/cat.interface.ts"
       ],
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/dto/add-temp.dto.ts": [
         "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/interfaces/temp.interface.ts"

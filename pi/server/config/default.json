@@ -1,5 +1,6 @@
 {
   "api": {
-    "url": "http://localhost:8888/api"
+    "url": "http://localhost:8888/api",
+    "websocket": "http://localhost:8888/?device=rpi&name=rpiMaciej1"
   }
 }

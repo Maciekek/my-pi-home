@@ -2,6 +2,7 @@ import React from 'react';
 
 import './styles/App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -13,6 +14,7 @@ import {LocationsNewPage} from "./page/LocationsNewPage";
 import {DashboardPage} from "./page/DashboardPage";
 import {DashboardSettingsPage} from "./page/DashboardSettingsPage";
 import {WebsocketIndicator} from "./components/uiComponents/websocketIndicator";
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -42,6 +44,7 @@ function App() {
         <Route path="/dashboardSettings/:id" exact={true} component={DashboardSettingsPage}/>
 
       </Router>
+      <ToastContainer />
     </div>
 
   );
