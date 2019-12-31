@@ -10,3 +10,13 @@
   font-size: 12px;
   color: gray;
 }
+
+.location-ws {
+  font-size: 11px;
+  color: gray;
+  margin-left: 20px;
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+}

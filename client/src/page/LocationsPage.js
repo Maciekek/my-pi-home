@@ -49,9 +49,13 @@ class LocationsPage extends React.Component {
                       </Tooltip>
                     }
                   >
-                    <ListGroup.Item as="li" action className={classNames({'websocket--active':this.isWSActive(location._id)})}>
+                    <ListGroup.Item as="li" action className={classNames({'websocket--active': this.isWSActive(location._id)})}>
+
                       <span className={'location-title'}>{location.name}</span>
                       <span className={'location-id'}> {location._id}</span>
+                      { this.isWSActive(location._id)
+                        ? <span className={'location-ws'}>Połączenie websocket aktywne</span>
+                        : null}
 
 
                     </ListGroup.Item>
