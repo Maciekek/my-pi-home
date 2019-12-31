@@ -1,1 +1,1 @@
-pm2 start node_modules/react-scripts/scripts/start.js --name "web-client"
+pm2 start ./serve.sh --name "pi-home-client"
