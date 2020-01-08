@@ -12,7 +12,6 @@ export class SensorsService {
         return await this.tempModel
             .find({locationId, sensorId: { $in: body.sensorIds }, date: {$gte: body.from}})
             .sort({date: 1})
-            .limit(3000)
             .exec();
     }
 }
