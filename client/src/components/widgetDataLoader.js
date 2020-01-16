@@ -35,6 +35,11 @@ const parseDateRangeToDate = (dateRange) => {
         from: moment().subtract('24', 'hour'),
         to: moment().format('YYYY-MM-DD HH:mm')
       };
+    case 'last.7.days':
+      return {
+        from: moment().subtract('7', 'days'),
+        to: moment().format('YYYY-MM-DD HH:mm')
+      };
 
     default:
       return {
