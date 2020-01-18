@@ -1222,7 +1222,7 @@
         "signature": "6b946a74254ab4ee41ab8e35251fe3d9940564f615c5189baf74f5207fb37bae"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.service.ts": {
-        "version": "e8de68c31752d9a12bda16f319026152eac0ed2814c742f88fb6d8a61f60eccc",
+        "version": "946246e185dc03df4671b9bf7ae5ef17f89192bbb4c2ec8788455f7782025b00",
         "signature": "077b3859a191b5f1849c160562831b5509213462e6e10a2a17b2ffd70bb4b323"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/temps/sensors.controller.ts": {
@@ -1286,7 +1286,7 @@
         "signature": "8baea0811bb98ebc95ab78a11a9d62d8f7a883775582651b05eb65d064353e15"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts": {
-        "version": "4485e51d1331ea34a5969b6d9e8821c3440579c602e0e0929371e3eb236957a9",
+        "version": "53aa44e9eb5e50716dc138083031d6483cde18b8f7e2f947820c9de64a58ac5d",
         "signature": "8c4e7dfc8953d2b53abc79cc9b9fb6759055e8611e24b1fddf46452c882c6ba6"
       },
       "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.service.ts": {
@@ -7040,7 +7040,6 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.controller.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/locations/locations.module.ts",
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.service.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/dashboard/interfaces/dashboard.interface.ts",
@@ -7075,6 +7074,7 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/gateway-metadata-explorer.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@nestjs/websockets/index.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/socket.io/index.d.ts",
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/app.module.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/src/config.service.ts",
@@ -7154,7 +7154,7 @@
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/uglify-js/index.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/node_modules/source-map/source-map.d.ts",
       "c:/users/maciek/desktop/my-pi-home/main-server/node_modules/@types/webpack/index.d.ts",
-      "c:/users/maciek/desktop/my-pi-home/main-server/src/events/events.gateway.ts"
+      "c:/users/maciek/desktop/my-pi-home/main-server/src/esp/esp.controller.ts"
     ]
   },
   "version": "3.4.3"

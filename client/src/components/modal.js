@@ -14,11 +14,6 @@ class CustomModal extends React.PureComponent {
     })
   };
 
-  onSubmit = () => {
-    this.state.submitChildForm();
-    this.props.onHide();
-  };
-
   render() {
     return (
       <Modal
@@ -35,13 +30,10 @@ class CustomModal extends React.PureComponent {
         {React.cloneElement(this.props.children,
           {
             locationId: this.props.locationId,
-            onMount: (a) => this.setSubmitCallback(a)
+            onMount: (a) => this.setSubmitCallback(a),
+            hideModal: this.props.onHide
           })}
 
-        <Modal.Footer>
-          <Button variant="success" onClick={this.onSubmit}>Dodaj</Button>
-          <Button onClick={this.props.onHide}>Close</Button>
-        </Modal.Footer>
       </Modal>
     )
   }

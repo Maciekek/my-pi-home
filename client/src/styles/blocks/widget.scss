@@ -27,6 +27,10 @@
     margin: 0 10px;
   }
 
+  &__menu-actions {
+    cursor: pointer;
+  }
+
   .loading-overlay {
     position: absolute;
     left: 0;

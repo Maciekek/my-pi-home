@@ -1,5 +1,6 @@
 import React from 'react';
 import {Page} from '../components/page';
+import _ from 'lodash';
 
 import {connect} from "react-redux";
 import {speedChartDataLoader} from "../dataLoaders/speedChartDataLoader";
@@ -26,6 +27,7 @@ export const widgetDataLoaders = {
 class DashboardPageBase extends React.Component {
   state = {
     isModalOpen: false,
+    editWidgetIndex: null
   };
 
   constructor(props) {
@@ -55,7 +57,8 @@ class DashboardPageBase extends React.Component {
 
   onModalHide = () => {
     this.setState({
-      isModalOpen: false
+      isModalOpen: false,
+      editWidgetIndex: null
     })
   };
 
@@ -67,7 +70,16 @@ class DashboardPageBase extends React.Component {
     return JSON.parse(this.props.dashboardConfig.config);
   };
 
+  onEditWidget = (widgetIndex) => {
+    console.log('onEditWidget ');
+    this.setState({
+      isModalOpen: true,
+      editWidgetIndex: widgetIndex
+    })
+  };
+
   render() {
+    console.log(this.getDashboardConfig())
     return (
       <Page>
         <div className={'dashboard'}>
@@ -85,7 +97,8 @@ class DashboardPageBase extends React.Component {
                   index={index}
                   widgetType={widget.widgetType}
                   chartName={widget.chartName || ""}
-                  locationId={this.props.match.params.id}>
+                  locationId={this.props.match.params.id}
+                  editWidget={this.onEditWidget}>
                   <WidgetDataLoader
                     locationId={this.props.match.params.id}
                     component={this.getComponentToRender(widget.widgetType)}
@@ -100,10 +113,14 @@ class DashboardPageBase extends React.Component {
 
           {this.state.isModalOpen
             ? <CustomModal
-              title={"Dodaj nowy widget"}
-              locationId={this.props.match.params.id}
-              onHide={this.onModalHide}
-              show={this.state.isModalOpen}><AddWidget/></CustomModal>
+                title={_.isNumber(this.state.editWidgetIndex) ? "Edytuj widget" : "Dodaj nowy widget"}
+                locationId={this.props.match.params.id}
+                onHide={this.onModalHide}
+                show={this.state.isModalOpen}>
+                  <AddWidget
+                    widgetIndex={this.state.editWidgetIndex}
+                    widget={this.getDashboardConfig()[this.state.editWidgetIndex]}/>
+              </CustomModal>
             : null
           }
         </div>

@@ -22,92 +22,94 @@ class SpeedChartBase extends React.Component {
     limit: 1
   };
 
-  constructor(props) {
-    super(props);
+  renderChart = (props) => {
+    return {
+      chart: {
+        type: 'solidgauge'
+      },
 
-    this.state = {
-      options: {
-        chart: {
-          type: 'solidgauge'
-        },
-
-        title: null,
+      title: null,
 
         pane: {
-          center: ['50%', '85%'],
+        center: ['50%', '85%'],
           size: '100%',
           startAngle: -90,
           endAngle: 90,
           background: {
-            backgroundColor:
-              Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
-            innerRadius: '60%',
+          backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#EEE',
+              innerRadius: '60%',
             outerRadius: '100%',
             shape: 'arc'
-          }
-        },
+        }
+      },
 
-        tooltip: {
-          enabled: false
-        },
+      tooltip: {
+        enabled: false
+      },
 
-        // the value axis
-        yAxis: {
-          stops: [
-            [0.1, '#153cbf'], // green
-            [0.5, '#03df1d'], // yellow
-            [0.9, '#DF5353'] // red
-          ],
+      // the value axis
+      yAxis: {
+        stops: [
+          [0.1, '#153cbf'], // green
+          [0.5, '#03df1d'], // yellow
+          [0.9, '#DF5353'] // red
+        ],
           lineWidth: 0,
           minorTickInterval: null,
           tickAmount: 2,
 
           labels: {
-            y: 16
-          },
-          min: -10,
+          y: 16
+        },
+        min: -10,
           max: 50,
 
-        },
+      },
 
-        plotOptions: {
-          solidgauge: {
-            dataLabels: {
-              y: 5,
+      plotOptions: {
+        solidgauge: {
+          dataLabels: {
+            y: 5,
               borderWidth: 0,
               useHTML: true
-            }
           }
-        },
+        }
+      },
 
-        series: [{
-          data: [props.data[0].value],
-          dataLabels: {
-            format:
-              '<div style="text-align:center">' +
-              '<span style="font-size:22px">{y:.1f}</span><br/>' +
-              '<span style="font-size:12px;opacity:0.4">' +
-              props.options.sensors[0].sensorUnit +
-              '</span>' +
-              '</div>'
-          },
-          tooltip: {
-            valueSuffix: props.unit || 'C'
-          }
-        }],
+      series: [{
+        data: [_.last(props.data).value],
+        dataLabels: {
+          format:
+            '<div style="text-align:center">' +
+            '<span style="font-size:22px">{y:.1f}</span><br/>' +
+            '<span style="font-size:12px;opacity:0.4">' +
+            props.options.sensors[0].sensorUnit +
+            '</span>' +
+            '</div>'
+        },
+        tooltip: {
+          valueSuffix: props.unit || 'C'
+        }
+      }],
 
         credits: {
-          enabled: false
-        },
-      }
-    };
+        enabled: false
+      },
+    }
+  }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+     options: this.renderChart(props)
+    };
   }
 
 
-
   render() {
-    const sensorId = this.props.data[0].sensorId;
+    const sensorId = _.last(this.props.data).sensorId;
 
     const sensorName = _.find(this.props.locationConfig.tempSettings.sensors, ['sensorId', this.props.data[0].sensorId])
       ? _.find(this.props.locationConfig.tempSettings.sensors, ['sensorId', sensorId]).name
@@ -125,14 +127,13 @@ class SpeedChartBase extends React.Component {
           <HighchartsReact
 
             highcharts={Highcharts}
-            options={this.state.options}
+            options={this.renderChart(this.props)}
             ref="chartComponent1"
           />
           </div>
         </div>
     )
   }
-
 }
 
 const getLocationConfig = (state, locationId) => {

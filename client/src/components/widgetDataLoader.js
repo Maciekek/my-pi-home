@@ -1,5 +1,7 @@
 import React from 'react';
+import _ from 'lodash';
 import PropTypes from 'prop-types';
+
 import {LoadingIndicator} from "./loadingIndicator";
 import moment from "moment";
 //2018-08-29 15:38
@@ -82,7 +84,11 @@ class WidgetDataLoader extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.dateRange !== this.props.dateRange) {
+    console.log("load data?")
+    console.log(prevState);
+    console.log(this.state);
+    if (prevProps.dateRange !== this.props.dateRange || !_.isEqual(prevProps, this.props)) {
+      console.log("load data!!!!")
       this.loadData()
     }
   }
@@ -100,8 +106,9 @@ class WidgetDataLoader extends React.Component {
     });
 
     this.props.dataLoader.get(config).then(data => {
+      console.log('data', data)
       this.setState({
-        data: data,
+        data: [...data],
         isLoading: false
       })
     })
@@ -109,6 +116,7 @@ class WidgetDataLoader extends React.Component {
 
   render() {
     const Component = this.props.component;
+    console.log(this.state.data)
     return (
       <>
         {this.state.isLoading ?
