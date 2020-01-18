@@ -10,7 +10,7 @@ export class EspController {
     async findAll(@Query() params): Promise<string> {
         const test = new AddTempDto();
         test.locationId = params.locationId;
-        test.sensorId = params.valuename;
+        test.sensorId = `${params.task}:_:${params.valuename}`;
         test.value = params.value;
         test.date = new Date().toISOString();
 
