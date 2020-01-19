@@ -5,7 +5,8 @@ const locationActions = {
   GET_ALL_LOCATIONS: "GET_ALL_LOCATIONS",
   LOADING_LOCATIONS_START: "LOADING_LOCATIONS_START",
   LOADING_LOCATIONS_END: "LOADING_LOCATIONS_END",
-  LOADED_LOCATION_SETTINGS: "LOADED_LOCATION_SETTINGS"
+  LOADED_LOCATION_SETTINGS: "LOADED_LOCATION_SETTINGS",
+  STORE_LOCATION_RECENTLY_SENSORS: "STORE_LOCATION_RECENTLY_SENSORS",
 };
 
 const loadingLocationsStart = () => {
@@ -24,8 +25,6 @@ const loadingLocationsEnd = (payload) => {
 };
 
 const loadedLocationSettings = (locationId, payload) => {
-
-
   return {
     type: locationActions.LOADED_LOCATION_SETTINGS,
     payload: {
@@ -35,7 +34,6 @@ const loadedLocationSettings = (locationId, payload) => {
   }
 };
 
-
 const getLocationSettings = (locationId) => {
   return dispatch => {
     LocationsService.getLocation(locationId).then(response => {
@@ -43,7 +41,6 @@ const getLocationSettings = (locationId) => {
     });
   }
 };
-
 
 const getAllLocations = () => {
   return dispatch => {
@@ -53,10 +50,22 @@ const getAllLocations = () => {
 
     })
   }
-}
+};
+
+const storeLocationRecentlySensors = (locationId, recentlySensors) => {
+  return {
+    type: locationActions.STORE_LOCATION_RECENTLY_SENSORS,
+    payload: {
+      locationId: locationId,
+      recentlySensors
+    }
+  }
+};
+
 
 export {
   locationActions,
   getAllLocations,
-  getLocationSettings
+  getLocationSettings,
+  storeLocationRecentlySensors
 }

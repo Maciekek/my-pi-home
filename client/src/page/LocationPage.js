@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import React from 'react';
 import {Page} from '../components/page';
 import {LocationsService} from "../services/locations.services";
@@ -17,6 +19,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import {storeLocationRecentlySensors} from "../store/actions/LocationsActions";
 
 const DEFAULT_N = 100;
 
@@ -32,7 +35,6 @@ class LocationPageBase extends React.Component {
 
 
     LocationsService.getLocation(props.match.params.id).then((location) => {
-
       this.setState({
         location: location.data
       }, () => {
@@ -50,14 +52,15 @@ class LocationPageBase extends React.Component {
     TempsService.getNLastTemps(this.props.match.params.id, n).then((temps) => {
       this.setState({
         temps: temps.data
+      }, () => {
+        this.props.dispatch(storeLocationRecentlySensors(this.props.match.params.id,
+          _.map(_.uniqBy(temps.data, 'sensorId'), 'sensorId')))
       });
     })
   };
 
   onInputChange = () => {
     const sensorsCount = this.state.location.tempSettings ?  this.state.location.tempSettings.sensors.length : 1;
-    console.log(parseInt(document.querySelector('#nCount').value));
-    console.log(sensorsCount);
     this.setState({
       temps: null,
       n: (parseInt(document.querySelector('#nCount').value) || DEFAULT_N) * sensorsCount

@@ -5,7 +5,8 @@ import {locationActions} from "./../actions/LocationsActions";
 
 const locationDefaultState = {
   isLoading: false,
-  locations: []
+  locations: [],
+  locationSensors: {}
 };
 
 const actionHandlers = {
@@ -33,6 +34,16 @@ const actionHandlers = {
       locations
     }
   },
+  [locationActions.STORE_LOCATION_RECENTLY_SENSORS]: (state, {payload}) => {
+    const locationSensorsUpdated = {...state.locationSensors};
+    locationSensorsUpdated[payload.locationId] = payload.recentlySensors;
+    console.log(payload);
+
+    return ({
+    ...state,
+    isLoading: false,
+    locationSensors: {...locationSensorsUpdated}
+  })},
 
 };
 

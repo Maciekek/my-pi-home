@@ -23,6 +23,7 @@ class AddWidgetBase extends React.PureComponent {
     widget: PropTypes.object,
     widgetIndex: PropTypes.number,
     hideModal: PropTypes.func,
+    locationId: PropTypes.string,
   };
 
 
@@ -138,6 +139,7 @@ class AddWidgetBase extends React.PureComponent {
 
         {this.state.selectedFormType
           ? <Component
+              locationId={this.props.locationId}
               onChange={this.onChange}
               submit={this.onSubmit}
               widget={this.state.widget}

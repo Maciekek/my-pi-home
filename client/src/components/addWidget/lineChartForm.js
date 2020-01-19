@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlusCircle, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import Modal from "react-bootstrap/Modal";
+import {RecentlyUsedSensors} from "../RecentlyUsedSensors";
 
 class LineChartForm extends React.Component {
   static propTypes = {
@@ -54,13 +55,14 @@ class LineChartForm extends React.Component {
     }, () => this.props.onChange(this.state));
   };
 
-  addNewSensor = () => {
+  addNewSensor = (e, sensorId = null) => {
+    console.log(sensorId);
     const config = this.state;
-    const sensors = [...config.sensors, {'sensorId': '', 'sensorUnit': ''}];
+    const sensors = [...config.sensors, {'sensorId': sensorId ? sensorId : '', 'sensorUnit': ''}];
 
     this.setState({
       sensors: sensors
-    });
+    }, () => this.props.onChange(this.state));
   };
 
    removeSensor = (index) => {
@@ -80,12 +82,19 @@ class LineChartForm extends React.Component {
     return !(!_.isEmpty(this.state.chartName) && emptyFields.length < 1);
   };
 
+  onQuickAddSensor = (e, sensor) => {
+    this.addNewSensor(e, sensor);
+  };
+
   render() {
 
     return (
      <div>
        <Form.Group>
          <Form.Label>Na wykresie liniowym możesz umieścic kilka czujników.</Form.Label>
+       </Form.Group>
+       <Form.Group>
+         <RecentlyUsedSensors onSensorClick={this.onQuickAddSensor} locationId={this.props.locationId}/>
        </Form.Group>
        <Form.Group controlId="chartName">
          <Form.Label>Nazwa wykresu</Form.Label>

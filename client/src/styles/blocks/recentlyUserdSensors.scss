@@ -1,0 +1,10 @@
+@import "../variables";
+
+.recently-used-sensors {
+  &__item {
+    margin: 0 5px;
+    background-color: aliceblue;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}

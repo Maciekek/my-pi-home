@@ -84,11 +84,7 @@ class WidgetDataLoader extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("load data?")
-    console.log(prevState);
-    console.log(this.state);
     if (prevProps.dateRange !== this.props.dateRange || !_.isEqual(prevProps, this.props)) {
-      console.log("load data!!!!")
       this.loadData()
     }
   }
