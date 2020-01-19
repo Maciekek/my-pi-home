@@ -11,6 +11,7 @@ import thunk from 'redux-thunk';
 import {locationReducer} from "./store/reducers/Locations";
 import {dashboardsReducer} from "./store/reducers/Dashboards";
 import {settingsReducer} from "./store/reducers/Settings";
+import {behaviourReducer} from "./store/reducers/Behaviour";
 import {websocket} from "./utils/Websocket";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,7 +24,8 @@ const store = createStore(combineReducers({
   locationStore: locationReducer,
   dashboardsStore: dashboardsReducer,
   settingsReducer: settingsReducer,
-}) , composeEnhancers(applyMiddleware(thunk)));
+  behaviourReducer: behaviourReducer,
+}), composeEnhancers(applyMiddleware(thunk)));
 
 //
 ReactDOM.render(

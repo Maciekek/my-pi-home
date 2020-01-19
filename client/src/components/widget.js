@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import {faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import {faEdit} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { removeWidgetByIndex} from "../store/actions/DashboardActions";
+import {confirmOperation} from "../store/actions/BehaviourActions";
+import {removeWidgetByIndex} from "../store/actions/DashboardActions";
 
 const widgetWithAvailableTimeRangePicker = new Set(['lineChart']);
 
@@ -25,7 +26,12 @@ class WidgetBase extends React.Component {
   };
 
   removeWidget = () => {
-    this.props.dispatch(removeWidgetByIndex(this.props.locationId, this.props.index));
+    this.props.dispatch(confirmOperation({
+      visible: true,
+      onConfirmAction: () => { this.props.dispatch(removeWidgetByIndex(this.props.locationId, this.props.index))},
+      message: "Czy na pewno chcesz usunąć ten widget?"
+    }))
+
   };
 
   setDateRange = (index, range) => {

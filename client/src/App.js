@@ -15,6 +15,7 @@ import {DashboardPage} from "./page/DashboardPage";
 import {DashboardSettingsPage} from "./page/DashboardSettingsPage";
 import {WebsocketIndicator} from "./components/uiComponents/websocketIndicator";
 import { ToastContainer } from 'react-toastify';
+import {ConfirmationModal} from "./components/ConfirmationModal";
 
 
 function App() {
@@ -43,6 +44,8 @@ function App() {
         <Route path="/dashboard/:id" exact={true} component={DashboardPage}/>
         <Route path="/dashboardSettings/:id" exact={true} component={DashboardSettingsPage}/>
 
+
+        <ConfirmationModal></ConfirmationModal>
       </Router>
       <ToastContainer />
     </div>
