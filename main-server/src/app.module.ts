@@ -10,19 +10,24 @@ import {LocationsModule} from "./locations/locations.module";
 import {EspModule} from "./esp/esp.module";
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {EventsModule} from './events/events.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import {CronModule} from "./modules/cron/cron.module";
 
 console.log(config.dbConfig);
 
 @Module({
   imports:
-      [MongooseModule.forRoot(config.dbConfig.url),
-        CatsModule,
-        TempsModule,
-        UsersModule,
-        LocationsModule,
+      [
+          MongooseModule.forRoot(config.dbConfig.url),
+          CatsModule,
+          TempsModule,
+          UsersModule,
+          LocationsModule,
           EspModule,
           DashboardModule,
-        EventsModule,
+          EventsModule,
+          ScheduleModule.forRoot(),
+          CronModule,
       ],
   controllers: [AppController],
   providers: [AppService],
