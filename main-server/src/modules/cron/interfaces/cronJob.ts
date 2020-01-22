@@ -1,3 +1,3 @@
 export interface CronJob {
-    run: () => {};
+    run: () => void;
 }

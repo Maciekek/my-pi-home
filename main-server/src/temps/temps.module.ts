@@ -10,6 +10,6 @@ import {SensorsService} from "./sensors.service";
     imports: [MongooseModule.forFeature([{ name: 'Temp', schema: TempSchema }])],
     controllers: [TempsController, SensorsController],
     providers: [TempsService, SensorsService],
-    exports: [TempsService],
+    exports: [TempsService, SensorsService],
 })
 export class TempsModule {}
