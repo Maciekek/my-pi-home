@@ -33,7 +33,6 @@ class LocationPageBase extends React.Component {
   constructor(props) {
     super(props);
 
-
     LocationsService.getLocation(props.match.params.id).then((location) => {
       this.setState({
         location: location.data

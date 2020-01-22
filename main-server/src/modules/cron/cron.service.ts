@@ -10,7 +10,7 @@ export class CronService {
 
     }
 
-    @Cron('0 * * *')
+    @Cron('45 * * * * *')
     handleCron() {
         this.heartbeatService.run();
         this.logger.debug('Called cron task');
