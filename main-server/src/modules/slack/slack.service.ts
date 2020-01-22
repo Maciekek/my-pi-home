@@ -8,14 +8,14 @@ export class SlackService  {
     slackApi: WebClient;
 
     constructor() {
-        const token = '...'
-        // process.env.SLACK_TOKEN
-        this.slackApi = new WebClient(token);
+        this.logger.log('SLACK_TOKEN: ' + process.env.SLACK_TOKEN);
+        const token = process.env.SLACK_TOKEN;
+        this.slackApi = new WebClient(token );
 
     }
 
     sendMessage(content) {
-        this.slackApi.chat.postMessage({ channel: 'powiadomienia', text: content, username: "Backend API" });
+        this.slackApi.chat.postMessage({channel: 'powiadomienia', text: content, username: "Backend API" });
     }
 
 }

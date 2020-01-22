@@ -19,6 +19,7 @@ console.log(config.dbConfig);
   imports:
       [
           MongooseModule.forRoot(config.dbConfig.url),
+          ScheduleModule.forRoot(),
           CatsModule,
           TempsModule,
           UsersModule,
@@ -26,7 +27,6 @@ console.log(config.dbConfig);
           EspModule,
           DashboardModule,
           EventsModule,
-          ScheduleModule.forRoot(),
           CronModule,
       ],
   controllers: [AppController],
