@@ -20,8 +20,6 @@ export class LocationsService {
             {$set: {name: addedLocation.name, description: addedLocation.description, tempSettings: addedLocation.tempSettings}});
     }
 
-// {name: addedLocation.name, description: addedLocation.description, tempSettings: addedLocation.tempSettings}
-
     async findAll(): Promise<Location[]> {
         return await this.locationModel.find().exec();
     }
@@ -29,18 +27,4 @@ export class LocationsService {
     async findById(id: string): Promise<Location> {
         return await this.locationModel.findOne({_id: id});
     }
-    //
-    // async setTempSettings(id: string, tempSettingsDto: SetTempSettingsDto): Promise<Location> {
-    //     const tempSettings = new this.locationModel(tempSettingsDto);
-    //     console.log(tempSettings);
-    //     return await this.locationModel.findOneAndUpdate({_id: id}, {tempSettings: tempSettings.tempSettings});
-    // }
-    //
-    // async setSensorSettings(id: string, sensorSettingsDto: SetSensorSettingsDto): Promise<Location> {
-    //     const sensorSettings = new this.locationModel(sensorSettingsDto);
-    //
-    //     console.log("sensorSetting 123 s", sensorSettings);
-    //     console.log(id);
-    //     return await this.locationModel.findOneAndUpdate({_id: id}, {sensorSettings: sensorSettings.sensorSettings});
-    // }
 }

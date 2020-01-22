@@ -7,6 +7,7 @@ import {LocationsService} from "./locations.service";
 @Module({
     imports: [MongooseModule.forFeature([{ name: 'Location', schema: LocationSchema}])],
     controllers: [LocationsController],
+    exports: [LocationsService],
     providers: [LocationsService],
 })
 export class LocationsModule {}
