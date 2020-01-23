@@ -23,15 +23,18 @@ const options = {
   chart: {
     zoomType: 'x'
   },
-  rangeSelector: {
-    selected: 4,
-    inputEnabled: false,
-    buttonTheme: {
-      visibility: 'hidden'
+  xAxis: {
+    type: 'datetime',
+    //	tickInterval: 60 * 1000, // for thin step
+    dateTimeLabelFormats: { // don't display the dummy year\
+      year:  '%I:%M:%S %p',
+      month:  '%I:%M:%S %p',
+      day: '%I:%M:%S %p'
     },
-    labelStyle: {
-      visibility: 'hidden'
+    title: {
+      text: 'Time'
     }
+
   },
 
   tooltip: {
@@ -114,8 +117,7 @@ class TempChartWidgetBase extends React.Component {
       <div className={'line-chart'}>
         {this.state ? <HighchartsReact
 
-          constructorType={'stockChart'}
-          highcharts={Highstock}
+          highcharts={Highcharts}
           options={this.state}
           ref={this.chartComponent}
           allowChartUpdate={true}
