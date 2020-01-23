@@ -14,6 +14,10 @@ const options = {
     text: ''
   },
 
+  chart: {
+    zoomType: 'x'
+  },
+
   xAxis: {
     type: 'datetime',
     //	tickInterval: 60 * 1000, // for thin step
