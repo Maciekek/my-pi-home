@@ -34,10 +34,6 @@ const options = {
     }
   },
 
-  navigator: {
-    series: {}
-  },
-
   tooltip: {
     headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">{point.key}<br>',
     footerFormat: '</div>',
@@ -67,10 +63,6 @@ class TempChartWidgetBase extends React.Component {
 
     options.series = sensorIds.map((sensorId) => {
       return {
-        dataGrouping: {
-          enabled: true
-        },
-        showInNavigator:true,
         name: this.getNameOfSensorById(sensorId),
         data: partitionedById[sensorId].map(data => {
           return [new Date(data.date).valueOf(), data.value]
