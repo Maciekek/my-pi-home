@@ -16,6 +16,11 @@ const options = {
     text: ''
   },
 
+  legend: {
+    enabled: true
+  },
+
+
   yAxis: {
     opposite:false
   },
