@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import Highcharts from 'highcharts'
 import Highstock from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
-Highcharts.setOptions({
+Highstock.setOptions({
   time: {
     timezoneOffset: -1 * 60
   }
@@ -20,21 +20,32 @@ const options = {
     opposite:false
   },
 
+  navigator: {
+    series: {
+      type: 'areaspline',
+      fillOpacity: 0.05,
+      dataGrouping: {
+        smoothed: true
+      },
+      lineWidth: 1,
+      marker: {
+        enabled: false
+      }
+    }
+  },
+
   chart: {
     zoomType: 'x'
   },
-  xAxis: {
-    type: 'datetime',
-    //	tickInterval: 60 * 1000, // for thin step
-    dateTimeLabelFormats: { // don't display the dummy year\
-      year:  '%I:%M:%S %p',
-      month:  '%I:%M:%S %p',
-      day: '%I:%M:%S %p'
+  rangeSelector: {
+    selected: 4,
+    inputEnabled: false,
+    buttonTheme: {
+      visibility: 'hidden'
     },
-    title: {
-      text: 'Time'
+    labelStyle: {
+      visibility: 'hidden'
     }
-
   },
 
   tooltip: {
@@ -117,7 +128,8 @@ class TempChartWidgetBase extends React.Component {
       <div className={'line-chart'}>
         {this.state ? <HighchartsReact
 
-          highcharts={Highcharts}
+          constructorType={'stockChart'}
+          highcharts={Highstock}
           options={this.state}
           ref={this.chartComponent}
           allowChartUpdate={true}
