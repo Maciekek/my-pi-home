@@ -16,6 +16,10 @@ const options = {
     text: ''
   },
 
+  yAxis: {
+    opposite:false
+  },
+
   chart: {
     zoomType: 'x'
   },
@@ -34,19 +38,6 @@ const options = {
     series: {}
   },
 
-
-  // xAxis: {
-  //   type: 'datetime',
-  //   //	tickInterval: 60 * 1000, // for thin step
-  //   dateTimeLabelFormats: { // don't display the dummy year\
-  //     year:  '%I:%M:%S %p',
-  //     month:  '%I:%M:%S %p',
-  //     day: '%I:%M:%S %p'
-  //   },
-  //   title: {
-  //     text: 'Time'
-  //   }
-  // },
   tooltip: {
     headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">{point.key}<br>',
     footerFormat: '</div>',
