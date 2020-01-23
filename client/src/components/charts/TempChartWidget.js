@@ -3,6 +3,7 @@ import _ from 'lodash';
 import {connect} from "react-redux";
 
 import Highcharts from 'highcharts'
+import Highstock from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 Highcharts.setOptions({
   time: {
@@ -18,19 +19,34 @@ const options = {
   chart: {
     zoomType: 'x'
   },
-
-  xAxis: {
-    type: 'datetime',
-    //	tickInterval: 60 * 1000, // for thin step
-    dateTimeLabelFormats: { // don't display the dummy year\
-      year:  '%I:%M:%S %p',
-      month:  '%I:%M:%S %p',
-      day: '%I:%M:%S %p'
+  rangeSelector: {
+    selected: 4,
+    inputEnabled: false,
+    buttonTheme: {
+      visibility: 'hidden'
     },
-    title: {
-      text: 'Time'
+    labelStyle: {
+      visibility: 'hidden'
     }
   },
+
+  navigator: {
+    series: {}
+  },
+
+
+  // xAxis: {
+  //   type: 'datetime',
+  //   //	tickInterval: 60 * 1000, // for thin step
+  //   dateTimeLabelFormats: { // don't display the dummy year\
+  //     year:  '%I:%M:%S %p',
+  //     month:  '%I:%M:%S %p',
+  //     day: '%I:%M:%S %p'
+  //   },
+  //   title: {
+  //     text: 'Time'
+  //   }
+  // },
   tooltip: {
     headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">{point.key}<br>',
     footerFormat: '</div>',
@@ -47,6 +63,8 @@ class TempChartWidgetBase extends React.Component {
   constructor(props) {
     super(props);
 
+    this.chartComponent = React.createRef();
+
    this.state = {
      ...this.parseData()
    };
@@ -58,12 +76,18 @@ class TempChartWidgetBase extends React.Component {
 
     options.series = sensorIds.map((sensorId) => {
       return {
+        dataGrouping: {
+          enabled: true
+        },
+        showInNavigator:true,
         name: this.getNameOfSensorById(sensorId),
         data: partitionedById[sensorId].map(data => {
           return [new Date(data.date).valueOf(), data.value]
         })
       }
     });
+
+
 
     return {
       ...options
@@ -89,11 +113,15 @@ class TempChartWidgetBase extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     const data = this.parseData();
-    if(!_.isEqual(this.state,  data)) {
+    if(!_.isEqual(this.state.series,  data.series)) {
       this.setState (
         data
       )
     }
+
+    this.chartComponent.current.chart.xAxis[0].setExtremes(data[0], data[data.length-1], false);
+    this.chartComponent.current.chart.redraw()
+
   }
 
   render() {
@@ -102,9 +130,11 @@ class TempChartWidgetBase extends React.Component {
     return (
       <div className={'line-chart'}>
         {this.state ? <HighchartsReact
-          highcharts={Highcharts}
+
+          constructorType={'stockChart'}
+          highcharts={Highstock}
           options={this.state}
-          ref={"chartComponent"}
+          ref={this.chartComponent}
           allowChartUpdate={true}
         /> : null}
       </div>
