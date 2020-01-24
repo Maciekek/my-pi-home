@@ -78,7 +78,7 @@ class TempChartWidgetBase extends React.Component {
 
   parseData = () => {
     const partitionedById = _.groupBy(this.props.data, "sensorId");
-    const sensorIds = Object.keys(partitionedById);
+    const sensorIds = _.sortBy(Object.keys(partitionedById));
 
     options.series = sensorIds.map((sensorId) => {
       return {
