@@ -57,7 +57,7 @@ const options = {
     headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">{point.key}<br>',
     footerFormat: '</div>',
     xDateFormat: 'Godzina: %H:%M;  Data: %d-%m',
-    shared: false
+    shared: true
   },
 };
 
@@ -82,6 +82,9 @@ class TempChartWidgetBase extends React.Component {
 
     options.series = sensorIds.map((sensorId) => {
       return {
+        dataGrouping: {
+          enabled: true
+        },
         name: this.getNameOfSensorById(sensorId),
         data: partitionedById[sensorId].map(data => {
           return [new Date(data.date).valueOf(), data.value]
