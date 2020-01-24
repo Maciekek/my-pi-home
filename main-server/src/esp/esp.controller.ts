@@ -1,7 +1,6 @@
 import {Body, Controller, Get, Param, Post, Query} from '@nestjs/common';
 import {TempsService} from "../temps/temps.service";
 import {AddTempDto} from "../temps/dto/add-temp.dto";
-import * as moment from 'moment';
 
 @Controller('/esp')
 export class EspController {
@@ -14,7 +13,11 @@ export class EspController {
         test.sensorId = `${params.task}:_:${params.valuename}`;
         test.value = params.value;
 
-        test.date = moment().set('second', 0).set('millisecond', 0).toISOString();
+        const date = new Date();
+        date.setMilliseconds(0);
+        date.setSeconds(0);
+
+        test.date = date.toISOString();
 
         this.tempsService.addTemp(test);
         return new Promise<string>((suc) => {
