@@ -14,8 +14,7 @@ export class EspController {
         test.sensorId = `${params.task}:_:${params.valuename}`;
         test.value = params.value;
 
-        // @ts-ignore
-        test.date = moment().set('second', 0).set('milisecond', 0).toISOString();
+        test.date = moment().set('second', 0).set('millisecond', 0).toISOString();
 
         this.tempsService.addTemp(test);
         return new Promise<string>((suc) => {
