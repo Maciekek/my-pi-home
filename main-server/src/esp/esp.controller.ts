@@ -1,7 +1,7 @@
 import {Body, Controller, Get, Param, Post, Query} from '@nestjs/common';
 import {TempsService} from "../temps/temps.service";
 import {AddTempDto} from "../temps/dto/add-temp.dto";
-import moment from 'moment';
+import * as moment from 'moment';
 
 @Controller('/esp')
 export class EspController {
