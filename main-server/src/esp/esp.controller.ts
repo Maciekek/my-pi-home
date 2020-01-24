@@ -12,7 +12,12 @@ export class EspController {
         test.locationId = params.locationId;
         test.sensorId = `${params.task}:_:${params.valuename}`;
         test.value = params.value;
-        test.date = new Date().toISOString();
+
+        const date = new Date();
+        date.setSeconds(0);
+        date.setMilliseconds(0);
+
+        test.date = date.toISOString();
 
         this.tempsService.addTemp(test);
         return new Promise<string>((suc) => {
