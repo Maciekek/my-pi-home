@@ -87,11 +87,11 @@ export class HeartbeatService implements CronJob {
                 KOTŁOWNIA: ${kotData.value}`);
             }
 
-            this.slackService.sendMessage(`\n\n  AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
-                    \n\n Pozostałe odczyty: \n
-                    KALORYFERY: ${kalData.value} \n
-                    PODŁOGÓWKA: ${podData.value} \n
-                    KOTŁOWNIA: ${kotData.value}`);
+            // this.slackService.sendMessage(`\n\n  AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
+            //         \n\n Pozostałe odczyty: \n
+            //         KALORYFERY: ${kalData.value} \n
+            //         PODŁOGÓWKA: ${podData.value} \n
+            //         KOTŁOWNIA: ${kotData.value}`);
         });
 
         // const lastResultsPromises = this.locations.findAll().then((locations) => {
