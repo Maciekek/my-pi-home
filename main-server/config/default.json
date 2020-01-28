@@ -1,5 +1,5 @@
 {
   "dbConfig": {
-    "url": "mongodb://localhost/nest"
+    "url": "mongodb://77.55.217.143/nest"
   }
 }

@@ -17,8 +17,9 @@ export class SensorsService {
 
     async findAllSensorsYoungerthan(locationId, body: any): Promise<Temp[]> {
         return await this.tempModel
-            .find({locationId, date: {$gte: body.from}})
-            .sort({date: 1})
+            .find({locationId})
+            .sort({date: -1})
+            .limit(5)
             .exec();
     }
 }

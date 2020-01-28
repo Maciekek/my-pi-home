@@ -15,7 +15,8 @@ export class SlackService  {
     }
 
     sendMessage(content) {
-        this.slackApi.chat.postMessage({channel: 'powiadomienia', text: content, username: "Backend API" });
+        this.slackApi.chat.postMessage({channel: 'powiadomienia', text: `\n\n\n\n\n\n\n ============================ \n <!channel> 
+            \n\n\n ${content}`, username: "Backend API" });
     }
 
 }
