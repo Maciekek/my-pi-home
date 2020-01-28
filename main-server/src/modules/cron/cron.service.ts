@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import {Cron} from '@nestjs/schedule';
+import {Cron, Interval} from '@nestjs/schedule';
 import {HeartbeatService} from "../heartbeat/heartbeat.service";
 
 @Injectable()
@@ -10,7 +10,7 @@ export class CronService {
 
     }
 
-    @Cron('25 * * * * ')
+    @Interval(120000)
     handleCron() {
         this.heartbeatService.run();
         this.logger.debug('Called cron task');
