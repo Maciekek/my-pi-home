@@ -10,7 +10,7 @@ export class CronService {
 
     }
 
-    @Interval(120000)
+    @Interval(360000)
     handleCron() {
         this.heartbeatService.run();
         this.logger.debug('Called cron task');
