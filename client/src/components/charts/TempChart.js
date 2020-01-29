@@ -61,7 +61,7 @@ class TempChart extends React.Component {
 
   render() {
     const partitionedById = _.groupBy(this.props.temps, "sensorId");
-    const sensorIds = Object.keys(partitionedById);
+    const sensorIds = _.sortBy(Object.keys(partitionedById));
 
     const groupedTemps = sensorIds.map((sensorId) => {
       return {
