@@ -34,6 +34,8 @@ export class HeartbeatService implements CronJob {
         const sMax = 40;
         const sMin = 30;
 
+        const roomMax = 30;
+
         const pID = '28-000006bee1fc';
         const sensors = {
             kal: '10-000802cbe042',
@@ -85,6 +87,14 @@ export class HeartbeatService implements CronJob {
                 KALORYFERY: ${kalData.value} \n
                 PODŁOGÓWKA: ${podData.value} \n
                 KOTŁOWNIA: ${kotData.value}`);
+            }
+
+            if (kotData.value > roomMax) {
+                this.slackService.sendMessage(`\n\n TEMPARATURA w KOTOWKI jest ZA WYSOKA \n KOTLOWNIA: *${kotData.value}* \n\n\n\n
+                \n\n Pozostałe odczyty: \n
+                KALORYFERY: ${kalData.value} \n
+                PODŁOGÓWKA: ${podData.value} \n
+                PIEC: ${pData.value}`);
             }
 
             // this.slackService.sendMessage(`\n\n  AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
