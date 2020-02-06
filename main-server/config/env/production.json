@@ -1,5 +1,8 @@
 {
   "dbConfig": {
-    "host": "mongodb://localhost/nest"
+    "url": "mongodb://__auth__@77.55.217.143:27017/nest"
   }
 }
+
+
+//nestClient:HchMMCtKqpwdJ9wCK6vg2AmbbH6ShWpShFTG2w5QtRcfru4EdnhJvZfBVcYqD6wuans2pufr5v43jWWnP5QDNxAtSsqMRsB3tQ5

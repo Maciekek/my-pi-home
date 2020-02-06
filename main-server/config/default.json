@@ -1,5 +1,5 @@
 {
   "dbConfig": {
-    "url": "mongodb://77.55.217.143:27017/nest"
+    "url": "mongodb://__auth__@77.55.217.143:27017/nest"
   }
 }

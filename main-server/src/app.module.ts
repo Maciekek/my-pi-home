@@ -14,11 +14,12 @@ import { ScheduleModule } from '@nestjs/schedule';
 import {CronModule} from "./modules/cron/cron.module";
 
 console.log(config.dbConfig);
+const dbConnectionString = config.dbConfig.url.replace("__auth__", process.env.DB_AUTH);
 
 @Module({
   imports:
       [
-          MongooseModule.forRoot(config.dbConfig.url),
+          MongooseModule.forRoot(dbConnectionString),
           ScheduleModule.forRoot(),
           CatsModule,
           TempsModule,
