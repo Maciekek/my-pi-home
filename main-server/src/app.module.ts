@@ -14,6 +14,7 @@ import { ScheduleModule } from '@nestjs/schedule';
 import {CronModule} from "./modules/cron/cron.module";
 
 console.log(config.dbConfig);
+console.log(config.dbConfig.url);
 const dbConnectionString = config.dbConfig.url.replace("__auth__", process.env.DB_AUTH);
 
 @Module({
