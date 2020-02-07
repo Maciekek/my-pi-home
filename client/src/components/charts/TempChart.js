@@ -38,7 +38,9 @@ const options = {
     headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">{point.key}<br>',
     footerFormat: '</div>',
     xDateFormat: 'Godzina: %H:%M;  Data: %d-%m',
-    shared: false
+    shared: true,
+    split: false,
+    enabled: true
   },
 
 };
