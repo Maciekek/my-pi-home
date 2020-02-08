@@ -53,8 +53,8 @@ export class EventsGateway implements  OnGatewayConnection, OnGatewayDisconnect 
   @SubscribeMessage('finishedAction')
   handleEvent2(socket: any, response: any): void {
     this.logger.log(`Finished action ${JSON.stringify(response)}`);
-    console.log(this.pendingActions[response.id]);
     this.pendingActions[response.id](response);
+
     delete this.pendingActions[response.id];
   }
 

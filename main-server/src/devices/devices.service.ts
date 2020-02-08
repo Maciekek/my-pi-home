@@ -19,21 +19,10 @@ export class DevicesService {
     async updateRelayDevice(relayDeviceData, newValue): Promise<any> {
         this.logger.log("Add relay device " + relayDeviceData);
 
-        console.log('1', relayDeviceData);
-
-        const updatedValue = {
-            ...relayDeviceData,
-            ...newValue,
-        };
-        const updateDashboard = new this.relayDevice(updatedValue);
-        console.log('a', updateDashboard);
-        //
         await this.relayDevice.findOneAndUpdate({_id: relayDeviceData._id},
           {$set: {state: newValue.state}});
 
-        // return await this.relayDevice.findOne({_id: id});
-        //
-        // return await newRelay.save();
+        return await this.relayDevice.findOne({_id: relayDeviceData._id});
     }
 
     async getDevicesByLocationId(locationId: string): Promise<any> {

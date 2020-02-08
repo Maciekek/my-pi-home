@@ -10,6 +10,7 @@ const RelayDeviceController = ({device}) => {
   return (
     <div className={'relay-device-controller'}>
       <span className={'relay-device-controller--title'}>{device.name}</span>
+      <span>Stan: {device.state}</span>
       <button onClick={onClick}>wlacz/wylacz</button>
     </div>
   )

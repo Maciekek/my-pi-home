@@ -29,10 +29,11 @@ export class RelayService {
         const state = relayData.state === '0' ? '1' : '0';
 
         const actionUrl = `http://${relayData.ip}/control?cmd=GPIO,${relayData.gpio},${state}`;
-        this.ws.emit('action', {id: uuidv4(), url: actionUrl}).then((data: any) => {
+        return this.ws.emit('action', {id: uuidv4(), url: actionUrl}).then((data: any) => {
             const response =  JSON.parse((data).response);
             this.logger.log(`Received response ${JSON.stringify(data)}`);
-            this.devicesService.updateRelayDevice(relayData, {state});
+
+            return this.devicesService.updateRelayDevice(relayData, {state});
         });
 
     }
