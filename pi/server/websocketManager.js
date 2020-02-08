@@ -1,9 +1,8 @@
 const io = require('socket.io-client');
 const configEnv = require('config');
+import axios from 'axios';
 
 class WebsocketManager {
-
-
   constructor() {
     this.socket = null;
   }
@@ -35,6 +34,11 @@ class WebsocketManager {
 
     this.socket.on('action', (actionMessage) => {
       console.log("DO SOME ACTION ", actionMessage);
+
+      axios.get(actionMessage.url).then((response) => {
+        console.log(response)
+      })
+
       console.log(`[websocket] received some message type: ${actionMessage}`)
     });
 
