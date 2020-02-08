@@ -38,7 +38,7 @@ class WebsocketManager {
       axios.get(actionMessage.url).then((response) => {
         console.log(response)
       });
-      this.socket.emit('finito')
+      this.socket.emit('finishedAction', "test")
       console.log(`[websocket] received some message type: ${actionMessage}`)
     });
 
