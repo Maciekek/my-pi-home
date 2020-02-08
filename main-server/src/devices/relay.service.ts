@@ -27,7 +27,10 @@ export class RelayService {
 
         const actionUrl = `http://${relayData.ip}/control?cmd=GPIO,${relayData.gpio},0`;
         this.ws.emit('action', {id: uuidv4(), url: actionUrl}).then((a) => {
-            console.log('uga buga koniec !!!', JSON.parse(a as any));
+            console.log('uga buga koniec !!!', JSON.parse((a as any).response));
+            console.log('uga buga koniec !!!', (a as any).response);
+            console.log('uga buga koniec !!!', typeof (a as any).response);
+
         });
 
     }
