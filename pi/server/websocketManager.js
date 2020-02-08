@@ -32,6 +32,12 @@ class WebsocketManager {
       console.log(message);
       console.log(`[websocket] received some message type: ${message.event_type}`)
     });
+
+    this.socket.on('action', (actionMessage) => {
+      console.log("DO SOME ACTION ", actionMessage);
+      console.log(`[websocket] received some message type: ${actionMessage}`)
+    });
+
     this.socket.on('ping', () => {
       console.log('[websocket] event ping!')
     });
