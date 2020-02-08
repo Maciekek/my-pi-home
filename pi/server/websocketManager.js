@@ -37,9 +37,7 @@ class WebsocketManager {
       console.log(`[websocket] received some message type: ${actionMessage.url}`)
       console.log("DO SOME ACTION ", actionMessage);
       axios.get(actionMessage.url).then((response) => {
-        console.log(response.data);
-        console.log(JSON.stringify(response.data));
-        this.socket.emit('finishedAction', {id: actionMessage.id, response: response.data})
+        this.socket.emit('finishedAction', {id: actionMessage.id, response: JSON.parse(response.data)})
       });
     });
 
