@@ -1,6 +1,6 @@
 const io = require('socket.io-client');
 const configEnv = require('config');
-import axios from 'axios';
+const axios = require('axios');
 
 class WebsocketManager {
   constructor() {
