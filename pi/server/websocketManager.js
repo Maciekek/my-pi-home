@@ -9,6 +9,7 @@ class WebsocketManager {
 
   connect() {
     this.socket = io(configEnv.get('api.websocket'));
+    console.log("CONNECT")
     this.attachListeners()
   }
 

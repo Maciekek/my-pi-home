@@ -52,16 +52,16 @@ export class EventsGateway implements  OnGatewayConnection, OnGatewayDisconnect 
 
   @SubscribeMessage('finishedAction')
   handleEvent2(socket: any, response: any): void {
-    console.log("finito", response.id);
-    // this.resolveCallback('finished!');
+    this.logger.log(`Finished action ${JSON.stringify(response)}`);
+
+    this.pendingActions[response.id](response);
+    delete this.pendingActions[response.id];
   }
 
   emit(eventName, message) {
     this.server.emit(eventName, message);
 
     return new Promise((resolve, reject) => {
-      // this.resolveCallback = resolve;
-
       this.pendingActions[message.id] = resolve;
     });
   }
