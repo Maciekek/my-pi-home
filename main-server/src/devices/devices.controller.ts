@@ -20,7 +20,9 @@ export class DevicesController {
 // /api/devices/relay/5e3e9bf0a174e3091832e8fa/toggle
     @Get('relay/:relayId/toggle')
     async relayToggle(@Param('relayId') relayId: string): Promise<void> {
-        this.relayService.relayToggleCall(relayId);
+        return this.relayService.relayToggleCall(relayId).then((data) => {
+            return data;
+        });
     }
 
 //    api/devices/relay/5e3e9bf0a174e3091832e8fa/toggle
