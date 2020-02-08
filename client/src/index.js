@@ -12,6 +12,7 @@ import {locationReducer} from "./store/reducers/Locations";
 import {dashboardsReducer} from "./store/reducers/Dashboards";
 import {settingsReducer} from "./store/reducers/Settings";
 import {behaviourReducer} from "./store/reducers/Behaviour";
+import {devicesReducer} from "./store/reducers/Devices";
 import {websocket} from "./utils/Websocket";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -25,6 +26,7 @@ const store = createStore(combineReducers({
   dashboardsStore: dashboardsReducer,
   settingsReducer: settingsReducer,
   behaviourReducer: behaviourReducer,
+  devicesReducer: devicesReducer,
 }), composeEnhancers(applyMiddleware(thunk)));
 
 //

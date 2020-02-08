@@ -16,6 +16,8 @@ import {DashboardSettingsPage} from "./page/DashboardSettingsPage";
 import {WebsocketIndicator} from "./components/uiComponents/websocketIndicator";
 import { ToastContainer } from 'react-toastify';
 import {ConfirmationModal} from "./components/ConfirmationModal";
+import {DevicesPage} from "./page/DevicesPage";
+import {DeviceFormPage} from "./page/DeviceFormPage";
 
 
 function App() {
@@ -42,7 +44,10 @@ function App() {
         <Route path="/locations/:id" exact={true} component={LocationPage}/>
         <Route path="/locations/:id/settings" exact={true} component={LocationSettingsPage}/>
         <Route path="/dashboard/:id" exact={true} component={DashboardPage}/>
+        <Route path="/:id/devices/" exact={true} component={DevicesPage}/>
+        <Route path="/:id/devices/new" exact={true} component={DeviceFormPage}/>
         <Route path="/dashboardSettings/:id" exact={true} component={DashboardSettingsPage}/>
+
 
 
         <ConfirmationModal></ConfirmationModal>

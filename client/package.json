@@ -53,5 +53,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://77.55.217.143/"
+  "proxy": "http://localhost:8888/"
 }
