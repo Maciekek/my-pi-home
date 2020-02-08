@@ -6,5 +6,6 @@ export interface RelayDevice extends Document {
     readonly gpio: string;
     readonly type: string;
     readonly name: string;
+    readonly state: string;
 
 }

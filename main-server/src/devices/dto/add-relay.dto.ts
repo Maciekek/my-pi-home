@@ -16,4 +16,6 @@ export class AddRelayDto implements RelayDevice {
 
     @IsNotEmpty()
     readonly name: string;
+
+    readonly state: string;
 }

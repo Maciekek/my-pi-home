@@ -6,4 +6,5 @@ export const RelayDeviceSchema = new mongoose.Schema({
     gpio: String,
     type: String,
     name: String,
+    state: String,
 });
