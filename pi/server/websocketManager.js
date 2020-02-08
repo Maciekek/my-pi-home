@@ -34,7 +34,7 @@ class WebsocketManager {
 
     this.socket.on('action', (actionMessage) => {
       console.log("DO SOME ACTION ", actionMessage);
-
+      console.log("Dzwonei do niego", actionMessage.url)
       axios.get(actionMessage.url).then((response) => {
         console.log(response)
       })
