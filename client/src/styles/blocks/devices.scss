@@ -26,4 +26,27 @@
     }
   }
 
+  &__list {
+    display: flex;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+
+  .device-item {
+    border: 1px solid transparentize(gray, 0.4);
+    border-radius: 4px;
+    margin: 0 10px;
+    &__header {
+      border-bottom: 1px solid transparentize(gray, 0.4);
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &--center {
+        font-weight: 700;
+      }
+
+    }
+  }
 }

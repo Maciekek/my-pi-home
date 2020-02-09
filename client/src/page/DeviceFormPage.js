@@ -3,24 +3,11 @@ import {Page} from '../components/page';
 import _ from 'lodash';
 
 import {connect} from "react-redux";
-import {speedChartDataLoader} from "../dataLoaders/speedChartDataLoader";
-import {SpeedChart} from "../components/charts/SpeedChart";
-import {WidgetDataLoader} from "../components/widgetDataLoader";
-import {CustomModal} from "../components/modal";
-import {AddWidget} from "../components/addWidget/addWidget";
 import {getDashboardByLocationIdFront} from "../store/actions/DashboardActions";
-import {TempChartWidget} from "../components/charts/TempChartWidget";
-import {getLocationSettings} from "../store/actions/LocationsActions";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlusCircle} from '@fortawesome/free-solid-svg-icons'
-import {Widget} from "../components/widget";
 import Select from "react-select";
-import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import {SpeedChartForm} from "../components/addWidget/speedChartForm";
-import {LineChartForm} from "../components/addWidget/lineChartForm";
 import {RelayForm} from "../components/deviceTypeForms/RelayForm";
+import {getDevicesByLocationId} from "store/actions/DevicesActions";
 
 
 const options = [
@@ -38,7 +25,16 @@ class DeviceFormPageBase extends React.Component {
     super(props);
 
     this.state = {
-      selectedFormType: null
+      selectedFormType: null,
+      isEditMode: this.props.match.url.includes('/edit')
+    };
+
+    console.log(this.props.match);
+    console.log(this.state.isEditMode);
+    console.log('asd', this.props.deviceToEdit);
+    if (this.state.isEditMode && !this.props.deviceToEdit) {
+      console.log('laduje')
+      props.dispatch(getDevicesByLocationId(props.match.params.id));
     }
 
     props.dispatch(getDashboardByLocationIdFront(props.match.params.id))
@@ -59,10 +55,27 @@ class DeviceFormPageBase extends React.Component {
     }
   };
 
+  getWidgetType = () => {
+    if (!this.props.deviceToEdit) {
+      return {}
+    }
+    const device = _.find(options, ['value', this.props.deviceToEdit.type]);
+
+    // console.log('qaz', this.state.selectedFormType.value);
+    console.log('qaz', device.value);
+    if(!_.isEqual(this.state.selectedFormType, device.value)) {
+      this.setState({
+        selectedFormType: device.value
+      });
+      return device
+    }
+
+    return device;
+  };
 
   render() {
     const Component = this.getComponentToRender(this.state.selectedFormType);
-
+    console.log(this.props.deviceToEdit);
     return (
      <Page>
        {/*<Col />*/}
@@ -74,9 +87,11 @@ class DeviceFormPageBase extends React.Component {
            classNamePrefix="select"
            isClearable={false}
            name="color"
-           isDisabled={false}
            onChange={this.onSelectChange}
            options={options}
+           isDisabled={this.state.isEditMode}
+           value={this.state.isEditMode ? this.getWidgetType() : null}
+
          />
        </div>
 
@@ -84,6 +99,7 @@ class DeviceFormPageBase extends React.Component {
          {this.state.selectedFormType
            ? <Component
               locationId={this.props.match.params.id}
+              device={this.props.deviceToEdit}
             />
            : null}
        </Col>
@@ -91,10 +107,13 @@ class DeviceFormPageBase extends React.Component {
     )
   }
 }
+const getDeviceById = (state, props) => {
+  return _.find(state.devicesReducer.devices[props.match.params.id], ['_id', props.match.params.deviceId]);
+};
 
 const mapStateToProps = (state, props) => {
   return {
-
+    deviceToEdit: getDeviceById(state, props)
   }
 };
 

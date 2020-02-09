@@ -13,6 +13,13 @@ export class DevicesController {
         return this.devicesService.addRelayDevice(locationId, relayDto.ip, relayDto.gpio, relayDto.type, relayDto.name);
     }
 
+    @Post('/:deviceId')
+    async updateRelay(@Param('deviceId') deviceId: string, @Body() relayDto: AddRelayDto): Promise<RelayDevice> {
+        return this.devicesService.updateWholeRelayDevice(deviceId,
+          {ip: relayDto.ip, gpio: relayDto.gpio, type: relayDto.type, name: relayDto.name},
+        );
+    }
+
     @Get(':locationId/all')
     async getDevicesByLocationId(@Param('locationId') locationId: string): Promise<RelayDevice> {
         return this.devicesService.getDevicesByLocationId(locationId);

@@ -3,18 +3,8 @@ import {Page} from '../components/page';
 import _ from 'lodash';
 
 import {connect} from "react-redux";
-import {speedChartDataLoader} from "../dataLoaders/speedChartDataLoader";
-import {SpeedChart} from "../components/charts/SpeedChart";
-import {WidgetDataLoader} from "../components/widgetDataLoader";
-import {CustomModal} from "../components/modal";
-import {AddWidget} from "../components/addWidget/addWidget";
-import {getDashboardByLocationIdFront} from "../store/actions/DashboardActions";
-import {TempChartWidget} from "../components/charts/TempChartWidget";
-import {getLocationSettings} from "../store/actions/LocationsActions";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlusCircle} from '@fortawesome/free-solid-svg-icons'
-import {Widget} from "../components/widget";
-import {faToggleOn} from "@fortawesome/free-solid-svg-icons/faToggleOn";
+import {faEdit, faPlusCircle, faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 import {getDevicesByLocationId} from "../store/actions/DevicesActions";
 import {RelayDeviceController} from "../components/devices/relayDevice";
@@ -46,17 +36,27 @@ class DevicesPageBase extends React.Component {
            </div>
          </div>
 
-         <div className={'device'}>
-
-
+         <div className={'devices__list'}>
 
            {this.props.devices
              ? this.props.devices.map(device => {
-                return <RelayDeviceController device={device}/>
+                return (
+                  <div className={'device-item'}>
+                    <div className={'device-item__header'}>
+                      <div className={'device-item__header--left'}></div>
+                      <div className={'device-item__header--center'}>{device.name}</div>
+                      <div className={'device-item__header--right'}>
+                          <Link to={`/${this.props.match.params.id}/devices/${device._id}/edit`}>
+                            <FontAwesomeIcon icon={faEdit} onClick={this.editWidget}/>
+                          </Link>
+                          {/*<FontAwesomeIcon icon={faTrashAlt} onClick={this.removeWidget}/>*/}
+                      </div>
+                    </div>
+                    <RelayDeviceController device={device}/>
+                  </div>)
               })
              : <div className={'centered'}>Nie masz żadnego urządzenia</div>
            }
-
 
          </div>
 

@@ -46,6 +46,7 @@ function App() {
         <Route path="/dashboard/:id" exact={true} component={DashboardPage}/>
         <Route path="/:id/devices/" exact={true} component={DevicesPage}/>
         <Route path="/:id/devices/new" exact={true} component={DeviceFormPage}/>
+        <Route path="/:id/devices/:deviceId/edit" exact={true} component={DeviceFormPage}/>
         <Route path="/dashboardSettings/:id" exact={true} component={DashboardSettingsPage}/>
 
 

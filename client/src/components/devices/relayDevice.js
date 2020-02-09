@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {RelayService} from "../../services/deviceServices/relay.service";
+import {RelayService} from "services/deviceServices/relay.service";
+import {Switcher} from "components/devices/switcher";
 
 const RelayDeviceController = ({device}) => {
   const [deviceState, setDeviceState]= useState( device.state );
@@ -12,12 +13,27 @@ const RelayDeviceController = ({device}) => {
       setDeviceState(response.data.state);
     });
   };
-
+  console.log(deviceState);
   return (
+
     <div className={'relay-device-controller'}>
-      <span className={'relay-device-controller--title'}>{device.name}</span>
-      <span>Stan: {deviceState}</span>
-      <button onClick={onClick}>wlacz/wylacz</button>
+      <Switcher checked={deviceState} onClick={onClick}/>
+
+
+      <span className={'relay-device-controller__title'}>
+        <span className={'relay-device-controller__description'}>Nazwa: </span>
+        <span>{device.name}</span>
+      </span>
+
+      <span className={'relay-device-controller__state'}>
+        <span className={'relay-device-controller__description'}>Prawdopodobny stan: </span>
+        <span>{deviceState}</span>
+      </span>
+
+      <span className={'relay-device-controller__ip'}>
+        <span className={'relay-device-controller__description'}>IP: {device.ip}, GPIO: {device.gpio} </span>
+      </span>
+
     </div>
   )
 };

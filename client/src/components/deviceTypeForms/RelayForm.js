@@ -9,20 +9,21 @@ import {RelayService} from "../../services/deviceServices/relay.service";
 
 class RelayForm extends React.PureComponent {
   static propTypes = {
-    locationId: PropTypes.string
+    locationId: PropTypes.string,
+    device: PropTypes.object,
   };
 
   constructor(props) {
     super(props);
 
-    console.log(props);
+    console.log('qqqqs', props.device);
+    console.log('qqqqs', props.device.ip);
 
     this.state = {
-      ip: "",
-      gpio: "",
-      name: "",
+      ip: props.device.ip || "",
+      gpio: props.device.gpio || "",
+      name: props.device.name || "",
     }
-
   }
 
   componentDidMount() {
@@ -41,12 +42,13 @@ class RelayForm extends React.PureComponent {
   };
 
   submit = () => {
-    RelayService.addNewRelay(this.props.locationId,
-      { locationId: this.props.locationId, ip: this.state.ip, gpio: this.state.gpio, type: 'simpleRelay', name: this.state.name });
-
-    console.log(this.props.locationId)
-  }
-
+    console.log(this.props.device);
+    this.props.device
+      ? RelayService.updateRelay(this.props.device._id,
+          { locationId: this.props.locationId, ip: this.state.ip, gpio: this.state.gpio, type: 'simpleRelay', name: this.state.name })
+      : RelayService.addNewRelay(this.props.locationId,
+          { locationId: this.props.locationId, ip: this.state.ip, gpio: this.state.gpio, type: 'simpleRelay', name: this.state.name });
+  };
 
   render() {
     return (
