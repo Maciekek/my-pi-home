@@ -14,7 +14,7 @@ class Websocket {
   constructor() {}
 
   connect() {
-    this.socket = io('http://77.55.217.143:8888');
+    this.socket = io('http://localhost:8888');
 
     this.attachListeners()
   }
