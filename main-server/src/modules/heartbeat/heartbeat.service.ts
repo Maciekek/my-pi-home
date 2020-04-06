@@ -32,7 +32,7 @@ export class HeartbeatService implements CronJob {
         const pMin = 40;
 
         const sMax = 40;
-        const sMin = 30;
+        const sMin = 25;
 
         const roomMax = 30;
 
