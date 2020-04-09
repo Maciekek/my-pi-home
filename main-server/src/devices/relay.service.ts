@@ -30,7 +30,6 @@ export class RelayService {
 
         const actionUrl = `http://${relayData.ip}/control?cmd=GPIO,${relayData.gpio},${state}`;
         return this.ws.emit('action', {id: uuidv4(), url: actionUrl}).then((data: any) => {
-            const response =  JSON.parse((data).response);
             this.logger.log(`Received response ${JSON.stringify(data)}`);
 
             return this.devicesService.updateRelayDevice(relayData, {state});
