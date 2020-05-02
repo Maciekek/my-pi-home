@@ -79,6 +79,9 @@ class TempChartWidgetBase extends React.Component {
    this.state = {
      ...this.parseData()
    };
+   
+   
+   console.log(84, 'test');
   }
 
   parseData = () => {
