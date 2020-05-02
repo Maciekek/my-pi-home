@@ -1,15 +1,15 @@
 const io = require('socket.io-client');
 const configEnv = require('config');
+const axios = require('axios');
 
 class WebsocketManager {
-
-
   constructor() {
     this.socket = null;
   }
 
   connect() {
     this.socket = io(configEnv.get('api.websocket'));
+    console.log("CONNECT")
     this.attachListeners()
   }
 
@@ -32,6 +32,17 @@ class WebsocketManager {
       console.log(message);
       console.log(`[websocket] received some message type: ${message.event_type}`)
     });
+
+    this.socket.on('action', (actionMessage) => {
+      console.log(`[websocket] received some message type: ${actionMessage.url}`)
+      console.log("DO SOME ACTION ", actionMessage);
+      axios.get(actionMessage.url).then((response) => {
+
+
+        this.socket.emit('finishedAction', {id: actionMessage.id, response: response.data.slice(0, response.data.indexOf('}') + 1)})
+      });
+    });
+
     this.socket.on('ping', () => {
       console.log('[websocket] event ping!')
     });

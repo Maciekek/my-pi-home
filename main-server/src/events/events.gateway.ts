@@ -1,5 +1,5 @@
 import {
-  OnGatewayConnection, OnGatewayDisconnect,
+  OnGatewayConnection, OnGatewayDisconnect, SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
@@ -12,13 +12,14 @@ const websocketRPIConnections = {};
 export class EventsGateway implements  OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server: Server;
+  pendingActions = {};
 
   private readonly logger = new Logger(EventsGateway.name);
 
   constructor() {
     setInterval(() => {
       if (this.server && this.server.emit) {
-        this.server.emit('ping');
+        this.server.emit('pin 123 g');
       }
     }, 1000);
   }
@@ -47,6 +48,22 @@ export class EventsGateway implements  OnGatewayConnection, OnGatewayDisconnect 
     }
 
     this.logger.log(`Disconnected some user: ${client.id}`);
+  }
+
+  @SubscribeMessage('finishedAction')
+  handleEvent2(socket: any, response: any): void {
+    this.logger.log(`Finished action ${JSON.stringify(response)}`);
+    this.pendingActions[response.id](response);
+
+    delete this.pendingActions[response.id];
+  }
+
+  emit(eventName, message) {
+    this.server.emit(eventName, message);
+
+    return new Promise((resolve, reject) => {
+      this.pendingActions[message.id] = resolve;
+    });
   }
 
 }

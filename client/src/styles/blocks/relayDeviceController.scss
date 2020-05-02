@@ -1,0 +1,19 @@
+@import "../variables";
+
+.relay-device-controller {
+  //border: 1px solid transparentize(gray, 0.4);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+
+  &__title {
+
+  }
+
+  &__description {
+    opacity: 0.4;
+  }
+}

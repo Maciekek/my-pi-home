@@ -1,4 +1,3 @@
-
 const config = require("./src/readConfig");
 
 const piReader = require('./src/reader/reader');

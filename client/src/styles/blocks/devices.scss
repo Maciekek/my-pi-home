@@ -1,0 +1,52 @@
+@import "../variables";
+
+.devices {
+  &__settings {
+    padding: 10px 0;
+    border-bottom: 1px solid transparentize($sanJuan, 0.5);
+    border-top: 1px solid transparentize($sanJuan, 0.5);
+    display: flex;
+    &--action {
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 4px;
+      &:hover {
+        background-color: transparentize($sanJuan, 0.9);;
+      }
+    }
+  }
+  &__widgets {
+    padding: 20px 0 ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    &__widget {
+      margin: 10px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+
+  .device-item {
+    border: 1px solid transparentize(gray, 0.4);
+    border-radius: 4px;
+    margin: 0 10px;
+    &__header {
+      border-bottom: 1px solid transparentize(gray, 0.4);
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &--center {
+        font-weight: 700;
+      }
+
+    }
+  }
+}

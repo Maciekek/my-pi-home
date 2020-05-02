@@ -20,6 +20,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import {storeLocationRecentlySensors} from "../store/actions/LocationsActions";
+import {faToggleOn} from "@fortawesome/free-solid-svg-icons/faToggleOn";
 
 const DEFAULT_N = 100;
 
@@ -80,6 +81,9 @@ class LocationPageBase extends React.Component {
         <div className={'location__panel'}>
           <Link to={`/dashboard/${this.props.match.params.id}`}> <FontAwesomeIcon icon={faTachometerAlt}/>
             Dashboard (beta!)
+          </Link>
+          <Link to={`/${this.props.match.params.id}/devices/`}> <FontAwesomeIcon icon={faToggleOn}/>
+            Urządzenia (beta!)
           </Link>
           <Link to={`/locations/${this.props.match.params.id}/settings`}> <FontAwesomeIcon icon={faCog}/>
             Ustawienia

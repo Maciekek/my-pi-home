@@ -12,6 +12,7 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 import {EventsModule} from './events/events.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import {CronModule} from "./modules/cron/cron.module";
+import {DevicesModule} from "./devices/devices.module";
 
 console.log(config.dbConfig);
 console.log(config.dbConfig.url);
@@ -30,6 +31,7 @@ const dbConnectionString = config.dbConfig.url.replace("__auth__", process.env.D
           DashboardModule,
           EventsModule,
           CronModule,
+          DevicesModule,
       ],
   controllers: [AppController],
   providers: [AppService],

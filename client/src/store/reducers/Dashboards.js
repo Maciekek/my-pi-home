@@ -10,8 +10,6 @@ const actionHandlers = {
     const dashboardConfig = {};
     dashboardConfig[a.payload.locationId] = a.payload;
 
-    console.log('qwe');
-    console.log(a.payload);
 
     return {
       ...state,
