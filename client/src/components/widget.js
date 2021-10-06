@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-
 import { confirmOperation } from 'store/actions/BehaviourActions';
 import { removeWidgetByIndex } from 'store/actions/DashboardActions';
 
