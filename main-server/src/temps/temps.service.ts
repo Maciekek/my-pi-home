@@ -20,8 +20,8 @@ export class TempsService {
 
   async findLastN(locationId, n): Promise<Temp[]> {
     return await this.tempModel
-      .sort({ date: -1 })
       .find({ locationId })
+      .sort({ date: -1 })
       .limit(Number(n))
       .exec();
   }
