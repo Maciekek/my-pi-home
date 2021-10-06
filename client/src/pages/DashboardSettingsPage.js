@@ -1,11 +1,10 @@
 import React from 'react';
-import {Page} from '../components/page';
+import { Page } from 'components/page';
 
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
-import {widgetDataLoaders, widgetType} from "./DashboardPage";
-import {SpeedChartSettings} from "../dashboardSettingComponents/SpeedChartSettingsForm";
-
+import { widgetDataLoaders, widgetType } from './DashboardPage';
+import { SpeedChartSettings } from 'dashboardSettingComponents/SpeedChartSettingsForm';
 
 class DashboardSettingsPageBase extends React.Component {
   state = {
@@ -15,13 +14,13 @@ class DashboardSettingsPageBase extends React.Component {
         dataLoader: widgetDataLoaders.speedChart,
         options: {
           sensorId: '123',
-          unit: "C"
-        }
-      }
-    ]
+          unit: 'C',
+        },
+      },
+    ],
   };
 
-  getComponentToRender = (name) => {
+  getComponentToRender = name => {
     const widgetSettingForm = `SpeedChartSettings`;
     switch (name) {
       case 'SpeedChart':
@@ -29,28 +28,25 @@ class DashboardSettingsPageBase extends React.Component {
     }
   };
 
-  onChange = (e) => {
-
-  }
+  onChange = e => {};
 
   render() {
     return (
       <Page>
         {this.state.dashboardConfig.map(widget => {
           const Component = this.getComponentToRender(widget.widgetType);
-          return <Component options={widget.options} onChange={this.onChange} />
+          return <Component options={widget.options} onChange={this.onChange} />;
         })}
         <div>Welcome on dashboard setting page beta!</div>
       </Page>
-    )
+    );
   }
-
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    counter: state.counter
-  }
+    counter: state.counter,
+  };
 };
 
 export const DashboardSettingsPage = connect(mapStateToProps)(DashboardSettingsPageBase);

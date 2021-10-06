@@ -1,8 +1,8 @@
-import {createReducer} from "./../helpers/reduxHelper";
-import {DashboardActions} from "../actions/DashboardActions";
+import { createReducer } from './../helpers/reduxHelper';
+import { DashboardActions } from '../actions/DashboardActions';
 
 const DashboardDefaultState = {
-  dashboards: {}
+  dashboards: {},
 };
 
 const actionHandlers = {
@@ -10,14 +10,11 @@ const actionHandlers = {
     const dashboardConfig = {};
     dashboardConfig[a.payload.locationId] = a.payload;
 
-
     return {
       ...state,
-      ...dashboardConfig
-  }},
-
-
+      ...dashboardConfig,
+    };
+  },
 };
-
 
 export const dashboardsReducer = createReducer(DashboardDefaultState, actionHandlers);

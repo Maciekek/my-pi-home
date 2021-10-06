@@ -3,33 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.5",
-    "axios": "^0.19.0",
+    "axios": "^0.22.0",
     "bootstrap": "^4.3.1",
     "bootstrap-daterangepicker": "^3.0.5",
     "classnames": "^2.2.6",
     "highcharts": "^7.1.2",
     "highcharts-react-official": "^2.2.2",
-    "jquery": "^3.4.1",
-    "lodash": "^4.17.15",
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
-    "react-bootstrap": "^1.0.0-beta.11",
+    "react-bootstrap": "^1.6.4",
     "react-bootstrap-daterangepicker": "^4.1.0",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^3.4.4",
     "react-select": "^3.0.8",
     "react-toastify": "^5.5.0",
     "recharts": "^1.7.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.1",
     "socket.io-client": "^2.3.0"
   },
   "scripts": {
@@ -53,5 +50,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://77.55.217.143:8888/"
+  "proxy": "http://77.55.217.143:8888/",
+  "devDependencies": {
+    "prettier": "2.4.1"
+  }
 }

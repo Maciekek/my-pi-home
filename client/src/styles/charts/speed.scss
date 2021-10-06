@@ -1,4 +1,4 @@
-@import "../variables";
+@import '../variables';
 
 .speed-chart {
   max-width: 305px;
@@ -18,7 +18,7 @@
     text-align: center;
 
     &--id {
-      color: transparentize($sanJuan, 0.5)
+      color: transparentize($sanJuan, 0.5);
     }
   }
   &__widget-wrapper {
@@ -31,7 +31,4 @@
       border-radius: 4px;
     }
   }
-
 }
-
-

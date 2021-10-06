@@ -1,4 +1,4 @@
-@import "../variables";
+@import '../variables';
 
 .devices {
   &__settings {
@@ -11,12 +11,12 @@
       padding: 10px;
       border-radius: 4px;
       &:hover {
-        background-color: transparentize($sanJuan, 0.9);;
+        background-color: transparentize($sanJuan, 0.9);
       }
     }
   }
   &__widgets {
-    padding: 20px 0 ;
+    padding: 20px 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -46,7 +46,6 @@
       &--center {
         font-weight: 700;
       }
-
     }
   }
 }

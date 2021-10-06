@@ -1,21 +1,25 @@
-@import "common";
-@import "locationsPage";
+@import "commons/fontImports";
+@import 'common';
+@import 'locationsPage';
 
-@import "blocks/location";
-@import "blocks/dashboard";
-@import "blocks/actualTemps";
-@import "blocks/errorWidget";
-@import "blocks/widget";
+@import 'blocks/location';
+@import 'blocks/dashboard';
+@import 'blocks/actualTemps';
+@import 'blocks/errorWidget';
+@import 'blocks/widget';
 
-@import "charts/line";
-@import "charts/speed";
-@import "blocks/widgetDateRangePicker";
-@import "blocks/websocketIndicator";
-@import "blocks/recentlyUserdSensors";
-@import "blocks/devices";
-@import "blocks/forms";
-@import "blocks/relayDeviceController";
-@import "blocks/switcher";
+@import 'charts/line';
+@import 'charts/speed';
+@import 'blocks/widgetDateRangePicker';
+@import 'blocks/websocketIndicator';
+@import 'blocks/recentlyUserdSensors';
+@import 'blocks/devices';
+@import 'blocks/forms';
+@import 'blocks/relayDeviceController';
+@import 'blocks/switcher';
+@import 'blocks/icon';
+
+@import 'externals/materialIcons';
 
 .App {
   text-align: center;
@@ -64,7 +68,6 @@
 svg[role='img'] {
   margin-right: 5px;
 }
-
 
 .flex-center {
   display: flex;

@@ -1,8 +1,8 @@
-import {SensorsService} from "../services/sensors.service";
+import { SensorsService } from 'services/sensors.service';
 
 const speedChartDataLoader = {
   get(params) {
-    if(!params.sensors) {
+    if (!params.sensors) {
       return;
     }
 
@@ -10,10 +10,6 @@ const speedChartDataLoader = {
       return response.data;
     });
   },
-
-
 };
 
-export {speedChartDataLoader}
-
-
+export { speedChartDataLoader };

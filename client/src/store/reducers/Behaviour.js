@@ -1,30 +1,28 @@
-import {createReducer} from "./../helpers/reduxHelper";
-import {SettingActions} from "../actions/SettingsActions";
-import {BehaviourActions} from "../actions/BehaviourActions";
+import { createReducer } from './../helpers/reduxHelper';
+import { SettingActions } from '../actions/SettingsActions';
+import { BehaviourActions } from '../actions/BehaviourActions';
 
 const BehaviourDefaultState = {
   confirmationModalParams: {},
-  confirmationModalVisible: false
-
+  confirmationModalVisible: false,
 };
 
 const actionHandlers = {
-  [BehaviourActions.CONFIRM_OPERATION]: (state, {payload}) => {
+  [BehaviourActions.CONFIRM_OPERATION]: (state, { payload }) => {
     return {
       ...state,
       confirmationModalVisible: payload.visible,
-      confirmationModalParams: payload
-    }
+      confirmationModalParams: payload,
+    };
   },
 
   [BehaviourActions.CLOSE_MODAL]: (state) => {
     return {
       ...state,
       confirmationModalVisible: false,
-      confirmationModalParams: {}
-    }
+      confirmationModalParams: {},
+    };
   },
-
 };
 
 export const behaviourReducer = createReducer(BehaviourDefaultState, actionHandlers);

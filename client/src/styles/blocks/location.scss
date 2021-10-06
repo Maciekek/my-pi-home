@@ -1,7 +1,6 @@
-@import "../variables";
+@import '../variables';
 
 .location {
-
   &__panel {
     display: flex;
     justify-content: space-between;
@@ -10,7 +9,6 @@
   &__name {
     padding: 20px 0;
     span {
-
     }
   }
 

@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
-import {store} from '../index';
-import {updateActiveConections, websocketConnected, websocketDisconnected} from "../store/actions/SettingsActions";
+import { store } from '../index';
+import { updateActiveConections, websocketConnected, websocketDisconnected } from '../store/actions/SettingsActions';
 import { toast } from 'react-toastify';
 const WEBSOCKET_MESSAGE_TYPES = {
   NEW_RPI_CONNECTION: 'new_rpi_connection',
@@ -16,7 +16,7 @@ class Websocket {
   connect() {
     this.socket = io('http://77.55.217.143:8888');
 
-    this.attachListeners()
+    this.attachListeners();
   }
 
   attachListeners() {
@@ -28,7 +28,6 @@ class Websocket {
     this.socket.on('disconnect', () => {
       console.log(`Websocket disconnected... ID: ${this.socket.id}`);
       store.dispatch(websocketDisconnected());
-
     });
 
     this.socket.on('message', (message) => {
@@ -44,11 +43,11 @@ class Websocket {
         case WEBSOCKET_MESSAGE_TYPES.ACTIVE_RPI_CONNECTION:
           store.dispatch(updateActiveConections(message.websocketRPIConnections));
         default:
-          console.log("Received new websocket message: ", message)
+          console.log('Received new websocket message: ', message);
       }
-    })
+    });
   }
 }
 
 const websocket = new Websocket();
-export {websocket}
+export { websocket };

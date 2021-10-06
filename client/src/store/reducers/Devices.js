@@ -1,26 +1,25 @@
-import {createReducer} from "./../helpers/reduxHelper";
-import {DevicesActions} from "../actions/DevicesActions";
+import { createReducer } from './../helpers/reduxHelper';
+import { DevicesActions } from '../actions/DevicesActions';
 
 const DevicesDefaultState = {
-  devices: {}
+  devices: {},
 };
 
 const actionHandlers = {
-  [DevicesActions.DEVICES_BY_ID_LOADED]: (state, {payload}) => {
+  [DevicesActions.DEVICES_BY_ID_LOADED]: (state, { payload }) => {
     const data = {};
 
     if (payload.length === 0) {
-      return {...state}
+      return { ...state };
     }
 
     data[payload[0].locationId] = payload;
 
     return {
       ...state,
-      devices: data
-  }},
-
+      devices: data,
+    };
+  },
 };
-
 
 export const devicesReducer = createReducer(DevicesDefaultState, actionHandlers);

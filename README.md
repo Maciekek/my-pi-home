@@ -6,13 +6,16 @@
 
 ### how to run dev app
 ####client
-npm run start 
+`npm run start` 
 
 #### backend
-npm run start:dev 
+`npm run start:dev` 
 
 #### mock pi server
-node main.js
+`node main.js`
+
+#### db
+
 
 
 ##

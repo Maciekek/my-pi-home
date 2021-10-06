@@ -6,12 +6,8 @@ const testAction = () => ({
   type: rootActionTypes.TEST,
 });
 
-
 const rootActions = {
   testAction,
 };
 
-export {
-  rootActionTypes,
-  rootActions
-}
+export { rootActionTypes, rootActions };

@@ -1,31 +1,29 @@
 import React from 'react';
 import _ from 'lodash';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
-import Highcharts from 'highcharts'
-import Highstock from 'highcharts/highstock'
-import HighchartsReact from 'highcharts-react-official'
-import {dark} from "../chartThemes/dark";
+import Highcharts from 'highcharts';
+import Highstock from 'highcharts/highstock';
+import HighchartsReact from 'highcharts-react-official';
+import { dark } from '../chartThemes/dark';
 Highstock.setOptions({
   time: {
-    timezoneOffset: -2 * 60
+    timezoneOffset: -2 * 60,
   },
-  ...dark
-
+  ...dark,
 });
 
 const options = {
   title: {
-    text: ''
+    text: '',
   },
 
   legend: {
-    enabled: true
+    enabled: true,
   },
 
-
   yAxis: {
-    opposite:false
+    opposite: false,
   },
 
   navigator: {
@@ -33,27 +31,27 @@ const options = {
       type: 'areaspline',
       fillOpacity: 0.05,
       dataGrouping: {
-        smoothed: true
+        smoothed: true,
       },
       lineWidth: 1,
       marker: {
-        enabled: false
-      }
-    }
+        enabled: false,
+      },
+    },
   },
 
   chart: {
-    zoomType: 'x'
+    zoomType: 'x',
   },
   rangeSelector: {
     selected: 4,
     inputEnabled: false,
     buttonTheme: {
-      visibility: 'hidden'
+      visibility: 'hidden',
     },
     labelStyle: {
-      visibility: 'hidden'
-    }
+      visibility: 'hidden',
+    },
   },
 
   tooltip: {
@@ -62,13 +60,13 @@ const options = {
     xDateFormat: 'Godzina: %H:%M;  Data: %d-%m',
     shared: true,
     split: false,
-    enabled: true
+    enabled: true,
   },
 };
 
 class TempChartWidgetBase extends React.Component {
   static WidgetConfig = {
-    limit: 100
+    limit: 100,
   };
 
   constructor(props) {
@@ -76,81 +74,73 @@ class TempChartWidgetBase extends React.Component {
 
     this.chartComponent = React.createRef();
 
-   this.state = {
-     ...this.parseData()
-   };
+    this.state = {
+      ...this.parseData(),
+    };
   }
 
   parseData = () => {
-    const partitionedById = _.groupBy(this.props.data, "sensorId");
+    const partitionedById = _.groupBy(this.props.data, 'sensorId');
     const sensorIds = _.sortBy(Object.keys(partitionedById));
 
     options.series = sensorIds.map((sensorId) => {
       return {
         dataGrouping: {
-          enabled: true
+          enabled: true,
         },
         name: this.getNameOfSensorById(sensorId),
-        data: partitionedById[sensorId].map(data => {
-          return [new Date(data.date).valueOf(), data.value]
-        })
-      }
+        data: partitionedById[sensorId].map((data) => {
+          return [new Date(data.date).valueOf(), data.value];
+        }),
+      };
     });
 
-
-
     return {
-      ...options
-    }
+      ...options,
+    };
   };
 
-
   getNameOfSensorById = (id) => {
-    if ( !(this.props.locationConfig.tempSettings && this.props.locationConfig.tempSettings.sensors)) {
+    if (!(this.props.locationConfig.tempSettings && this.props.locationConfig.tempSettings.sensors)) {
       return id;
     }
 
-    const matchedSensors = this.props.locationConfig.tempSettings.sensors.filter(sensor => {
+    const matchedSensors = this.props.locationConfig.tempSettings.sensors.filter((sensor) => {
       return sensor.sensorId === id;
     });
 
-    if(matchedSensors.length > 0) {
-      return matchedSensors[0].name
+    if (matchedSensors.length > 0) {
+      return matchedSensors[0].name;
     }
 
-    return id
+    return id;
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     const data = this.parseData();
-    if(!_.isEqual(this.state.series,  data.series)) {
-      this.setState (
-        data
-      )
+    if (!_.isEqual(this.state.series, data.series)) {
+      this.setState(data);
     }
 
-    this.chartComponent.current.chart.xAxis[0].setExtremes(data[0], data[data.length-1], false);
-    this.chartComponent.current.chart.redraw()
-
+    this.chartComponent.current.chart.xAxis[0].setExtremes(data[0], data[data.length - 1], false);
+    this.chartComponent.current.chart.redraw();
   }
 
   render() {
-
-
     return (
       <div className={'line-chart'}>
-        {this.state ? <HighchartsReact
-
-          constructorType={'stockChart'}
-          highcharts={Highstock}
-          options={this.state}
-          ref={this.chartComponent}
-          allowChartUpdate={true}
-        /> : null}
+        {this.state ? (
+          <HighchartsReact
+            constructorType={'stockChart'}
+            highcharts={Highstock}
+            options={this.state}
+            ref={this.chartComponent}
+            allowChartUpdate={true}
+          />
+        ) : null}
       </div>
-    )
+    );
   }
-
 }
 
 const getLocationConfig = (state, locationId) => {
@@ -159,10 +149,8 @@ const getLocationConfig = (state, locationId) => {
 
 const mapStateToProps = (state, props) => {
   return {
-    locationConfig: getLocationConfig(state, props.locationId)
-  }
+    locationConfig: getLocationConfig(state, props.locationId),
+  };
 };
 
 export const TempChartWidget = connect(mapStateToProps)(TempChartWidgetBase);
-
-

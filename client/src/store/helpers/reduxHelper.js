@@ -1,4 +1,3 @@
-
 function createReducer(defaultState, actionHandlers) {
   return function reducer(state = defaultState, action) {
     if (actionHandlers.hasOwnProperty(action.type)) {
@@ -6,9 +5,7 @@ function createReducer(defaultState, actionHandlers) {
     }
 
     return state;
-  }
+  };
 }
 
-export {
-  createReducer,
-};
+export { createReducer };

@@ -1,18 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 
 const RelayService = {
-    addNewRelay: (locationId, data) => {
-        return axios.post(`/api/devices/relay/${locationId}`, data);
-    },
+  addNewRelay: (locationId, data) => {
+    return axios.post(`/api/devices/relay/${locationId}`, data);
+  },
 
-    updateRelay: (deviceId, data) => {
-        return axios.post(`/api/devices/${deviceId}`, data);
-    },
+  updateRelay: (deviceId, data) => {
+    return axios.post(`/api/devices/${deviceId}`, data);
+  },
 
-    relayToggle: (relayId) => {
-        return axios.get(`/api/devices/relay/${relayId}/toggle`);
-    },
-
+  relayToggle: (relayId) => {
+    return axios.get(`/api/devices/relay/${relayId}/toggle`);
+  },
 };
 
-export {RelayService}
+export { RelayService };

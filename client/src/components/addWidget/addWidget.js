@@ -4,19 +4,15 @@ import Select from 'react-select';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import {SpeedChartForm} from "./speedChartForm";
-import {
-  createDashboardByLocationId,
-  updateDashboardByLocationId
-} from "../../store/actions/DashboardActions";
-import {connect} from "react-redux";
-import {LineChartForm} from "./lineChartForm";
+import { SpeedChartForm } from './speedChartForm';
+import { createDashboardByLocationId, updateDashboardByLocationId } from 'store/actions/DashboardActions';
+import { connect } from 'react-redux';
+import { LineChartForm } from './lineChartForm';
 
 const options = [
-  {value: 'speedChart', label: 'Predkościomierz'},
-  {value: 'lineChart', label: 'Wykres liniowy'}
+  { value: 'speedChart', label: 'Predkościomierz' },
+  { value: 'lineChart', label: 'Wykres liniowy' },
 ];
-
 
 class AddWidgetBase extends React.PureComponent {
   static propTypes = {
@@ -26,24 +22,22 @@ class AddWidgetBase extends React.PureComponent {
     locationId: PropTypes.string,
   };
 
-
   constructor(props) {
     super(props);
 
     const state = {
       selectedFormType: null,
       form: null,
-      widget: null
+      widget: null,
     };
 
-    if(!_.isEmpty(this.props.widget)) {
+    if (!_.isEmpty(this.props.widget)) {
       state.widget = this.props.widget;
       state.selectedFormType = this.props.widget.widgetType;
     }
 
     this.state = state;
   }
-
 
   componentDidMount() {
     this.props.onMount(() => this.onSubmit());
@@ -57,15 +51,17 @@ class AddWidgetBase extends React.PureComponent {
 
     this.props.hideModal();
 
-    if(_.isNumber(this.props.widgetIndex)) {
-      const config =JSON.parse(this.props.dashboard.config);
+    if (_.isNumber(this.props.widgetIndex)) {
+      const config = JSON.parse(this.props.dashboard.config);
 
       config[this.props.widgetIndex] = form;
 
-      this.props.dispatch(updateDashboardByLocationId(this.props.locationId,
-        {
+      this.props.dispatch(
+        updateDashboardByLocationId(this.props.locationId, {
           locationId: this.props.locationId,
-          config: JSON.stringify(config)}));
+          config: JSON.stringify(config),
+        }),
+      );
       return;
     }
 
@@ -77,54 +73,61 @@ class AddWidgetBase extends React.PureComponent {
       currentConfig = [];
       currentConfig.push(form);
 
-      this.props.dispatch(createDashboardByLocationId(this.props.locationId,
-        {
+      this.props.dispatch(
+        createDashboardByLocationId(this.props.locationId, {
           locationId: this.props.locationId,
-          config: JSON.stringify(currentConfig)}));
+          config: JSON.stringify(currentConfig),
+        }),
+      );
 
       return;
     }
 
-    this.props.dispatch(updateDashboardByLocationId(this.props.locationId,
-      {
+    this.props.dispatch(
+      updateDashboardByLocationId(this.props.locationId, {
         locationId: this.props.locationId,
-        config: JSON.stringify(currentConfig)}));
+        config: JSON.stringify(currentConfig),
+      }),
+    );
   };
 
-  getComponentToRender = (componentName) => {
+  getComponentToRender = componentName => {
     switch (componentName) {
       case 'speedChart':
         return SpeedChartForm;
       case 'lineChart':
         return LineChartForm;
       default:
-        return () => {return null};
+        return () => {
+          return null;
+        };
     }
   };
 
-  onSelectChange = (e) => {
+  onSelectChange = e => {
     this.setState({
-      selectedFormType: e.value
-    })
+      selectedFormType: e.value,
+    });
   };
 
-  onChange = (formValue) => {
+  onChange = formValue => {
     this.setState({
-      form: formValue
-    })
+      form: formValue,
+    });
   };
 
   getWidgetType = () => {
-    return _.find(options, ['value', this.state.widget.widgetType])
+    return _.find(options, ['value', this.state.widget.widgetType]);
   };
 
   isEditMode = () => {
-    return !_.isEmpty(this.state.widget)
+    return !_.isEmpty(this.state.widget);
   };
 
   render() {
     const Component = this.getComponentToRender(this.state.selectedFormType);
-    return <Modal.Body>
+    return (
+      <Modal.Body>
         {!this.isEditMode() ? <h6>Wybierz rodzaj widgetu:</h6> : null}
         <Select
           className="basic-single"
@@ -137,16 +140,17 @@ class AddWidgetBase extends React.PureComponent {
           value={this.isEditMode() ? this.getWidgetType() : null}
         />
 
-        {this.state.selectedFormType
-          ? <Component
-              locationId={this.props.locationId}
-              onChange={this.onChange}
-              submit={this.onSubmit}
-              widget={this.state.widget}
-              hideModal={this.props.hideModal}
+        {this.state.selectedFormType ? (
+          <Component
+            locationId={this.props.locationId}
+            onChange={this.onChange}
+            submit={this.onSubmit}
+            widget={this.state.widget}
+            hideModal={this.props.hideModal}
           />
-          : null}
+        ) : null}
       </Modal.Body>
+    );
   }
 }
 
@@ -156,8 +160,8 @@ const getDashboardForLocation = (state, locationId) => {
 
 const mapStateToProps = (state, props) => {
   return {
-    dashboard: getDashboardForLocation(state, props.locationId)
-  }
+    dashboard: getDashboardForLocation(state, props.locationId),
+  };
 };
 
-export const AddWidget = connect(mapStateToProps)(AddWidgetBase)
+export const AddWidget = connect(mapStateToProps)(AddWidgetBase);

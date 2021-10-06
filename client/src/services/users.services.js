@@ -1,5 +1,3 @@
-const UsersService = {
+const UsersService = {};
 
-};
-
-export {UsersService}
+export { UsersService };

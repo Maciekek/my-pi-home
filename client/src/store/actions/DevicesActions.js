@@ -1,37 +1,32 @@
-import {DevicesService} from "../../services/deviceServices/devices.service";
-import {DashboardActions} from "./DashboardActions";
+import { DevicesService } from '../../services/deviceServices/devices.service';
+import { DashboardActions } from './DashboardActions';
 
 const DevicesActions = {
-  GET_DEVICES_BY_LOCATION_ID: "GET_DEVICES_BY_LOCATION_ID",
-  DEVICES_BY_ID_LOADED: "DEVICES_BY_ID_LOADED",
+  GET_DEVICES_BY_LOCATION_ID: 'GET_DEVICES_BY_LOCATION_ID',
+  DEVICES_BY_ID_LOADED: 'DEVICES_BY_ID_LOADED',
 };
 
 const devicesByIdLoaded = (payload) => {
   return {
     payload,
-    type: DevicesActions.DEVICES_BY_ID_LOADED
-  }
+    type: DevicesActions.DEVICES_BY_ID_LOADED,
+  };
 };
 
 const getDevicesByLocationId = (locationId) => {
-    return (dispatch) => {
-      DevicesService.getAllDevicesByLocationId(locationId).then(response =>{
-        dispatch(devicesByIdLoaded(response.data))
-      })
-    }
+  return (dispatch) => {
+    DevicesService.getAllDevicesByLocationId(locationId).then((response) => {
+      dispatch(devicesByIdLoaded(response.data));
+    });
+  };
 };
 
 const relayToggle = (relayId) => {
   return (dispatch) => {
-    DevicesService.realyToggle(relayId).then(response =>{
-      console.log('qweqwe', response)
-    })
-  }
+    DevicesService.realyToggle(relayId).then((response) => {
+      console.log('qweqwe', response);
+    });
+  };
 };
 
-
-export {
-  DevicesActions,
-  devicesByIdLoaded,
-  getDevicesByLocationId
-}
+export { DevicesActions, devicesByIdLoaded, getDevicesByLocationId };
