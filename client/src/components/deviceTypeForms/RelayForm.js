@@ -16,9 +16,6 @@ class RelayForm extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    console.log('qqqqs', props.device);
-    console.log('qqqqs', props.device.ip);
-
     this.state = {
       ip: props.device.ip || '',
       gpio: props.device.gpio || '',
@@ -28,8 +25,7 @@ class RelayForm extends React.PureComponent {
 
   componentDidMount() {}
 
-  onChange = (e) => {
-    console.log(e.target.value.trim());
+  onChange = e => {
     const target = e.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;

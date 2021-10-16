@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 import { useSelector } from 'react-redux';
+import { IAppStore } from 'models/common';
 
-const WebsocketIndicator = () => {
-  const isWebsocketActive = useSelector((state) => {
-    return state.settingsReducer.websocketActive;
+const WebsocketIndicator: FC = () => {
+  const isWebsocketActive = useSelector((state: IAppStore) => {
+    return state.settingsStore.websocketActive;
   });
 
   return (

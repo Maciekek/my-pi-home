@@ -9,13 +9,22 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Icon } from 'components/uiComponents/Icon';
 import { stopReactAndNativePropagation } from 'utils/Utils';
+import { FixMeLater, IAppStore } from 'models/common';
 
-class LocationsPage extends React.Component {
+interface ILocationsPageState {
+  locations: {}[] | null;
+}
+
+interface ILocationsPageProps {
+  readonly activeWebsocketConnections: FixMeLater;
+}
+
+class LocationsPage extends React.Component<ILocationsPageProps, ILocationsPageState> {
   state = {
     locations: null,
   };
 
-  constructor(props) {
+  constructor(props: ILocationsPageProps) {
     super(props);
     this.load();
   }
@@ -28,14 +37,12 @@ class LocationsPage extends React.Component {
     });
   };
 
-  isWSActive = locationId => {
+  isWSActive = (locationId: string) => {
     const locations = Object.values(this.props.activeWebsocketConnections);
     return locations.indexOf(locationId) > -1;
   };
 
-  deleteLocation = (event, location) => {
-    stopReactAndNativePropagation(event);
-
+  deleteLocation = (location: FixMeLater) => {
     const locationNameConfirmation = prompt(
       'Aby potwierdzić, że na pewno chcesz usunąć tą lokalizacjie, wpisz poniżej jej nazwę:',
     );
@@ -58,7 +65,7 @@ class LocationsPage extends React.Component {
           'loading'
         ) : (
           <ListGroup as="ul">
-            {this.state.locations.map((location, index) => {
+            {(this.state.locations as []).map((location: FixMeLater, index: number) => {
               return (
                 <ListGroup.Item
                   as="li"
@@ -86,7 +93,7 @@ class LocationsPage extends React.Component {
                       </span>
                     </Link>
                   </OverlayTrigger>
-                  <Icon onClick={e => this.deleteLocation(e, location)} type={'delete'} />
+                  <Icon onClick={() => this.deleteLocation(location)} type={'delete'} />
                 </ListGroup.Item>
               );
             })}
@@ -102,8 +109,8 @@ class LocationsPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { activeWebsocketConnections } = state.settingsReducer;
+const mapStateToProps = (state: IAppStore) => {
+  const { activeWebsocketConnections } = state.settingsStore;
   return { activeWebsocketConnections };
 };
 

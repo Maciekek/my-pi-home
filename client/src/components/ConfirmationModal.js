@@ -8,12 +8,12 @@ import { closeModal } from '../store/actions/BehaviourActions';
 
 const ConfirmationModal = () => {
   const dispatch = useDispatch();
-  const isModalActive = useSelector((state) => {
-    return state.behaviourReducer.confirmationModalVisible;
+  const isModalActive = useSelector(state => {
+    return state.behaviourStore.confirmationModalVisible;
   });
 
-  const modalParams = useSelector((state) => {
-    return state.behaviourReducer.confirmationModalParams;
+  const modalParams = useSelector(state => {
+    return state.behaviourStore.confirmationModalParams;
   });
 
   const onCancel = () => {

@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CatsModule } from './cats/cats.module';
 import { TempsModule } from './temps/temps.module';
 import { config } from 'node-config-ts';
 import { UsersModule } from './users/users.module';
@@ -16,16 +15,12 @@ import { DevicesModule } from './devices/devices.module';
 
 console.log(config.dbConfig);
 console.log(config.dbConfig.url);
-const dbConnectionString = config.dbConfig.url.replace(
-  '__auth__',
-  process.env.DB_AUTH,
-);
+const dbConnectionString = config.dbConfig.url.replace('__auth__', process.env.DB_AUTH);
 
 @Module({
   imports: [
     MongooseModule.forRoot(dbConnectionString),
     ScheduleModule.forRoot(),
-    CatsModule,
     TempsModule,
     UsersModule,
     LocationsModule,

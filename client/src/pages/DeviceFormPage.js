@@ -101,7 +101,7 @@ class DeviceFormPageBase extends React.Component {
   }
 }
 const getDeviceById = (state, props) => {
-  return _.find(state.devicesReducer.devices[props.match.params.id], ['_id', props.match.params.deviceId]);
+  return _.find(state.devicesStore.devices[props.match.params.id], ['_id', props.match.params.deviceId]);
 };
 
 const mapStateToProps = (state, props) => {

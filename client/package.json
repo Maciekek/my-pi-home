@@ -3,10 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/node": "^16.10.3",
+    "@types/react": "^17.0.27",
+    "@types/react-dom": "^17.0.9",
+    "@types/classnames": "^2.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "@types/react-router-dom": "^5.3.0",
     "axios": "^0.22.0",
     "bootstrap": "^4.3.1",
     "bootstrap-daterangepicker": "^3.0.5",
-    "classnames": "^2.2.6",
+    "classnames": "^2.3.1",
     "highcharts": "^7.1.2",
     "highcharts-react-official": "^2.2.2",
     "jquery": "^3.6.0",
@@ -18,8 +25,8 @@
     "react-bootstrap": "^1.6.4",
     "react-bootstrap-daterangepicker": "^4.1.0",
     "react-dom": "^16.8.6",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.0.1",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "^3.4.4",
     "react-select": "^3.0.8",
     "react-toastify": "^5.5.0",
@@ -27,7 +34,8 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.4.1",
-    "socket.io-client": "^2.3.0"
+    "socket.io-client": "^2.3.0",
+    "typescript": "^4.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,7 +58,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://77.55.217.143:8888/",
+  "proxy": "http://localhost:8888/",
   "devDependencies": {
     "prettier": "2.4.1"
   }

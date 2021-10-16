@@ -8,12 +8,12 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-import { locationReducer } from './store/reducers/Locations';
-import { dashboardsReducer } from './store/reducers/Dashboards';
-import { settingsReducer } from './store/reducers/Settings';
-import { behaviourReducer } from './store/reducers/Behaviour';
-import { devicesReducer } from './store/reducers/Devices';
-import { websocket } from './utils/Websocket';
+import { locationReducer } from 'store/reducers/Locations';
+import { dashboardsReducer } from 'store/reducers/Dashboards';
+import { settingsReducer } from 'store/reducers/Settings';
+import { behaviourReducer } from 'store/reducers/Behaviour';
+import { devicesReducer } from 'store/reducers/Devices';
+import { websocket } from 'utils/Websocket';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 // const socket = window.io('http://localhost:8888');
@@ -25,9 +25,9 @@ const store = createStore(
   combineReducers({
     locationStore: locationReducer,
     dashboardsStore: dashboardsReducer,
-    settingsReducer: settingsReducer,
-    behaviourReducer: behaviourReducer,
-    devicesReducer: devicesReducer,
+    settingsStore: settingsReducer,
+    behaviourStore: behaviourReducer,
+    devicesStore: devicesReducer,
   }),
   composeEnhancers(applyMiddleware(thunk)),
 );

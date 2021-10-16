@@ -1,5 +1,4 @@
 import { createReducer } from './../helpers/reduxHelper';
-import { SettingActions } from '../actions/SettingsActions';
 import { BehaviourActions } from '../actions/BehaviourActions';
 
 const BehaviourDefaultState = {
@@ -16,7 +15,7 @@ const actionHandlers = {
     };
   },
 
-  [BehaviourActions.CLOSE_MODAL]: (state) => {
+  [BehaviourActions.CLOSE_MODAL]: state => {
     return {
       ...state,
       confirmationModalVisible: false,

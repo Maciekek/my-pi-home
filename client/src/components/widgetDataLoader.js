@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { LoadingIndicator } from './loadingIndicator';
 import moment from 'moment';
 //2018-08-29 15:38
-const parseDateRangeToDate = (dateRange) => {
+const parseDateRangeToDate = dateRange => {
   switch (dateRange) {
     case 'last.1.hour':
       return {
@@ -42,6 +42,11 @@ const parseDateRangeToDate = (dateRange) => {
         from: moment().subtract('7', 'days'),
         to: moment().format('YYYY-MM-DD HH:mm'),
       };
+    case 'last.30.days':
+      return {
+        from: moment().subtract('30', 'days'),
+        to: moment().format('YYYY-MM-DD HH:mm'),
+      };
 
     default:
       return {
@@ -70,7 +75,7 @@ class WidgetDataLoader extends React.Component {
     };
 
     if (config.sensors) {
-      props.dataLoader.get(config).then((data) => {
+      props.dataLoader.get(config).then(data => {
         this.setState({
           data: data,
         });
@@ -100,7 +105,7 @@ class WidgetDataLoader extends React.Component {
       isLoading: true,
     });
 
-    this.props.dataLoader.get(config).then((data) => {
+    this.props.dataLoader.get(config).then(data => {
       console.log('data', data);
       this.setState({
         data: [...data],

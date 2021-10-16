@@ -153,6 +153,13 @@ const WidgetDateRangePicker = ({ index, onSetRange, active }) => {
           {' '}
           7 dni
         </span>
+        <span
+          className={'widget-date-range-picker__range' + (active[index] === 'last.30.days' ? ' active' : '')}
+          onClick={() => onSetRange(index, 'last.30.days')}
+        >
+          {' '}
+          30 dni
+        </span>
       </span>
     </div>
   );

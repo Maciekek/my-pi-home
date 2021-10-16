@@ -63,7 +63,7 @@ class DevicesPageBase extends React.Component {
 }
 
 const getDevicesForLocation = (state, props) => {
-  return state.devicesReducer.devices[props.match.params.id];
+  return state.devicesStore.devices[props.match.params.id];
 };
 
 const mapStateToProps = (state, props) => {
