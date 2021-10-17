@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+import moment from 'moment';
 
 import { confirmOperation } from 'store/actions/BehaviourActions';
 import { removeWidgetByIndex } from 'store/actions/DashboardActions';
@@ -36,7 +38,7 @@ class WidgetBase extends React.Component {
   setDateRange = (index, range) => {
     const dateRanges = this.state.customDateRanges;
     dateRanges[index] = range;
-
+    console.log(40, index, range);
     this.setState(
       {
         customDateRanges: dateRanges,
@@ -160,6 +162,54 @@ const WidgetDateRangePicker = ({ index, onSetRange, active }) => {
           {' '}
           30 dni
         </span>
+        <DateRangePicker
+          timePicker={true}
+          timePicker24Hour={true}
+          maxDate={moment().endOf('day')}
+          minDate={moment('2021-10-09T10:15:00')}
+          locale={{
+            format: 'DD/MM/YYYY',
+            separator: ' - ',
+            applyLabel: 'Zastosuj',
+            cancelLabel: 'Anuluj',
+            fromLabel: 'Od',
+            toLabel: 'Do',
+            customRangeLabel: 'Własny zakres',
+            weekLabel: 'Tydzień',
+            daysOfWeek: ['Nie', 'Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'So'],
+            monthNames: [
+              'Styczeń',
+              'Luty',
+              'Marzec',
+              'Kwiecień',
+              'Maj',
+              'Czerwiec',
+              'Lipiec',
+              'Sierpień',
+              'Wrzesień',
+              'Październik',
+              'Listopad',
+              'Grudzień',
+            ],
+            firstDay: 1,
+          }}
+          initialSettings={{
+            alwaysShowCalendars: true,
+          }}
+          onApply={(event, picker) => {
+            console.log(picker.startDate.valueOf(), picker.endDate.valueOf());
+            onSetRange(index, `custom_${picker.startDate.valueOf()}_${picker.endDate.valueOf()}`);
+          }}
+        >
+          {console.log(176, active[index])}
+          <span
+            className={
+              'widget-date-range-picker__range' + (active[index] && active[index].startsWith('custom') ? ' active' : '')
+            }
+          >
+            Własny zakres
+          </span>
+        </DateRangePicker>
       </span>
     </div>
   );

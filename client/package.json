@@ -12,7 +12,7 @@
     "@types/react-router-dom": "^5.3.0",
     "axios": "^0.22.0",
     "bootstrap": "^4.3.1",
-    "bootstrap-daterangepicker": "^3.0.5",
+    "bootstrap-daterangepicker": "^3.1.0",
     "classnames": "^2.3.1",
     "highcharts": "^7.1.2",
     "highcharts-react-official": "^2.2.2",
@@ -58,7 +58,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8888/",
+  "proxy": "http://77.55.217.143:8888/",
   "devDependencies": {
     "prettier": "2.4.1"
   }

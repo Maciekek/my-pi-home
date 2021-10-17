@@ -6,6 +6,17 @@ import { LoadingIndicator } from './loadingIndicator';
 import moment from 'moment';
 //2018-08-29 15:38
 const parseDateRangeToDate = dateRange => {
+  if (dateRange.startsWith('custom')) {
+    console.log(10, {
+      from: dateRange.split('_')[1],
+      to: dateRange.split('_')[2],
+    });
+    return {
+      from: dateRange.split('_')[1],
+      to: dateRange.split('_')[2],
+    };
+  }
+
   switch (dateRange) {
     case 'last.1.hour':
       return {
@@ -48,6 +59,13 @@ const parseDateRangeToDate = dateRange => {
         to: moment().format('YYYY-MM-DD HH:mm'),
       };
 
+    case 'custom':
+      console.log(52, dateRange);
+      return {
+        from: moment().subtract('30', 'days'),
+        to: moment().format('YYYY-MM-DD HH:mm'),
+      };
+
     default:
       return {
         from: moment().subtract('1', 'hour'),
@@ -67,6 +85,7 @@ class WidgetDataLoader extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(77, props);
     const config = {
       ...props.component.WidgetConfig,
       ...props.options,
