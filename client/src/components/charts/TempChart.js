@@ -6,7 +6,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { dark } from '../chartThemes/dark';
 Highcharts.setOptions({
   time: {
-    timezoneOffset: -2 * 60,
+    timezoneOffset: -1 * 60,
   },
   ...dark,
 });
@@ -53,7 +53,6 @@ class TempChart extends React.Component {
       return sensor.sensorId === id;
     });
 
-    console.log(matchedSensors);
     if (matchedSensors.length > 0) {
       return matchedSensors[0].name;
     }
