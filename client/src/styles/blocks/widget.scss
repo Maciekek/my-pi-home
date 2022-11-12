@@ -11,15 +11,10 @@
     margin-bottom: 20px;
     &--action {
       display: flex;
+      min-height: 40px;
       height: 100%;
       justify-content: space-between;
       align-items: center;
-      .fa-trash-alt {
-        color: red;
-        &:hover {
-          cursor: pointer;
-        }
-      }
     }
   }
 
@@ -28,7 +23,19 @@
   }
 
   &__menu-actions {
+    display: flex;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4px;
+
+    .icon {
+      font-size: 18px !important;
+    }
+
+    &--remove {
+      color: red;
+    }
   }
 
   .loading-overlay {

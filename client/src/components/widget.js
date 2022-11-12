@@ -6,6 +6,7 @@ import moment from 'moment';
 
 import { confirmOperation } from 'store/actions/BehaviourActions';
 import { removeWidgetByIndex } from 'store/actions/DashboardActions';
+import {Icon} from "components/uiComponents/Icon";
 
 const widgetWithAvailableTimeRangePicker = new Set(['lineChart']);
 
@@ -81,7 +82,10 @@ class WidgetBase extends React.Component {
             )}
 
             <div className={'widget__menu-title'}>{this.props.chartName}</div>
-            <div className={'widget__menu-actions'}></div>
+            <div className={'widget__menu-actions'}>
+              <Icon  className={'widget__menu-actions--remove'} onClick={() => this.removeWidget()} type={'delete'} />
+
+            </div>
           </div>
         </div>
 
