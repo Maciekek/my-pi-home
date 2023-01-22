@@ -34,7 +34,7 @@
     "@slack/events-api": "^2.3.1",
     "@slack/web-api": "^5.7.0",
     "class-transformer": "^0.5.1",
-    "class-validator": "^0.9.1",
+    "class-validator": "^0.14.0",
     "concurrently": "^5.1.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
