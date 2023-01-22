@@ -10,6 +10,15 @@ import {logger} from "../../logger.middleware";
 import * as moment from 'moment';
 import {SensorsService} from "../../temps/sensors.service";
 
+
+const accountSid = 'AC47150629610da82fc17afe481ce2e654'; // Your Account SID from www.twilio.com/console
+const authToken = 'd138264f99849e4885b7fa1d99a12511'; // Your Auth Token from www.twilio.com/console
+
+const twilio = require('twilio');
+const client = new twilio(accountSid, authToken);
+
+
+
 @Injectable()
 export class HeartbeatService implements CronJob {
     private readonly logger = new Logger(HeartbeatService.name);
@@ -28,8 +37,8 @@ export class HeartbeatService implements CronJob {
 
     run = () => {
         this.logger.log('task run');
-        const pMax = 53;
-        const pMin = 40;
+        const pMax = 65;
+        const pMin = 63;
 
         const sMax = 40;
         const sMin = 20;
@@ -58,19 +67,40 @@ export class HeartbeatService implements CronJob {
             this.logger.log(`kotlownia temp ${kotData.value}` );
 
             if (pData.value > pMax) {
-                this.slackService.sendMessage(`\n\n TEMPERATURA PIECA JEST ZA WYSOKA! \n\n AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
+                const message = `\n\n TEMPERATURA PIECA JEST ZA WYSOKA! \n\n AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
                     \n\n Pozostałe odczyty: \n
                     KALORYFERY: ${kalData.value} \n
                     PODŁOGÓWKA: ${podData.value} \n
-                    KOTŁOWNIA: ${kotData.value}`);
+                    KOTŁOWNIA: ${kotData.value}`
+
+                // this.slackService.sendMessage();
+                console.log("SEND SMS", message)
+                client.messages
+                    .create({
+                        body: message,
+                        to: '+48515585510', // Text this number
+                        from: '+16692192842', // From a valid Twilio number
+                    })
+                    .then((message) => console.log(message.sid));
+
             }
 
             if (pData.value < pMin) {
-                this.slackService.sendMessage(`\n\n TEMPERATURA JEST ZA NISKA! \n\n AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
+                const message = `\n\n TEMPERATURA JEST ZA NISKA! \n\n AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
                     \n\n Pozostałe odczyty: \n
                     KALORYFERY: ${kalData.value} \n
                     PODŁOGÓWKA: ${podData.value} \n
-                    KOTŁOWNIA: ${kotData.value}`);
+                    KOTŁOWNIA: ${kotData.value}`
+
+                // this.slackService.sendMessage();
+                console.log("SEND SMS", message)
+                client.messages
+                    .create({
+                        body: message,
+                        to: '+48515585510', // Text this number
+                        from: '+16692192842', // From a valid Twilio number
+                    })
+                    .then((message) => console.log(message.sid));
             }
 
             if (kalData.value < sMin || podData.value < sMin) {
