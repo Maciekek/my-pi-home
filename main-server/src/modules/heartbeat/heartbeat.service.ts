@@ -54,6 +54,7 @@ export class HeartbeatService implements CronJob {
 
         const trabkiLoction = this.locations.findById('5d83477c1d15b82553f8932f').then((data) => {
             console.log(data);
+            console.log(57, 'pobieram dane ', data)
             return this.sensorsService.findAllSensorsYoungerthan((data as any)._id, moment().subtract(20, "minutes").toDate());
         }).then((temps) => {
             const pData = _.find(temps, ['sensorId', pID]);
@@ -65,7 +66,7 @@ export class HeartbeatService implements CronJob {
             this.logger.log(`podlogowka temp ${podData.value}` );
             this.logger.log(`podlogowka temp ${podData.value}` );
             this.logger.log(`kotlownia temp ${kotData.value}` );
-
+            console.log(69, 'dzialam')
             if (pData.value > pMax) {
                 const message = `\n\n TEMPERATURA PIECA JEST ZA WYSOKA! \n\n AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
                     \n\n Pozostałe odczyty: \n
