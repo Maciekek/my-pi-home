@@ -12,7 +12,7 @@ import {SensorsService} from "../../temps/sensors.service";
 
 
 const accountSid = 'AC47150629610da82fc17afe481ce2e654'; // Your Account SID from www.twilio.com/console
-const authToken = 'd138264f99849e4885b7fa1d99a12511'; // Your Auth Token from www.twilio.com/console
+const authToken = '27c269ec7aa51722e1b12aa6ff068d5f'; // Your Auth Token from www.twilio.com/console
 
 const twilio = require('twilio');
 const client = new twilio(accountSid, authToken);
