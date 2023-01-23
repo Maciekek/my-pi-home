@@ -50,7 +50,7 @@ export class HeartbeatService implements CronJob {
     run = () => {
         this.logger.log('task run');
         const pMax = 65;
-        const pMin = 45;
+        const pMin = 40;
 
         const sMax = 40;
         const sMin = 20;
