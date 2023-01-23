@@ -50,7 +50,7 @@ export class HeartbeatService implements CronJob {
     run = () => {
         this.logger.log('task run');
         const pMax = 65;
-        const pMin = 50;
+        const pMin = 40;
 
         const sMax = 40;
         const sMin = 20;
@@ -90,8 +90,6 @@ export class HeartbeatService implements CronJob {
 
                 this.sendSms('+48515585510', message)
                 this.sendSms('+48519812933', message)
-
-
             }
 
             if (pData.value < pMin) {
