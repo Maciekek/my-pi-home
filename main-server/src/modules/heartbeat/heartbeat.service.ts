@@ -80,7 +80,7 @@ export class HeartbeatService implements CronJob {
             this.logger.log(`kotlownia temp ${kotData.value}` );
             console.log(69, 'dzialam')
             if (pData.value > pMax) {
-                const message = `\n\n TEMPERATURA PIECA JEST ZA WYSOKA! \n\n AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
+                const message = `\n\n TEMPERATURA PIECA JEST ZA WYSOKA! \n\n AKTUALNA TEMPERATURA PIECA: ${pData.value} \n\n\n\n
                     \n\n Pozostałe odczyty: \n
                     KALORYFERY: ${kalData.value} \n
                     PODŁOGÓWKA: ${podData.value} \n
@@ -95,7 +95,7 @@ export class HeartbeatService implements CronJob {
             }
 
             if (pData.value < pMin) {
-                const message = `\n\n TEMPERATURA JEST ZA NISKA! \n\n AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
+                const message = `\n\n TEMPERATURA JEST ZA NISKA! \n\n AKTUALNA TEMPERATURA PIECA: ${pData.value} \n\n\n\n
                     \n\n Pozostałe odczyty: \n
                     KALORYFERY: ${kalData.value} \n
                     PODŁOGÓWKA: ${podData.value} \n
@@ -108,7 +108,7 @@ export class HeartbeatService implements CronJob {
 
                 client.calls
                     .create({
-                        twiml: `<Response><Say language="pl-PL">${message}</Say></Response>`,
+                        twiml: `<Response><Say language="pl-PL">${message}. to tyle, cześć</Say></Response>`,
                         to: '+48519812933', // Text this number
                         from: '+16692192842', // From a valid Twilio number
                     })
@@ -118,7 +118,7 @@ export class HeartbeatService implements CronJob {
 
                 client.calls
                     .create({
-                        twiml: `<Response><Say language="pl-PL">${message}</Say></Response>`,
+                        twiml: `<Response><Say language="pl-PL">${message}. to tyle, cześć</Say></Response>`,
                         to: '+48515585510', // Text this number
                         from: '+16692192842', // From a valid Twilio number
                     })
