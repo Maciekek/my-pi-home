@@ -18,7 +18,6 @@ const twilio = require('twilio');
 const client = new twilio(accountSid, authToken);
 
 
-
 @Injectable()
 export class HeartbeatService implements CronJob {
     private readonly logger = new Logger(HeartbeatService.name);
@@ -79,6 +78,14 @@ export class HeartbeatService implements CronJob {
                 client.messages
                     .create({
                         body: message,
+                        to: '+48519812933', // Text this number
+                        from: '+16692192842', // From a valid Twilio number
+                    })
+                    .then((message) => console.log(message.sid));
+
+                client.messages
+                    .create({
+                        body: message,
                         to: '+48515585510', // Text this number
                         from: '+16692192842', // From a valid Twilio number
                     })
@@ -95,6 +102,14 @@ export class HeartbeatService implements CronJob {
 
                 // this.slackService.sendMessage();
                 console.log("SEND SMS", message)
+                client.messages
+                    .create({
+                        body: message,
+                        to: '+48519812933', // Text this number
+                        from: '+16692192842', // From a valid Twilio number
+                    })
+                    .then((message) => console.log(message.sid));
+
                 client.messages
                     .create({
                         body: message,
