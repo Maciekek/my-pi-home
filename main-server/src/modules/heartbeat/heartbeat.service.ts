@@ -18,6 +18,7 @@ const twilio = require('twilio');
 const client = new twilio(accountSid, authToken);
 
 
+
 @Injectable()
 export class HeartbeatService implements CronJob {
     private readonly logger = new Logger(HeartbeatService.name);
@@ -32,6 +33,18 @@ export class HeartbeatService implements CronJob {
         this.heartbeatMemory = new HeartbeatMemory();
         this.slackService.sendMessage("apka wystartowała!");
 
+    }
+
+    sendSms = (to, message) => {
+        this.logger.log(`[${new Date().toLocaleString()}, sending sms] to ${to}, message: ${message}`);
+
+        client.messages
+            .create({
+                body: message,
+                to: to,
+                from: '+16692192842',
+            })
+            .then((message) => console.log(message.sid));
     }
 
     run = () => {
@@ -73,23 +86,11 @@ export class HeartbeatService implements CronJob {
                     PODŁOGÓWKA: ${podData.value} \n
                     KOTŁOWNIA: ${kotData.value}`
 
-                // this.slackService.sendMessage();
-                console.log("SEND SMS", message)
-                client.messages
-                    .create({
-                        body: message,
-                        to: '+48519812933', // Text this number
-                        from: '+16692192842', // From a valid Twilio number
-                    })
-                    .then((message) => console.log(message.sid));
+                this.slackService.sendMessage(message);
 
-                client.messages
-                    .create({
-                        body: message,
-                        to: '+48515585510', // Text this number
-                        from: '+16692192842', // From a valid Twilio number
-                    })
-                    .then((message) => console.log(message.sid));
+                this.sendSms('+48515585510', message)
+                this.sendSms('+48519812933', message)
+
 
             }
 
@@ -100,23 +101,9 @@ export class HeartbeatService implements CronJob {
                     PODŁOGÓWKA: ${podData.value} \n
                     KOTŁOWNIA: ${kotData.value}`
 
-                // this.slackService.sendMessage();
-                console.log("SEND SMS", message)
-                client.messages
-                    .create({
-                        body: message,
-                        to: '+48519812933', // Text this number
-                        from: '+16692192842', // From a valid Twilio number
-                    })
-                    .then((message) => console.log(message.sid));
-                client.
-                client.messages
-                    .create({
-                        body: message,
-                        to: '+48515585510', // Text this number
-                        from: '+16692192842', // From a valid Twilio number
-                    })
-                    .then((message) => console.log(message.sid));
+                this.slackService.sendMessage(message);
+                this.sendSms('+48519812933', message)
+                this.sendSms('+48515585510', message)
             }
 
             if (kalData.value < sMin || podData.value < sMin) {
