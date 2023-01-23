@@ -37,7 +37,7 @@ export class HeartbeatService implements CronJob {
     run = () => {
         this.logger.log('task run');
         const pMax = 65;
-        const pMin = 63;
+        const pMin = 45;
 
         const sMax = 40;
         const sMin = 20;
@@ -109,7 +109,7 @@ export class HeartbeatService implements CronJob {
                         from: '+16692192842', // From a valid Twilio number
                     })
                     .then((message) => console.log(message.sid));
-
+                client.
                 client.messages
                     .create({
                         body: message,
