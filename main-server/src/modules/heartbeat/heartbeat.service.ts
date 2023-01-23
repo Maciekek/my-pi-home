@@ -50,7 +50,7 @@ export class HeartbeatService implements CronJob {
     run = () => {
         this.logger.log('task run');
         const pMax = 65;
-        const pMin = 45;
+        const pMin = 50;
 
         const sMax = 40;
         const sMin = 20;
@@ -102,9 +102,30 @@ export class HeartbeatService implements CronJob {
                     KOTŁOWNIA: ${kotData.value}`
 
                 this.slackService.sendMessage(message);
-                this.sendSms('+48519812933', message)
-                this.sendSms('+48515585510', message)
+                this.sendSms('+48519812933', message);
+                this.sendSms('+48515585510', message);
+
+
+                client.calls
+                    .create({
+                        twiml: `<Response><Say language="pl-PL">${message}</Say></Response>`,
+                        to: '+48519812933', // Text this number
+                        from: '+16692192842', // From a valid Twilio number
+                    })
+                    .then(call => console.log(`[dzwonie +48519812933] ${call.sid}`))
+                    .catch((e) => console.log(23, e))
+
+
+                client.calls
+                    .create({
+                        twiml: `<Response><Say language="pl-PL">${message}</Say></Response>`,
+                        to: '+48515585510', // Text this number
+                        from: '+16692192842', // From a valid Twilio number
+                    })
+                    .then(call => console.log(`[dzwonie +48515585510] ${call.sid}`))
+                    .catch((e) => console.log(23, e))
             }
+
 
             if (kalData.value < sMin || podData.value < sMin) {
                 this.slackService.sendMessage(`\n\n TEMPARATURA PODŁOGOWKI ALBO KALORYFEROW JEST ZA NISKA! \n PIEC: *${pData.value}* \n\n\n\n
