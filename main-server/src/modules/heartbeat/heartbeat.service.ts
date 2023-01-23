@@ -95,11 +95,11 @@ export class HeartbeatService implements CronJob {
             }
 
             if (pData.value < pMin) {
-                const message = `\n\n TEMPERATURA JEST ZA NISKA! \n\n AKTUALNA TEMPERATURA PIECA: ${pData.value} \n\n\n\n
+                const message = `\n\n TEMPERATURA JEST ZA NISKA! \n\n AKTUALNA TEMPERATURA PIECA: ${pData.value}. \n\n\n\n
                     \n\n Pozostałe odczyty: \n
-                    KALORYFERY: ${kalData.value} \n
-                    PODŁOGÓWKA: ${podData.value} \n
-                    KOTŁOWNIA: ${kotData.value}`
+                    KALORYFERY: ${kalData.value} \n.
+                    PODŁOGÓWKA: ${podData.value} \n.
+                    KOTŁOWNIA: ${kotData.value}.`
 
                 this.slackService.sendMessage(message);
                 this.sendSms('+48519812933', message);
