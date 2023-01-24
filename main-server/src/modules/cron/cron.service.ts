@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Interval} from '@nestjs/schedule';
+import {Cron, Interval} from '@nestjs/schedule';
 import {NotificatorService} from "../notificator/notificator.service";
 
 @Injectable()
@@ -13,5 +13,14 @@ export class CronService {
         this.notificatorService.run();
         this.logger.debug('Called cron task - notification service - interval 36000');
     }
+
+
+    @Cron('0 8 * * *')
+    handleCronActiveJob() {
+        this.notificatorService.sendActiveNotification();
+        this.logger.debug('Called cron task - notification service - interval 36000');
+    }
+
+
 
 }
