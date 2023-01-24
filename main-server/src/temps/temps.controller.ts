@@ -1,15 +1,17 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {Body, Controller, Get, Logger, Param, Post} from '@nestjs/common';
 import { Temp } from './interfaces/temp.interface';
 import { TempsService } from './temps.service';
 import { AddTempDto } from './dto/add-temp.dto';
 
 @Controller('/temps')
 export class TempsController {
+  private readonly logger = new Logger(TempsController.name);
+
   constructor(private readonly tempsService: TempsService) {}
 
   @Post()
   async addTemp(@Body() addTempDto: AddTempDto): Promise<Temp> {
-    console.log(12, 'POST [addTemp]');
+    this.logger.log('POST [addTemp]');
     return this.tempsService.addTemp(addTempDto);
   }
 

@@ -7,8 +7,8 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 import {SensorsService} from "../../temps/sensors.service";
 
-const accountSid = 'AC47150629610da82fc17afe481ce2e654'; // Your Account SID from www.twilio.com/console
-const authToken = '27c269ec7aa51722e1b12aa6ff068d5f'; // Your Auth Token from www.twilio.com/console
+const accountSid = 'AC47150629610da82fc17afe481ce2e654'; // Your Account SID from www.twilio.com/this.logger
+const authToken = '27c269ec7aa51722e1b12aa6ff068d5f'; // Your Auth Token from www.twilio.com/this.logger
 
 const twilio = require('twilio');
 const client = new twilio(accountSid, authToken);
@@ -34,7 +34,7 @@ export class NotificatorService implements CronJob {
                 to: to,
                 from: '+16692192842',
             })
-            .then((message) => console.log(message.sid));
+            .then((message) => this.logger.log(message.sid));
     }
 
     sendActiveNotification = () => {
@@ -106,8 +106,8 @@ export class NotificatorService implements CronJob {
                         to: '+48519812933', // Text this number
                         from: '+16692192842', // From a valid Twilio number
                     })
-                    .then(call => console.log(`[dzwonie +48519812933] ${call.sid}`))
-                    .catch((e) => console.log(23, e))
+                    .then(call => this.logger.log(`[dzwonie +48519812933] ${call.sid}`))
+                    .catch((e) => this.logger.log(23, e))
 
 
                 client.calls
@@ -116,8 +116,8 @@ export class NotificatorService implements CronJob {
                         to: '+48515585510', // Text this number
                         from: '+16692192842', // From a valid Twilio number
                     })
-                    .then(call => console.log(`[dzwonie +48515585510] ${call.sid}`))
-                    .catch((e) => console.log(23, e))
+                    .then(call => this.logger.log(`[dzwonie +48515585510] ${call.sid}`))
+                    .catch((e) => this.logger.log(23, e))
             }
 
 
