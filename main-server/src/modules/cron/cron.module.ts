@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import {CronService} from "./cron.service";
-import {HeartbeatModule} from "../heartbeat/heartbeat.module";
+import {NotificatorModule} from "../notificator/notificator.module";
 
 @Module({
-    imports: [HeartbeatModule],
+    imports: [NotificatorModule],
     providers: [CronService],
 })
 

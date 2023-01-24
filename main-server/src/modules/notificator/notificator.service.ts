@@ -1,15 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
-import {Cron} from '@nestjs/schedule';
 import {CronJob} from "../cron/interfaces/cronJob";
 import {LocationsService} from "../../locations/locations.service";
 import {TempsService} from "../../temps/temps.service";
 import {SlackService} from "../slack/slack.service";
 import * as _ from 'lodash';
-import {HeartbeatMemory} from "./heartbeatMemory";
-import {logger} from "../../logger.middleware";
 import * as moment from 'moment';
 import {SensorsService} from "../../temps/sensors.service";
-
 
 const accountSid = 'AC47150629610da82fc17afe481ce2e654'; // Your Account SID from www.twilio.com/console
 const authToken = '27c269ec7aa51722e1b12aa6ff068d5f'; // Your Auth Token from www.twilio.com/console
@@ -17,26 +13,20 @@ const authToken = '27c269ec7aa51722e1b12aa6ff068d5f'; // Your Auth Token from ww
 const twilio = require('twilio');
 const client = new twilio(accountSid, authToken);
 
-
-
 @Injectable()
-export class HeartbeatService implements CronJob {
-    private readonly logger = new Logger(HeartbeatService.name);
-
-    heartbeatMemory: HeartbeatMemory;
+export class NotificatorService implements CronJob {
+    private readonly logger = new Logger(NotificatorService.name);
 
     constructor(private readonly locations: LocationsService,
                 private readonly tempService: TempsService,
                 private readonly sensorsService: SensorsService,
                 private readonly slackService: SlackService) {
 
-        this.heartbeatMemory = new HeartbeatMemory();
         this.slackService.sendMessage("apka wystartowała!");
-
     }
 
     sendSms = (to, message) => {
-        this.logger.log(`[${new Date().toLocaleString()}, sending sms] to ${to}, message: ${message}`);
+        this.logger.log(`sending sms to ${to}, message: ${message}`);
 
         client.messages
             .create({
@@ -48,7 +38,7 @@ export class HeartbeatService implements CronJob {
     }
 
     run = () => {
-        this.logger.log('task run');
+        this.logger.log('Notification cron job - started');
         const pMax = 65;
         const pMin = 40;
 
@@ -65,8 +55,7 @@ export class HeartbeatService implements CronJob {
         };
 
         const trabkiLoction = this.locations.findById('5d83477c1d15b82553f8932f').then((data) => {
-            console.log(data);
-            console.log(57, 'pobieram dane ', data)
+            this.logger.log(`[Notificator service] Aktualnie pobrane dane: ${data}`);
             return this.sensorsService.findAllSensorsYoungerthan((data as any)._id, moment().subtract(20, "minutes").toDate());
         }).then((temps) => {
             const pData = _.find(temps, ['sensorId', pID]);
@@ -148,46 +137,8 @@ export class HeartbeatService implements CronJob {
                 PODŁOGÓWKA: ${podData.value} \n
                 PIEC: ${pData.value}`);
             }
-
-            // this.slackService.sendMessage(`\n\n  AKTUALNA TEMPERATURA PIECA: *${pData.value}* \n\n\n\n
-            //         \n\n Pozostałe odczyty: \n
-            //         KALORYFERY: ${kalData.value} \n
-            //         PODŁOGÓWKA: ${podData.value} \n
-            //         KOTŁOWNIA: ${kotData.value}`);
         });
 
-        // const lastResultsPromises = this.locations.findAll().then((locations) => {
-        //     const locationLastResultPromises = locations.map((location) => {
-        //         return this.sensorsService.findAllSensorsYoungerthan((location as any)._id, moment().subtract(10, "months").toDate());
-        //     });
-        //
-        //     return locationLastResultPromises;
-        //
-
-        // });
-        //
-        // lastResultsPromises.then((a) => {
-        //     Promise.all(a).then(results => {
-        //         console.log('reslts, ', results);
-        //         this.analyzeAllResults(results);
-        //     });
-        // });
-    }
-
-    analyzeAllResults = (results) => {
-        this.logger.log(results);
-
-        const resultsByLocationId = _.groupBy(_.flatMap(results), 'locationId');
-        this.logger.log(resultsByLocationId);
-
-        const allLocations = Object.keys(resultsByLocationId);
-
-        allLocations.map(locationId => {
-           // console.log(locationId, resultsByLocationId[locationId]);
-           const newestDate = _.sortBy(resultsByLocationId[locationId], [(result) => moment((result as any).date).unix()]);
-           this.logger.log(_.uniqBy(newestDate, 'sensorId'));
-
-        });
     }
 
 }
