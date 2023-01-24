@@ -1,15 +1,17 @@
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import {Injectable, Logger} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Temp } from './interfaces/temp.interface';
 import { AddTempDto } from './dto/add-temp.dto';
 
 @Injectable()
 export class TempsService {
+  private readonly logger = new Logger(TempsService.name);
+
   constructor(@InjectModel('Temp') private readonly tempModel: Model<Temp>) {}
 
   async addTemp(addTempDto: AddTempDto): Promise<Temp> {
-    console.log(addTempDto);
+    this.logger.log('Dodaje odczyty:', JSON.stringify(addTempDto));
     const addedTemp = new this.tempModel(addTempDto);
     return await addedTemp.save();
   }
