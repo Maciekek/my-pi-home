@@ -68,12 +68,13 @@ export class NotificatorService implements CronJob {
             const kalData = _.find(temps, ['sensorId', sensors.kal]);
             const podData = _.find(temps, ['sensorId', sensors.pod]);
             const kotData = _.find(temps, ['sensorId', sensors.kot]);
+            this.logger.log(`Sprawdzam trabki location, czy jakas temp wymaga powiadomienia` );
             this.logger.log(`piec temp ${pData.value}` );
             this.logger.log(`kaloryfery temp ${kalData.value}` );
             this.logger.log(`podlogowka temp ${podData.value}` );
             this.logger.log(`podlogowka temp ${podData.value}` );
             this.logger.log(`kotlownia temp ${kotData.value}` );
-            console.log(69, 'dzialam')
+
             if (pData.value > pMax) {
                 const message = `\n\n TEMPERATURA PIECA JEST ZA WYSOKA! \n\n AKTUALNA TEMPERATURA PIECA: ${pData.value} \n\n\n\n
                     \n\n Pozostałe odczyty: \n
