@@ -1,4 +1,4 @@
-import { DashboardsService } from '../../services/dashboards.services';
+import { DashboardsService } from 'services/dashboards.services';
 
 const DashboardActions = {
   GET_DASHBOARD_BY_LOCATION_ID: 'GET_DASHBOARD_BY_LOCATION_ID',

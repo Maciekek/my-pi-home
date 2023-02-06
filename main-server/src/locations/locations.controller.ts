@@ -1,11 +1,17 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { AddLocationDto } from './dto/add-location.dto';
 import { Location } from './interfaces/location.interface';
 import { LocationsService } from './locations.service';
-import { AddLocationDto } from './dto/add-location.dto';
 
 @Controller('/locations')
 export class LocationsController {
   constructor(private readonly locationsService: LocationsService) {}
+
+  @Get()
+  async findAll(): Promise<Location[]> {
+    console.log(22, 'find all');
+    return this.locationsService.findAll();
+  }
 
   @Post()
   async addLocation(@Body() addLocationDto: AddLocationDto): Promise<Location> {
@@ -15,11 +21,6 @@ export class LocationsController {
   @Put(':id')
   async updateLocation(@Param('id') id: string, @Body() addLocationDto: AddLocationDto): Promise<Location> {
     return this.locationsService.updateLocation(id, addLocationDto);
-  }
-
-  @Get()
-  async findAll(): Promise<Location[]> {
-    return this.locationsService.findAll();
   }
 
   @Get(':id')

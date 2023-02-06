@@ -1,27 +1,25 @@
 import React from 'react';
 
-import './styles/App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.min.css';
+import './styles/App.scss';
 
-import Navbar from 'react-bootstrap/Navbar';
+import { ConfirmationModal } from 'components/ConfirmationModal';
+import { WebsocketIndicator } from 'components/uiComponents/websocketIndicator';
+import { DashboardPage } from 'pages/DashboardPage';
+import { DashboardSettingsPage } from 'pages/DashboardSettingsPage';
+import { DeviceFormPage } from 'pages/DeviceFormPage';
+import { DevicesPage } from 'pages/DevicesPage';
+import { LocationPage } from 'pages/LocationPage';
+import { LocationSettingsPage } from 'pages/LocationSettingsPage';
+import { LocationsNewPage } from 'pages/LocationsNewPage';
+import LocationsPage from 'pages/LocationsPage';
 import Nav from 'react-bootstrap/Nav';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import LocationsPage from './pages/LocationsPage';
-import { LocationPage } from './pages/LocationPage';
-import { LocationSettingsPage } from './pages/LocationSettingsPage';
-import { LocationsNewPage } from './pages/LocationsNewPage';
-import { DashboardPage } from './pages/DashboardPage';
-import { DashboardSettingsPage } from './pages/DashboardSettingsPage';
-import { WebsocketIndicator } from './components/uiComponents/websocketIndicator';
+import Navbar from 'react-bootstrap/Navbar';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { ConfirmationModal } from './components/ConfirmationModal';
-import { DevicesPage } from './pages/DevicesPage';
-import { DeviceFormPage } from './pages/DeviceFormPage';
 
 function App() {
-  console.log('APP started');
-
   return (
     <div className={'app'}>
       <Router>
