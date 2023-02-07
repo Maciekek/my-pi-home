@@ -1,13 +1,13 @@
 version: "3.8"
 services:
-#  mongo:
-#    image: mongo
-#    ports:
-#      - 27017:27017
-#    networks:
-#      - db
-#    volumes:
-#      - mongodb:/data/db
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - db
+    volumes:
+      - mongodb:/data/db
   main-server:
     image: nestjs-api
     restart: always
@@ -16,23 +16,21 @@ services:
       dockerfile: Dockerfile-prod
     ports:
       - "8888:8888"
-#    depends_on:
-#      - mongo
+    depends_on:
+      - mongo
     networks:
       - db
       - app
-#  client:
-#    restart: always
-#    build:
-#      context: ./client
-#      dockerfile: Dockerfile-prod
-#    volumes:
-#      - ./client/:/user/src/app
-#    ports:
-#      - "3000:3000"
-#    networks:
-#      - db
-#      - app
+  client:
+    restart: always
+    build:
+      context: ./client
+      dockerfile: Dockerfile-prod
+    ports:
+      - "3000:3000"
+    networks:
+      - db
+      - app
 
 volumes:
    mongodb:
