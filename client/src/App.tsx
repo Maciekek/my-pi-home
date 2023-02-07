@@ -1,7 +1,7 @@
 import React from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-toastify/dist/ReactToastify.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'react-toastify/dist/ReactToastify.min.css';
 import './styles/App.scss';
 
 import { ConfirmationModal } from 'components/ConfirmationModal';
