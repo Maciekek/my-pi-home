@@ -11,6 +11,9 @@ services:
   main-server:
     restart: on-failure
     image: nestjs-api
+    build:
+      context: ./main-server
+      dockerfile: Dockerfile-dev
     ports:
       - "8888:8888"
     depends_on:
