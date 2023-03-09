@@ -21,6 +21,7 @@ services:
     networks:
       - db
       - app
+
   client:
     restart: always
     build:
@@ -29,7 +30,6 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - db
       - app
 
 volumes:
