@@ -20,7 +20,7 @@ const dbConnectionString = config.dbConfig.url.replace('__auth__', process.env.D
 console.log(21, 'TO DZIAL!!');
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://maciekekAdmin:alibaba123)(*aaaqqq@77.55.217.143:27017/?authMechanism=DEFAULT'),
+    MongooseModule.forRoot('77.55.217.143:27017'),
     ScheduleModule.forRoot(),
     TempsModule,
     UsersModule,
