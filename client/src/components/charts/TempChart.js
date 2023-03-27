@@ -1,12 +1,12 @@
-import React from 'react';
 import _ from 'lodash';
+import React from 'react';
 
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { dark } from '../chartThemes/dark';
 Highcharts.setOptions({
   time: {
-    timezoneOffset: -1 * 60,
+    timezoneOffset: -2 * 60,
   },
   ...dark,
 });
