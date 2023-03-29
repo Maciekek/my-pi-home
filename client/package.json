@@ -21,13 +21,12 @@
     "moment": "^2.29.4",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
-    "react": "^16.11.0",
+    "react": "^18.2.0",
     "react-bootstrap": "^1.6.4",
     "react-bootstrap-daterangepicker": "^4.1.0",
-    "react-dom": "^16.8.6",
+    "react-dom": "^18.2.0",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^3.4.4",
     "react-select": "^3.0.8",
     "react-toastify": "^5.5.0",
     "recharts": "^1.7.0",
@@ -38,10 +37,9 @@
     "typescript": "^4.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -60,6 +58,11 @@
   },
   "proxy": "http://77.55.217.143:8888/",
   "devDependencies": {
-    "prettier": "2.4.1"
+    "@vitejs/plugin-react": "^3.1.0",
+    "prettier": "2.4.1",
+    "sass": "^1.60.0",
+    "vite": "^4.2.1",
+    "vite-plugin-svgr": "^2.4.0",
+    "vite-tsconfig-paths": "^4.0.7"
   }
 }
