@@ -37,7 +37,7 @@
     "concurrently": "^5.1.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
-    "mongoose": "^5.7.5",
+    "mongoose": "^5.13.15",
     "mysql": "^2.17.1",
     "node-config-ts": "^3.0.3",
     "reflect-metadata": "^0.1.12",
