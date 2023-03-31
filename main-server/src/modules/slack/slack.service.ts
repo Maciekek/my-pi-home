@@ -10,13 +10,14 @@ export class SlackService  {
     constructor() {
         this.logger.log('SLACK_TOKEN: ' + process.env.SLACK_TOKEN);
         const token = process.env.SLACK_TOKEN;
-        this.slackApi = new WebClient(token );
+        // this.slackApi = new WebClient(token );
+
 
     }
 
     sendMessage(content) {
-        this.slackApi.chat.postMessage({channel: 'powiadomienia', text: `\n\n\n\n\n\n\n ============================ \n <!channel> 
-            \n\n\n ${content}`, username: "Backend API" });
+        // this.slackApi.chat.postMessage({channel: 'powiadomienia', text: `\n\n\n\n\n\n\n ============================ \n <!channel>
+        //     \n\n\n ${content}`, username: "Backend API" });
     }
 
 }

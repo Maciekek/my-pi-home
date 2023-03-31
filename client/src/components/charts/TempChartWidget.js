@@ -1,14 +1,13 @@
-import React from 'react';
 import _ from 'lodash';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import Highcharts from 'highcharts';
-import Highstock from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
+import Highstock from 'highcharts/highstock';
 import { dark } from '../chartThemes/dark';
 Highstock.setOptions({
   time: {
-    timezoneOffset: -1 * 60,
+    timezoneOffset: -2 * 60,
   },
   ...dark,
 });

@@ -1,5 +1,4 @@
-import { DevicesService } from '../../services/deviceServices/devices.service';
-import { DashboardActions } from './DashboardActions';
+import { DevicesService } from 'services/deviceServices/devices.service';
 
 const DevicesActions = {
   GET_DEVICES_BY_LOCATION_ID: 'GET_DEVICES_BY_LOCATION_ID',

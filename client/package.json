@@ -2,49 +2,52 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "prettier": "^2.8.3",
+    "prettier-plugin-organize-imports": "^3.2.2"
+  },
   "dependencies": {
     "@types/classnames": "^2.3.1",
-    "@types/node": "^16.10.3",
-    "@types/react": "^17.0.27",
-    "@types/react-dom": "^17.0.9",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
     "@types/react-router-dom": "^5.3.0",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
+    "@redux-devtools/extension": "^3.2.5",
     "axios": "^0.22.0",
     "bootstrap": "^4.3.1",
     "bootstrap-daterangepicker": "^3.1.0",
     "classnames": "^2.3.1",
-    "highcharts": "^7.1.2",
+    "highcharts": "^10.3.3",
     "highcharts-react-official": "^2.2.2",
+    "http-proxy-middleware": "^2.0.6",
     "jquery": "^3.6.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
-    "node-sass": "^4.14.1",
+    "node-sass": "^8.0.0",
     "prop-types": "^15.7.2",
-    "react": "^16.11.0",
+    "react": "^18.2.0",
     "react-bootstrap": "^1.6.4",
     "react-bootstrap-daterangepicker": "^4.1.0",
-    "react-dom": "^16.8.6",
+    "react-dom": "^18.2.0",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^3.4.4",
-    "react-select": "^3.0.8",
+    "react-scripts": "^5.0.1",
+    "react-select": "^5.7.0",
     "react-toastify": "^5.5.0",
-    "recharts": "^1.7.0",
-    "redux": "^4.0.4",
+    "recharts": "^2.3.2",
+    "redux": "^4.2.0",
+    "@types/redux-thunk": "^2.1.0",
     "redux-thunk": "^2.3.0",
+    "serve": "14.1.2",
     "socket.io": "^2.4.1",
     "socket.io-client": "^2.3.0",
-    "typescript": "^4.4.3"
+    "typescript": "4.9.4"
   },
   "scripts": {
     "start": "react-scripts start",
+    "serve": "npx serve -s ./build -l 3000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -57,9 +60,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://77.55.217.143:8888/",
-  "devDependencies": {
-    "prettier": "2.4.1"
   }
 }

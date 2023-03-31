@@ -8,6 +8,7 @@ import {AddDashboardDto} from "./dto/add-dashboard.dto";
 export class DashboardController {
     private readonly logger = new Logger(DashboardController.name);
 
+
     constructor(private readonly dashboardsService: DashboardsService) {}
 
     @Post(':id')
