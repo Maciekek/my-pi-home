@@ -40,7 +40,7 @@ export class NotificatorService implements CronJob {
 
   sendActiveNotification = () => {
     this.logger.log('Send Active Notification cron job');
-    this.sendSms('+48519812933', 'Działam i czekam na zadania...');
+    // this.sendSms('+48519812933', 'Działam i czekam na zadania...');
     this.sendSms('+48515585510', 'Działam i czekam na zadania...');
   };
 
