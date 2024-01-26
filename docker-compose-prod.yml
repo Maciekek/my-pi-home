@@ -27,6 +27,8 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile-prod
+    environment:
+      - REACT_APP_API_URL=https://tempbackend.bieda.it
     ports:
       - "3000:3000"
     networks:
