@@ -1,15 +1,15 @@
-import React from 'react';
-import { Page } from 'components/page';
-import { LocationsService } from 'services/locations.services';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
+import { Page } from 'components/page';
 import { Icon } from 'components/uiComponents/Icon';
-import { stopReactAndNativePropagation } from 'utils/Utils';
+import { isArray } from 'lodash';
 import { FixMeLater, IAppStore } from 'models/common';
+import React from 'react';
+import ListGroup from 'react-bootstrap/ListGroup';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { LocationsService } from 'services/locations.services';
 
 interface ILocationsPageState {
   locations: {}[] | null;
@@ -21,7 +21,7 @@ interface ILocationsPageProps {
 
 class LocationsPage extends React.Component<ILocationsPageProps, ILocationsPageState> {
   state = {
-    locations: null,
+    locations: [],
   };
 
   constructor(props: ILocationsPageProps) {
@@ -30,10 +30,14 @@ class LocationsPage extends React.Component<ILocationsPageProps, ILocationsPageS
   }
 
   load = () => {
-    LocationsService.getAllLocations().then(locations => {
-      this.setState({
-        locations: locations.data,
-      });
+    LocationsService.getAllLocations().then((locations) => {
+      console.log(33, typeof locations.data === 'object');
+
+      if (isArray(locations.data)) {
+        this.setState({
+          locations: locations.data,
+        });
+      }
     });
   };
 
