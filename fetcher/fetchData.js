@@ -30,4 +30,4 @@ const fetchData = () => {
 
 console.log("Działam!");
 fetchData();
-// setInterval(fetchData, 600000);
+setInterval(fetchData, 600000);
