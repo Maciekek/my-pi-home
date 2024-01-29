@@ -8,12 +8,10 @@ services:
       - db
     volumes:
       - mongodb:/data/db
+
   main-server:
-    image: nestjs-api
+    image: maciekek/my-pi-home-server
     restart: always
-    build:
-      context: ./main-server
-      dockerfile: Dockerfile-prod
     ports:
       - "8888:8888"
     depends_on:
@@ -23,16 +21,14 @@ services:
       - app
 
   client:
+    image: maciekek/my-pi-home-client
     restart: always
-    build:
-      context: ./client
-      dockerfile: Dockerfile-prod
-    environment:
-      - REACT_APP_API_URL=https://tempbackend.bieda.it
     ports:
       - "3000:3000"
     networks:
       - app
+    environment:
+      - REACT_APP_API_URL=http://main-server:8888
 
 volumes:
    mongodb:
