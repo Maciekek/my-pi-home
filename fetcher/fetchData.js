@@ -15,7 +15,10 @@ const fetchData = () => {
       
       fetch("https://temperaturki.bieda.it/api/temps", {
         method: "POST",
-        body: requestPayload
+        body: JSON.stringify(requestPayload),
+        headers: {
+          "Content-Type": "application/json",
+        }
       }).then(() => {
         console.log(20, 'Dane wysłane', JSON.stringify(requestPayload))
       }).catch((e) => {
@@ -27,4 +30,4 @@ const fetchData = () => {
 
 console.log("Działam!");
 fetchData();
-setInterval(fetchData, 600000);
+// setInterval(fetchData, 600000);
