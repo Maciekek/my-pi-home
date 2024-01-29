@@ -36,6 +36,9 @@ services:
       - "8080:80"
     networks:
       - app
+    depends_on:
+      - main-server
+      - mongo
 
 volumes:
    mongodb:
