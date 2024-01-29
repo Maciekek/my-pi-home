@@ -40,6 +40,11 @@ services:
       - main-server
       - mongo
 
+  fetcher:
+    build:
+      context: ./fetcher
+      dockerfile: Dockerfile-prod
+
 volumes:
    mongodb:
 
