@@ -27,8 +27,15 @@ services:
       - "3000:3000"
     networks:
       - app
-    environment:
-      - REACT_APP_API_URL=http://main-server:8888
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile-prod
+    ports:
+      - "8080:80"
+    networks:
+      - app
 
 volumes:
    mongodb:
