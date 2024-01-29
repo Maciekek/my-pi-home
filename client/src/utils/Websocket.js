@@ -14,7 +14,7 @@ class Websocket {
   constructor() {}
 
   connect() {
-    this.socket = io('http://main-server:8888');
+    this.socket = io('https://temperaturki.bieda.it/');
 
     this.attachListeners();
   }
