@@ -1,6 +1,4 @@
-import { Document } from 'mongoose';
-
-export interface Dashboard extends Document {
-    readonly locationId: string;
-    readonly config: string;
+export interface Dashboard {
+  readonly locationId: string;
+  readonly config: string;
 }

@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { DeleteResult } from 'mongodb';
 import { AddLocationDto } from './dto/add-location.dto';
 import { Location } from './interfaces/location.interface';
 import { LocationsService } from './locations.service';
@@ -29,7 +30,7 @@ export class LocationsController {
   }
 
   @Delete(':id')
-  async deleteById(@Param('id') id: string): Promise<Location> {
+  async deleteById(@Param('id') id: string): Promise<DeleteResult> {
     return this.locationsService.deleteById(id);
   }
 

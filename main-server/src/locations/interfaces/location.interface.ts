@@ -1,18 +1,16 @@
-import { Document } from 'mongoose';
-
-export interface SensorData   {
-    sensorId: string;
-    locationId: string;
-    name: string;
+export interface SensorData {
+  sensorId: string;
+  locationId: string;
+  name: string;
 }
 
 export interface TempSettings {
-    sensors: SensorData[];
-    readIntervalTime: string;
+  sensors: SensorData[];
+  readIntervalTime: string;
 }
 
-export interface Location extends Document {
-    readonly name: string;
-    readonly description: string;
-    readonly tempSettings: TempSettings;
+export interface Location {
+  readonly name: string;
+  readonly description: string;
+  readonly tempSettings: TempSettings;
 }

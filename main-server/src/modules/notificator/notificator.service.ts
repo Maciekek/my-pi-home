@@ -95,7 +95,7 @@ export class NotificatorService implements CronJob {
           this.sendSms('+48519812933', message);
           this.sendSms('+48515585510', message);
 
-          client.calls
+          this.client.calls
             .create({
               twiml: `<Response><Say language="pl-PL">${message}. to tyle, cześć</Say></Response>`,
               to: '+48519812933', // Text this number
@@ -104,7 +104,7 @@ export class NotificatorService implements CronJob {
             .then((call) => this.logger.log(`[dzwonie +48519812933] ${call.sid}`))
             .catch((e) => this.logger.log(23, e));
 
-          client.calls
+          this.client.calls
             .create({
               twiml: `<Response><Say language="pl-PL">${message}. to tyle, cześć</Say></Response>`,
               to: '+48515585510', // Text this number

@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
-import {NotificatorService} from "./notificator.service";
-import {LocationsModule} from "../../locations/locations.module";
-import {TempsModule} from "../../temps/temps.module";
-import {SlackModule} from "../slack/slack.module";
+import { LocationsModule } from '../../locations/locations.module';
+import { TempsModule } from '../../temps/temps.module';
+import { NotificatorService } from './notificator.service';
 
 @Module({
-    imports: [LocationsModule, TempsModule, SlackModule],
-    providers: [NotificatorService],
-    exports: [NotificatorService],
+  imports: [LocationsModule, TempsModule],
+  providers: [NotificatorService],
+  exports: [NotificatorService],
 })
-
 export class NotificatorModule {}
