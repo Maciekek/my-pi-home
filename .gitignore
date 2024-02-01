@@ -2,4 +2,4 @@ main-server/dist/
 /main-server/dist/
 /recorder-ftp/testdir/
 */node_modules
-main-server/.env
+/main-server/.env
