@@ -11,7 +11,7 @@ import { Server } from 'socket.io';
 const websocketRPIConnections = {};
 
 @WebSocketGateway({
-  cors: { credentials: true, origin: 'https://temperaturki.bieda.it/' },
+  cors: { credentials: true, origin: 'https://temperaturki.bieda.it'},
   allowEIO3: true,
 })
 export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
