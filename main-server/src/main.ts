@@ -4,7 +4,12 @@ import { AppModule } from './app.module';
 import { logger } from './logger.middleware';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    cors: {
+      origin: ['https://tempbackend.bieda.it'],
+      methods: ['GET', 'POST'],
+    },
+  });
   app.useGlobalPipes(new ValidationPipe());
 
   app.setGlobalPrefix('api');
