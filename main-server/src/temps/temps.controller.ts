@@ -1,7 +1,7 @@
-import {Body, Controller, Get, Logger, Param, Post} from '@nestjs/common';
+import { Body, Controller, Get, Logger, Param, Post } from '@nestjs/common';
+import { AddTempDto } from './dto/add-temp.dto';
 import { Temp } from './interfaces/temp.interface';
 import { TempsService } from './temps.service';
-import { AddTempDto } from './dto/add-temp.dto';
 
 @Controller('/temps')
 export class TempsController {

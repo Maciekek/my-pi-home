@@ -10,7 +10,12 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "types": []
+
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "./node_modules",
+    "./node_modules/*"
+  ]
 }

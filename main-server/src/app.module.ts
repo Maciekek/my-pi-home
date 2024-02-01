@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
-import { config } from 'node-config-ts';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -13,15 +13,14 @@ import { CronModule } from './modules/cron/cron.module';
 import { TempsModule } from './temps/temps.module';
 import { UsersModule } from './users/users.module';
 
-console.log(config.dbConfig);
-console.log(config.dbConfig.url);
-const dbConnectionString = config.dbConfig.url.replace('__auth__', process.env.DB_AUTH);
-
-console.log(21, 'TO DZIAL!!');
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://mongo:27017/nest'),
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    MongooseModule.forRoot(process.env.DB_URL),
     ScheduleModule.forRoot(),
+
     TempsModule,
     UsersModule,
     LocationsModule,

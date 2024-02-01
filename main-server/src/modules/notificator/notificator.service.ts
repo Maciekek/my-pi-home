@@ -1,46 +1,38 @@
 import { Injectable, Logger } from '@nestjs/common';
 import * as _ from 'lodash';
 import * as moment from 'moment';
+import * as process from 'process';
 import { LocationsService } from '../../locations/locations.service';
 import { SensorsService } from '../../temps/sensors.service';
 import { TempsService } from '../../temps/temps.service';
 import { CronJob } from '../cron/interfaces/cronJob';
-import { SlackService } from '../slack/slack.service';
-
-const accountSid = 'AC47150629610da82fc17afe481ce2e654'; // Your Account SID from www.twilio.com/this.logger
-const authToken = '27c269ec7aa51722e1b12aa6ff068d5f'; // Your Auth Token from www.twilio.com/this.logger
-
 const twilio = require('twilio');
-const client = new twilio(accountSid, authToken);
 
 @Injectable()
 export class NotificatorService implements CronJob {
   private readonly logger = new Logger(NotificatorService.name);
+  private client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
   constructor(
     private readonly locations: LocationsService,
     private readonly tempService: TempsService,
     private readonly sensorsService: SensorsService,
-    private readonly slackService: SlackService,
-  ) {
-    this.slackService.sendMessage('apka wystartowała!');
-  }
+  ) {}
 
   sendSms = (to, message) => {
     this.logger.log(`sending sms to ${to}, message: ${message}`);
 
-    client.messages
+    this.client.messages
       .create({
         body: message,
-        to: to,
+        to,
         from: '+16692192842',
       })
-      .then((message) => this.logger.log(message.sid));
+      .then((response) => this.logger.log(response.sid));
   };
 
   sendActiveNotification = () => {
     this.logger.log('Send Active Notification cron job');
-    // this.sendSms('+48519812933', 'Działam i czekam na zadania...');
     this.sendSms('+48515585510', 'Działam i czekam na zadania...');
   };
 
@@ -89,8 +81,6 @@ export class NotificatorService implements CronJob {
                     PODŁOGÓWKA: ${podData.value} \n
                     KOTŁOWNIA: ${kotData.value}`;
 
-          this.slackService.sendMessage(message);
-
           this.sendSms('+48515585510', message);
           this.sendSms('+48519812933', message);
         }
@@ -102,7 +92,6 @@ export class NotificatorService implements CronJob {
                     PODŁOGÓWKA: ${podData.value} \n.
                     KOTŁOWNIA: ${kotData.value}.`;
 
-          this.slackService.sendMessage(message);
           this.sendSms('+48519812933', message);
           this.sendSms('+48515585510', message);
 
@@ -123,33 +112,6 @@ export class NotificatorService implements CronJob {
             })
             .then((call) => this.logger.log(`[dzwonie +48515585510] ${call.sid}`))
             .catch((e) => this.logger.log(23, e));
-        }
-
-        if (kalData.value < sMin || podData.value < sMin) {
-          this.slackService
-            .sendMessage(`\n\n TEMPARATURA PODŁOGOWKI ALBO KALORYFEROW JEST ZA NISKA! \n PIEC: *${pData.value}* \n\n\n\n
-                \n\n Pozostałe odczyty: \n
-                KALORYFERY: ${kalData.value} \n
-                PODŁOGÓWKA: ${podData.value} \n
-                KOTŁOWNIA: ${kotData.value}`);
-        }
-
-        if (kalData.value > sMax || podData.value > sMax) {
-          this.slackService
-            .sendMessage(`\n\n TEMPARATURA PODŁOGOWKI ALBO KALORYFEROW JEST ZA WYSOKA! \n PIEC: *${pData.value}* \n\n\n\n
-                \n\n Pozostałe odczyty: \n
-                KALORYFERY: ${kalData.value} \n
-                PODŁOGÓWKA: ${podData.value} \n
-                KOTŁOWNIA: ${kotData.value}`);
-        }
-
-        if (kotData.value > roomMax) {
-          this.slackService
-            .sendMessage(`\n\n TEMPARATURA w KOTOWKI jest ZA WYSOKA \n KOTLOWNIA: *${kotData.value}* \n\n\n\n
-                \n\n Pozostałe odczyty: \n
-                KALORYFERY: ${kalData.value} \n
-                PODŁOGÓWKA: ${podData.value} \n
-                PIEC: ${pData.value}`);
         }
       });
   };
