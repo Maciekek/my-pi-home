@@ -10,40 +10,42 @@ services:
       - mongodb:/data/db
 
   main-server:
-    image: maciekek/my-pi-home-server
+    image: maciekek/my-pi-home-server:master
     restart: always
     ports:
       - "8888:8888"
     depends_on:
       - mongo
+    env_file:
+      - main-server/.env
     networks:
       - db
       - app
 
   client:
-    image: maciekek/my-pi-home-client
+    image: maciekek/my-pi-home-client:master
     restart: always
     ports:
       - "3000:3000"
     networks:
       - app
 
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile-prod
-    ports:
-      - "8080:80"
-    networks:
-      - app
-    depends_on:
-      - main-server
-      - mongo
-
-  fetcher:
-    build:
-      context: ./fetcher
-      dockerfile: Dockerfile-prod
+#  nginx:
+#    build:
+#      context: ./nginx
+#      dockerfile: Dockerfile-prod
+#    ports:
+#      - "8080:80"
+#    networks:
+#      - app
+#    depends_on:
+#      - main-server
+#      - mongo
+#
+#  fetcher:
+#    build:
+#      context: ./fetcher
+#      dockerfile: Dockerfile-prod
 
 volumes:
    mongodb:
