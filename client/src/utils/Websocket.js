@@ -1,7 +1,7 @@
+import { toast } from 'react-toastify';
 import io from 'socket.io-client';
 import { store } from '../index';
 import { updateActiveConections, websocketConnected, websocketDisconnected } from '../store/actions/SettingsActions';
-import { toast } from 'react-toastify';
 const WEBSOCKET_MESSAGE_TYPES = {
   NEW_RPI_CONNECTION: 'new_rpi_connection',
   SOME_RPI_DISCONNECTED: 'some_rpi_disconnected',

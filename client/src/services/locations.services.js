@@ -5,11 +5,11 @@ const LocationsService = {
     return axios.get('/api/locations');
   },
 
-  getLocation: locationId => {
+  getLocation: (locationId) => {
     return axios.get(`/api/locations/${locationId}`);
   },
 
-  getLocationSettings: locationId => {
+  getLocationSettings: (locationId) => {
     return axios.get(`/api/locations/${locationId}`);
   },
 
@@ -17,11 +17,11 @@ const LocationsService = {
     return axios.put(`/api/locations/${locationId}`, data);
   },
 
-  createNewLocation: form => {
+  createNewLocation: (form) => {
     return axios.post(`/api/locations`, form);
   },
 
-  deleteLocation: locationId => {
+  deleteLocation: (locationId) => {
     return axios.delete(`/api/locations/${locationId}`);
   },
 };
