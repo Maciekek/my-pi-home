@@ -14,7 +14,7 @@ There's a client tailored for Raspberry Pi (`/pi`) in place, which reads tempera
 - Backend framework - Nest.js
 - Frontend library - React.js
 - DB - MongoDD
-- Reverse Proxy - Ngix
+- Reverse Proxy - Ngnix
 - SMS provider - Twilio
 - Docker, github actions
 
