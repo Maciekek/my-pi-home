@@ -19,6 +19,9 @@ There's a client tailored for Raspberry Pi (`/pi`) in place, which reads tempera
 - Docker, github actions
 
 
+### Hosting
+Hosted on https://mikr.us/
+
 ----
 
 ![Diagram](./assets/diagram.png)
