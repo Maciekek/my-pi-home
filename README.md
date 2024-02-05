@@ -1,36 +1,11 @@
+
 # my-pi-home
 
+My-pi-home is a lightweight and straightforward application designed for recording, storing, and displaying temperature readings sent by external devices. The application also includes the capability to control relays, although this feature is not currently in use or supported by me.
 
-## Api description: http://77.55.217.143/api/swagger/
+## Motivation 
 
+I developed this application to assist a family member in monitoring the furnace and indoor temperatures. Later on, I found it useful for my own use with devices such as Raspberry Pi (utilizing ds18b20 sensors) and NodeMCU (paired with ds18b20 sensors).
 
-### how to run dev app
-####client
-`npm run start` 
-
-#### backend
-`npm run start:dev` 
-
-#### mock pi server
-`node main.js`
-
-#### db
-
-
-
-##
-##
-
-### how to run prod app
-####client
-npm run build && 
-./start.sh
-
-#### backend
-./start.sh
-
-#### pi server
-pm2 start pm2.config.js
-
-
-
+### Raspberry PI
+There's a client tailored for Raspberry Pi (`/pi`) in place, which reads temperatures from ds18b20 sensors and transmits them to a specified address configured in the settings.
