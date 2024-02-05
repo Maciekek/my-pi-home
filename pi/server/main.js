@@ -1,4 +1,4 @@
-const config = require("./src/readConfig");
+const config = require('./src/readConfig');
 
 const piReader = require('./src/reader/reader');
 const tempsService = require('./src/services/tempServices');
@@ -8,48 +8,40 @@ const MAX_TEMP = 60;
 const MIN_TEMP = -30;
 
 class Main {
-    constructor() {
-        this.readAndSendData();
-        console.log(config.locationId);
-        this.readAndSendData = this.readAndSendData.bind(this);
+  constructor() {
+    this.readAndSendData();
+    this.readAndSendData = this.readAndSendData.bind(this);
 
-        setInterval(this.readAndSendData, 360000);
-        websocketManager.connect()
+    setInterval(this.readAndSendData, 360000);
+    websocketManager.connect();
+  }
+
+  readAndSendData() {
+    piReader.getValues().map((temp) => {
+      const tempObject = {
+        value: this.prepareTemps(temp.value),
+        date: new Date(),
+        locationId: config.locationId || undefined,
+        sensorId: temp.id,
+      };
+
+      tempsService.addNewTemps(tempObject);
+    });
+  }
+
+  prepareTemps(value) {
+    if (value > MAX_TEMP) {
+      return MAX_TEMP;
     }
 
-    readAndSendData() {
-        piReader.getValues().map(temp => {
-            const tempObject = {
-                value: this.prepareTemps(temp.value),
-                date: new Date(),
-                locationId: config.locationId || undefined,
-                sensorId: temp.id,
-            };
-
-            tempsService.addNewTemps(tempObject);
-        });
-
+    if (value < MIN_TEMP) {
+      return MIN_TEMP;
     }
 
-    prepareTemps(value) {
-        if (value > MAX_TEMP) {
-            return MAX_TEMP;
-        }
-
-        if (value < MIN_TEMP) {
-            return MIN_TEMP;
-        }
-
-        return value;
-    }
+    return value;
+  }
 }
 
-
-
 setTimeout(() => {
-    const main = new Main();
+  const main = new Main();
 }, 1000);
-
-
-
-

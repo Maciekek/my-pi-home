@@ -9,44 +9,44 @@ class WebsocketManager {
 
   connect() {
     this.socket = io(configEnv.get('api.websocket'));
-    console.log("CONNECT")
-    this.attachListeners()
+    console.log('CONNECT');
+    this.attachListeners();
   }
 
   attachListeners() {
     this.socket.on('connect', () => {
-      console.log('[websocket] connect!')
+      console.log('[websocket] connect!');
     });
     this.socket.on('connect_error', (e) => {
-      console.log('[websocket] connect error!')
+      console.log('[websocket] connect error!');
     });
     this.socket.on('disconnect', () => {
-      console.log('[websocket] disconnect!')
+      console.log('[websocket] disconnect!');
     });
 
     this.socket.on('error', () => {
-      console.log('[websocket] socket error!')
+      console.log('[websocket] socket error!');
     });
 
     this.socket.on('message', (message) => {
       console.log(message);
-      console.log(`[websocket] received some message type: ${message.event_type}`)
+      console.log(`[websocket] received some message type: ${message.event_type}`);
     });
 
     this.socket.on('action', (actionMessage) => {
-      console.log(`[websocket] received some message type: ${actionMessage.url}`)
-      console.log("DO SOME ACTION ", actionMessage);
+      console.log(`[websocket] received some message type: ${actionMessage.url}`);
+      console.log('DO SOME ACTION ', actionMessage);
       axios.get(actionMessage.url).then((response) => {
-
-
-        this.socket.emit('finishedAction', {id: actionMessage.id, response: response.data.slice(0, response.data.indexOf('}') + 1)})
+        this.socket.emit('finishedAction', {
+          id: actionMessage.id,
+          response: response.data.slice(0, response.data.indexOf('}') + 1),
+        });
       });
     });
 
     this.socket.on('ping', () => {
-      console.log('[websocket] event ping!')
+      console.log('[websocket] event ping!');
     });
-
   }
 }
 

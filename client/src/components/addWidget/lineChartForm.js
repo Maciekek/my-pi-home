@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
+import { Icon } from 'components/uiComponents/Icon';
 import Modal from 'react-bootstrap/Modal';
 import { RecentlyUsedSensors } from '../RecentlyUsedSensors';
-import { Icon } from 'components/uiComponents/Icon';
 
 class LineChartForm extends React.Component {
   static propTypes = {
@@ -51,7 +51,7 @@ class LineChartForm extends React.Component {
     );
   };
 
-  onChangeName = e => {
+  onChangeName = (e) => {
     this.setState(
       {
         chartName: e.target.value,
@@ -73,7 +73,7 @@ class LineChartForm extends React.Component {
     );
   };
 
-  removeSensor = index => {
+  removeSensor = (index) => {
     const sensors = [...this.state.sensors];
     sensors.splice(index, 1);
 
@@ -86,7 +86,7 @@ class LineChartForm extends React.Component {
   };
 
   isSubmitDisabled = () => {
-    const emptyFields = this.state.sensors.filter(sensor => {
+    const emptyFields = this.state.sensors.filter((sensor) => {
       return _.isEmpty(sensor.sensorId);
     });
 
@@ -125,7 +125,7 @@ class LineChartForm extends React.Component {
                   <Form.Control
                     name={'sensorId'}
                     value={sensor.sensorId}
-                    onChange={e => this.onChange(e, index)}
+                    onChange={(e) => this.onChange(e, index)}
                     type="text"
                     placeholder="room1"
                   />
@@ -137,17 +137,17 @@ class LineChartForm extends React.Component {
                   <Form.Control
                     name={'sensorUnit'}
                     value={sensor.sensorUnit}
-                    onChange={e => this.onChange(e, index)}
+                    onChange={(e) => this.onChange(e, index)}
                     type="text"
                     placeholder="C, kg, lux..."
                   />
                 </Form.Group>
               </Col>
-              <Col sm="1" className={'flex-center'}>
-                {this.state.sensors.length > 1 ? (
-                  <Icon type={'delete'} onClick={() => this.removeSensor(index)} />
-                ) : null}
-              </Col>
+              {/*<Col sm="1" className={'flex-center'}>*/}
+              {/*  {this.state.sensors.length > 1 ? (*/}
+              {/*    <Icon type={'delete'} onClick={() => this.removeSensor(index)} />*/}
+              {/*  ) : null}*/}
+              {/*</Col>*/}
             </Row>
           );
         })}

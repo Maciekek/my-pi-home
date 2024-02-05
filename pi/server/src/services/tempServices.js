@@ -5,24 +5,21 @@ const apiUrl = config.get('api.url');
 console.log(apiUrl);
 
 const tempServices = {
-    addNewTemps: (body) => {
-        console.log('addNewTemps - start');
-        axios.post(`${apiUrl}/temps`, body)
-            .then(function (response)
-            {
-                console.log('addNewTemps success saved new temps values', body)
-            })
-            .catch(function (error) {
-                console.log('addNewTemps error', error.errno || error.response.data)
-                // console.log(error);
-            });
-    },
+  addNewTemps: (body) => {
+    console.log('addNewTemps - start');
+    axios
+      .post(`${apiUrl}/temps`, body)
+      .then(function (response) {
+        console.log('addNewTemps success saved new temps values', body);
+      })
+      .catch(function (error) {
+        console.log('addNewTemps error', error.errno || error.response.data);
+      });
+  },
 
-    getLocationSettings: (locationId) => {
-        return axios.get(`${apiUrl}/locations/${locationId}`);
-    },
-
-
+  getLocationSettings: (locationId) => {
+    return axios.get(`${apiUrl}/locations/${locationId}`);
+  },
 };
 
-module.exports = tempServices
+module.exports = tempServices;
