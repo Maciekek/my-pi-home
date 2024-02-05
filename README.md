@@ -10,5 +10,15 @@ I developed this application to assist a family member in monitoring the furnace
 ### Raspberry PI
 There's a client tailored for Raspberry Pi (`/pi`) in place, which reads temperatures from ds18b20 sensors and transmits them to a specified address configured in the settings.
 
+### Tech stach
+- Backend framework - Nest.js
+- Frontend library - React.js
+- DB - MongoDD
+- Reverse Proxy - Ngix
+- SMS provider - Twilio
+- Docker, github actions
+
+
+----
 
 ![Diagram](./assets/diagram.png)
