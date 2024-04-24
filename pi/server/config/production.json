@@ -1,6 +1,6 @@
 {
   "api": {
-    "url": "http://77.55.217.143:8888/api",
-    "websocket": "http://77.55.217.143:8888/?device=rpi&name=rpiMaciej1&locationId=5d825b6c1d15b82553f890f2"
+    "url": "https://temperaturki.bieda.it/api",
+    "websocket": "https://temperaturki.bieda.it/api/?device=rpi&name=rpiMaciej1&locationId=5d825b6c1d15b82553f890f2"
   }
 }
