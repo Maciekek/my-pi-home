@@ -20,15 +20,15 @@ export class NotificatorService implements CronJob {
   ) {}
 
   sendSms = (to, message) => {
-    this.logger.log(`sending sms to ${to}, message: ${message}`);
-
-    this.client.messages
-      .create({
-        body: message,
-        to,
-        from: '+16692192842',
-      })
-      .then((response) => this.logger.log(response.sid));
+    // this.logger.log(`sending sms to ${to}, message: ${message}`);
+    //
+    // this.client.messages
+    //   .create({
+    //     body: message,
+    //     to,
+    //     from: '+16692192842',
+    //   })
+    //   .then((response) => this.logger.log(response.sid));
   };
 
   sendActiveNotification = () => {
