@@ -1,11 +1,11 @@
-import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import { LoadingIndicator } from './loadingIndicator';
 import moment from 'moment';
+import { LoadingIndicator } from './loadingIndicator';
 //2018-08-29 15:38
-const parseDateRangeToDate = dateRange => {
+const parseDateRangeToDate = (dateRange) => {
   if (dateRange.startsWith('custom')) {
     console.log(10, {
       from: dateRange.split('_')[1],
@@ -46,6 +46,11 @@ const parseDateRangeToDate = dateRange => {
     case 'last.24.hour':
       return {
         from: moment().subtract('24', 'hour'),
+        to: moment().format('YYYY-MM-DD HH:mm'),
+      };
+    case 'last.48.hour':
+      return {
+        from: moment().subtract('48', 'hour'),
         to: moment().format('YYYY-MM-DD HH:mm'),
       };
     case 'last.7.days':
@@ -94,7 +99,7 @@ class WidgetDataLoader extends React.Component {
     };
 
     if (config.sensors) {
-      props.dataLoader.get(config).then(data => {
+      props.dataLoader.get(config).then((data) => {
         this.setState({
           data: data,
         });
@@ -124,7 +129,7 @@ class WidgetDataLoader extends React.Component {
       isLoading: true,
     });
 
-    this.props.dataLoader.get(config).then(data => {
+    this.props.dataLoader.get(config).then((data) => {
       console.log('data', data);
       this.setState({
         data: [...data],

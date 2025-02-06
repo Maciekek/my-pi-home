@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import DateRangePicker from 'react-bootstrap-daterangepicker';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+import React from 'react';
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+import { connect } from 'react-redux';
 
+import { Icon } from 'components/uiComponents/Icon';
 import { confirmOperation } from 'store/actions/BehaviourActions';
 import { removeWidgetByIndex } from 'store/actions/DashboardActions';
-import {Icon} from "components/uiComponents/Icon";
 
 const widgetWithAvailableTimeRangePicker = new Set(['lineChart']);
 
@@ -48,7 +48,7 @@ class WidgetBase extends React.Component {
     );
   };
 
-  getDateRange = index => {
+  getDateRange = (index) => {
     const dateRanges = this.state.customDateRanges;
 
     if (!dateRanges[index]) {
@@ -83,8 +83,7 @@ class WidgetBase extends React.Component {
 
             <div className={'widget__menu-title'}>{this.props.chartName}</div>
             <div className={'widget__menu-actions'}>
-              <Icon  className={'widget__menu-actions--remove'} onClick={() => this.removeWidget()} type={'delete'} />
-
+              <Icon className={'widget__menu-actions--remove'} onClick={() => this.removeWidget()} type={'delete'} />
             </div>
           </div>
         </div>
@@ -151,6 +150,13 @@ const WidgetDateRangePicker = ({ index, onSetRange, active }) => {
         >
           {' '}
           24h
+        </span>
+        <span
+          className={'widget-date-range-picker__range' + (active[index] === 'last.48.hour' ? ' active' : '')}
+          onClick={() => onSetRange(index, 'last.48.hour')}
+        >
+          {' '}
+          48h
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.7.days' ? ' active' : '')}
