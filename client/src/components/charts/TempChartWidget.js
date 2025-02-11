@@ -45,6 +45,7 @@ const options = {
   },
   rangeSelector: {
     selected: 4,
+    enabled: false,
     inputEnabled: false,
     buttonTheme: {
       visibility: 'hidden',

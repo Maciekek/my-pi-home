@@ -26,14 +26,11 @@ services:
     volumes:
       - ./client/:/user/src/app
     environment:
-      - REACT_APP_API_URL=http://77.55.217.143:8888
+      - REACT_APP_API_URL=https://temperaturki.bieda.it
     ports:
       - "3000:3000"
     networks:
       - app
-
-volumes:
-   mongodb:
 
 networks:
   db:
