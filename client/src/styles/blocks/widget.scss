@@ -6,9 +6,11 @@
   margin: 20px 0;
   position: relative;
   &__menu {
+
     border-bottom: 1px solid transparentize($Zorba, 0.5);
-    min-height: 40px;
+    min-height: 60px;
     //margin-bottom: 20px;
+
     &--action {
       display: flex;
       min-height: 40px;
