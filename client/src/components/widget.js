@@ -108,118 +108,111 @@ const WidgetDateRangePicker = ({ index, onSetRange, active }) => {
   return (
     <div className={'widget-date-range-picker'}>
       <span className={'widget-date-range-picker__title'}>
-        Ostatnie:
         <span
           className={'widget-date-range-picker__range' + (isActive() ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.1.hour')}
         >
-          {' '}
           1h
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.2.hour' ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.2.hour')}
         >
-          {' '}
           2h
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.3.hour' ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.3.hour')}
         >
-          {' '}
           3h
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.6.hour' ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.6.hour')}
         >
-          {' '}
           6h
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.12.hour' ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.12.hour')}
         >
-          {' '}
           12h
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.24.hour' ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.24.hour')}
         >
-          {' '}
           24h
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.48.hour' ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.48.hour')}
         >
-          {' '}
           48h
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.7.days' ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.7.days')}
         >
-          {' '}
-          7 dni
+          <span className={'no-wrap'}>7 dni</span>
         </span>
         <span
           className={'widget-date-range-picker__range' + (active[index] === 'last.30.days' ? ' active' : '')}
           onClick={() => onSetRange(index, 'last.30.days')}
         >
-          {' '}
-          30 dni
+          <span className={'no-wrap'}>30 dni</span>
         </span>
-        <DateRangePicker
-          timePicker={true}
-          timePicker24Hour={true}
-          maxDate={moment().endOf('day')}
-          minDate={moment('2021-10-09T10:15:00')}
-          locale={{
-            format: 'DD/MM/YYYY',
-            separator: ' - ',
-            applyLabel: 'Zastosuj',
-            cancelLabel: 'Anuluj',
-            fromLabel: 'Od',
-            toLabel: 'Do',
-            customRangeLabel: 'Własny zakres',
-            weekLabel: 'Tydzień',
-            daysOfWeek: ['Nie', 'Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'So'],
-            monthNames: [
-              'Styczeń',
-              'Luty',
-              'Marzec',
-              'Kwiecień',
-              'Maj',
-              'Czerwiec',
-              'Lipiec',
-              'Sierpień',
-              'Wrzesień',
-              'Październik',
-              'Listopad',
-              'Grudzień',
-            ],
-            firstDay: 1,
-          }}
-          initialSettings={{
-            alwaysShowCalendars: true,
-          }}
-          onApply={(event, picker) => {
-            console.log(picker.startDate.valueOf(), picker.endDate.valueOf());
-            onSetRange(index, `custom_${picker.startDate.valueOf()}_${picker.endDate.valueOf()}`);
-          }}
-        >
-          {console.log(176, active[index])}
-          <span
-            className={
-              'widget-date-range-picker__range' + (active[index] && active[index].startsWith('custom') ? ' active' : '')
-            }
+        <span className={'widget-date-range-picker__range--advanced'}>
+          <DateRangePicker
+            timePicker={true}
+            timePicker24Hour={true}
+            maxDate={moment().endOf('day')}
+            minDate={moment('2021-10-09T10:15:00')}
+            locale={{
+              format: 'DD/MM/YYYY',
+              separator: ' - ',
+              applyLabel: 'Zastosuj',
+              cancelLabel: 'Anuluj',
+              fromLabel: 'Od',
+              toLabel: 'Do',
+              customRangeLabel: 'Własny zakres',
+              weekLabel: 'Tydzień',
+              daysOfWeek: ['Nie', 'Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'So'],
+              monthNames: [
+                'Styczeń',
+                'Luty',
+                'Marzec',
+                'Kwiecień',
+                'Maj',
+                'Czerwiec',
+                'Lipiec',
+                'Sierpień',
+                'Wrzesień',
+                'Październik',
+                'Listopad',
+                'Grudzień',
+              ],
+              firstDay: 1,
+            }}
+            initialSettings={{
+              alwaysShowCalendars: true,
+            }}
+            onApply={(event, picker) => {
+              console.log(picker.startDate.valueOf(), picker.endDate.valueOf());
+              onSetRange(index, `custom_${picker.startDate.valueOf()}_${picker.endDate.valueOf()}`);
+            }}
           >
-            Własny zakres
-          </span>
-        </DateRangePicker>
+            {console.log(176, active[index])}
+            <span
+              className={
+                'widget-date-range-picker__range' +
+                (active[index] && active[index].startsWith('custom') ? ' active' : '')
+              }
+            >
+              Własny zakres
+            </span>
+          </DateRangePicker>
+        </span>
       </span>
     </div>
   );

@@ -17,4 +17,10 @@
       color: crimson;
     }
   }
+
+  @media (max-width: 600px) {
+    .widget-date-range-picker__range--advanced {
+      display: none;
+    }
+  }
 }
