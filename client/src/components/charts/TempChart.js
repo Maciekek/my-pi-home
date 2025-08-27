@@ -7,7 +7,7 @@ import { dark } from '../chartThemes/dark';
 Highcharts.setOptions({
   time: {
     timezone: 'Europe/London',
-    timezoneOffset: -1 * 60,
+    timezoneOffset: -2 * 60,
   },
   ...dark,
 });
