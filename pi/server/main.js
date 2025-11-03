@@ -10,7 +10,6 @@ const MIN_TEMP = -30;
 class Main {
   constructor() {
     this.readAndSendData();
-    this.readAndSendData = this.readAndSendData.bind(this);
 
     setInterval(this.readAndSendData, 360000);
     websocketManager.connect();
