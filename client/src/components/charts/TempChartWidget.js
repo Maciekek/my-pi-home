@@ -8,7 +8,7 @@ import Highstock from 'highcharts/highstock';
 Highstock.setOptions({
   time: {
     timezone: 'Europe/London',
-    timezoneOffset: -2 * 60,
+    timezoneOffset: 1 * 60,
   },
   ...dark,
 });

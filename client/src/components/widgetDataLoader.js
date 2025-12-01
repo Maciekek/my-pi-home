@@ -4,13 +4,9 @@ import React from 'react';
 
 import moment from 'moment';
 import { LoadingIndicator } from './loadingIndicator';
-//2018-08-29 15:38
+
 const parseDateRangeToDate = (dateRange) => {
   if (dateRange.startsWith('custom')) {
-    console.log(10, {
-      from: dateRange.split('_')[1],
-      to: dateRange.split('_')[2],
-    });
     return {
       from: dateRange.split('_')[1],
       to: dateRange.split('_')[2],
@@ -65,7 +61,6 @@ const parseDateRangeToDate = (dateRange) => {
       };
 
     case 'custom':
-      console.log(52, dateRange);
       return {
         from: moment().subtract('30', 'days'),
         to: moment().format('YYYY-MM-DD HH:mm'),
@@ -90,7 +85,7 @@ class WidgetDataLoader extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(77, props);
+
     const config = {
       ...props.component.WidgetConfig,
       ...props.options,
@@ -130,7 +125,6 @@ class WidgetDataLoader extends React.Component {
     });
 
     this.props.dataLoader.get(config).then((data) => {
-      console.log('data', data);
       this.setState({
         data: [...data],
         isLoading: false,
@@ -140,7 +134,7 @@ class WidgetDataLoader extends React.Component {
 
   render() {
     const Component = this.props.component;
-    console.log(this.state.data);
+
     return (
       <>
         {this.state.isLoading ? (
