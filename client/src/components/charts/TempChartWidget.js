@@ -7,7 +7,7 @@ import HighchartsReact from 'highcharts-react-official';
 import Highstock from 'highcharts/highstock';
 Highstock.setOptions({
   time: {
-    timezoneOffset: -2 * 60,
+    timezoneOffset: -1 * 60,
   },
   ...dark,
 });
