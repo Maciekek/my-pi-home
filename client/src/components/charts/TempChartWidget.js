@@ -7,6 +7,7 @@ import HighchartsReact from 'highcharts-react-official';
 import Highstock from 'highcharts/highstock';
 Highstock.setOptions({
   time: {
+    useUTC: true,
     timezone: 'Europe/Warsaw',
   },
   ...dark,

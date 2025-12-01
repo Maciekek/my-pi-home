@@ -6,6 +6,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { dark } from '../chartThemes/dark';
 Highcharts.setOptions({
   time: {
+    useUTC: true,
     timezone: 'Europe/Warsaw',
   },
   ...dark,
