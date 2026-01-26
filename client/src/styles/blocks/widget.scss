@@ -6,22 +6,22 @@
   margin: 20px 0;
   position: relative;
   &__menu {
-
     border-bottom: 1px solid transparentize($Zorba, 0.5);
     min-height: 60px;
     //margin-bottom: 20px;
-
-    &--action {
-      display: flex;
-      min-height: 40px;
-      height: 100%;
-      justify-content: space-between;
-      align-items: center;
-    }
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'ranges title actions';
+    align-items: center;
+    column-gap: 10px;
+    padding: 0 10px;
   }
 
   &__menu-title {
-    margin: 0 10px;
+    margin: 0;
+    font-weight: 600;
+    text-align: center;
+    grid-area: title;
   }
 
   &__menu-actions {
@@ -30,6 +30,7 @@
     align-items: center;
     justify-content: center;
     margin-right: 4px;
+    grid-area: actions;
 
     .icon {
       font-size: 18px !important;
@@ -37,6 +38,21 @@
 
     &--remove {
       color: red;
+    }
+  }
+
+  .widget-date-range-picker {
+    grid-area: ranges;
+  }
+
+  @media screen and (max-width: 600px) {
+    &__menu {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        'title actions'
+        'ranges ranges';
+      row-gap: 6px;
+      padding: 6px 10px 10px;
     }
   }
 

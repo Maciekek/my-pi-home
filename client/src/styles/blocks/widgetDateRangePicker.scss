@@ -1,17 +1,16 @@
 @import '../variables';
 
 .widget-date-range-picker {
-  padding: 15px 10px;
+  padding: 0;
   color: transparentize($deepCove, 0.4);
   font-size: 18px;
 
-> span {
-  display: flex;
-
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
+  &__title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 
   &__range {
     cursor: pointer;
@@ -29,9 +28,20 @@
     }
   }
 
-  @media (max-width: 600px) {
-    .widget-date-range-picker__range--advanced {
-      display: none;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    padding: 8px 0 0;
+
+    &__title {
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      gap: 6px 10px;
+    }
+
+    &__range {
+      padding: 0 6px;
     }
   }
+
 }

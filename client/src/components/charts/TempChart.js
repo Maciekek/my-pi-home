@@ -38,9 +38,21 @@ const options = {
     },
   },
   tooltip: {
-    headerFormat: '<div class="chart-tooltip" style="font-size: 15px;">{point.key}<br>',
-    footerFormat: '</div>',
-    xDateFormat: 'Godzina: %H:%M;  Data: %d-%m',
+    useHTML: true,
+    formatter: function () {
+      const dateLabel = Highcharts.dateFormat('%A, %d.%m.%Y, %H:%M', this.x);
+      let html = `<div class="chart-tooltip" style="font-size: 15px;">Data: ${dateLabel}<br>`;
+
+      if (this.points) {
+        this.points.forEach((point) => {
+          html += `<span style="color:${point.color}">●</span> ${point.series.name}: <b>${point.y}</b><br>`;
+        });
+      } else {
+        html += `${this.series.name}: <b>${this.y}</b><br>`;
+      }
+
+      return `${html}</div>`;
+    },
     shared: true,
     split: false,
     enabled: true,

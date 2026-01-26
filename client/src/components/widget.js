@@ -68,23 +68,18 @@ class WidgetBase extends React.Component {
     return (
       <div className={'widget'} key={this.props.key}>
         <div className={'widget__menu'}>
-          <div className={'widget__menu--action'}>
-            {widgetWithAvailableTimeRangePicker.has(this.props.widgetType) ? (
-              <WidgetDateRangePicker
-                index={this.props.index}
-                active={this.state.customDateRanges}
-                onSetRange={(index, range) => {
-                  this.setDateRange(index, range);
-                }}
-              />
-            ) : (
-              <div />
-            )}
-
-            <div className={'widget__menu-title'}>{this.props.chartName}</div>
-            <div className={'widget__menu-actions'}>
-              <Icon className={'widget__menu-actions--remove'} onClick={() => this.removeWidget()} type={'delete'} />
-            </div>
+          {widgetWithAvailableTimeRangePicker.has(this.props.widgetType) ? (
+            <WidgetDateRangePicker
+              index={this.props.index}
+              active={this.state.customDateRanges}
+              onSetRange={(index, range) => {
+                this.setDateRange(index, range);
+              }}
+            />
+          ) : null}
+          <div className={'widget__menu-title'}>{this.props.chartName}</div>
+          <div className={'widget__menu-actions'}>
+            <Icon className={'widget__menu-actions--remove'} onClick={() => this.removeWidget()} type={'delete'} />
           </div>
         </div>
 
@@ -202,7 +197,6 @@ const WidgetDateRangePicker = ({ index, onSetRange, active }) => {
               onSetRange(index, `custom_${picker.startDate.valueOf()}_${picker.endDate.valueOf()}`);
             }}
           >
-            {console.log(176, active[index])}
             <span
               className={
                 'widget-date-range-picker__range' +
