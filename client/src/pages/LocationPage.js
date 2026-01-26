@@ -85,42 +85,38 @@ class LocationPageBase extends React.Component {
 
     return (
       <Page>
-        <div className={'location__panel'}>
-          <Link to={`/dashboard/${this.props.match.params.id}`}>
-            {' '}
-            <Icon type={'device_thermostat'} />
-            Dashboard (beta!)
-          </Link>
-          <Link to={`/${this.props.match.params.id}/devices/`}>
-            {' '}
-            <Icon type={'devices_other'} />
-            Urządzenia (beta!)
-          </Link>
-          <Link to={`/locations/${this.props.match.params.id}/settings`}>
-            {' '}
-            <Icon type={'settings'} />
-            Ustawienia
-          </Link>
-        </div>
         <div className={'location'}>
-          <div className={'location__name'}>
-            Nazwa lokalizacji:
-            <span> {this.state.location.name}</span>
+          <div className={'location__panel'}>
+            <Link to={`/dashboard/${this.props.match.params.id}`} className="location__panel-link">
+              <Icon type={'device_thermostat'} />
+              Dashboard
+            </Link>
+            <Link to={`/${this.props.match.params.id}/devices/`} className="location__panel-link">
+              <Icon type={'devices_other'} />
+              Urządzenia
+            </Link>
+            <Link to={`/locations/${this.props.match.params.id}/settings`} className="location__panel-link">
+              <Icon type={'settings'} />
+              Ustawienia
+            </Link>
           </div>
 
-          <strong>
-            Domyślnie pobieranych jest 100 ostatnich pomiarów. Jeżeli chcesz zwiększyć/zmiejszyć ten zakres wystarczy,
-            że podasz niżej ile chcesz pobrać pomiarów.
-          </strong>
+          <div className="location__header">
+            <div className="location__title">{this.state.location.name}</div>
+          </div>
 
           {/*<Form type="text" id='nCount' placeholder={'100'}/>*/}
           {/*<button onClick={this.onInputChange}>zapisz</button>*/}
 
-          <div className={'load-n'}>
+          <div className={'load-n location__card'}>
             <Row>
               <Col sm="6">
                 <Form.Group controlId="sensorId">
                   <Form.Label>Ile odczytów załadować?</Form.Label>
+                  <p className="location__description">
+                    Domyślnie pobieranych jest 100 ostatnich pomiarów. Jeżeli chcesz zwiększyć/zmiejszyć ten zakres
+                    wystarczy, że podasz niżej ile chcesz pobrać pomiarów.
+                  </p>
                   <Form.Control id="nCount" type="number" placeholder="100" />
                   <Button onClick={this.onInputChange} variant="success">
                     Załaduj
