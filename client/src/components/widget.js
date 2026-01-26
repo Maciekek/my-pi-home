@@ -159,8 +159,6 @@ const WidgetDateRangePicker = ({ index, onSetRange, active }) => {
         </span>
         <span className={'widget-date-range-picker__range--advanced'}>
           <DateRangePicker
-            timePicker={true}
-            timePicker24Hour={true}
             maxDate={moment().endOf('day')}
             minDate={moment('2021-10-09T10:15:00')}
             locale={{

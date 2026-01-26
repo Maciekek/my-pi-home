@@ -17,7 +17,6 @@
     font-weight: 600;
     padding: 0 8px;
 
-
     &:hover {
       color: $sanJuan;
     }
@@ -43,5 +42,127 @@
       padding: 0 6px;
     }
   }
+}
 
+// Date range picker (bootstrap-daterangepicker) is rendered in a body-level portal.
+.daterangepicker {
+  border: 1px solid transparentize($deepCove, 0.8);
+  box-shadow: 0 8px 24px transparentize($deepCove, 0.7);
+  z-index: 9999;
+}
+
+.daterangepicker .drp-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid transparentize($deepCove, 0.85);
+  background: linear-gradient(180deg, #f8f9fc 0%, #f0f2f8 100%);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.daterangepicker .drp-buttons .drp-selected {
+  margin: 0;
+  color: $shuttleGray;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.daterangepicker .drp-buttons .btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0 4px;
+}
+
+.daterangepicker .drp-buttons .btn + .btn {
+  margin-left: 0;
+}
+
+.daterangepicker .drp-buttons .btn-group,
+.daterangepicker .drp-buttons .btn-group-vertical {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.daterangepicker .drp-buttons .btn.btn-primary {
+  background: $sanJuan;
+  border-color: $sanJuan;
+}
+
+.daterangepicker .drp-buttons .btn.btn-default {
+  background: #ffffff;
+  border-color: transparentize($deepCove, 0.85);
+  color: $deepCove;
+}
+
+@media screen and (max-width: 600px) {
+  .daterangepicker {
+    width: calc(100vw - 24px);
+    max-width: 360px;
+  }
+
+  .daterangepicker .drp-calendar.right {
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 24px;
+    width: auto;
+    padding: 0;
+    pointer-events: none;
+  }
+
+  .daterangepicker .drp-calendar.left,
+  .daterangepicker .drp-calendar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .daterangepicker .drp-calendar.right .calendar-table {
+    display: table;
+  }
+
+  .daterangepicker .drp-calendar.right .calendar-table tbody,
+  .daterangepicker .drp-calendar.right .calendar-table thead tr:last-child {
+    display: none;
+  }
+
+  .daterangepicker .drp-calendar.right .calendar-table thead tr:first-child th.prev,
+  .daterangepicker .drp-calendar.right .calendar-table thead tr:first-child th.month {
+    display: none;
+  }
+
+  .daterangepicker .drp-calendar.right .calendar-table thead tr:first-child th.next {
+    pointer-events: auto;
+    text-align: right;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: middle;
+  }
+
+  .daterangepicker .drp-calendar.left .calendar-table thead tr:first-child th {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+    vertical-align: middle;
+  }
+
+  .daterangepicker .drp-calendar.right .calendar-time {
+    display: none;
+  }
+
+  .daterangepicker .drp-buttons {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .daterangepicker .calendar-table .next span, .daterangepicker .calendar-table .prev span {
+    padding: 6px;
+  }
 }
