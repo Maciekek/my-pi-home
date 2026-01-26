@@ -11,8 +11,7 @@ class LocationSettingsPage extends React.Component {
     isEditingNotificationEmail: false,
   };
 
-  constructor(props) {
-    super(props);
+  loadLocation = () => {
     LocationsService.getLocationSettings(this.props.match.params.id).then((locations) => {
       console.log(locations.data);
       const location = locations.data;
@@ -28,6 +27,11 @@ class LocationSettingsPage extends React.Component {
         isEditingNotificationEmail: false,
       });
     });
+  };
+
+  constructor(props) {
+    super(props);
+    this.loadLocation();
   }
 
   submit = () => {
@@ -89,6 +93,9 @@ class LocationSettingsPage extends React.Component {
     this.setState(obj);
   };
 
+  resetForm = () => {
+    this.loadLocation();
+  };
   startEmailEdit = () => {
     const obj = this.state;
     if (!obj.location.notificationSettings) {
@@ -283,13 +290,21 @@ class LocationSettingsPage extends React.Component {
                   );
                 })}
 
-              <div className="location-settings__actions">
+              <div className="location-settings__sensors-actions">
                 <Button variant="secondary" onClick={this.addNewSensor}>
                   Dodaj nową czujkę
                 </Button>
-                <Button variant="primary" onClick={this.submit}>
-                  Zapisz
-                </Button>
+              </div>
+
+              <div className="location-settings__footer">
+                <div className="location-settings__actions">
+                  <Button variant="outline-secondary" onClick={this.resetForm}>
+                    Anuluj
+                  </Button>
+                  <Button variant="primary" onClick={this.submit}>
+                    Zapisz
+                  </Button>
+                </div>
               </div>
             </Form>
           </div>

@@ -19,6 +19,9 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: $shuttleGray;
+    & ~ & {
+      margin-top: 48px;
+    }
   }
 
   &__section {
@@ -68,7 +71,19 @@
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    justify-content: flex-end;
   }
+
+  &__sensors-actions {
+    margin: 6px 0 4px;
+  }
+
+  &__footer {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(22, 41, 85, 0.08);
+  }
+
 
   &__email-row {
     display: flex;
@@ -87,5 +102,64 @@
   .form-check-label {
     font-weight: 600;
     color: $blueZodiac;
+  }
+}
+
+@media (max-width: 488px) {
+  .location-settings {
+    padding: 8px 0 20px;
+  }
+
+  .location-settings__card {
+    padding: 12px 10px 14px;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(6, 21, 57, 0.08);
+  }
+
+  .location-settings__section-title {
+    margin: 10px 0 6px;
+  }
+
+  .location-settings__section {
+    padding: 8px 10px 4px;
+  }
+
+  .location-settings__sensor {
+    padding: 8px 10px;
+    margin: 8px 0 10px;
+  }
+
+  .location-settings .form-group {
+    margin-bottom: 10px;
+  }
+
+  .location-settings__actions {
+    gap: 8px;
+    margin-top: 12px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .location-settings__actions .btn {
+    width: 100%;
+  }
+
+  .location-settings__footer {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .location-settings__email-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .location-settings__email-edit {
+    width: 100%;
+  }
+
+  .location-settings .btn {
+    padding: 6px 10px;
+    font-size: 14px;
   }
 }
