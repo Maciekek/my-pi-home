@@ -1,118 +1,91 @@
-import { Injectable, Logger } from '@nestjs/common';
-import * as _ from 'lodash';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import * as moment from 'moment';
-import * as process from 'process';
 import { LocationsService } from '../../locations/locations.service';
-import { SensorsService } from '../../temps/sensors.service';
 import { TempsService } from '../../temps/temps.service';
 import { CronJob } from '../cron/interfaces/cronJob';
-const twilio = require('twilio');
+import { buildStartupTestEmail } from './emailTemplates';
+import { processLocationInactivity } from './inactivityNotifier';
+const nodemailer = require('nodemailer');
 
 @Injectable()
-export class NotificatorService implements CronJob {
+export class NotificatorService implements CronJob, OnModuleInit {
   private readonly logger = new Logger(NotificatorService.name);
-  private client = new twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+  private mailer = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT || 587),
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: process.env.SMTP_USER
+      ? {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        }
+      : undefined,
+  });
+  private inactiveCooldownMinutes = Number(process.env.INACTIVE_NOTIFICATION_COOLDOWN_MINUTES || 30);
+  private lastInactiveNotification: Record<string, Date> = {};
+  private startupTestSent = false;
 
-  constructor(
-    private readonly locations: LocationsService,
-    private readonly tempService: TempsService,
-    private readonly sensorsService: SensorsService,
-  ) {}
+  constructor(private readonly locations: LocationsService, private readonly tempService: TempsService) {}
 
-  sendSms = (to, message) => {
-    // this.logger.log(`sending sms to ${to}, message: ${message}`);
-    //
-    // this.client.messages
-    //   .create({
-    //     body: message,
-    //     to,
-    //     from: '+16692192842',
-    //   })
-    //   .then((response) => this.logger.log(response.sid));
+  onModuleInit = async () => {
+    if (this.startupTestSent) {
+      return;
+    }
+    const testTo = process.env.SMTP_TEST_TO;
+    if (!testTo) {
+      return;
+    }
+    try {
+      const email = buildStartupTestEmail();
+      await this.sendEmail(testTo, email.subject, email);
+      this.startupTestSent = true;
+      this.logger.log('[Notificator service] Startup SMTP test email sent.');
+    } catch (e) {
+      this.logger.log(`[Notificator service] Startup SMTP test email failed: ${e}`);
+    }
   };
 
-  sendActiveNotification = () => {
-    this.logger.log('Send Active Notification cron job');
-    this.sendSms('+48515585510', 'Działam i czekam na zadania...');
+  sendEmail = async (to, subject, message) => {
+    if (!process.env.SMTP_HOST || !process.env.SMTP_FROM) {
+      this.logger.log('[Notificator service] SMTP not configured, skipping email.');
+      return;
+    }
+
+    await this.mailer.sendMail({
+      from: process.env.SMTP_FROM,
+      to,
+      subject,
+      text: message.text,
+      html: message.html,
+    });
+  };
+
+  checkInactiveNotifications = async () => {
+    const locations = await this.locations.findAll();
+    const now = moment();
+
+    this.logger.log(`[Notificator service] Checking inactivity for ${locations.length} locations`);
+
+    for (const location of locations) {
+      try {
+        await processLocationInactivity({
+          location,
+          tempService: this.tempService,
+          now,
+          cooldownMinutes: this.inactiveCooldownMinutes,
+          lastSentMap: this.lastInactiveNotification,
+          sendEmail: this.sendEmail,
+          logger: this.logger,
+        });
+      } catch (e) {
+        this.logger.log(`[Notificator service] Email send failed: ${e}`);
+      }
+    }
   };
 
   run = () => {
-    this.logger.log('Notification cron job - started');
-    const pMax = 65;
-    const pMin = 39;
-
-    const sMax = 40;
-    const sMin = 20;
-
-    const roomMax = 31;
-
-    const pID = '28-000006bee1fc';
-    const sensors = {
-      kal: '10-000802cbe042',
-      pod: '10-000802d6d148',
-      kot: '10-000802cbe825',
-    };
-
-    const trabkiLoction = this.locations
-      .findById('5d83477c1d15b82553f8932f')
-      .then((data) => {
-        this.logger.log(`[Notificator service] Aktualnie pobrane dane: ${data}`);
-        return this.sensorsService.findAllSensorsYoungerthan(
-          (data as any)._id,
-          moment().subtract(20, 'minutes').toDate(),
-        );
-      })
-      .then((temps) => {
-        const pData = _.find(temps, ['sensorId', pID]);
-        const kalData = _.find(temps, ['sensorId', sensors.kal]);
-        const podData = _.find(temps, ['sensorId', sensors.pod]);
-        const kotData = _.find(temps, ['sensorId', sensors.kot]);
-        this.logger.log(`Sprawdzam trabki location, czy jakas temp wymaga powiadomienia`);
-        this.logger.log(`piec temp ${pData.value}`);
-        this.logger.log(`kaloryfery temp ${kalData.value}`);
-        this.logger.log(`podlogowka temp ${podData.value}`);
-        this.logger.log(`podlogowka temp ${podData.value}`);
-        this.logger.log(`kotlownia temp ${kotData.value}`);
-
-        if (pData.value > pMax) {
-          const message = `\n\n TEMPERATURA PIECA JEST ZA WYSOKA! \n\n AKTUALNA TEMPERATURA PIECA: ${pData.value} \n\n\n\n
-                    \n\n Pozostałe odczyty: \n
-                    KALORYFERY: ${kalData.value} \n
-                    PODŁOGÓWKA: ${podData.value} \n
-                    KOTŁOWNIA: ${kotData.value}`;
-
-          this.sendSms('+48515585510', message);
-          this.sendSms('+48519812933', message);
-        }
-
-        if (pData.value < pMin) {
-          const message = `\n\n TEMPERATURA JEST ZA NISKA! \n\n AKTUALNA TEMPERATURA PIECA: ${pData.value}. \n\n\n\n
-                    \n\n Pozostałe odczyty: \n
-                    KALORYFERY: ${kalData.value} \n.
-                    PODŁOGÓWKA: ${podData.value} \n.
-                    KOTŁOWNIA: ${kotData.value}.`;
-
-          this.sendSms('+48519812933', message);
-          this.sendSms('+48515585510', message);
-
-          this.client.calls
-            .create({
-              twiml: `<Response><Say language="pl-PL">${message}. to tyle, cześć</Say></Response>`,
-              to: '+48519812933', // Text this number
-              from: '+16692192842', // From a valid Twilio number
-            })
-            .then((call) => this.logger.log(`[dzwonie +48519812933] ${call.sid}`))
-            .catch((e) => this.logger.log(23, e));
-
-          this.client.calls
-            .create({
-              twiml: `<Response><Say language="pl-PL">${message}. to tyle, cześć</Say></Response>`,
-              to: '+48515585510', // Text this number
-              from: '+16692192842', // From a valid Twilio number
-            })
-            .then((call) => this.logger.log(`[dzwonie +48515585510] ${call.sid}`))
-            .catch((e) => this.logger.log(23, e));
-        }
-      });
+    this.checkInactiveNotifications().catch((e) =>
+      this.logger.log(`[Notificator service] Inactivity check failed: ${e}`),
+    );
   };
 }

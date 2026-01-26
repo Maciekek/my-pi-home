@@ -9,8 +9,15 @@ export interface TempSettings {
   readIntervalTime: string;
 }
 
+export interface NotificationSettings {
+  enabled: boolean;
+  email: string;
+  inactiveThresholdMinutes: number;
+}
+
 export interface Location {
   readonly name: string;
   readonly description: string;
   readonly tempSettings: TempSettings;
+  readonly notificationSettings?: NotificationSettings;
 }

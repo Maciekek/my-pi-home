@@ -24,6 +24,7 @@ export class LocationsService {
           name: addedLocation.name,
           description: addedLocation.description,
           tempSettings: addedLocation.tempSettings,
+          notificationSettings: addedLocation.notificationSettings,
         },
       },
     );

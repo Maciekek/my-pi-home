@@ -10,7 +10,6 @@ export class LocationsController {
 
   @Get()
   async findAll(): Promise<Location[]> {
-    console.log(22, 'find all');
     return this.locationsService.findAll();
   }
 

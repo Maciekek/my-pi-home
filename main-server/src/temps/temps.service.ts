@@ -27,4 +27,8 @@ export class TempsService {
       .limit(Number(n))
       .exec();
   }
+
+  async findLastOne(locationId): Promise<Temp | null> {
+    return await this.tempModel.findOne({ locationId }).sort({ date: -1 }).exec();
+  }
 }

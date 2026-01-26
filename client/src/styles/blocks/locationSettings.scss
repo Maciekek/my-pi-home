@@ -1,0 +1,91 @@
+@import '../variables';
+
+.location-settings {
+  padding: 24px 16px 48px;
+  min-height: calc(100vh - 80px);
+
+  &__card {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 28px 28px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(6, 21, 57, 0.08), 0 4px 12px rgba(6, 21, 57, 0.06);
+  }
+
+  &__section-title {
+    margin: 18px 0 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: $shuttleGray;
+  }
+
+  &__section {
+    padding: 10px 14px 6px;
+    border-radius: 12px;
+    background: rgba(120, 135, 171, 0.08);
+    border: 1px solid rgba(120, 135, 171, 0.2);
+  }
+
+  &__sensor {
+    margin: 10px 0 14px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(22, 41, 85, 0.08);
+    background: rgba(79, 98, 142, 0.05);
+  }
+
+  &__sensor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__sensor-title {
+    font-weight: 600;
+    color: $blueZodiac;
+    font-size: 14px;
+  }
+
+  &__sensor-delete {
+    border: 0;
+    background: transparent;
+    color: $shuttleGray;
+    padding: 4px;
+    border-radius: 8px;
+    line-height: 1;
+  }
+
+  &__sensor-delete:hover {
+    background: rgba(46, 66, 114, 0.08);
+    color: $blueZodiac;
+  }
+
+  &__actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__email-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__email-edit {
+    white-space: nowrap;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-check-label {
+    font-weight: 600;
+    color: $blueZodiac;
+  }
+}

@@ -22,6 +22,22 @@ There's a client tailored for Raspberry Pi (`/pi`) in place, which reads tempera
 ### Hosting
 Hosted on https://mikr.us/
 
+### SMTP / Email notifications
+The backend reads SMTP config from `main-server/.env`. For Brevo, use:
+
+```
+SMTP_HOST=smtp-relay.brevo.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your_brevo_login
+SMTP_PASS=your_brevo_password
+SMTP_FROM=alerts@yourdomain.com
+SMTP_TEST_TO=you@example.com
+INACTIVE_NOTIFICATION_COOLDOWN_MINUTES=30
+```
+
+`SMTP_TEST_TO` is optional. If set, the server sends a one-time test email on startup.
+
 ----
 
 ![Diagram](./assets/diagram.png)

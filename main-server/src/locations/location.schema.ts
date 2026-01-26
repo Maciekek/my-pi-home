@@ -11,8 +11,15 @@ export const TempSettingsSchema = new mongoose.Schema({
     readIntervalTime: String,
 });
 
+export const NotificationSettingsSchema = new mongoose.Schema({
+    enabled: Boolean,
+    email: String,
+    inactiveThresholdMinutes: Number,
+});
+
 export const LocationSchema = new mongoose.Schema({
     name: String,
     description: String,
     tempSettings: TempSettingsSchema,
+    notificationSettings: NotificationSettingsSchema,
 });

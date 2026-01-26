@@ -17,12 +17,22 @@ services:
     volumes:
       - ./main-server/:/user/src/main-server
     command: sh -c "./start-dev.sh"
+    env_file:
+      - ./main-server/.env
     ports:
       - "8888:8888"
     depends_on:
       - mongo
+      - mailhog
     networks:
       - db
+      - app
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
       - app
   client:
     build:
@@ -44,4 +54,3 @@ volumes:
 networks:
   db:
   app:
-
