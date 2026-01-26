@@ -1,9 +1,9 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { Page } from '../components/page';
 import { Icon } from '../components/uiComponents/Icon';
 import { LocationsService } from '../services/locations.services';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 class LocationSettingsPage extends React.Component {
   state = {
@@ -94,8 +94,9 @@ class LocationSettingsPage extends React.Component {
   };
 
   resetForm = () => {
-    this.loadLocation();
+    this.props.history.push(`/locations/${this.props.match.params.id}`);
   };
+
   startEmailEdit = () => {
     const obj = this.state;
     if (!obj.location.notificationSettings) {
@@ -199,18 +200,14 @@ class LocationSettingsPage extends React.Component {
                   label="Powiadomienie o braku aktywności odczytów"
                   name="enabled"
                   onChange={this.changeNotificationValue}
-                  checked={
-                    this.state.location.notificationSettings &&
-                    this.state.location.notificationSettings.enabled
-                  }
+                  checked={this.state.location.notificationSettings && this.state.location.notificationSettings.enabled}
                 />
               </Form.Group>
 
-              {this.state.location.notificationSettings &&
-                this.state.location.notificationSettings.enabled && (
-                  <div className="location-settings__section">
-                    <Form.Group controlId="notificationSettingsEmail">
-                      <Form.Label>Email do powiadomień</Form.Label>
+              {this.state.location.notificationSettings && this.state.location.notificationSettings.enabled && (
+                <div className="location-settings__section">
+                  <Form.Group controlId="notificationSettingsEmail">
+                    <Form.Label>Email do powiadomień</Form.Label>
                     {this.state.location.notificationSettings.email && !this.state.isEditingNotificationEmail ? (
                       <div className="location-settings__email-row">
                         <Form.Control
@@ -235,22 +232,20 @@ class LocationSettingsPage extends React.Component {
                         value={this.state.location.notificationSettings.email}
                       />
                     )}
-                    <Form.Text className="text-muted">
-                      Aby zmienić email, usuń aktualny i wpisz nowy.
-                    </Form.Text>
+                    <Form.Text className="text-muted">Aby zmienić email, usuń aktualny i wpisz nowy.</Form.Text>
                   </Form.Group>
-                    <Form.Group controlId="notificationSettingsThreshold">
-                      <Form.Label>Brak aktywności (minuty)</Form.Label>
-                      <Form.Control
-                        name="inactiveThresholdMinutes"
-                        type="number"
-                        min="1"
-                        onChange={this.changeNotificationValue}
-                        value={this.state.location.notificationSettings.inactiveThresholdMinutes}
-                      />
-                    </Form.Group>
-                  </div>
-                )}
+                  <Form.Group controlId="notificationSettingsThreshold">
+                    <Form.Label>Brak aktywności (minuty)</Form.Label>
+                    <Form.Control
+                      name="inactiveThresholdMinutes"
+                      type="number"
+                      min="1"
+                      onChange={this.changeNotificationValue}
+                      value={this.state.location.notificationSettings.inactiveThresholdMinutes}
+                    />
+                  </Form.Group>
+                </div>
+              )}
 
               <div className="location-settings__section-title">Czujki</div>
               {this.state.location.tempSettings &&
