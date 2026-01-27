@@ -1,19 +1,19 @@
-import React from 'react';
 import { Page } from 'components/page';
 import _ from 'lodash';
+import React from 'react';
 
-import { connect } from 'react-redux';
-import { speedChartDataLoader } from 'dataLoaders/speedChartDataLoader';
-import { SpeedChart } from 'components/charts/SpeedChart';
-import { WidgetDataLoader } from 'components/widgetDataLoader';
-import { CustomModal } from 'components/modal';
 import { AddWidget } from 'components/addWidget/addWidget';
-import { getDashboardByLocationIdFront } from 'store/actions/DashboardActions';
+import { SpeedChart } from 'components/charts/SpeedChart';
 import { TempChartWidget } from 'components/charts/TempChartWidget';
+import { CustomModal } from 'components/modal';
+import { WidgetDataLoader } from 'components/widgetDataLoader';
+import { speedChartDataLoader } from 'dataLoaders/speedChartDataLoader';
+import { connect } from 'react-redux';
+import { getDashboardByLocationIdFront } from 'store/actions/DashboardActions';
 import { getLocationSettings } from 'store/actions/LocationsActions';
 
-import { Widget } from 'components/widget';
 import { Icon } from 'components/uiComponents/Icon';
+import { Widget } from 'components/widget';
 
 export const widgetType = {
   speedChart: 'SpeedChart',
@@ -37,7 +37,7 @@ class DashboardPageBase extends React.Component {
     props.dispatch(getDashboardByLocationIdFront(props.match.params.id));
   }
 
-  getComponentToRender = name => {
+  getComponentToRender = (name) => {
     switch (name) {
       case 'speedChart':
         return SpeedChart;
@@ -69,7 +69,7 @@ class DashboardPageBase extends React.Component {
     return JSON.parse(this.props.dashboardConfig.config);
   };
 
-  onEditWidget = widgetIndex => {
+  onEditWidget = (widgetIndex) => {
     console.log('onEditWidget ');
     this.setState({
       isModalOpen: true,
@@ -82,7 +82,6 @@ class DashboardPageBase extends React.Component {
     return (
       <Page>
         <div className={'dashboard'}>
-          <div className={'centered'}>Dashboard beta.</div>
           <div className={'dashboard__settings'}>
             <div className={'dashboard__settings--action'} onClick={this.addNewWidget}>
               <Icon icon={'add_circle_outline'} />

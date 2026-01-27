@@ -64,7 +64,6 @@ class LocationsPage extends React.Component<ILocationsPageProps, ILocationsPageS
   render() {
     return (
       <Page>
-        Dostępne lokacje:
         {!this.state.locations ? (
           'loading'
         ) : (
