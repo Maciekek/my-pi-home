@@ -68,6 +68,10 @@ export class LocationsService {
     return locations.map((location) => this.maskLocationEmail(location));
   }
 
+  async findAllRaw(): Promise<Location[]> {
+    return this.locationModel.find().exec();
+  }
+
   async findById(id: string): Promise<Location> {
     const location = await this.locationModel.findOne({ _id: id });
     return this.maskLocationEmail(location);

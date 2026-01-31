@@ -61,7 +61,7 @@ export class NotificatorService implements CronJob, OnModuleInit {
   };
 
   checkInactiveNotifications = async () => {
-    const locations = await this.locations.findAll();
+    const locations = await this.locations.findAllRaw();
     const now = moment();
 
     this.logger.log(`[Notificator service] Checking inactivity for ${locations.length} locations`);
