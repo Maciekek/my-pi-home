@@ -39,6 +39,13 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
         locationId: client.handshake.query.locationId,
       });
       this.server.emit('message', { event_type: 'active_rpi_connection', websocketRPIConnections });
+    } else {
+      // Send greeting to regular users
+      client.emit('message', {
+        event_type: 'user_greeting',
+        message: 'Cześć! Witamy w systemie monitorowania temperatury.',
+      });
+      this.logger.log(`new user connected, websocketID: ${client.id}`);
     }
     setTimeout(() => {
       this.server.emit('message', { event_type: 'active_rpi_connection', websocketRPIConnections });
