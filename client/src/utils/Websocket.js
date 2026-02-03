@@ -46,6 +46,7 @@ class Websocket {
           break;
         case WEBSOCKET_MESSAGE_TYPES.ACTIVE_RPI_CONNECTION:
           store.dispatch(updateActiveConections(message.websocketRPIConnections));
+          break;
         default:
           console.log('Received new websocket message: ', message);
       }

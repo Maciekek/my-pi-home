@@ -43,7 +43,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
       // Send greeting to regular users
       client.emit('message', {
         event_type: 'user_greeting',
-        message: 'Czesc! Witamy w systemie monitorowania temperatury.',
+        message: 'Cześć! Witamy w systemie monitorowania temperatury.',
       });
       this.logger.log(`new user connected, websocketID: ${client.id}`);
     }
