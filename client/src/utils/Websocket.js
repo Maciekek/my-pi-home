@@ -6,6 +6,7 @@ const WEBSOCKET_MESSAGE_TYPES = {
   NEW_RPI_CONNECTION: 'new_rpi_connection',
   SOME_RPI_DISCONNECTED: 'some_rpi_disconnected',
   ACTIVE_RPI_CONNECTION: 'active_rpi_connection',
+  USER_GREETING: 'user_greeting',
 };
 
 class Websocket {
@@ -40,8 +41,12 @@ class Websocket {
         case WEBSOCKET_MESSAGE_TYPES.SOME_RPI_DISCONNECTED:
           toast.info('Utracono połączenie z rpi.');
           break;
+        case WEBSOCKET_MESSAGE_TYPES.USER_GREETING:
+          toast.success(message.message);
+          break;
         case WEBSOCKET_MESSAGE_TYPES.ACTIVE_RPI_CONNECTION:
           store.dispatch(updateActiveConections(message.websocketRPIConnections));
+          break;
         default:
           console.log('Received new websocket message: ', message);
       }
