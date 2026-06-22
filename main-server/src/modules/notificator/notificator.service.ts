@@ -5,6 +5,7 @@ import { TempsService } from '../../temps/temps.service';
 import { CronJob } from '../cron/interfaces/cronJob';
 import { buildStartupTestEmail } from './emailTemplates';
 import { processLocationInactivity } from './inactivityNotifier';
+import { processLocationThresholds } from './thresholdNotifier';
 const nodemailer = require('nodemailer');
 
 @Injectable()
@@ -22,7 +23,9 @@ export class NotificatorService implements CronJob, OnModuleInit {
       : undefined,
   });
   private inactiveCooldownMinutes = Number(process.env.INACTIVE_NOTIFICATION_COOLDOWN_MINUTES || 30);
+  private thresholdCooldownMinutes = Number(process.env.THRESHOLD_NOTIFICATION_COOLDOWN_MINUTES || 30);
   private lastInactiveNotification: Record<string, Date> = {};
+  private lastThresholdNotification: Record<string, Date> = {};
   private startupTestSent = false;
 
   constructor(private readonly locations: LocationsService, private readonly tempService: TempsService) {}
@@ -79,6 +82,20 @@ export class NotificatorService implements CronJob, OnModuleInit {
         });
       } catch (e) {
         this.logger.log(`[Notificator service] Email send failed: ${e}`);
+      }
+
+      try {
+        await processLocationThresholds({
+          location,
+          tempService: this.tempService,
+          now,
+          cooldownMinutes: this.thresholdCooldownMinutes,
+          lastSentMap: this.lastThresholdNotification,
+          sendEmail: this.sendEmail,
+          logger: this.logger,
+        });
+      } catch (e) {
+        this.logger.log(`[Notificator service] Threshold email send failed: ${e}`);
       }
     }
   };

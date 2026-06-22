@@ -36,15 +36,36 @@ class LocationSettingsPage extends React.Component {
 
   submit = () => {
     const settings = this.state.location.notificationSettings;
+    const email = ((settings && settings.email) || '').trim();
+    const emailValid = email && email.indexOf('@') !== -1;
+
     if (settings && settings.enabled) {
-      const email = (settings.email || '').trim();
       const threshold = Number(settings.inactiveThresholdMinutes);
-      if (!email || email.indexOf('@') === -1) {
+      if (!emailValid) {
         alert('Podaj poprawny email do powiadomień.');
         return;
       }
       if (!threshold || threshold < 1) {
         alert('Podaj poprawny czas braku aktywności (minuty).');
+        return;
+      }
+    }
+
+    const sensors =
+      (this.state.location.tempSettings && this.state.location.tempSettings.sensors) || [];
+    for (const sensor of sensors) {
+      if (sensor.notifyAbove || sensor.notifyBelow) {
+        if (!emailValid) {
+          alert('Podaj poprawny email do powiadomień, aby włączyć notyfikacje o temperaturze.');
+          return;
+        }
+      }
+      if (sensor.notifyAbove && (sensor.maxTemp === undefined || sensor.maxTemp === null || sensor.maxTemp === '')) {
+        alert('Podaj próg górny temperatury dla czujki.');
+        return;
+      }
+      if (sensor.notifyBelow && (sensor.minTemp === undefined || sensor.minTemp === null || sensor.minTemp === '')) {
+        alert('Podaj próg dolny temperatury dla czujki.');
         return;
       }
     }
@@ -72,6 +93,31 @@ class LocationSettingsPage extends React.Component {
     console.log(obj);
     obj.location.tempSettings.sensors[index][name] = value;
     this.setState(obj);
+  };
+
+  changeSensorField = (index, name, event) => {
+    const target = event.target;
+    let value;
+    if (target.type === 'checkbox') {
+      value = target.checked;
+    } else if (target.type === 'number') {
+      value = target.value === '' ? '' : Number(target.value);
+    } else {
+      value = target.value;
+    }
+
+    const obj = this.state;
+    obj.location.tempSettings.sensors[index][name] = value;
+    this.setState(obj);
+  };
+
+  hasSensorAlerts = () => {
+    const sensors =
+      this.state.location && this.state.location.tempSettings && this.state.location.tempSettings.sensors;
+    if (!sensors) {
+      return false;
+    }
+    return sensors.some((sensor) => sensor.notifyAbove || sensor.notifyBelow);
   };
 
   changeNotificationValue = (event) => {
@@ -204,48 +250,51 @@ class LocationSettingsPage extends React.Component {
                 />
               </Form.Group>
 
-              {this.state.location.notificationSettings && this.state.location.notificationSettings.enabled && (
-                <div className="location-settings__section">
-                  <Form.Group controlId="notificationSettingsEmail">
-                    <Form.Label>Email do powiadomień</Form.Label>
-                    {this.state.location.notificationSettings.email && !this.state.isEditingNotificationEmail ? (
-                      <div className="location-settings__email-row">
+              {this.state.location.notificationSettings &&
+                (this.state.location.notificationSettings.enabled || this.hasSensorAlerts()) && (
+                  <div className="location-settings__section">
+                    <Form.Group controlId="notificationSettingsEmail">
+                      <Form.Label>Email do powiadomień</Form.Label>
+                      {this.state.location.notificationSettings.email && !this.state.isEditingNotificationEmail ? (
+                        <div className="location-settings__email-row">
+                          <Form.Control
+                            readOnly
+                            type="text"
+                            value={this.maskEmail(this.state.location.notificationSettings.email)}
+                          />
+                          <Button
+                            variant="outline-secondary"
+                            className="location-settings__email-edit"
+                            onClick={this.startEmailEdit}
+                          >
+                            Zmień
+                          </Button>
+                        </div>
+                      ) : (
                         <Form.Control
-                          readOnly
-                          type="text"
-                          value={this.maskEmail(this.state.location.notificationSettings.email)}
+                          name="email"
+                          type="email"
+                          onChange={this.changeNotificationValue}
+                          placeholder="email@domena.pl"
+                          value={this.state.location.notificationSettings.email}
                         />
-                        <Button
-                          variant="outline-secondary"
-                          className="location-settings__email-edit"
-                          onClick={this.startEmailEdit}
-                        >
-                          Zmień
-                        </Button>
-                      </div>
-                    ) : (
-                      <Form.Control
-                        name="email"
-                        type="email"
-                        onChange={this.changeNotificationValue}
-                        placeholder="email@domena.pl"
-                        value={this.state.location.notificationSettings.email}
-                      />
+                      )}
+                      <Form.Text className="text-muted">Aby zmienić email, usuń aktualny i wpisz nowy.</Form.Text>
+                    </Form.Group>
+                    {this.state.location.notificationSettings.enabled && (
+                      <Form.Group controlId="notificationSettingsThreshold">
+                        <Form.Label>Brak aktywności (minuty)</Form.Label>
+                        <Form.Control
+                          name="inactiveThresholdMinutes"
+                          type="number"
+                          min="1"
+                          onChange={this.changeNotificationValue}
+                          value={this.state.location.notificationSettings.inactiveThresholdMinutes}
+                        />
+                      </Form.Group>
                     )}
-                    <Form.Text className="text-muted">Aby zmienić email, usuń aktualny i wpisz nowy.</Form.Text>
-                  </Form.Group>
-                  <Form.Group controlId="notificationSettingsThreshold">
-                    <Form.Label>Brak aktywności (minuty)</Form.Label>
-                    <Form.Control
-                      name="inactiveThresholdMinutes"
-                      type="number"
-                      min="1"
-                      onChange={this.changeNotificationValue}
-                      value={this.state.location.notificationSettings.inactiveThresholdMinutes}
-                    />
-                  </Form.Group>
-                </div>
-              )}
+                  </div>
+                )}
 
               <div className="location-settings__section-title">Czujki</div>
               {this.state.location.tempSettings &&
@@ -281,6 +330,46 @@ class LocationSettingsPage extends React.Component {
                           value={sensor.sensorId}
                         />
                       </Form.Group>
+
+                      <Form.Group controlId={`sensorNotifyAbove-${index}`}>
+                        <Form.Check
+                          type="checkbox"
+                          label="Notyfikacje po przekroczeniu temperatury"
+                          checked={!!sensor.notifyAbove}
+                          onChange={(event) => this.changeSensorField(index, 'notifyAbove', event)}
+                        />
+                      </Form.Group>
+                      {sensor.notifyAbove && (
+                        <Form.Group controlId={`sensorMaxTemp-${index}`}>
+                          <Form.Label>Próg górny (°C)</Form.Label>
+                          <Form.Control
+                            type="number"
+                            placeholder="np. 30"
+                            value={sensor.maxTemp === undefined || sensor.maxTemp === null ? '' : sensor.maxTemp}
+                            onChange={(event) => this.changeSensorField(index, 'maxTemp', event)}
+                          />
+                        </Form.Group>
+                      )}
+
+                      <Form.Group controlId={`sensorNotifyBelow-${index}`}>
+                        <Form.Check
+                          type="checkbox"
+                          label="Notyfikacje po spadku poniżej temperatury"
+                          checked={!!sensor.notifyBelow}
+                          onChange={(event) => this.changeSensorField(index, 'notifyBelow', event)}
+                        />
+                      </Form.Group>
+                      {sensor.notifyBelow && (
+                        <Form.Group controlId={`sensorMinTemp-${index}`}>
+                          <Form.Label>Próg dolny (°C)</Form.Label>
+                          <Form.Control
+                            type="number"
+                            placeholder="np. 5"
+                            value={sensor.minTemp === undefined || sensor.minTemp === null ? '' : sensor.minTemp}
+                            onChange={(event) => this.changeSensorField(index, 'minTemp', event)}
+                          />
+                        </Form.Group>
+                      )}
                     </div>
                   );
                 })}

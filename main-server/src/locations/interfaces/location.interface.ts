@@ -2,6 +2,10 @@ export interface SensorData {
   sensorId: string;
   locationId: string;
   name: string;
+  notifyAbove?: boolean;
+  maxTemp?: number;
+  notifyBelow?: boolean;
+  minTemp?: number;
 }
 
 export interface TempSettings {

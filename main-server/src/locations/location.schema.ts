@@ -4,6 +4,10 @@ export const SensorDataSchema = new mongoose.Schema({
     sensorId: String,
     locationId: String,
     name: String,
+    notifyAbove: Boolean,
+    maxTemp: Number,
+    notifyBelow: Boolean,
+    minTemp: Number,
 });
 
 export const TempSettingsSchema = new mongoose.Schema({

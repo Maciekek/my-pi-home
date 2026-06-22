@@ -31,4 +31,8 @@ export class TempsService {
   async findLastOne(locationId): Promise<Temp | null> {
     return await this.tempModel.findOne({ locationId }).sort({ date: -1 }).exec();
   }
+
+  async findLastBySensor(locationId, sensorId): Promise<Temp | null> {
+    return await this.tempModel.findOne({ locationId, sensorId }).sort({ date: -1 }).exec();
+  }
 }

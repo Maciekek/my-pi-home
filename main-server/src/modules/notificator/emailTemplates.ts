@@ -70,4 +70,20 @@ const buildInactiveEmail = (locationName, locationId, lastDate, thresholdMinutes
   };
 };
 
-export { buildStartupTestEmail, buildNoReadingsEmail, buildInactiveEmail };
+const buildThresholdEmail = (locationName, sensorName, direction, value, threshold, date) => {
+  const name = sensorName || locationName;
+  const isAbove = direction === 'above';
+  const title = isAbove ? 'Temperature above threshold' : 'Temperature below threshold';
+  const word = isAbove ? 'exceeded' : 'dropped below';
+  const body = `<p>Sensor <strong>${name}</strong> in location <strong>${locationName}</strong> ${word} its threshold.</p>
+<p>Current reading: <strong>${value}&deg;C</strong>.</p>
+<p>Threshold: <strong>${threshold}&deg;C</strong>.</p>
+<p>Reading time: <strong>${date}</strong>.</p>`;
+  return {
+    text: `Sensor ${name} in location ${locationName} ${word} its threshold. Current reading: ${value}C. Threshold: ${threshold}C. Reading time: ${date}.`,
+    html: buildEmailLayout(title, body),
+    subject: `${title}: ${name}`,
+  };
+};
+
+export { buildStartupTestEmail, buildNoReadingsEmail, buildInactiveEmail, buildThresholdEmail };
