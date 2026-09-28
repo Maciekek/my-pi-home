@@ -15,7 +15,8 @@ class Websocket {
   constructor() {}
 
   connect() {
-    this.socket = io('https://tempbackend.bieda.it/');
+    // Same origin as the app, so the browser's basic auth credentials are sent with the handshake.
+    this.socket = io(process.env.REACT_APP_WEBSOCKET_URL);
 
     this.attachListeners();
   }

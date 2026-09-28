@@ -1,5 +1,5 @@
 const { exec } = require('child_process');
-const axios = require('axios');
+const { apiClient } = require('./services/apiClient');
 const runtimeConfig = require('./readConfig');
 const config = require('config');
 
@@ -52,7 +52,7 @@ const postReading = (sensorId, value, date) => {
     sensorId,
   };
 
-  return axios.post(`${apiUrl}/temps`, body).catch((error) => {
+  return apiClient.post(`${apiUrl}/temps`, body).catch((error) => {
     console.log('wifi metrics send error', error.errno || error.response?.data || error.message);
   });
 };

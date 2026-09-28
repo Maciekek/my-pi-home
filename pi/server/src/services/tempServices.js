@@ -1,4 +1,4 @@
-const axios = require('axios');
+const { apiClient } = require('./apiClient');
 
 const config = require('config');
 const apiUrl = config.get('api.url');
@@ -7,7 +7,7 @@ console.log(apiUrl);
 const tempServices = {
   addNewTemps: (body) => {
     console.log('addNewTemps - start');
-    axios
+    apiClient
       .post(`${apiUrl}/temps`, body)
       .then(function (response) {
         console.log('addNewTemps success saved new temps values', body);
@@ -18,7 +18,7 @@ const tempServices = {
   },
 
   getLocationSettings: (locationId) => {
-    return axios.get(`${apiUrl}/locations/${locationId}`);
+    return apiClient.get(`${apiUrl}/locations/${locationId}`);
   },
 };
 

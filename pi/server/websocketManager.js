@@ -1,6 +1,7 @@
 const io = require('socket.io-client');
 const configEnv = require('config');
 const axios = require('axios');
+const { authHeader } = require('./src/services/apiClient');
 
 class WebsocketManager {
   constructor() {
@@ -8,7 +9,7 @@ class WebsocketManager {
   }
 
   connect() {
-    this.socket = io(configEnv.get('api.websocket'));
+    this.socket = io(configEnv.get('api.websocket'), { extraHeaders: authHeader, transportOptions: { polling: { extraHeaders: authHeader } } });
     console.log('CONNECT');
     this.attachListeners();
   }

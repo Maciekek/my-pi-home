@@ -1,5 +1,5 @@
 const { execFile } = require('child_process');
-const axios = require('axios');
+const { apiClient } = require('./services/apiClient');
 const runtimeConfig = require('./readConfig');
 const config = require('config');
 
@@ -45,7 +45,7 @@ const postState = (sensor) => {
     date: sensor.state.date,
   };
 
-  return axios
+  return apiClient
     .post(`${apiUrl}/contacts`, body)
     .then(() => {
       console.log(`[contact] ${sensor.id} sent: ${body.isOpen ? 'open' : 'closed'}`);
@@ -60,7 +60,7 @@ const postState = (sensor) => {
 const isValidGpio = (gpio) => Number.isInteger(gpio) && gpio >= 2 && gpio <= 27;
 
 const refreshSensors = async () => {
-  const response = await axios.get(`${apiUrl}/locations/${runtimeConfig.locationId}`);
+  const response = await apiClient.get(`${apiUrl}/locations/${runtimeConfig.locationId}`);
   const contactSettings = response.data && response.data.contactSettings;
   const configured = ((contactSettings && contactSettings.sensors) || [])
     .map((sensor) => ({ id: sensor.sensorId, name: sensor.name, gpio: Number(sensor.gpio) }))

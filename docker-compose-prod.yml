@@ -12,8 +12,9 @@ services:
   main-server:
     image: maciekek/my-pi-home-server:master
     restart: always
+    # Only reachable from this host; public traffic must go through nginx (basic auth).
     ports:
-      - "8888:8888"
+      - "127.0.0.1:8888:8888"
     depends_on:
       - mongo
     env_file:
@@ -26,7 +27,7 @@ services:
     image: maciekek/my-pi-home-client:master
     restart: always
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
     networks:
       - app
 
@@ -36,6 +37,9 @@ services:
       dockerfile: Dockerfile-prod
     ports:
       - "8080:80"
+    volumes:
+      # Create on the server: htpasswd -c nginx/.htpasswd <user>  (not committed)
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
     networks:
       - app
     depends_on:
