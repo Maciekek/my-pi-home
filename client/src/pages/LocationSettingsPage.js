@@ -4,6 +4,10 @@ import Form from 'react-bootstrap/Form';
 import { Page } from '../components/page';
 import { Icon } from '../components/uiComponents/Icon';
 import { LocationsService } from '../services/locations.services';
+import { uuidv4 } from '../utils/Utils';
+
+const MIN_CONTACT_GPIO = 2;
+const MAX_CONTACT_GPIO = 27;
 
 class LocationSettingsPage extends React.Component {
   state = {
@@ -49,6 +53,26 @@ class LocationSettingsPage extends React.Component {
         alert('Podaj poprawny czas braku aktywności (minuty).');
         return;
       }
+    }
+
+    if (settings && (settings.notifyContactOpen || settings.notifyContactClose) && !emailValid) {
+      alert('Podaj poprawny email do powiadomień, aby włączyć notyfikacje o czujnikach otwarcia.');
+      return;
+    }
+
+    const contactSensors = this.getContactSensors();
+    const usedGpios = {};
+    for (const contactSensor of contactSensors) {
+      const gpio = Number(contactSensor.gpio);
+      if (contactSensor.gpio === '' || !Number.isInteger(gpio) || gpio < MIN_CONTACT_GPIO || gpio > MAX_CONTACT_GPIO) {
+        alert(`Podaj poprawny numer GPIO (BCM ${MIN_CONTACT_GPIO}-${MAX_CONTACT_GPIO}) dla czujnika otwarcia.`);
+        return;
+      }
+      if (usedGpios[gpio]) {
+        alert(`GPIO ${gpio} jest przypisany do więcej niż jednego czujnika otwarcia.`);
+        return;
+      }
+      usedGpios[gpio] = true;
     }
 
     const sensors =
@@ -118,6 +142,11 @@ class LocationSettingsPage extends React.Component {
       return false;
     }
     return sensors.some((sensor) => sensor.notifyAbove || sensor.notifyBelow);
+  };
+
+  hasContactAlerts = () => {
+    const settings = this.state.location && this.state.location.notificationSettings;
+    return !!(settings && (settings.notifyContactOpen || settings.notifyContactClose));
   };
 
   changeNotificationValue = (event) => {
@@ -194,6 +223,45 @@ class LocationSettingsPage extends React.Component {
     this.setState(state);
   };
 
+  getContactSensors = () => {
+    const contactSettings = this.state.location && this.state.location.contactSettings;
+    return (contactSettings && contactSettings.sensors) || [];
+  };
+
+  addContactSensor = () => {
+    const obj = this.state;
+    if (!obj.location.contactSettings) {
+      obj.location.contactSettings = {};
+    }
+    if (!obj.location.contactSettings.sensors) {
+      obj.location.contactSettings.sensors = [];
+    }
+    obj.location.contactSettings.sensors.push({
+      sensorId: `contact_${uuidv4().slice(0, 8)}`,
+      name: '',
+      gpio: '',
+    });
+    this.setState(obj);
+  };
+
+  changeContactSensorField = (index, name, event) => {
+    const target = event.target;
+    const value = target.type === 'number' ? (target.value === '' ? '' : Number(target.value)) : target.value;
+    const obj = this.state;
+    obj.location.contactSettings.sensors[index][name] = value;
+    this.setState(obj);
+  };
+
+  removeContactSensor = (index) => {
+    const confirmed = window.confirm('Czy na pewno usunąć ten czujnik otwarcia?');
+    if (!confirmed) {
+      return;
+    }
+    const obj = this.state;
+    obj.location.contactSettings.sensors.splice(index, 1);
+    this.setState(obj);
+  };
+
   removeSensor = (index) => {
     const obj = this.state;
     if (!obj.location.tempSettings || !obj.location.tempSettings.sensors) {
@@ -250,8 +318,32 @@ class LocationSettingsPage extends React.Component {
                 />
               </Form.Group>
 
+              <Form.Group controlId="notificationSettingsContactOpen">
+                <Form.Check
+                  type="checkbox"
+                  label="Powiadomienie o otwarciu (kontaktron)"
+                  name="notifyContactOpen"
+                  onChange={this.changeNotificationValue}
+                  checked={
+                    !!(this.state.location.notificationSettings && this.state.location.notificationSettings.notifyContactOpen)
+                  }
+                />
+              </Form.Group>
+
+              <Form.Group controlId="notificationSettingsContactClose">
+                <Form.Check
+                  type="checkbox"
+                  label="Powiadomienie o zamknięciu (kontaktron)"
+                  name="notifyContactClose"
+                  onChange={this.changeNotificationValue}
+                  checked={
+                    !!(this.state.location.notificationSettings && this.state.location.notificationSettings.notifyContactClose)
+                  }
+                />
+              </Form.Group>
+
               {this.state.location.notificationSettings &&
-                (this.state.location.notificationSettings.enabled || this.hasSensorAlerts()) && (
+                (this.state.location.notificationSettings.enabled || this.hasSensorAlerts() || this.hasContactAlerts()) && (
                   <div className="location-settings__section">
                     <Form.Group controlId="notificationSettingsEmail">
                       <Form.Label>Email do powiadomień</Form.Label>
@@ -377,6 +469,55 @@ class LocationSettingsPage extends React.Component {
               <div className="location-settings__sensors-actions">
                 <Button variant="secondary" onClick={this.addNewSensor}>
                   Dodaj nową czujkę
+                </Button>
+              </div>
+
+              <div className="location-settings__section-title">Czujniki otwarcia (kontaktrony)</div>
+              {this.getContactSensors().map((contactSensor, index) => {
+                return (
+                  <div className="location-settings__sensor" key={contactSensor.sensorId}>
+                    <div className="location-settings__sensor-header">
+                      <div className="location-settings__sensor-title">Czujnik otwarcia #{index + 1}</div>
+                      <button
+                        type="button"
+                        className="location-settings__sensor-delete"
+                        onClick={() => this.removeContactSensor(index)}
+                        aria-label="Usuń czujnik otwarcia"
+                      >
+                        <Icon type="delete" size={18} />
+                      </button>
+                    </div>
+                    <Form.Group controlId={`contactSensor-name-${index}`}>
+                      <Form.Label>Nazwa</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="np. Drzwi wejściowe"
+                        value={contactSensor.name}
+                        onChange={(event) => this.changeContactSensorField(index, 'name', event)}
+                      />
+                    </Form.Group>
+                    <Form.Group controlId={`contactSensor-gpio-${index}`}>
+                      <Form.Label>Numer pinu (GPIO, numeracja BCM)</Form.Label>
+                      <Form.Control
+                        type="number"
+                        min={MIN_CONTACT_GPIO}
+                        max={MAX_CONTACT_GPIO}
+                        placeholder="17"
+                        value={contactSensor.gpio}
+                        onChange={(event) => this.changeContactSensorField(index, 'gpio', event)}
+                      />
+                      <Form.Text className="text-muted">
+                        BCM, nie numer fizyczny złącza (np. GPIO17 = pin 11). Drugi przewód do GND. Raspberry Pi
+                        pobiera zmiany w ciągu minuty.
+                      </Form.Text>
+                    </Form.Group>
+                  </div>
+                );
+              })}
+
+              <div className="location-settings__sensors-actions">
+                <Button variant="secondary" onClick={this.addContactSensor}>
+                  Dodaj czujnik otwarcia
                 </Button>
               </div>
 

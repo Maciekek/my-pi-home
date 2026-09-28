@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import { LocationsService } from '../../locations/locations.service';
 import { TempsService } from '../../temps/temps.service';
 import { CronJob } from '../cron/interfaces/cronJob';
+import { processContactChange } from './contactNotifier';
 import { buildStartupTestEmail } from './emailTemplates';
 import { processLocationInactivity } from './inactivityNotifier';
 import { processLocationThresholds } from './thresholdNotifier';
@@ -98,6 +99,11 @@ export class NotificatorService implements CronJob, OnModuleInit {
         this.logger.log(`[Notificator service] Threshold email send failed: ${e}`);
       }
     }
+  };
+
+  notifyContactChange = async (contact) => {
+    const location = await this.locations.findByIdRaw(contact.locationId);
+    await processContactChange({ location, contact, sendEmail: this.sendEmail, logger: this.logger });
   };
 
   run = () => {

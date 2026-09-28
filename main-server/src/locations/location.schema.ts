@@ -19,6 +19,18 @@ export const NotificationSettingsSchema = new mongoose.Schema({
     enabled: Boolean,
     email: String,
     inactiveThresholdMinutes: Number,
+    notifyContactOpen: Boolean,
+    notifyContactClose: Boolean,
+});
+
+export const ContactSensorSchema = new mongoose.Schema({
+    sensorId: String,
+    name: String,
+    gpio: Number,
+});
+
+export const ContactSettingsSchema = new mongoose.Schema({
+    sensors: [ContactSensorSchema],
 });
 
 export const LocationSchema = new mongoose.Schema({
@@ -26,4 +38,5 @@ export const LocationSchema = new mongoose.Schema({
     description: String,
     tempSettings: TempSettingsSchema,
     notificationSettings: NotificationSettingsSchema,
+    contactSettings: ContactSettingsSchema,
 });

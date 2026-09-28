@@ -86,4 +86,16 @@ const buildThresholdEmail = (locationName, sensorName, direction, value, thresho
   };
 };
 
-export { buildStartupTestEmail, buildNoReadingsEmail, buildInactiveEmail, buildThresholdEmail };
+const buildContactEmail = (locationName, sensorName, isOpen, date) => {
+  const title = isOpen ? 'Contact opened' : 'Contact closed';
+  const state = isOpen ? 'opened' : 'closed';
+  const body = `<p>Sensor <strong>${sensorName}</strong> in location <strong>${locationName}</strong> was <strong>${state}</strong>.</p>
+<p>Event time: <strong>${date}</strong>.</p>`;
+  return {
+    text: `Sensor ${sensorName} in location ${locationName} was ${state}. Event time: ${date}.`,
+    html: buildEmailLayout(title, body),
+    subject: `${title}: ${sensorName}`,
+  };
+};
+
+export { buildStartupTestEmail, buildNoReadingsEmail, buildInactiveEmail, buildThresholdEmail, buildContactEmail };

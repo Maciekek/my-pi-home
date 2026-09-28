@@ -1,0 +1,113 @@
+@import '../variables';
+
+$contactOpen: #c0392b;
+$contactClosed: #2e8b57;
+
+.contact-sensors {
+  padding: 18px 0 12px 0;
+
+  &__title {
+    display: block;
+    padding: 6px 0 12px;
+    font-weight: 700;
+    color: $blueZodiac;
+  }
+
+  &__row {
+    border: 1px solid rgba(22, 41, 85, 0.08);
+    border-left: 4px solid $contactClosed;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(22, 41, 85, 0.05);
+    margin-bottom: 12px;
+
+    &--secondary {
+      color: transparentize($sanJuan, 0.5);
+      font-size: 13px;
+    }
+
+    &--open {
+      border-left-color: $contactOpen;
+    }
+
+    &--unknown {
+      border-left-color: $Zorba;
+    }
+
+    .card-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: $blueZodiac;
+  }
+
+  &__badge {
+    margin-right: 8px;
+    padding: 6px 12px;
+    font-weight: 700;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: $contactClosed;
+  }
+
+  &__row--unknown &__badge {
+    background-color: $Zorba;
+  }
+
+  &__row--open &__badge {
+    background-color: $contactOpen;
+  }
+
+  &__row--open &__info .icon {
+    color: $contactOpen;
+  }
+
+  &__history {
+    margin-top: 6px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      gap: 12px;
+      padding: 4px 0;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(22, 41, 85, 0.05);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__history-title {
+    font-weight: 700;
+    color: $blueZodiac;
+    margin-bottom: 8px;
+  }
+
+  &__history-date {
+    color: $shuttleGray;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__history-state {
+    margin-left: auto;
+    font-weight: 600;
+    color: $contactClosed;
+
+    &--open {
+      color: $contactOpen;
+    }
+  }
+}

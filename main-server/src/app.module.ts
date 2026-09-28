@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ScheduleModule } from '@nestjs/schedule';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ContactsModule } from './contacts/contacts.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DevicesModule } from './devices/devices.module';
 import { EspModule } from './esp/esp.module';
@@ -29,6 +30,7 @@ import { UsersModule } from './users/users.module';
     EventsModule,
     CronModule,
     DevicesModule,
+    ContactsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

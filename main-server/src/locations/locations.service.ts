@@ -58,6 +58,7 @@ export class LocationsService {
           description: addedLocation.description,
           tempSettings: addedLocation.tempSettings,
           notificationSettings: incomingSettings,
+          contactSettings: addedLocation.contactSettings,
         },
       },
     );
@@ -75,6 +76,10 @@ export class LocationsService {
   async findById(id: string): Promise<Location> {
     const location = await this.locationModel.findOne({ _id: id });
     return this.maskLocationEmail(location);
+  }
+
+  async findByIdRaw(id: string): Promise<Location | null> {
+    return this.locationModel.findOne({ _id: id }).exec();
   }
 
   async deleteById(id: string): Promise<DeleteResult> {

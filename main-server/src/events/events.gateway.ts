@@ -65,6 +65,12 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
     delete this.pendingActions[response.id];
   }
 
+  broadcast(eventName, message): void {
+    if (this.server) {
+      this.server.emit(eventName, message);
+    }
+  }
+
   emit(eventName, message) {
     this.server.emit(eventName, message);
 

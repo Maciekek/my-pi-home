@@ -12,6 +12,7 @@ import { LoadingIndicator } from 'components/loadingIndicator';
 import { connect } from 'react-redux';
 import { rootActions } from 'store/root-actions';
 import { ActualTemps } from 'components/ActualTemps';
+import { ContactSensors } from 'components/ContactSensors';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -125,6 +126,8 @@ class LocationPageBase extends React.Component {
               </Col>
             </Row>
           </div>
+
+          <ContactSensors locationId={this.props.match.params.id} location={this.state.location} />
 
           {this.state.temps ? <ActualTemps temps={this.state.temps} location={this.state.location} /> : null}
 
