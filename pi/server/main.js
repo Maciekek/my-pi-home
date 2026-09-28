@@ -1,22 +1,22 @@
 const config = require('./src/readConfig');
 
-const piReader = require('./src/reader/reader');
+const ds18b20Reader = require('./src/ds18b20Reader/ds18b20Reader');
 const tempsService = require('./src/services/tempServices');
 const websocketManager = require('./websocketManager');
+const createDHT22Reader = require('./src/dht22Reader/dht22Reader');
 
 const MAX_TEMP = 60;
 const MIN_TEMP = -30;
 
 class Main {
-  constructor() {
+  constructor() {    
     this.readAndSendData();
-
-    setInterval(this.readAndSendData, 360000);
+    setInterval(this.readAndSendData, 60000);
     websocketManager.connect();
   }
 
-  readAndSendData() {
-    piReader.getValues().map((temp) => {
+  readAndSendData = () => {
+    ds18b20Reader.getValues().map((temp) => {
       const tempObject = {
         value: this.prepareTemps(temp.value),
         date: new Date(),
@@ -26,9 +26,36 @@ class Main {
 
       tempsService.addNewTemps(tempObject);
     });
+
+    if(config.dht22) {
+      config.dht22.map((dht22Config) => {
+        createDHT22Reader(dht22Config.pin).read().then((data) => {
+          const temp = {
+            value: this.prepareTemps(data.temperature),
+            date: new Date(),
+            locationId: config.locationId || undefined,
+            sensorId: `${dht22Config.namePrefix}-temp`,
+          };
+  
+          tempsService.addNewTemps(temp);
+  
+          const hum = {
+            value: data.humidity,
+            date: new Date(),
+            locationId: config.locationId || undefined,
+            sensorId: `${dht22Config.namePrefix}-hum`,
+          };
+  
+          tempsService.addNewTemps(hum);
+  
+        }).catch((err) => {
+          console.error('Error reading DHT22 sensor:', err);
+        });
+      });
+    }
   }
 
-  prepareTemps(value) {
+  prepareTemps = (value) => {
     if (value > MAX_TEMP) {
       return MAX_TEMP;
     }
@@ -38,7 +65,7 @@ class Main {
     }
 
     return value;
-  }
+  }  
 }
 
 setTimeout(() => {

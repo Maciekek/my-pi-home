@@ -1,6 +1,12 @@
 {
-  "locationId": "5d825b6c1d15b82553f890f2",
+  "locationId": "68924514d427e7fd4ffaadb0",
   "wifiTemps": {
     "ip": "192.168.8.100"
-  }
+  },
+  "dht22": [
+    {
+      "pin": 17,
+      "namePrefix": "DHT22"
+    }
+  ]
 }
