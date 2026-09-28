@@ -14,6 +14,7 @@ const SETTINGS_REFRESH_INTERVAL_MS = 60 * 1000;
 const apiUrl = config.get('api.url');
 // Sensors (sensorId, name, gpio) are configured per location in the web app settings.
 let sensors = [];
+let hasLoadedSettings = false;
 
 const pinctrl = (args) =>
   new Promise((resolve, reject) => {
@@ -83,6 +84,11 @@ const refreshSensors = async () => {
     .filter((current) => !next.includes(current))
     .forEach((removed) => console.log(`[contact] stopped watching ${removed.id} on GPIO${removed.gpio}`));
 
+  if (!next.length && (sensors.length || !hasLoadedSettings)) {
+    console.log(`[contact] no contact sensors configured for location ${runtimeConfig.locationId}`);
+  }
+
+  hasLoadedSettings = true;
   sensors = next;
 };
 
@@ -117,6 +123,7 @@ const poll = async () => {
 };
 
 const startContactSensorReporter = () => {
+  console.log(`[contact] reporter started, settings from ${apiUrl}/locations/${runtimeConfig.locationId}`);
   const refresh = () =>
     refreshSensors().catch((error) =>
       console.log('[contact] settings refresh error, keeping previous sensors', error.errno || error.message),
