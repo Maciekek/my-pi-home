@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import moment from 'moment';
 import C from 'classnames';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 import { ContactsService } from '../services/contacts.services';
 import { websocket, WEBSOCKET_MESSAGE_TYPES } from '../utils/Websocket';
+import { ContactHistoryModal } from './ContactHistoryModal';
 import { Icon } from './uiComponents/Icon';
 
-const HISTORY_SIZE = 10;
 const TICK_INTERVAL_MS = 30000;
 
 const formatDuration = (date, now) => {
@@ -32,15 +33,12 @@ const stateLabel = (isOpen) => (isOpen ? 'Otwarte' : 'Zamknięte');
 
 const ContactSensors = ({ locationId, location }) => {
   const [states, setStates] = useState(null);
-  const [history, setHistory] = useState([]);
+  const [historySensorId, setHistorySensorId] = useState(null);
   const [now, setNow] = useState(Date.now());
 
   useEffect(() => {
-    Promise.all([ContactsService.getCurrentStates(locationId), ContactsService.getHistory(locationId, HISTORY_SIZE)])
-      .then(([statesResponse, historyResponse]) => {
-        setStates(statesResponse.data);
-        setHistory(historyResponse.data);
-      })
+    ContactsService.getCurrentStates(locationId)
+      .then((response) => setStates(response.data))
       .catch(() => setStates([]));
 
     const onMessage = (message) => {
@@ -50,7 +48,6 @@ const ContactSensors = ({ locationId, location }) => {
 
       const contact = message.contact;
       setStates((current) => [...(current || []).filter((state) => state.sensorId !== contact.sensorId), contact]);
-      setHistory((current) => [contact, ...current].slice(0, HISTORY_SIZE));
     };
 
     websocket.socket.on('message', onMessage);
@@ -63,9 +60,6 @@ const ContactSensors = ({ locationId, location }) => {
   }, [locationId]);
 
   const configuredSensors = (location && location.contactSettings && location.contactSettings.sensors) || [];
-  const configuredById = _.keyBy(configuredSensors, 'sensorId');
-  const sensorName = (event) =>
-    (configuredById[event.sensorId] && configuredById[event.sensorId].name) || event.name || event.sensorId;
 
   if (!states || configuredSensors.length === 0) {
     return null;
@@ -73,7 +67,7 @@ const ContactSensors = ({ locationId, location }) => {
 
   const statesById = _.keyBy(states, 'sensorId');
   const rows = configuredSensors.map((sensor) => ({ sensor, state: statesById[sensor.sensorId] }));
-  const visibleHistory = history.filter((event) => configuredById[event.sensorId]);
+  const historySensor = configuredSensors.find((sensor) => sensor.sensorId === historySensorId);
 
   return (
     <div className={'contact-sensors'}>
@@ -100,26 +94,24 @@ const ContactSensors = ({ locationId, location }) => {
               </div>
             </div>
 
-            <span className={'contact-sensors__badge'}>{state ? stateLabel(state.isOpen) : 'Brak danych'}</span>
+            <div className={'contact-sensors__actions'}>
+              <Button variant="outline-secondary" size="sm" onClick={() => setHistorySensorId(sensor.sensorId)}>
+                <Icon type={'history'} size={16} /> Historia
+              </Button>
+              <span className={'contact-sensors__badge'}>{state ? stateLabel(state.isOpen) : 'Brak danych'}</span>
+            </div>
           </Card.Body>
         </Card>
       ))}
 
-      {visibleHistory.length > 0 ? (
-        <div className={'contact-sensors__history location__card'}>
-          <div className={'contact-sensors__history-title'}>Ostatnie zdarzenia</div>
-          <ul>
-            {visibleHistory.map((event) => (
-              <li key={event._id || `${event.sensorId}-${event.date}`}>
-                <span className={'contact-sensors__history-date'}>{moment(event.date).format('DD.MM HH:mm:ss')}</span>
-                <span>{sensorName(event)}</span>
-                <span className={C('contact-sensors__history-state', { 'contact-sensors__history-state--open': event.isOpen })}>
-                  {stateLabel(event.isOpen)}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      {historySensor ? (
+        <ContactHistoryModal
+          show={true}
+          onHide={() => setHistorySensorId(null)}
+          locationId={locationId}
+          sensor={historySensor}
+          latestState={statesById[historySensor.sensorId]}
+        />
       ) : null}
     </div>
   );

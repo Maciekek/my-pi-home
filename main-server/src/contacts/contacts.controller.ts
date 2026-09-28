@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Logger, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Logger, Param, Post, Query } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
 import { AddContactEventDto } from './dto/add-contact-event.dto';
 import { ContactEvent } from './interfaces/contactEvent.interface';
@@ -21,7 +21,12 @@ export class ContactsController {
   }
 
   @Get(':locationId/history/:n')
-  async findLastN(@Param('locationId') locationId: string, @Param('n') n: string): Promise<ContactEvent[]> {
-    return this.contactsService.findLastN(locationId, n);
+  async findLastN(
+    @Param('locationId') locationId: string,
+    @Param('n') n: string,
+    @Query('sensorId') sensorId?: string,
+    @Query('before') before?: string,
+  ): Promise<ContactEvent[]> {
+    return this.contactsService.findLastN(locationId, n, sensorId, before);
   }
 }

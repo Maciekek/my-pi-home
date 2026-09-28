@@ -68,41 +68,49 @@ $contactClosed: #2e8b57;
     color: $contactOpen;
   }
 
-  &__history {
-    margin-top: 6px;
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      display: flex;
-      gap: 12px;
-      padding: 4px 0;
-      font-size: 14px;
-      border-bottom: 1px solid rgba(22, 41, 85, 0.05);
-
-      &:last-child {
-        border-bottom: none;
-      }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
   }
+}
 
-  &__history-title {
-    font-weight: 700;
-    color: $blueZodiac;
-    margin-bottom: 8px;
-  }
-
-  &__history-date {
+.contact-history {
+  &__empty {
     color: $shuttleGray;
-    font-variant-numeric: tabular-nums;
+    margin: 0;
   }
 
-  &__history-state {
-    margin-left: auto;
+  &__table {
+    width: 100%;
+    font-size: 14px;
+
+    th {
+      color: $shuttleGray;
+      font-weight: 600;
+      padding: 0 8px 8px 0;
+      border-bottom: 1px solid rgba(22, 41, 85, 0.1);
+    }
+
+    td {
+      padding: 6px 8px 6px 0;
+      border-bottom: 1px solid rgba(22, 41, 85, 0.05);
+    }
+  }
+
+  &__date,
+  &__duration {
+    font-variant-numeric: tabular-nums;
+    color: $blueZodiac;
+  }
+
+  &__state {
     font-weight: 600;
     color: $contactClosed;
 

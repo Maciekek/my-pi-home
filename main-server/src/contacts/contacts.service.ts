@@ -58,11 +58,19 @@ export class ContactsService {
       .exec();
   }
 
-  async findLastN(locationId: string, n: string): Promise<ContactEvent[]> {
+  async findLastN(locationId: string, n: string, sensorId?: string, before?: string): Promise<ContactEvent[]> {
+    const filter: any = { locationId };
+    if (sensorId) {
+      filter.sensorId = sensorId;
+    }
+    if (before && !isNaN(Date.parse(before))) {
+      filter.date = { $lt: new Date(before) };
+    }
+
     return this.contactEventModel
-      .find({ locationId })
+      .find(filter)
       .sort({ date: -1 })
-      .limit(Number(n) || 20)
+      .limit(Math.min(Number(n) || 20, 500))
       .exec();
   }
 }

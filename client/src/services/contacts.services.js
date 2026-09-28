@@ -5,8 +5,8 @@ const ContactsService = {
     return axios.get(`/api/contacts/${locationId}/state`);
   },
 
-  getHistory: (locationId, n) => {
-    return axios.get(`/api/contacts/${locationId}/history/${n}`);
+  getHistory: (locationId, n, { sensorId, before } = {}) => {
+    return axios.get(`/api/contacts/${locationId}/history/${n}`, { params: { sensorId, before } });
   },
 };
 
