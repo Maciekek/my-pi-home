@@ -1,68 +1,61 @@
 const config = require('./src/readConfig');
 
-const piReader = require('./src/reader/reader');
+const ds18b20Reader = require('./src/ds18b20Reader/ds18b20Reader');
 const tempsService = require('./src/services/tempServices');
-const wifiLinkService = require('./src/services/wifiLinkService');
 const websocketManager = require('./websocketManager');
+const createDHT22Reader = require('./src/dht22Reader/dht22Reader');
 
 const MAX_TEMP = 60;
 const MIN_TEMP = -30;
 
 class Main {
-  constructor() {
-    this.readAndSendData = this.readAndSendData.bind(this);
-    this.sendWifiData = this.sendWifiData.bind(this);
+  constructor() {    
     this.readAndSendData();
-    this.sendWifiData();
-
-    setInterval(this.readAndSendData, 360000);
-    setInterval(this.sendWifiData, 60000);
+    setInterval(this.readAndSendData, 60000);
     websocketManager.connect();
   }
 
-  readAndSendData() {
-    const readDate = new Date();
-
-    piReader.getValues().map((temp) => {
+  readAndSendData = () => {
+    ds18b20Reader.getValues().map((temp) => {
       const tempObject = {
         value: this.prepareTemps(temp.value),
-        date: readDate,
+        date: new Date(),
         locationId: config.locationId || undefined,
         sensorId: temp.id,
       };
 
       tempsService.addNewTemps(tempObject);
     });
-  }
 
-  async sendWifiData() {
-    const wifiLinkMetrics = await wifiLinkService.getLinkMetrics();
-    const readDate = new Date();
-    this.sendWifiMetrics(wifiLinkMetrics, readDate);
-  }
-
-  sendWifiMetrics(metrics, date) {
-    const readings = [
-      { sensorId: 'wifi_signal_dbm', value: metrics.wifiSignalDbm },
-      { sensorId: 'wifi_tx_bitrate_mbps', value: metrics.wifiTxBitrateMbps },
-      { sensorId: 'wifi_rx_bitrate_mbps', value: metrics.wifiRxBitrateMbps },
-    ];
-
-    readings.forEach((reading) => {
-      if (typeof reading.value !== 'number') {
-        return;
-      }
-
-      tempsService.addNewTemps({
-        value: reading.value,
-        date,
-        locationId: config.locationId || undefined,
-        sensorId: reading.sensorId,
+    if(config.dht22) {
+      config.dht22.map((dht22Config) => {
+        createDHT22Reader(dht22Config.pin).read().then((data) => {
+          const temp = {
+            value: this.prepareTemps(data.temperature),
+            date: new Date(),
+            locationId: config.locationId || undefined,
+            sensorId: `${dht22Config.namePrefix}-temp`,
+          };
+  
+          tempsService.addNewTemps(temp);
+  
+          const hum = {
+            value: data.humidity,
+            date: new Date(),
+            locationId: config.locationId || undefined,
+            sensorId: `${dht22Config.namePrefix}-hum`,
+          };
+  
+          tempsService.addNewTemps(hum);
+  
+        }).catch((err) => {
+          console.error('Error reading DHT22 sensor:', err);
+        });
       });
-    });
+    }
   }
 
-  prepareTemps(value) {
+  prepareTemps = (value) => {
     if (value > MAX_TEMP) {
       return MAX_TEMP;
     }
@@ -72,7 +65,7 @@ class Main {
     }
 
     return value;
-  }
+  }  
 }
 
 setTimeout(() => {
