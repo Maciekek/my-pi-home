@@ -4,6 +4,7 @@ const ds18b20Reader = require('./src/ds18b20Reader/ds18b20Reader');
 const tempsService = require('./src/services/tempServices');
 const websocketManager = require('./websocketManager');
 const createDHT22Reader = require('./src/dht22Reader/dht22Reader');
+const startContactSensorReporter = require('./src/contactSensorReporter');
 
 const MAX_TEMP = 60;
 const MIN_TEMP = -30;
@@ -13,6 +14,7 @@ class Main {
     this.readAndSendData();
     setInterval(this.readAndSendData, 60000);
     websocketManager.connect();
+    startContactSensorReporter();
   }
 
   readAndSendData = () => {
