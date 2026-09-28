@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { EventsGateway } from '../events/events.gateway';
 import { NotificatorService } from '../modules/notificator/notificator.service';
+import { AlarmService } from './alarm/alarm.service';
 import { AddContactEventDto } from './dto/add-contact-event.dto';
 import { ContactEvent } from './interfaces/contactEvent.interface';
 
@@ -16,9 +17,11 @@ export class ContactsService {
     @InjectModel('ContactEvent') private readonly contactEventModel: Model<ContactEvent>,
     private readonly eventsGateway: EventsGateway,
     private readonly notificatorService: NotificatorService,
+    private readonly alarmService: AlarmService,
   ) {}
 
   async addEvent(dto: AddContactEventDto): Promise<ContactEvent> {
+    this.alarmService.recordReport(dto.locationId);
     const last = await this.findLastBySensor(dto.locationId, dto.sensorId);
 
     // Pi reports its state on every start; skip duplicates so history holds only real changes.
@@ -38,19 +41,20 @@ export class ContactsService {
     this.notificatorService
       .notifyContactChange(saved)
       .catch((e) => this.logger.log(`Contact email send failed: ${e}`));
+    this.alarmService.onContactChange(saved).catch((e) => this.logger.log(`Alarm check failed: ${e}`));
 
     return saved;
   }
 
   async findLastBySensor(locationId: string, sensorId: string): Promise<ContactEvent | null> {
-    return this.contactEventModel.findOne({ locationId, sensorId }).sort({ date: -1 }).exec();
+    return this.contactEventModel.findOne({ locationId, sensorId }).sort({ date: -1, _id: -1 }).exec();
   }
 
   async findCurrentStates(locationId: string): Promise<ContactEvent[]> {
     return this.contactEventModel
       .aggregate([
         { $match: { locationId } },
-        { $sort: { date: -1 } },
+        { $sort: { date: -1, _id: -1 } },
         { $group: { _id: '$sensorId', doc: { $first: '$$ROOT' } } },
         { $replaceRoot: { newRoot: '$doc' } },
         { $sort: { sensorId: 1 } },
@@ -69,7 +73,7 @@ export class ContactsService {
 
     return this.contactEventModel
       .find(filter)
-      .sort({ date: -1 })
+      .sort({ date: -1, _id: -1 })
       .limit(Math.min(Number(n) || 20, 500))
       .exec();
   }

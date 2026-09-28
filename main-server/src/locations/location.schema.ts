@@ -33,10 +33,25 @@ export const ContactSettingsSchema = new mongoose.Schema({
     sensors: [ContactSensorSchema],
 });
 
+export const AlarmSettingsSchema = new mongoose.Schema({
+    enabled: Boolean,
+    from: String,
+    to: String,
+    sensorIds: [String],
+    reminderMinutes: Number,
+});
+
+export const AlarmStateSchema = new mongoose.Schema({
+    override: String,
+    until: Date,
+});
+
 export const LocationSchema = new mongoose.Schema({
     name: String,
     description: String,
     tempSettings: TempSettingsSchema,
     notificationSettings: NotificationSettingsSchema,
     contactSettings: ContactSettingsSchema,
+    alarmSettings: AlarmSettingsSchema,
+    alarmState: AlarmStateSchema,
 });

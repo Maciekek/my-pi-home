@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { DeleteResult } from 'mongodb';
 import { Model } from 'mongoose';
 import { AddLocationDto } from './dto/add-location.dto';
-import { Location } from './interfaces/location.interface';
+import { AlarmState, Location } from './interfaces/location.interface';
 
 @Injectable()
 export class LocationsService {
@@ -59,6 +59,7 @@ export class LocationsService {
           tempSettings: addedLocation.tempSettings,
           notificationSettings: incomingSettings,
           contactSettings: addedLocation.contactSettings,
+          alarmSettings: addedLocation.alarmSettings,
         },
       },
     );
@@ -80,6 +81,11 @@ export class LocationsService {
 
   async findByIdRaw(id: string): Promise<Location | null> {
     return this.locationModel.findOne({ _id: id }).exec();
+  }
+
+  // Kept out of updateLocation so saving the settings form never resets a manual arm/disarm.
+  async setAlarmState(id: string, alarmState: AlarmState): Promise<void> {
+    await this.locationModel.updateOne({ _id: id }, { $set: { alarmState } }).exec();
   }
 
   async deleteById(id: string): Promise<DeleteResult> {

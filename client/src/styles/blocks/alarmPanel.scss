@@ -1,0 +1,64 @@
+@import '../variables';
+
+$alarmArmed: #c0392b;
+
+.alarm-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 0;
+  border-left: 4px solid $Zorba;
+
+  &--armed {
+    border-left-color: $alarmArmed;
+  }
+
+  &--violated {
+    background: rgba(192, 57, 43, 0.08);
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: $blueZodiac;
+    min-width: 0;
+  }
+
+  &--armed &__info .icon {
+    color: $alarmArmed;
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    color: $shuttleGray;
+    font-size: 13px;
+  }
+
+  &__violation {
+    color: $alarmArmed;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .alarm-panel {
+    flex-direction: column;
+    align-items: stretch;
+
+    &__actions {
+      justify-content: flex-end;
+    }
+  }
+}

@@ -98,4 +98,14 @@ const buildContactEmail = (locationName, sensorName, isOpen, date) => {
   };
 };
 
+const buildAlarmEmail = (title, lines: string[]) => {
+  const body = lines.map((line) => `<p>${line}</p>`).join('\n');
+  return {
+    text: lines.map((line) => line.replace(/<[^>]+>/g, '')).join('\n'),
+    html: buildEmailLayout(title, body),
+    subject: `ALARM: ${title}`,
+  };
+};
+
+export { buildAlarmEmail };
 export { buildStartupTestEmail, buildNoReadingsEmail, buildInactiveEmail, buildThresholdEmail, buildContactEmail };

@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { ContactSettings, Location, NotificationSettings, TempSettings } from '../interfaces/location.interface';
+import { AlarmSettings, ContactSettings, Location, NotificationSettings, TempSettings } from '../interfaces/location.interface';
 
 export class AddLocationDto implements Location {
   @IsNotEmpty()
@@ -13,4 +13,6 @@ export class AddLocationDto implements Location {
   notificationSettings?: NotificationSettings;
 
   contactSettings?: ContactSettings;
+
+  alarmSettings?: AlarmSettings;
 }

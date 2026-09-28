@@ -31,6 +31,15 @@
     border: 1px solid rgba(120, 135, 171, 0.2);
   }
 
+  &__alarm-times {
+    display: flex;
+    gap: 16px;
+
+    .form-group {
+      flex: 1;
+    }
+  }
+
   &__sensor {
     margin: 10px 0 14px;
     padding: 12px 14px;

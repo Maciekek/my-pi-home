@@ -7,6 +7,7 @@ const WEBSOCKET_MESSAGE_TYPES = {
   SOME_RPI_DISCONNECTED: 'some_rpi_disconnected',
   ACTIVE_RPI_CONNECTION: 'active_rpi_connection',
   CONTACT_STATE_CHANGED: 'contact_state_changed',
+  ALARM_STATE_CHANGED: 'alarm_state_changed',
 };
 
 class Websocket {

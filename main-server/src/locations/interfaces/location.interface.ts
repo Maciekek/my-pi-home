@@ -31,10 +31,25 @@ export interface ContactSettings {
   sensors: ContactSensor[];
 }
 
+export interface AlarmSettings {
+  enabled: boolean;
+  from: string;
+  to: string;
+  sensorIds: string[];
+  reminderMinutes: number;
+}
+
+export interface AlarmState {
+  override: 'armed' | 'disarmed' | null;
+  until: Date | null;
+}
+
 export interface Location {
   readonly name: string;
   readonly description: string;
   readonly tempSettings: TempSettings;
   readonly notificationSettings?: NotificationSettings;
   readonly contactSettings?: ContactSettings;
+  readonly alarmSettings?: AlarmSettings;
+  readonly alarmState?: AlarmState;
 }

@@ -8,6 +8,7 @@ import { uuidv4 } from '../utils/Utils';
 
 const MIN_CONTACT_GPIO = 2;
 const MAX_CONTACT_GPIO = 27;
+const DEFAULT_ALARM_SETTINGS = { enabled: false, from: '22:00', to: '06:00', sensorIds: [], reminderMinutes: 30 };
 
 class LocationSettingsPage extends React.Component {
   state = {
@@ -57,6 +58,26 @@ class LocationSettingsPage extends React.Component {
 
     if (settings && (settings.notifyContactOpen || settings.notifyContactClose) && !emailValid) {
       alert('Podaj poprawny email do powiadomień, aby włączyć notyfikacje o czujnikach otwarcia.');
+      return;
+    }
+
+    const alarmSettings = this.getAlarmSettings();
+    if (alarmSettings.enabled) {
+      if (!alarmSettings.from || !alarmSettings.to || alarmSettings.from === alarmSettings.to) {
+        alert('Podaj różne godziny uzbrojenia i rozbrojenia alarmu.');
+        return;
+      }
+    }
+    if (alarmSettings.sensorIds.length && !(Number(alarmSettings.reminderMinutes) >= 1)) {
+      alert('Podaj co ile minut przypominać o otwartym czujniku (min. 1).');
+      return;
+    }
+    if (alarmSettings.enabled && !alarmSettings.sensorIds.length) {
+      alert('Wybierz przynajmniej jeden czujnik dla alarmu.');
+      return;
+    }
+    if (alarmSettings.sensorIds.length && !emailValid) {
+      alert('Podaj poprawny email do powiadomień, aby alarm mógł wysyłać wiadomości.');
       return;
     }
 
@@ -146,7 +167,11 @@ class LocationSettingsPage extends React.Component {
 
   hasContactAlerts = () => {
     const settings = this.state.location && this.state.location.notificationSettings;
-    return !!(settings && (settings.notifyContactOpen || settings.notifyContactClose));
+    const alarmSettings = this.state.location && this.state.location.alarmSettings;
+    return !!(
+      (settings && (settings.notifyContactOpen || settings.notifyContactClose)) ||
+      (alarmSettings && alarmSettings.sensorIds && alarmSettings.sensorIds.length)
+    );
   };
 
   changeNotificationValue = (event) => {
@@ -258,8 +283,29 @@ class LocationSettingsPage extends React.Component {
       return;
     }
     const obj = this.state;
-    obj.location.contactSettings.sensors.splice(index, 1);
+    const [removed] = obj.location.contactSettings.sensors.splice(index, 1);
+    if (obj.location.alarmSettings && obj.location.alarmSettings.sensorIds) {
+      obj.location.alarmSettings.sensorIds = obj.location.alarmSettings.sensorIds.filter(
+        (sensorId) => sensorId !== removed.sensorId,
+      );
+    }
     this.setState(obj);
+  };
+
+  getAlarmSettings = () => ({
+    ...DEFAULT_ALARM_SETTINGS,
+    ...((this.state.location && this.state.location.alarmSettings) || {}),
+  });
+
+  changeAlarmField = (name, value) => {
+    const obj = this.state;
+    obj.location.alarmSettings = { ...this.getAlarmSettings(), [name]: value };
+    this.setState(obj);
+  };
+
+  toggleAlarmSensor = (sensorId, checked) => {
+    const sensorIds = this.getAlarmSettings().sensorIds.filter((id) => id !== sensorId);
+    this.changeAlarmField('sensorIds', checked ? [...sensorIds, sensorId] : sensorIds);
   };
 
   removeSensor = (index) => {
@@ -520,6 +566,77 @@ class LocationSettingsPage extends React.Component {
                   Dodaj czujnik otwarcia
                 </Button>
               </div>
+
+              <div className="location-settings__section-title">Alarm</div>
+              {this.getContactSensors().length === 0 ? (
+                <p className="text-muted">Dodaj najpierw czujnik otwarcia, żeby móc go uzbrajać.</p>
+              ) : (
+                <div className="location-settings__section">
+                  <Form.Group>
+                    <Form.Label>Czujniki objęte alarmem</Form.Label>
+                    {this.getContactSensors().map((contactSensor) => (
+                      <Form.Check
+                        key={contactSensor.sensorId}
+                        id={`alarmSensor-${contactSensor.sensorId}`}
+                        type="checkbox"
+                        label={contactSensor.name || `GPIO${contactSensor.gpio}`}
+                        checked={this.getAlarmSettings().sensorIds.includes(contactSensor.sensorId)}
+                        onChange={(event) => this.toggleAlarmSensor(contactSensor.sensorId, event.target.checked)}
+                      />
+                    ))}
+                    <Form.Text className="text-muted">
+                      Wybrane czujniki powinny być zamknięte, gdy alarm jest uzbrojony (z harmonogramu lub
+                      przyciskiem na stronie lokacji).
+                    </Form.Text>
+                  </Form.Group>
+
+                  <Form.Group controlId="alarmScheduleEnabled">
+                    <Form.Check
+                      type="checkbox"
+                      label="Uzbrajaj automatycznie codziennie"
+                      checked={!!this.getAlarmSettings().enabled}
+                      onChange={(event) => this.changeAlarmField('enabled', event.target.checked)}
+                    />
+                  </Form.Group>
+
+                  {this.getAlarmSettings().enabled && (
+                    <div className="location-settings__alarm-times">
+                      <Form.Group controlId="alarmFrom">
+                        <Form.Label>Od</Form.Label>
+                        <Form.Control
+                          type="time"
+                          value={this.getAlarmSettings().from}
+                          onChange={(event) => this.changeAlarmField('from', event.target.value)}
+                        />
+                      </Form.Group>
+                      <Form.Group controlId="alarmTo">
+                        <Form.Label>Do</Form.Label>
+                        <Form.Control
+                          type="time"
+                          value={this.getAlarmSettings().to}
+                          onChange={(event) => this.changeAlarmField('to', event.target.value)}
+                        />
+                      </Form.Group>
+                    </div>
+                  )}
+
+                  <Form.Group controlId="alarmReminder">
+                    <Form.Label>Przypominaj o otwartym czujniku co (minuty)</Form.Label>
+                    <Form.Control
+                      type="number"
+                      min="1"
+                      value={this.getAlarmSettings().reminderMinutes}
+                      onChange={(event) =>
+                        this.changeAlarmField('reminderMinutes', event.target.value === '' ? '' : Number(event.target.value))
+                      }
+                    />
+                    <Form.Text className="text-muted">
+                      Powiadomienia idą na email z sekcji Powiadomienia: otwarcie przy uzbrojonym alarmie, czujnik
+                      otwarty w chwili uzbrojenia, przypomnienia oraz brak łączności z Raspberry Pi.
+                    </Form.Text>
+                  </Form.Group>
+                </div>
+              )}
 
               <div className="location-settings__footer">
                 <div className="location-settings__actions">
