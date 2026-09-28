@@ -47,10 +47,11 @@ services:
       - main-server
       - mongo
 
-  fetcher:
-    build:
-      context: ./fetcher
-      dockerfile: Dockerfile-prod
+# Disabled on the server: it copied readings from the old 77.55.217.143 instance.
+#  fetcher:
+#    build:
+#      context: ./fetcher
+#      dockerfile: Dockerfile-prod
 
 volumes:
    mongodb:
