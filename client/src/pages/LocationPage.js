@@ -14,10 +14,6 @@ import { rootActions } from 'store/root-actions';
 import { ActualTemps } from 'components/ActualTemps';
 import { AlarmPanel } from 'components/AlarmPanel';
 import { ContactSensors } from 'components/ContactSensors';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
 import { storeLocationRecentlySensors } from 'store/actions/LocationsActions';
 import { Icon } from 'components/uiComponents/Icon';
 
@@ -27,7 +23,6 @@ class LocationPageBase extends React.Component {
   state = {
     location: null,
     temps: null,
-    n: DEFAULT_N,
   };
 
   constructor(props) {
@@ -68,17 +63,6 @@ class LocationPageBase extends React.Component {
     });
   };
 
-  onInputChange = () => {
-    const sensorsCount = this.state.location.tempSettings ? this.state.location.tempSettings.sensors.length : 1;
-    this.setState(
-      {
-        temps: null,
-        n: (parseInt(document.querySelector('#nCount').value) || DEFAULT_N) * sensorsCount,
-      },
-      () => this.getTemps(this.state.n),
-    );
-  };
-
   render() {
     this.props.dispatch(rootActions.testAction());
     if (!this.state.location) {
@@ -105,27 +89,6 @@ class LocationPageBase extends React.Component {
 
           <div className="location__header">
             <div className="location__title">{this.state.location.name}</div>
-          </div>
-
-          {/*<Form type="text" id='nCount' placeholder={'100'}/>*/}
-          {/*<button onClick={this.onInputChange}>zapisz</button>*/}
-
-          <div className={'load-n location__card'}>
-            <Row>
-              <Col sm="6">
-                <Form.Group controlId="sensorId">
-                  <Form.Label>Ile odczytów załadować?</Form.Label>
-                  <p className="location__description">
-                    Domyślnie pobieranych jest 100 ostatnich pomiarów. Jeżeli chcesz zwiększyć/zmiejszyć ten zakres
-                    wystarczy, że podasz niżej ile chcesz pobrać pomiarów.
-                  </p>
-                  <Form.Control id="nCount" type="number" placeholder="100" />
-                  <Button onClick={this.onInputChange} variant="success">
-                    Załaduj
-                  </Button>
-                </Form.Group>
-              </Col>
-            </Row>
           </div>
 
           <AlarmPanel locationId={this.props.match.params.id} location={this.state.location} />
