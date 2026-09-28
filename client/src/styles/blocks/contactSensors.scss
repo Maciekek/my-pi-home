@@ -72,11 +72,43 @@ $contactClosed: #2e8b57;
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 4px;
+    }
+  }
+
+  &__info {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-sensors {
+    &__row .card-body {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    &__actions {
+      justify-content: space-between;
+    }
+
+    &__badge {
+      margin-right: 0;
+    }
+  }
+
+  .contact-history__table {
+    font-size: 13px;
+
+    th,
+    td {
+      padding-right: 6px;
     }
   }
 }

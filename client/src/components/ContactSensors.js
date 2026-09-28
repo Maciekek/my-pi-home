@@ -83,7 +83,7 @@ const ContactSensors = ({ locationId, location }) => {
         >
           <Card.Body>
             <div className={'contact-sensors__info'}>
-              <Icon type={state && state.isOpen ? 'door_open' : 'door_front'} size={28} />
+              <Icon type={state && state.isOpen ? 'meeting_room' : 'door_front'} size={28} />
               <div>
                 <div>{sensor.name || sensor.sensorId}</div>
                 <div className={'contact-sensors__row--secondary'}>
